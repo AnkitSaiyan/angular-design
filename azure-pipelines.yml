@@ -22,7 +22,7 @@ steps:
   inputs:
     command: 'custom'
     workingDir: './'
-    customCommand: 'run diflexmo-angular-design'
+    customCommand: 'run build diflexmo-angular-design'
 - task: Npm@1
   inputs:
     command: 'publish'
