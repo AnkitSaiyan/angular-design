@@ -1,0 +1,59 @@
+@import '../../../../../styles/base/mixins';
+
+:host {
+  &:first-child .btn-group-item {
+    border-left: 1px solid var(--dfm-btn-group-border);
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+
+  &:last-child .btn-group-item {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+}
+
+.btn-group-item {
+  @include text-sm;
+  @include weight-medium;
+  @include border-radius-base(0);
+  color: var(--dfm-btn-group-color);
+  background-color: var(--dfm-btn-group-bg);
+  display: flex;
+  gap: 8px;
+  border: 1px solid var(--dfm-btn-group-border);
+  border-left: none;
+  padding: 10px 16px;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: var(--dfm-btn-group-hover-bg);
+    color: var(--dfm-btn-group-hover-color);
+    border: 1px solid var(--dfm-btn-group-border);
+    border-left: none;
+
+    .icon {
+      color: var(--dfm-btn-group-hover-color);
+    }
+  }
+
+  &:disabled {
+    color: var(--dfm-btn-group-disabed-color);
+
+    .icon {
+      color: var(--dfm-btn-group-disabed-color);
+    }
+  }
+
+  .icon {
+    display: block;
+    width: 20px;
+    height: 20px;
+
+    color: var(--dfm-btn-group-icon);
+  }
+
+  &-only-icon {
+    padding: 10px 12px;
+  }
+}

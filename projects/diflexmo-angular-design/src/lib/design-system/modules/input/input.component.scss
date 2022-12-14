@@ -1,0 +1,150 @@
+@import '../../../styles/base/mixins';
+
+.dfm-input-label {
+  @include text-sm;
+  @include weight-medium;
+
+  color: var(--dfm-input-label-color);
+  padding-bottom: 6px;
+}
+
+%dfm-input {
+  @include border-radius;
+  @include text-md;
+
+  box-sizing: border-box;
+  color: var(--dfm-input-color);
+  background-color: var(--dfm-input-bg);
+  box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+  outline: none;
+  border: 1px solid var(--dfm-input-border);
+  width: 100%;
+}
+
+.input-container {
+  position: relative;
+
+  .leading-icon {
+    position: absolute;
+    color: var(--dfm-input-leading-icon-color);
+  }
+
+  &-sm .leading-icon {
+    top: 9px;
+    left: 14px;
+    width: 18px;
+    height: 18px;
+  }
+
+  &-md .leading-icon {
+    top: 12px;
+    left: 14px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .hint-icon {
+    position: absolute;
+    color: var(--dfm-input-hint-icon-color);
+    top: 12px;
+    right: 12px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+
+  .dfm-input-sm {
+    @extend %dfm-input;
+
+    height: 40px;
+    padding: 8px 12px;
+
+    &.hint-control {
+      padding-right: 40px;
+    }
+
+    &:focus {
+      color: var(--dfm-input-color-focus);
+      background-color: var(--dfm-input-bg-focus);
+      border: 1px solid var(--dfm-input-border-focus);
+    }
+
+    &:disabled {
+      color: var(--dfm-input-color-disabled);
+      background-color: var(--dfm-input-bg-disabled);
+      border: 1px solid var(--dfm-input-border-disabled);
+      box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    }
+
+    &[readonly] {
+      cursor: pointer;
+    }
+
+    &.leading-icon-control {
+      padding-left: 40px;
+    }
+  }
+
+  .dfm-input-md {
+    @extend %dfm-input;
+
+    height: 44px;
+    padding: 10px 14px;
+
+    &.hint-control {
+      padding-right: 44px;
+    }
+
+    &.leading-icon-control {
+      padding-left: 42px;
+    }
+
+    & ~ .hint-icon {
+      top: 14px;
+      right: 14px;
+    }
+
+    &:focus {
+      color: var(--dfm-input-color-focus);
+      background-color: var(--dfm-input-bg-focus);
+      border: 1px solid var(--dfm-input-border-focus);
+    }
+
+    &:disabled {
+      color: var(--dfm-input-color-disabled);
+      background-color: var(--dfm-input-bg-disabled);
+      border: 1px solid var(--dfm-input-border-disabled);
+      box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    }
+
+    &[readonly] {
+      cursor: pointer;
+    }
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+:host-context(.input-dropdown-sm) .dfm-input.dfm-input-sm {
+  @include text-sm;
+  @include weight-medium;
+  height: 36px;
+}

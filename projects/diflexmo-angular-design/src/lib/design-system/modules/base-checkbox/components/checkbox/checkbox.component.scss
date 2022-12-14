@@ -1,0 +1,61 @@
+@import '../../../../../styles/base/mixins';
+
+.dfm-checkbox.dfm-checkbox-sm {
+  font-size: 16px;
+}
+
+.dfm-checkbox.dfm-checkbox-md {
+  font-size: 20px;
+}
+
+.dfm-checkbox {
+  .checkbox {
+    margin-top: 2px;
+
+    &:hover {
+      background-color: var(--dfm-checkbox-hover-bg);
+      border: 1px solid var(--dfm-checkbox-border-hover);
+
+      &:checked {
+        background-color: var(--dfm-checkbox-hover-bg);
+      }
+    }
+
+    &:checked {
+      background-color: var(--dfm-checkbox-checked-bg);
+      background-image: var(--dfm-checkbox-bg-img-checked);
+
+      &:disabled {
+        background-image: var(--dfm-checkbox-bg-img-checked-disabled);
+      }
+    }
+
+    &:disabled {
+      background-color: var(--dfm-checkbox-disabled-bg);
+      border: 1px solid var(--dfm-checkbox-disabled-border);
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:focus {
+      box-shadow: 0px 0px 0px 4px var(--dfm-checkbox-focus-shadow);
+      border: 1px solid var(--dfm-checkbox-focus-border);
+    }
+
+    &:indeterminate {
+      background-color: var(--dfm-checkbox-checked-bg);
+      background-image: var(--dfm-checkbox-bg-img-indeterminate);
+
+      &:disabled {
+        background-color: var(--dfm-checkbox-disabled-bg);
+        background-image: var(--dfm-checkbox-bg-img-indeterminate-disabled);
+      }
+    }
+  }
+
+  &:not(.disabled) label {
+    cursor: pointer;
+  }
+}

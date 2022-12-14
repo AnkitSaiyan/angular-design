@@ -1,0 +1,233 @@
+@import '../../../../../styles/base/mixins';
+
+%dfm-badge {
+  @include border-radius-rounded;
+  @include auto-layout;
+
+  width: fit-content;
+  white-space: nowrap;
+
+  .dfm-bullet {
+    height: 6px;
+    width: 6px;
+    border-radius: 50%;
+  }
+}
+
+.dfm-badge-sm {
+  @extend %dfm-badge;
+  @include text-xs;
+
+  padding: 2px 8px;
+
+  &-bullet {
+    @extend .dfm-badge-sm;
+
+    padding: 2px 8px 2px 6px;
+    gap: 6px;
+  }
+
+  &-avatar {
+    @extend .dfm-badge-sm;
+
+    padding: 2px 8px 2px 3px;
+    gap: 6px;
+  }
+
+  &-close {
+    @extend .dfm-badge-sm;
+
+    padding: 2px 6px 2px 8px;
+    gap: 4px;
+  }
+
+  &-icon-right {
+    @extend .dfm-badge-sm;
+
+    padding: 2px 6px 2px 8px;
+    gap: 4px;
+  }
+
+  &-icon-left {
+    @extend .dfm-badge-sm;
+
+    padding: 2px 8px 2px 6px;
+    gap: 4px;
+  }
+
+  &-icon {
+    @extend .dfm-badge-sm;
+
+    padding: 4px;
+  }
+}
+
+.dfm-badge-md {
+  @extend %dfm-badge;
+  @include text-sm;
+
+  padding: 2px 10px;
+
+  &-bullet {
+    @extend .dfm-badge-md;
+
+    padding: 2px 10px 2px 8px;
+    gap: 6px;
+  }
+
+  &-avatar {
+    @extend .dfm-badge-md;
+
+    padding: 2px 10px 2px 4px;
+    gap: 6px;
+  }
+
+  &-close {
+    @extend .dfm-badge-md;
+
+    padding: 2px 8px 2px 10px;
+    gap: 4px;
+  }
+
+  &-icon-right {
+    @extend .dfm-badge-md;
+
+    padding: 2px 6px 2px 10px;
+    gap: 4px;
+  }
+
+  &-icon-left {
+    @extend .dfm-badge-md;
+
+    padding: 2px 8px 2px 10px;
+    gap: 4px;
+  }
+
+  &-icon {
+    @extend .dfm-badge-md;
+
+    padding: 6px;
+  }
+}
+
+.dfm-badge-lg {
+  @extend %dfm-badge;
+  @include text-sm;
+
+  padding: 4px 12px;
+
+  &-bullet {
+    @extend .dfm-badge-lg;
+
+    padding: 4px 12px 4px 10px;
+    gap: 6px;
+  }
+
+  &-avatar {
+    @extend .dfm-badge-lg;
+
+    padding: 4px 12px 4px 6px;
+    gap: 6px;
+  }
+
+  &-close {
+    @extend .dfm-badge-lg;
+
+    padding: 4px 10px 4px 12px;
+    gap: 4px;
+  }
+
+  &-icon-right {
+    @extend .dfm-badge-lg;
+
+    padding: 4px 10px 4px 12px;
+    gap: 4px;
+  }
+
+  &-icon-left {
+    @extend .dfm-badge-lg;
+
+    padding: 4px 10px 4px 12px;
+    gap: 4px;
+  }
+
+  &-icon {
+    @extend .dfm-badge-lg;
+
+    padding: 8px;
+  }
+}
+
+.dfm-badge {
+  &-gray {
+    color: var(--dfm-badge-gray-color);
+    background-color: var(--dfm-badge-gray-bg);
+
+    .dfm-bullet-gray {
+      background-color: var(--dfm-badge-gray-color);
+    }
+  }
+
+  &-primary {
+    color: var(--dfm-badge-primary-color);
+    background-color: var(--dfm-badge-primary-bg);
+
+    .dfm-bullet-primary {
+      background-color: var(--dfm-badge-primary-color);
+    }
+  }
+
+  &-primary-dark {
+    color: var(--dfm-badge-primary-dark-color);
+    background-color: var(--dfm-badge-primary-dark-bg);
+
+    .dfm-bullet-primary-dark {
+      background-color: var(--dfm-badge-primary-dark-color);
+    }
+  }
+
+  &-warning {
+    color: var(--dfm-badge-warning-color);
+    background-color: var(--dfm-badge-warning-bg);
+
+    .dfm-bullet-warning {
+      background-color: var(--dfm-badge-warning-color);
+    }
+  }
+
+  &-success {
+    color: var(--dfm-badge-success-color);
+    background-color: var(--dfm-badge-success-bg);
+
+    .dfm-bullet-success {
+      background-color: var(--dfm-badge-success-color);
+    }
+  }
+
+  &-success-dark {
+    color: var(--dfm-badge-success-dark-color);
+    background-color: var(--dfm-badge-success-dark-bg);
+
+    .dfm-bullet-success-dark {
+      background-color: var(--dfm-badge-success-dark-color);
+    }
+  }
+
+  &-gray-blue {
+    color: var(--dfm-badge-gray-blue-color);
+    background-color: var(--dfm-badge-gray-blue-bg);
+
+    .dfm-bullet-gray-blue {
+      background-color: var(--dfm-badge-gray-blue-color);
+    }
+  }
+
+  &-secondary {
+    color: var(--dfm-badge-secondary-color);
+    background: var(--dfm-badge-secondary-bg);
+
+    .dfm-bullet-secondary {
+      background-color: var(--dfm-badge-secondary-color);
+    }
+  }
+}

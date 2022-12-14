@@ -1,0 +1,25 @@
+{
+  "name": "diflexmo-angular-design",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^14.2.0",
+    "@angular/compiler": "^14.2.0",
+    "@angular/core": "^14.2.0",
+    "@angular/platform-browser": "^14.2.0",
+    "@angular/platform-browser-dynamic": "^14.2.0",
+    "@ngx-translate/core": "^14.0.0",
+    "@popperjs/core": "^2.11.6",
+    "angular-resize-event": "^3.2.0",
+    "angular-svg-icon": "^14.0.0",
+    "angular-svg-icon-preloader": "^4.0.1",
+    "bootstrap": "^5.2.3",
+    "moment": "^2.29.4",
+    "rxjs": "^7.6.0",
+    "zone.js": "^0.11.8"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@types/bootstrap": "^5.2.6"
+  }
+}

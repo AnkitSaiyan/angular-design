@@ -1,0 +1,136 @@
+@import '../../../styles/base/mixins';
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 6px;
+  white-space: nowrap;
+
+  .close-action {
+    color: var(--dfm-tag-close-color);
+    cursor: pointer;
+  }
+
+  .count-action {
+    background-color: var(--dfm-tag-count-bg);
+    border-radius: 3px;
+  }
+
+  &.tag-default {
+    color: var(--dfm-tag-color);
+    background-color: var(--dfm-tag-bg);
+    border: 1px solid var(--dfm-tag-default-border);
+  }
+
+  &.tag-brown {
+    color: var(--dfm-tag-primary-color);
+    background-color: var(--dfm-tag-primary-bg);
+    border: 1px solid var(--dfm-tag-primary-border);
+
+    .count-action {
+      background-color: var(--dfm-tag-primary-bg);
+    }
+
+    .close-action {
+      color: var(--dfm-tag-primary-color);
+    }
+
+    .icon {
+      color: var(--dfm-tag-primary-color);
+    }
+  }
+
+  &.tag-sm {
+    @include text-xs;
+    @include weight-medium;
+    padding: 3px 8px;
+
+    &.tag-with-action {
+      padding: 3px 4px 3px 8px;
+    }
+
+    .close-action {
+      width: 10px;
+      height: 10px;
+      margin: 2px 2px 2px 5px;
+    }
+
+    .count-action {
+      padding: 0px 4.5px;
+      line-height: 16px;
+      margin-left: 4px;
+    }
+
+    &.tag-with-icon {
+      padding-left: 4px;
+    }
+  }
+
+  &.tag-md {
+    @include text-sm;
+    @include weight-medium;
+    padding: 2px 9px;
+
+    &.tag-with-action {
+      padding: 2px 3px 2px 9px;
+    }
+
+    .close-action {
+      width: 12px;
+      height: 12px;
+      margin: 2px 2px 2px 5px;
+    }
+
+    .count-action {
+      padding: 0px 5.5px;
+      margin-left: 5px;
+    }
+
+    &.tag-with-icon {
+      padding-left: 5px;
+    }
+  }
+
+  &.tag-lg {
+    @include text-sm;
+    @include weight-medium;
+    padding: 4px 10px;
+
+    &.tag-with-action {
+      padding: 4px 4px 4px 10px;
+    }
+
+    .close-action {
+      width: 14px;
+      height: 14px;
+      margin: 3px 3px 3px 6px;
+    }
+
+    .count-action {
+      padding: 0px 6px;
+      margin-left: 6px;
+    }
+
+    &.tag-with-icon {
+      padding-left: 7px;
+    }
+  }
+
+  .icon {
+    color: var(--dfm-tag-icon-color);
+    width: 16px;
+    height: 16px;
+
+    &.icon-sm {
+      margin-right: 4px;
+    }
+
+    &.icon-md {
+      margin-right: 5px;
+    }
+
+    &.icon-lg {
+      margin-right: 6px;
+    }
+  }
+}

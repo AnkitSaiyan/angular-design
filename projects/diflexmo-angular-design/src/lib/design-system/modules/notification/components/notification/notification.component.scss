@@ -1,0 +1,104 @@
+@import '../../../../../styles/base/mixins';
+@import '../../../../../styles/base/shadows';
+
+$distanceFromSide: 42px;
+
+.dfm-notification {
+  @include shadow-lg;
+  @include border-radius;
+  width: 328px;
+  position: absolute;
+  z-index: 99;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--dfm-notification-bg);
+
+  .dfm-notification-header {
+    width: 100%;
+    @include text-lg;
+    @include weight-medium;
+    display: inline-block;
+  }
+
+  .dfm-notification-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .dfm-icon-wrapper {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+
+    dfm-icon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .dfm-notification-body {
+    display: block;
+    width: 100%;
+    display: inline-block;
+    @include text-sm;
+  }
+
+  .dfm-notification-content {
+    width: 256px;
+    margin-left: 8px;
+    display: inline-block;
+  }
+
+  .dfm-notification-icon {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  &.dfm-notification-top-left {
+    top: $distanceFromSide;
+    left: $distanceFromSide;
+  }
+
+  &.dfm-notification-top-right {
+    top: $distanceFromSide;
+    right: $distanceFromSide;
+  }
+
+  &.dfm-notification-bottom-left {
+    bottom: $distanceFromSide;
+    left: $distanceFromSide;
+  }
+
+  &.dfm-notification-bottom-right {
+    bottom: $distanceFromSide;
+    right: $distanceFromSide;
+  }
+
+  &.dfm-notification-success {
+    .dfm-icon-wrapper {
+      background-color: var(--dfm-notification-icon-bg-success);
+      color: var(--dfm-notification-icon-color-success);
+    }
+  }
+  &.dfm-notification-danger {
+    .dfm-icon-wrapper {
+      background-color: var(--dfm-notification-icon-bg-danger);
+      color: var(--dfm-notification-icon-color-danger);
+    }
+  }
+  &.dfm-notification-info {
+    .dfm-icon-wrapper {
+      background-color: var(--dfm-notification-icon-bg-info);
+      color: var(--dfm-notification-icon-color-info);
+    }
+  }
+  &.dfm-notification-warning {
+    .dfm-icon-wrapper {
+      background-color: var(--dfm-notification-icon-bg-warning);
+      color: var(--dfm-notification-icon-color-warning);
+    }
+  }
+}

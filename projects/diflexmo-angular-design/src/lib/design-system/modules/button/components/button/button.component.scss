@@ -1,0 +1,261 @@
+@use 'sass:map';
+@import '../../../../../styles/base/mixins';
+
+$diflexmo-buttons: (
+  'primary': (
+    'background': --dfm-btn-primary-bg,
+    'background-hover': --dfm-btn-primary-bg-hover,
+    'background-focus': --dfm-btn-primary-bg-focus,
+    'background-disabled': --dfm-btn-primary-bg-disabled,
+    'color': --dfm-btn-primary-color,
+    'color-hover': --dfm-btn-primary-color-hover,
+    'color-focus': --dfm-btn-primary-color-focus,
+    'color-disabled': --dfm-btn-primary-color-disabled,
+    'border-style': solid,
+    'border-width': 1px,
+    'border-color': --dfm-btn-primary-border,
+    'border-hover': --dfm-btn-primary-border-hover,
+    'border-focus': --dfm-btn-primary-border-focus,
+    'border-disabled': --dfm-btn-primary-border-disabled,
+    'box-shadow': 0px 1px 2px rgba(16, 24, 40, 0.05),
+    'box-shadow-hover': 0px 1px 2px rgba(16, 24, 40, 0.05),
+    'box-shadow-focus': 0px 0px 0px 1px #f4e3cf,
+    'box-shadow-disabled': 0px 1px 2px rgba(16, 24, 40, 0.05),
+  ),
+  'secondary': (
+    'background': --dfm-btn-secondary-bg,
+    'background-hover': --dfm-btn-secondary-bg-hover,
+    'background-focus': --dfm-btn-secondary-bg-focus,
+    'background-disabled': --dfm-btn-secondary-bg-disabled,
+    'color': --dfm-btn-secondary-color,
+    'color-hover': --dfm-btn-secondary-color-hover,
+    'color-focus': --dfm-btn-secondary-color-focus,
+    'color-disabled': --dfm-btn-secondary-color-disabled,
+    'border-style': solid,
+    'border-width': 1px,
+    'border-color': --dfm-btn-secondary-border,
+    'border-hover': --dfm-btn-secondary-border-hover,
+    'border-focus': --dfm-btn-secondary-border-focus,
+    'border-disabled': --dfm-btn-secondary-border-disabled,
+    'box-shadow': 0px 1px 2px rgba(16, 24, 40, 0.05),
+    'box-shadow-hover': 0px 1px 2px rgba(16, 24, 40, 0.05),
+    'box-shadow-focus': 0px 0px 0px 1px #f4e3cf,
+    'box-shadow-disabled': 0px 1px 2px rgba(16, 24, 40, 0.05),
+  ),
+  'secondary-gray': (
+    'background': --dfm-btn-secondary-gray-bg,
+    'background-hover': --dfm-btn-secondary-gray-bg-hover,
+    'background-focus': --dfm-btn-secondary-gray-bg-focus,
+    'background-disabled': --dfm-btn-secondary-gray-bg-disabled,
+    'color': --dfm-btn-secondary-gray-color,
+    'color-hover': --dfm-btn-secondary-gray-color-hover,
+    'color-focus': --dfm-btn-secondary-gray-color-focus,
+    'color-disabled': --dfm-btn-secondary-gray-color-disabled,
+    'border-style': solid,
+    'border-width': 1px,
+    'border-color': --dfm-btn-secondary-gray-border,
+    'border-hover': --dfm-btn-secondary-gray-border-hover,
+    'border-focus': --dfm-btn-secondary-gray-border-focus,
+    'border-disabled': --dfm-btn-secondary-gray-border-disabled,
+    'box-shadow': 0px 1px 2px rgba(16, 24, 40, 0.05),
+    'box-shadow-hover': 0px 1px 2px rgba(16, 24, 40, 0.05),
+    'box-shadow-focus': 0px 0px 0px 4px #f2f4f7,
+    'box-shadow-disabled': 0px 1px 2px rgba(16, 24, 40, 0.05),
+  ),
+  'tertiary': (
+    'background': --dfm-btn-tertiary-bg,
+    'background-hover': --dfm-btn-tertiary-bg-hover,
+    'background-focus': --dfm-btn-tertiary-bg-focus,
+    'background-disabled': --dfm-btn-tertiary-bg-disabled,
+    'color': --dfm-btn-tertiary-color,
+    'color-hover': --dfm-btn-tertiary-color-hover,
+    'color-focus': --dfm-btn-tertiary-color-focus,
+    'color-disabled': --dfm-btn-tertiary-color-disabled,
+    'border-style': solid,
+    'border-width': 1px,
+    'border-color': --dfm-btn-tertiary-border,
+    'border-hover': --dfm-btn-tertiary-border-hover,
+    'border-focus': --dfm-btn-tertiary-border-focus,
+    'border-disabled': --dfm-btn-tertiary-border-disabled,
+    'box-shadow': none,
+    'box-shadow-hover': none,
+    'box-shadow-focus': none,
+    'box-shadow-disabled': none,
+  ),
+  'tertiary-gray': (
+    'background': --dfm-btn-tertiary-gray-bg,
+    'background-hover': --dfm-btn-tertiary-gray-bg-hover,
+    'background-focus': --dfm-btn-tertiary-gray-bg-focus,
+    'background-disabled': --dfm-btn-tertiary-gray-bg-disabled,
+    'color': --dfm-btn-tertiary-gray-color,
+    'color-hover': --dfm-btn-tertiary-gray-color-hover,
+    'color-focus': --dfm-btn-tertiary-gray-color-focus,
+    'color-disabled': --dfm-btn-tertiary-gray-color-disabled,
+    'border-style': solid,
+    'border-width': 1px,
+    'border-color': --dfm-btn-tertiary-gray-border,
+    'border-hover': --dfm-btn-tertiary-gray-border-hover,
+    'border-focus': --dfm-btn-tertiary-gray-border-focus,
+    'border-disabled': --dfm-btn-tertiary-gray-border-disabled,
+    'box-shadow': none,
+    'box-shadow-hover': none,
+    'box-shadow-focus': none,
+    'box-shadow-disabled': none,
+  ),
+  'link': (
+    'background': --dfm-btn-link-bg,
+    'background-hover': --dfm-btn-link-bg-hover,
+    'background-focus': --dfm-btn-link-bg-focus,
+    'background-disabled': --dfm-btn-link-bg-disabled,
+    'color': --dfm-btn-link-color,
+    'color-hover': --dfm-btn-link-color-hover,
+    'color-focus': --dfm-btn-link-color-focus,
+    'color-disabled': --dfm-btn-link-color-disabled,
+    'border-style': solid,
+    'border-width': 1px,
+    'border-color': --dfm-btn-link-border,
+    'border-hover': --dfm-btn-link-border-hover,
+    'border-focus': --dfm-btn-link-border-focus,
+    'border-disabled': --dfm-btn-link-border-disabled,
+    'box-shadow': none,
+    'box-shadow-hover': none,
+    'box-shadow-focus': none,
+    'box-shadow-disabled': none,
+  ),
+  'link-gray': (
+    'background': --dfm-btn-link-gray-bg,
+    'background-hover': --dfm-btn-link-gray-bg-hover,
+    'background-focus': --dfm-btn-link-gray-bg-focus,
+    'background-disabled': --dfm-btn-link-gray-bg-disabled,
+    'color': --dfm-btn-link-gray-color,
+    'color-hover': --dfm-btn-link-gray-color-hover,
+    'color-focus': --dfm-btn-link-gray-color-focus,
+    'color-disabled': --dfm-btn-link-gray-color-disabled,
+    'border-style': solid,
+    'border-width': 1px,
+    'border-color': --dfm-btn-link-gray-border,
+    'border-hover': --dfm-btn-link-gray-border-hover,
+    'border-focus': --dfm-btn-link-gray-border-focus,
+    'border-disabled': --dfm-btn-link-gray-border-disabled,
+    'box-shadow': none,
+    'box-shadow-hover': none,
+    'box-shadow-focus': none,
+    'box-shadow-disabled': none,
+  ),
+);
+
+$diflexmo-button-sizes: (
+  'sm': (
+    'padding': 7px 13px,
+    'gap': 8px,
+    'font-size': 14px,
+    'line-height': 20px,
+    'icon-width': 20px,
+    'icon-height': 20px,
+  ),
+  'md': (
+    'padding': 9px 15px,
+    'gap': 8px,
+    'font-size': 14px,
+    'line-height': 20px,
+    'icon-width': 20px,
+    'icon-height': 20px,
+  ),
+  'lg': (
+    'padding': 9px 17px,
+    'gap': 8px,
+    'font-size': 16px,
+    'line-height': 24px,
+    'icon-width': 20px,
+    'icon-height': 20px,
+  ),
+  'xl': (
+    'padding': 11px 19px,
+    'gap': 8px,
+    'font-size': 16px,
+    'line-height': 24px,
+    'icon-width': 20px,
+    'icon-height': 20px,
+  ),
+  '2xl': (
+    'padding': 15px 27px,
+    'gap': 12px,
+    'font-size': 18px,
+    'line-height': 28px,
+    'icon-width': 24px,
+    'icon-height': 24px,
+  ),
+);
+
+%dfm-btn {
+  @include auto-layout;
+  @include border-radius;
+  @include weight-medium;
+
+  outline: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+@each $key, $val in $diflexmo-buttons {
+  @each $size, $sizeVal in $diflexmo-button-sizes {
+    .dfm-btn-#{$key}-#{$size} {
+      @extend %dfm-btn;
+
+      background-color: var(map.get($val, background));
+      color: var(map.get($val, color));
+      border-width: map.get($val, border-width);
+      border-style: map.get($val, border-style);
+      border-color: var(map.get($val, border-color));
+
+      @if $key != 'link' and $key != 'link-gray' {
+        padding: map.get($sizeVal, padding);
+      }
+
+      gap: map.get($sizeVal, gap);
+      box-shadow: map.get($val, box-shadow);
+      font-size: map.get($sizeVal, font-size);
+      line-height: map.get($sizeVal, line-height);
+
+      .icon {
+        width: map.get($sizeVal, icon-width);
+        height: map.get($sizeVal, icon-height);
+      }
+    }
+
+    .dfm-btn-#{$key}-#{$size}:hover {
+      background-color: var(map.get($val, background-hover));
+      color: var(map.get($val, color-hover));
+
+      box-shadow: map.get($val, box-shadow-hover);
+      border-width: map.get($val, border-width);
+      border-style: map.get($val, border-style);
+      border-color: var(map.get($val, border-color));
+    }
+
+    .dfm-btn-#{$key}-#{$size}:focus {
+      background-color: var(map.get($val, background-focus));
+      color: var(map.get($val, color-focus));
+
+      box-shadow: map.get($val, box-shadow-focus) !important;
+      border-width: map.get($val, border-width);
+      border-style: map.get($val, border-style);
+      border-color: var(map.get($val, border-color));
+    }
+
+    .dfm-btn-#{$key}-#{$size}:disabled {
+      background-color: var(map.get($val, background-disabled));
+      color: var(map.get($val, color-disabled));
+
+      box-shadow: map.get($val, box-shadow-disabled);
+      border-width: map.get($val, border-width);
+      border-style: map.get($val, border-style);
+      border-color: var(map.get($val, border-disabled));
+    }
+  }
+}
+
+@media (max-width: 680px) {
+  .dfm-btn {
+    width: 100%;
+  }
+}

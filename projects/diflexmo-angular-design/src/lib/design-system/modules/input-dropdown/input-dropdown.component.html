@@ -1,0 +1,65 @@
+<div class="dropdown input-dropdown input-dropdown-{{ size }}">
+  <div #dropdown>
+    <div class="input-container">
+      <dfm-input
+        [placeholder]="placeholder"
+        [icon]="icon"
+        [size]="size"
+        [ngModel]="search"
+        (ngModelChange)="updateSearch($event)"
+        (focusout)="focusout($event)"
+        [isInvalid]="!!(control && control.touched && !control.valid)"
+        [readonly]="!typeToSearch"
+        [label]="label"
+        (click)="openDropdown()"
+        #searchInputRef
+      ></dfm-input>
+      <dfm-icon name="chevron-down" *ngIf="!typeToSearch" class="dropdown-icon"></dfm-icon>
+    </div>
+  </div>
+  <div *ngIf="selectedItemTags.length" class="selected-items" [class.selected-items-with-dropdown-icon]="!typeToSearch" #selectedItemsContainerRef>
+    <dfm-tag
+      *ngFor="let selectedItem of selectedItemTags; let i = index"
+      color="brown"
+      [action]="selectedItemTagsUnionIndex === i ? null : 'close'"
+      size="lg"
+      (closeAction)="removeItem(selectedItem)"
+      #selectedItemRef
+      >{{ selectedItem.name }}</dfm-tag
+    >
+  </div>
+  <span *ngIf="hint" class="dfm-input-hint">{{ hint }}</span>
+  <dfm-error [control]="control"></dfm-error>
+  <div class="dropdown-menu dropdown-menu-end w-100 p-0" (dfmDomChange)="checkIfDropdownIsClosed($event)">
+    <ng-container *ngIf="loading; then loadingTemplate; else searchTemplate"></ng-container>
+
+    <ng-template #loadingTemplate>
+      <div class="input-dropdown-item">Loading...</div>
+    </ng-template>
+
+    <ng-template #searchTemplate>
+      <div *ngIf="search.length < minQueryLength" class="input-dropdown-item type-to-search">{{ typeToSearchText }}</div>
+      <ng-container *ngIf="search.length >= minQueryLength">
+        <ng-container *ngIf="filteredItems && filteredItems.length; then itemsTemplate; else noItemsTemplate"> </ng-container>
+      </ng-container>
+    </ng-template>
+
+    <ng-template #itemsTemplate>
+      <div *ngFor="let item of filteredItems" (click)="selectItem(item)" clickable class="input-dropdown-item option">
+        <div class="option-content">
+          {{ item.name }}
+          <span *ngIf="showDescription" class="option-description">{{ item.description }}</span>
+        </div>
+        <dfm-icon
+          *ngIf="value && ((!multiple && value === item.value) || (multiple && value.includes(item.value)))"
+          name="check"
+          class="option-selected"
+        ></dfm-icon>
+      </div>
+    </ng-template>
+
+    <ng-template #noItemsTemplate>
+      <div class="input-dropdown-item">No items found</div>
+    </ng-template>
+  </div>
+</div>

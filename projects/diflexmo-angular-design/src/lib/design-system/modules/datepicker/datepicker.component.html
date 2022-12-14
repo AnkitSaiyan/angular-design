@@ -1,0 +1,95 @@
+<div class="dfm-datepicker-container d-flex">
+  <div class="default-date-options-container d-flex justify-content-center">
+    <div class="default-date-options">
+      <button class="btn btn-tertiary-gray" (click)="today()">Today</button>
+      <button class="btn btn-tertiary-gray" (click)="yesterday()">Yesterday</button>
+      <button class="btn btn-tertiary-gray" (click)="thisMonth()">This month</button>
+      <button class="btn btn-tertiary-gray" (click)="lastMonth()">Last month</button>
+      <button class="btn btn-tertiary-gray" (click)="thisYear()">This year</button>
+      <button class="btn btn-tertiary-gray" (click)="lastYear()">Last year</button>
+    </div>
+  </div>
+  <div class="datepicker d-flex flex-column">
+    <div class="datepicker-months d-flex flex-wrap justify-content-center">
+      <div class="datepicker-month datepicker-month-left">
+        <div class="datepicker-month-header d-flex justify-content-between align-items-center">
+          <dfm-icon name="chevron-left" class="month-icon dfm-text-main-500" (click)="firstMonthPrevious()"></dfm-icon>
+          <div class="my-auto text-md-medium">
+            {{ firstMonth | date: 'MMMM yyyy' }}
+          </div>
+          <dfm-icon name="chevron-right" class="month-icon dfm-text-main-500" (click)="firstMonthNext()"></dfm-icon>
+        </div>
+        <ng-container *ngTemplateOutlet="monthView; context: { weeks: firstMonthWeeks }"></ng-container>
+      </div>
+      <div class="datepicker-month">
+        <div class="datepicker-month-header d-flex justify-content-between align-items-center">
+          <dfm-icon name="chevron-left" class="month-icon dfm-text-main-500" (click)="secondMonthPrevious()"></dfm-icon>
+          <div class="my-auto text-md-medium">
+            {{ secondMonth | date: 'MMMM yyyy' }}
+          </div>
+          <dfm-icon name="chevron-right" class="month-icon dfm-text-main-500" (click)="secondMonthNext()"></dfm-icon>
+        </div>
+        <ng-container *ngTemplateOutlet="monthView; context: { weeks: secondMonthWeeks }"></ng-container>
+      </div>
+    </div>
+    <form [formGroup]="dateRange">
+      <div class="actions-bar d-flex align-items-center">
+        <div class="d-flex actions-bar-inputs">
+          <div class="datepicker-input">
+            <dfm-input formControlName="startDate" type="datepicker" placeholder="Start Date" (focusout)="startDateFocusOut()"></dfm-input>
+          </div>
+          <div class="text-center">
+            <span class="datepicker-input-dash my-auto">-</span>
+          </div>
+          <div class="datepicker-input">
+            <dfm-input formControlName="endDate" type="datepicker" placeholder="End Date" (focusout)="endDateFocusOut()"></dfm-input>
+          </div>
+        </div>
+        <div class="d-flex actions-bar-buttons">
+          <dfm-button color="secondary" size="md" (click)="cancel()">Cancel</dfm-button>
+          <dfm-button size="md" (click)="applyDates()">Apply dates</dfm-button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<ng-template #monthView let-weeks="weeks">
+  <table>
+    <thead>
+      <tr>
+        <th *ngFor="let weekName of weekNames">{{ weekName }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let week of weeks">
+        <td
+          class="text-center"
+          [ngClass]="{
+            'cell-wrapper-selected': isSelectedDate(day.date) && firstSelectedDate && secondSelectedDate,
+            'cell-wrapper-selected-first': firstSelectedDate && secondSelectedDate && firstSelectedDate.getTime() !== secondSelectedDate.getTime(),
+            'cell-wrapper-selected-second': firstSelectedDate && secondSelectedDate && firstSelectedDate.getTime() !== secondSelectedDate.getTime(),
+            'cell-wrapper-between-selection': isBetweenSelection(day.date),
+            'cell-wrapper-between-selection-right': isBetweenSelection(day.date) && i === 6,
+            'cell-wrapper-between-selection-left': isBetweenSelection(day.date) && i === 0
+          }"
+          *ngFor="let day of week.days; index as i"
+          (click)="selectDate(day.date)"
+        >
+          <div
+            class="calendar-cell d-flex justify-content-center align-items-center"
+            [ngClass]="{
+              'cell-selected': isSelectedDate(day.date),
+              'cell-between-selection': isBetweenSelection(day.date) && i !== 6 && i !== 0,
+              'cell-muted': !day.isCurrentMonth,
+              'cell-today': isToday(firstMonth.getMonth(), day.date)
+            }"
+          >
+            {{ day.date.getDate() }}
+            <span *ngIf="isToday(firstMonth.getMonth(), day.date)" class="cell-today-dot"></span>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ng-template>

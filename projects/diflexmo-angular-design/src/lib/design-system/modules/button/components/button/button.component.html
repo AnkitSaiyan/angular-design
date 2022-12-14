@@ -1,0 +1,5 @@
+<button class="dfm-btn dfm-btn-{{ color }}-{{ size }}" [disabled]="disabled" (click)="click()">
+  <dfm-icon *ngIf="leadingIcon" [name]="leadingIcon" class="icon"></dfm-icon>
+  <ng-content></ng-content>
+  <dfm-icon *ngIf="trailingIcon" [name]="trailingIcon" class="icon"></dfm-icon>
+</button>
