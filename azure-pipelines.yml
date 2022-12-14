@@ -23,3 +23,9 @@ steps:
     command: 'custom'
     workingDir: './'
     customCommand: 'run diflexmo-angular-design'
+- task: Npm@1
+  inputs:
+    command: 'publish'
+    workingDir: './dist/diflexmo-angular-design'
+    publishRegistry: 'useFeed'
+    publishFeed: '99f6e779-ae78-4c78-aa0f-2e7b6e432723/72c33157-27cf-4a68-9666-235e4aeb718c'
