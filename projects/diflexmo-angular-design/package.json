@@ -20,5 +20,10 @@
   "dependencies": {},
   "devDependencies": {
     "@types/bootstrap": "^5.2.6"
+  },
+  "exports": {
+    "./theming": {
+      "sass": "./src/assets/styles.scss"
+    }
   }
 }
