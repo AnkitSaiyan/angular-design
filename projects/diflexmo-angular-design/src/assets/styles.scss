@@ -1,17 +1,17 @@
-@import './abstracts/variables';
-@import './themes/theme';
+@import '../lib/styles/abstracts/variables';
+@import '../lib/styles/themes/theme';
 
-@import './base/mixins';
-@import './base/shadows';
-@import './base/typography';
-@import './base/color';
-@import './base/text';
-@import './base/spacing';
-@import './base/reset';
+@import '../lib/styles/base/mixins';
+@import '../lib/styles/base/shadows';
+@import '../lib/styles/base/typography';
+@import '../lib/styles/base/color';
+@import '../lib/styles/base/text';
+@import '../lib/styles/base/spacing';
+@import '../lib/styles/base/reset';
 
-@import './vendors/bootstrap-extended.scss';
+@import '../lib/styles/vendors/bootstrap-extended.scss';
 
-@import './components/scrollbar.scss';
+@import '../lib/styles/components/scrollbar.scss';
 
 .dfm-body {
   background-color: var(--dfm-body-bg);
