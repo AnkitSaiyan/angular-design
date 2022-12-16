@@ -27,58 +27,6 @@
   @include border-radius-base(50%);
 }
 
-// text
-@mixin weight-normal {
-  font-weight: 400;
-}
-
-@mixin weight-medium {
-  font-weight: 500;
-}
-
-@mixin weight-semi-bold {
-  font-weight: 600;
-}
-
-@mixin weight-bold {
-  font-weight: 700;
-}
-
-@mixin text-xs {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-size: 12px;
-  line-height: 18px;
-}
-
-@mixin text-sm {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-@mixin text-md {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-size: 16px;
-  line-height: 24px;
-}
-
-@mixin text-lg {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-size: 18px;
-  line-height: 28px;
-}
-
-@mixin display-sm {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-size: 30px;
-  line-height: 38px;
-}
-
 // color
 @mixin background-color($color) {
   background-color: $color;

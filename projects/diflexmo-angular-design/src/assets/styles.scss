@@ -1,17 +1,23 @@
 @import '../lib/styles/abstracts/variables';
 @import '../lib/styles/themes/theme';
 
+// import mixins
+@import '../lib/styles/mixins/text-mixins.scss';
 @import '../lib/styles/base/mixins';
+
+// import base
 @import '../lib/styles/base/shadows';
 @import '../lib/styles/base/typography';
 @import '../lib/styles/base/color';
 @import '../lib/styles/base/text';
 @import '../lib/styles/base/spacing';
 @import '../lib/styles/base/reset';
+@import '../lib/styles/base/opacity';
 
 @import '../lib/styles/vendors/bootstrap-extended.scss';
 
 @import '../lib/styles/components/scrollbar.scss';
+@import '../lib/styles/components/divider.scss';
 
 .dfm-body {
   background-color: var(--dfm-body-bg);
@@ -38,16 +44,6 @@
   background-color: var(--dfm-map-zoom-bg) !important;
   border: 1px solid var(--dfm-map-zoom-color) !important;
   color: var(--dfm-btn-secondary-gray-color) !important;
-}
-
-hr.dfm-divider-secondary {
-  height: 1px;
-  color: $secondary;
-  opacity: 0.8;
-}
-
-.opacity-03 {
-  opacity: 0.3;
 }
 
 .dfm-card-toolbar {
