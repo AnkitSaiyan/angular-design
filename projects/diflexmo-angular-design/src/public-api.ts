@@ -61,3 +61,5 @@ export * from './lib/design-system/modules/text-area/text-area.component';
 
 export * from './lib/design-system/directives/directives.module';
 export * from './lib/design-system/directives/dom-change.directive';
+
+export * from './lib/design-system/helpers/items-compact-helper';
