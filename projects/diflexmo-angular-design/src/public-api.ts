@@ -39,6 +39,7 @@ export * from './lib/design-system/modules/input/input.component';
 
 export * from './lib/design-system/modules/input-dropdown/input-dropdown.module';
 export * from './lib/design-system/modules/input-dropdown/input-dropdown.component';
+export * from './lib/design-system/modules/input-dropdown/models/select-item';
 
 export * from './lib/design-system/modules/navigation-bar/navigation-bar.module';
 export * from './lib/design-system/modules/navigation-bar/components/navigation-bar/navigation-bar.component';
