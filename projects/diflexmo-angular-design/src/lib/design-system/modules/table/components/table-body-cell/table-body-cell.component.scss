@@ -1,4 +1,5 @@
 @import '../../../../../styles/base/mixins';
+@import '../../../../../styles/mixins/text-mixins.scss';
 
 :host-context(.checkbox-cell.checkbox-first-frozen) ~ :host:nth-child(2) .cell,
 :host-context(.first-frozen) :host:first-child .cell {

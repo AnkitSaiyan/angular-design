@@ -1,4 +1,5 @@
 @import '../../../../../styles/base/mixins';
+@import '../../../../../styles/mixins/text-mixins.scss';
 
 %dfm-badge {
   @include border-radius-rounded;
