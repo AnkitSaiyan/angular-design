@@ -1,0 +1,36 @@
+@import '../../../../../styles/base/mixins';
+
+:host {
+  height: 100%;
+}
+
+.dfm-table-wrapper {
+  overflow: overlay;
+  border: 1px solid var(--dfm-table-border);
+  border-radius: 8px;
+  white-space: nowrap;
+  max-height: 100%;
+}
+
+.dfm-table {
+  border-collapse: separate;
+  border-spacing: 0;
+
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  .body-row {
+    border-top: 1px solid var(--dfm-table-border);
+
+    &:nth-child(even) {
+      background-color: var(--dfm-table-even-cell-bg);
+    }
+
+    &:nth-child(odd) {
+      background-color: var(--dfm-table-odd-cell-bg);
+    }
+  }
+}

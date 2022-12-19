@@ -1,0 +1,64 @@
+@import '../../../../../styles/base/mixins';
+@import '../../../../../styles/mixins/text-mixins.scss';
+
+.dfm-navigation-item {
+  @include text-sm;
+  @include weight-medium;
+  @include border-radius-base(24px);
+
+  display: flex;
+  color: var(--dfm-navbar-item-color);
+  background-color: var(--dfm-navbar-item-bg);
+  width: fit-content;
+  padding: 14px 16px;
+  gap: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+
+  &-selected {
+    background-color: var(--dfm-navbar-item-selected-bg);
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: var(--dfm-navbar-item-hover-bg);
+  }
+
+  .navigation-item-icon {
+    display: block;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@mixin navigation-item-collapsed {
+  padding: 8px 14px;
+  @include border-radius-base(0px);
+
+  .navigation-label {
+    display: none;
+  }
+}
+
+:host-context(.dfm-navigation-bar.collapsed) .dfm-navigation-item {
+  @include navigation-item-collapsed;
+}
+
+@media (max-width: 1440px) {
+  .dfm-navigation-item {
+    @include navigation-item-collapsed;
+  }
+}
+
+@media (max-width: 680px) {
+  :host-context(.dfm-navigation-bar-mobile) .dfm-navigation-item {
+    padding: 14px;
+    border-radius: 24px;
+  }
+
+  :host-context(.dfm-navigation-bar) .dfm-navigation-item,
+  :host-context(.dfm-navigation-bar.collapsed) .dfm-navigation-item {
+    padding: 0;
+  }
+}

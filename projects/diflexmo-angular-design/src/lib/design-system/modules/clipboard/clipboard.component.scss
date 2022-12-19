@@ -1,0 +1,19 @@
+.dfm-clipboard {
+  color: var(--dfm-clipboard-color);
+
+  &:hover {
+    color: var(--dfm-clipboard-color-hover);
+  }
+
+  &.hidden {
+    display: none;
+  }
+}
+
+.dfm-clipboard-copied {
+  color: var(--dfm-clipboard-color-copied);
+
+  &.hidden {
+    display: none;
+  }
+}

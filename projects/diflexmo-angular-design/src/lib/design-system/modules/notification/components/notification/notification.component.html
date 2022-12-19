@@ -1,0 +1,31 @@
+<div
+  *ngIf="currentNotification"
+  class="dfm-notification dfm-p-12"
+  [ngClass]="{
+    'dfm-notification-success': currentNotification.type === notificationType.SUCCESS,
+    'dfm-notification-danger': currentNotification.type === notificationType.DANGER,
+    'dfm-notification-warning': currentNotification.type === notificationType.WARNING,
+    'dfm-notification-info': currentNotification.type === notificationType.INFO,
+    'dfm-notification-top-left': position === positionType.TOP_LEFT,
+    'dfm-notification-top-right': position === positionType.TOP_RIGHT,
+    'dfm-notification-bottom-right': position === positionType.BOTTOM_RIGHT,
+    'dfm-notification-bottom-left': position === positionType.BOTTOM_LEFT
+  }"
+  (click)="hideAndShowNext()"
+>
+  <div class="dfm-notification-icon">
+    <div class="dfm-icon-wrapper dfm-p-10">
+      <dfm-icon *ngIf="currentNotification.type === notificationType.DANGER && !iconName" name="x-close"></dfm-icon>
+      <dfm-icon *ngIf="currentNotification.type === notificationType.WARNING && !iconName" name="alert-triangle"> </dfm-icon>
+      <dfm-icon *ngIf="currentNotification.type === notificationType.SUCCESS && !iconName" name="check"></dfm-icon>
+      <dfm-icon *ngIf="currentNotification.type === notificationType.INFO && !iconName" name="info-circle"></dfm-icon>
+      <dfm-icon *ngIf="iconName" [name]="iconName"></dfm-icon>
+    </div>
+  </div>
+  <div class="dfm-notification-content">
+    <span *ngIf="currentNotification.headerText" class="dfm-notification-header dfm-text-main-700">
+      {{ currentNotification.headerText }}
+    </span>
+    <span *ngIf="currentNotification.bodyText" class="dfm-notification-body dfm-text-main-500">{{ currentNotification.bodyText }}</span>
+  </div>
+</div>

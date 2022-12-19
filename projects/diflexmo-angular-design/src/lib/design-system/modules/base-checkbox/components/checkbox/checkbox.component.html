@@ -1,0 +1,7 @@
+<div class="dfm-checkbox form-check dfm-checkbox-{{ size }}" [class.disabled]="disabled">
+  <input class="checkbox form-check-input" [(ngModel)]="value" [indeterminate]="indeterminate" [disabled]="disabled" type="checkbox" [id]="id" />
+  <label class="d-flex flex-column label-{{ size }}" [for]="id">
+    <span class="text-{{ size }}-medium dfm-text-main-700">{{ label }}</span>
+    <span class="text-{{ size }} dfm-text-main-500">{{ hint }}</span>
+  </label>
+</div>

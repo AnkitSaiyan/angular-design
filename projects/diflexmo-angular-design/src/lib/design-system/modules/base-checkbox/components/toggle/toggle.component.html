@@ -1,0 +1,7 @@
+<div class="dfm-toggle form-check form-switch dfm-toggle-{{ size }}">
+  <input class="toggle form-check-input" [(ngModel)]="value" [disabled]="disabled" type="checkbox" role="switch" [id]="id" />
+  <label class="d-flex flex-column" [for]="id">
+    <span class="text-{{ size }}-medium dfm-text-main-700">{{ label }}</span>
+    <span class="text-{{ size }} dfm-text-main-500">{{ hint }}</span>
+  </label>
+</div>

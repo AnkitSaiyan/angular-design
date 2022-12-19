@@ -1,0 +1,168 @@
+.dfm-featured-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 0;
+
+  &-xs {
+    width: 24px;
+    height: 24px;
+
+    &.dfm-featured-icon-light-circle-outline,
+    &.dfm-featured-icon-dark-circle {
+      border-width: 2px;
+      width: 25px;
+      height: 25px;
+    }
+
+    .icon {
+      width: 12px;
+      height: 12px;
+    }
+  }
+
+  &-sm {
+    width: 32px;
+    height: 32px;
+
+    &.dfm-featured-icon-light-circle-outline,
+    &.dfm-featured-icon-dark-circle {
+      border-width: 4px;
+      width: 34px;
+      height: 34px;
+    }
+
+    .icon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &-md {
+    width: 40px;
+    height: 40px;
+
+    &.dfm-featured-icon-light-circle-outline,
+    &.dfm-featured-icon-dark-circle {
+      border-width: 6px;
+      width: 43px;
+      height: 43px;
+    }
+
+    .icon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &-lg {
+    width: 48px;
+    height: 48px;
+
+    &.dfm-featured-icon-light-circle-outline,
+    &.dfm-featured-icon-dark-circle {
+      border-width: 8px;
+      width: 52px;
+      height: 52px;
+    }
+
+    .icon {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &-xl {
+    width: 56px;
+    height: 56px;
+
+    &.dfm-featured-icon-light-circle-outline,
+    &.dfm-featured-icon-dark-circle {
+      width: 61px;
+      height: 61px;
+      border-width: 10px;
+    }
+
+    .icon {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  &-primary {
+    background-color: var(--dfm-featured-icon-primary-bg);
+    color: var(--dfm-featured-icon-primary-color);
+
+    &.dfm-featured-icon-light-circle-outline {
+      border-color: var(--dfm-featured-icon-primary-light-circle-outline-border-color);
+    }
+
+    &.dfm-featured-icon-dark-circle {
+      background-color: var(--dfm-featured-icon-primary-dark-circle-bg);
+      color: var(--dfm-featured-icon-primary-dark-circle-color);
+      border-color: var(--dfm-featured-icon-primary-dark-circle-border-color);
+    }
+  }
+
+  &-gray {
+    background-color: var(--dfm-featured-icon-gray-bg);
+    color: var(--dfm-featured-icon-gray-color);
+
+    &.dfm-featured-icon-light-circle-outline {
+      border-color: var(--dfm-featured-icon-gray-light-circle-outline-border-color);
+    }
+
+    &.dfm-featured-icon-dark-circle {
+      background-color: var(--dfm-featured-icon-gray-dark-circle-bg);
+      color: var(--dfm-featured-icon-gray-dark-circle-color);
+      border-color: var(--dfm-featured-icon-gray-dark-circle-border-color);
+    }
+  }
+
+  &-error {
+    background-color: var(--dfm-featured-icon-error-bg);
+    color: var(--dfm-featured-icon-error-color);
+
+    &.dfm-featured-icon-light-circle-outline {
+      border-color: var(--dfm-featured-icon-error-light-circle-outline-border-color);
+    }
+
+    &.dfm-featured-icon-dark-circle {
+      background-color: var(--dfm-featured-icon-error-dark-circle-bg);
+      color: var(--dfm-featured-icon-error-dark-circle-color);
+      border-color: var(--dfm-featured-icon-error-dark-circle-border-color);
+    }
+  }
+
+  &-warning {
+    background-color: var(--dfm-featured-icon-warning-bg);
+    color: var(--dfm-featured-icon-warning-color);
+
+    &.dfm-featured-icon-light-circle-outline {
+      border-color: var(--dfm-featured-icon-warning-light-circle-outline-border-color);
+    }
+
+    &.dfm-featured-icon-dark-circle {
+      background-color: var(--dfm-featured-icon-warning-dark-circle-bg);
+      color: var(--dfm-featured-icon-warning-dark-circle-color);
+      border-color: var(--dfm-featured-icon-warning-dark-circle-border-color);
+    }
+  }
+
+  &-success {
+    background-color: var(--dfm-featured-icon-success-bg);
+    color: var(--dfm-featured-icon-success-color);
+
+    &.dfm-featured-icon-light-circle-outline {
+      border-color: var(--dfm-featured-icon-success-light-circle-outline-border-color);
+    }
+
+    &.dfm-featured-icon-dark-circle {
+      background-color: var(--dfm-featured-icon-success-dark-circle-bg);
+      color: var(--dfm-featured-icon-success-dark-circle-color);
+      border-color: var(--dfm-featured-icon-success-dark-circle-border-color);
+    }
+  }
+}

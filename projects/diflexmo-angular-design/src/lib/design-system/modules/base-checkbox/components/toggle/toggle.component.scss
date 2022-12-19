@@ -1,0 +1,59 @@
+@import '../../../../../styles/base/mixins';
+
+.dfm-toggle {
+  margin-top: 0;
+}
+
+.dfm-toggle .toggle {
+  cursor: pointer;
+  background-color: var(--dfm-toggle-bg);
+  background-image: var(--dfm-toggle-bg-img);
+  border: none;
+
+  &:hover {
+    background-color: var(--dfm-toggle-hover-bg);
+  }
+
+  &:checked {
+    background-color: var(--dfm-toggle-checked-bg);
+    background-image: var(--dfm-toggle-bg-img-checked);
+  }
+
+  &:disabled {
+    background-color: var(--dfm-toggle-disabled-bg);
+    background-image: var(--dfm-toggle-bg-img-checked-disabled);
+  }
+
+  &:focus {
+    box-shadow: 0px 0px 0px 4px var(--dfm-toggle-focus-shadow);
+  }
+}
+
+.dfm-toggle .toggle {
+  margin-top: 0;
+  cursor: pointer;
+}
+
+.dfm-toggle.dfm-toggle-sm {
+  padding-left: 48px;
+
+  .toggle {
+    width: 36px;
+    height: 20px;
+    margin-left: -48px;
+  }
+}
+
+.dfm-toggle.dfm-toggle-md {
+  padding-left: 58px;
+
+  .toggle {
+    width: 44px;
+    height: 24px;
+    margin-left: -58px;
+  }
+}
+
+.form-check label {
+  cursor: pointer;
+}

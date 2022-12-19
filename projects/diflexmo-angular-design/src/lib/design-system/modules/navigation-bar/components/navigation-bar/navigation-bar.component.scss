@@ -1,0 +1,88 @@
+@import '../../../../../styles/base/mixins';
+
+@mixin navigation-bar-collapsed {
+  padding: 0 18px 0 32px;
+}
+
+@mixin navigation-bar-collapsed-logo {
+  margin-right: 27px;
+}
+
+.dfm-navigation-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  display: flex;
+  background-color: var(--dfm-navbar-bg);
+  padding: 8px 18px 8px 32px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.1));
+  transition: all 0.2s ease-in-out;
+
+  &.collapsed {
+    @include navigation-bar-collapsed;
+
+    .logo {
+      @include navigation-bar-collapsed-logo;
+    }
+  }
+
+  .logo {
+    margin-right: 45px;
+    cursor: pointer;
+  }
+
+  .navigation-items {
+    display: flex;
+  }
+
+  .profile-items {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+  }
+}
+
+.dfm-navigation-bar-mobile {
+  display: none;
+}
+
+@media (max-width: 1440px) {
+  .dfm-navigation-bar,
+  .dfm-navigation-bar.collapsed {
+    @include navigation-bar-collapsed;
+
+    .logo {
+      @include navigation-bar-collapsed-logo;
+    }
+  }
+}
+
+@media (max-width: 680px) {
+  .dfm-navigation-bar,
+  .dfm-navigation-bar.collapsed {
+    padding: 9px 16px 9px 18px;
+
+    .navigation-items {
+      display: none;
+    }
+
+    .profile-items {
+      gap: 30px;
+    }
+  }
+
+  .dfm-navigation-bar-mobile {
+    display: flex;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 100;
+    background-color: var(--dfm-navbar-bg);
+    gap: 8px;
+    justify-content: center;
+    padding: 9px 16px 8px 16px;
+    filter: drop-shadow(0px -4px 2px rgba(0, 0, 0, 0.05));
+  }
+}

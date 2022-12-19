@@ -1,0 +1,18 @@
+<label *ngIf="label" class="dfm-input-label">{{ label }}</label>
+<div class="input-container input-container-{{ size }}">
+  <dfm-icon *ngIf="icon" [name]="icon" class="leading-icon"></dfm-icon>
+  <input
+    [type]="type"
+    class="dfm-input dfm-input-{{ size }}"
+    [ngClass]="{ 'hint-control': hint, 'is-invalid': (control && control.touched && !control.valid) || isInvalid, 'leading-icon-control': icon }"
+    [(ngModel)]="value"
+    (ngModelChange)="onValueChanged($event)"
+    [placeholder]="placeholder"
+    [disabled]="disabled"
+    (blur)="onTouched($event)"
+    [readonly]="readonly"
+  />
+  <dfm-icon *ngIf="hint && ((control && control.valid) || !control)" name="help-circle" class="hint-icon" (click)="clickHintIcon()"></dfm-icon>
+</div>
+<span *ngIf="showHint" class="dfm-input-hint">{{ hint }}</span>
+<dfm-error [control]="control"></dfm-error>
