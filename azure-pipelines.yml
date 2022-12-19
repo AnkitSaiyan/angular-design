@@ -28,4 +28,4 @@ steps:
     command: 'publish'
     workingDir: './dist/diflexmo-angular-design'
     publishRegistry: 'useFeed'
-    publishFeed: '99f6e779-ae78-4c78-aa0f-2e7b6e432723/72c33157-27cf-4a68-9666-235e4aeb718c'
+    publishFeed: '6b0d7c74-48d0-49df-bda4-12520008f41e'
