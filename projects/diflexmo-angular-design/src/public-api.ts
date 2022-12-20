@@ -1,5 +1,3 @@
-import iconsConfig from './assets/jsons/icons-config.json';
-
 export * from './lib/design-system/design-system.module';
 export * from './lib/design-system/design-system.core.module';
 
@@ -88,4 +86,3 @@ export * from './lib/design-system/directives/dom-change.directive';
 export * from './lib/design-system/helpers/items-compact-helper';
 
 export * from './lib/design-system/types/input-size.type';
-export { iconsConfig };
