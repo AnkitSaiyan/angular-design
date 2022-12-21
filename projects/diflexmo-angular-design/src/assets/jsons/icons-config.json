@@ -101,6 +101,10 @@
       "iconPath": "/assets/icons/file-06.svg"
     },
     {
+      "iconName": "file-search-02",
+      "iconPath": "/assets/icons/file-search-02.svg"
+    },
+    {
       "iconName": "filter-funnel-01",
       "iconPath": "/assets/icons/filter-funnel-01.svg"
     },
