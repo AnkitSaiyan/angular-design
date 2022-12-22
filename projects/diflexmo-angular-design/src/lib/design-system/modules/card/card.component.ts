@@ -4,7 +4,7 @@ import { Component, Input } from '@angular/core';
   selector: 'dfm-card',
   template: `
     <div class="dfm-card">
-      <div class="dfm-card-header">
+      <div class="dfm-card-header" *ngIf="showHeader">
         <div class="dfm-card-title d-flex dfm-gap-8">
           <div class="dfm-card-icon drag-handler">
             <dfm-icon name="drag"></dfm-icon>
@@ -25,4 +25,6 @@ import { Component, Input } from '@angular/core';
 })
 export class CardComponent {
   @Input() title: string = '';
+
+  @Input() showHeader: boolean = true;
 }
