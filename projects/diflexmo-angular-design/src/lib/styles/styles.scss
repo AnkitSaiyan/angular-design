@@ -1,0 +1,54 @@
+@import './abstracts/variables';
+@import './themes/theme';
+
+// import mixins
+@import './mixins/text-mixins';
+@import './mixins/base';
+
+// import base
+@import './base/shadows';
+@import './base/typography';
+@import './base/color';
+@import './base/text';
+@import './base/spacing';
+@import './base/reset';
+@import './base/opacity';
+
+@import './vendors/bootstrap-extended.scss';
+
+@import './components/scrollbar.scss';
+@import './components/divider.scss';
+@import './components/tooltip';
+
+.dfm-body {
+  background-color: var(--dfm-body-bg);
+  overflow-y: hidden;
+}
+
+.icon-12 {
+  width: 12px;
+  height: 12px;
+}
+
+.icon-15 {
+  width: 15px;
+  height: 15px;
+}
+
+.icon-20 {
+  width: 20px;
+  height: 20px;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+.show-hidden:hover .hide {
+  visibility: visible;
+}
+

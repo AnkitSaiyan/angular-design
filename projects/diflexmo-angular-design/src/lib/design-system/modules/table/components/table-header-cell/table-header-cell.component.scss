@@ -1,5 +1,5 @@
-@import '../../../../../styles/base/mixins';
-@import '../../../../../styles/mixins/text-mixins.scss';
+@import 'mixins/base';
+@import 'mixins/text-mixins';
 
 $table-first-td-width: 200px;
 $table-border: 1px solid var(--dfm-table-border);
