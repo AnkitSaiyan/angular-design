@@ -1,6 +1,6 @@
-@import '../../../../../styles/base/mixins';
-@import '../../../../../styles/mixins/text-mixins.scss';
-@import '../../../../../styles/base/shadows';
+@import 'mixins/base';
+@import 'mixins/text-mixins';
+@import 'base/shadows';
 
 $distanceFromSide: 42px;
 

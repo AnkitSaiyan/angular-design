@@ -1,6 +1,6 @@
 @use 'sass:map';
-@import '../../../../../styles/base/mixins';
-@import '../../../../../styles/mixins/text-mixins.scss';
+@import 'mixins/base';
+@import 'mixins/text-mixins';
 
 $diflexmo-buttons: (
   'primary': (
