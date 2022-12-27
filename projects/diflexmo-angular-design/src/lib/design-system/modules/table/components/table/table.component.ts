@@ -17,6 +17,8 @@ export class TableComponent implements OnInit {
 
   @Input() rowClickable: boolean = false;
 
+  @Input() compactHeader: boolean = false;
+
   @Output() selected = new EventEmitter<string[]>();
 
   @Output() rowClicked = new EventEmitter<TableItem>();

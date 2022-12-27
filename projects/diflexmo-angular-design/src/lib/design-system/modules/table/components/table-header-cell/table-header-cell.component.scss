@@ -24,10 +24,10 @@ $table-border-radius: 8px;
 
 .cell {
   @include text-xs;
+  @include weight-bold;
   padding: 27px 24px;
   background-color: var(--dfm-table-even-cell-bg);
   border-bottom: $table-border;
-  font-weight: 700;
   vertical-align: middle;
 
   &.sortable {
@@ -50,5 +50,12 @@ $table-border-radius: 8px;
 
   & ~ :host:nth-child(2) .cell {
     padding-left: 0px;
+  }
+}
+
+:host-context(.compact-header) {
+  .cell {
+    @include weight-medium;
+    padding: 13px 24px;
   }
 }

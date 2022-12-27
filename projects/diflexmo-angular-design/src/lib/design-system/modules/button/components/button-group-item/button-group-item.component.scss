@@ -40,9 +40,19 @@
 
   &:disabled {
     color: var(--dfm-btn-group-disabed-color);
+    opacity: 1;
 
     .icon {
       color: var(--dfm-btn-group-disabed-color);
+    }
+  }
+
+  &-current {
+    background-color: var(--dfm-btn-group-current-bg);
+    color: var(--dfm-btn-group-current-color);
+
+    .icon {
+      color: var(--dfm-btn-group-current-color);
     }
   }
 

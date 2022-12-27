@@ -205,6 +205,10 @@
       "iconPath": "/assets/icons/plus.svg"
     },
     {
+      "iconName": "plus-circle",
+      "iconPath": "/assets/icons/plus-circle.svg"
+    },
+    {
       "iconName": "route-01",
       "iconPath": "/assets/icons/route-01.svg"
     },

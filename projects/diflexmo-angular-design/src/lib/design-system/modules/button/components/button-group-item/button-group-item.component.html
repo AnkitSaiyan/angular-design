@@ -1,4 +1,9 @@
-<button class="btn btn-group-item" [disabled]="disabled" [class.btn-group-item-only-icon]="!buttonContent?.children.length">
+<button
+  class="btn btn-group-item"
+  [disabled]="disabled"
+  [class.btn-group-item-only-icon]="!buttonContent?.children.length"
+  [class.btn-group-item-current]="current"
+>
   <dfm-icon *ngIf="icon" [name]="icon" class="icon"></dfm-icon>
   <ng-content #buttonContent></ng-content>
 </button>

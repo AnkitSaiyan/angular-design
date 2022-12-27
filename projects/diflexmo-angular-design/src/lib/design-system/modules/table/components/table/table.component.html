@@ -1,5 +1,10 @@
 <div class="dfm-table-wrapper" #tableWrapper>
-  <table class="dfm-table w-100" [class.first-frozen]="isHorizontalScrollDisplayed" (resized)="checkTableSize($event)">
+  <table
+    class="dfm-table w-100"
+    [class.first-frozen]="isHorizontalScrollDisplayed"
+    [class.compact-header]="compactHeader"
+    (resized)="checkTableSize($event)"
+  >
     <thead class="header">
       <tr>
         <dfm-table-header-cell *ngIf="selectable" class="checkbox-cell" [class.checkbox-first-frozen]="isHorizontalScrollDisplayed">

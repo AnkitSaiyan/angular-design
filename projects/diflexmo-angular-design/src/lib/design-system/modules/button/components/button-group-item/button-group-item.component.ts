@@ -10,5 +10,7 @@ export class ButtonGroupItemComponent {
 
   @Input() public icon: string = '';
 
+  @Input() public current: boolean = false;
+
   @ViewChild('buttonContent') buttonContent: any | null = null;
 }

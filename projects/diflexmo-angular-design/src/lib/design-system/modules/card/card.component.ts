@@ -9,9 +9,11 @@ import { Component, Input } from '@angular/core';
           <div class="dfm-card-icon drag-handler">
             <dfm-icon name="drag"></dfm-icon>
           </div>
-          {{ title }}
+          <ng-container *ngIf="title; else contentTitle">
+            {{ title }}
+          </ng-container>
         </div>
-        <div>
+        <div class="dfm-card-toolbar">
           <ng-content select="[toolbar]"></ng-content>
         </div>
       </div>
@@ -20,6 +22,10 @@ import { Component, Input } from '@angular/core';
         <ng-content></ng-content>
       </div>
     </div>
+
+    <ng-template #contentTitle>
+      <ng-content select="[title]"></ng-content>
+    </ng-template>
   `,
   styleUrls: ['./card.component.scss'],
 })

@@ -23,10 +23,6 @@
   display: contents;
   background-color: inherit;
 
-  &:first-child .cell {
-    @include weight-semi-bold;
-  }
-
   .cell {
     @include text-sm;
     @include weight-normal;
