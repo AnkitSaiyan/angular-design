@@ -23,6 +23,11 @@
     border: 1px solid var(--dfm-tag-default-border);
   }
 
+  &.tag-white {
+    color: var(--dfm-tag-color);
+    background-color: var(--dfm-tag-bg);
+  }
+
   &.tag-brown {
     color: var(--dfm-tag-primary-color);
     background-color: var(--dfm-tag-primary-bg);
