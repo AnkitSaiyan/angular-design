@@ -194,7 +194,6 @@ $diflexmo-button-sizes: (
   @include weight-medium;
 
   outline: none;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 @each $key, $val in $diflexmo-buttons {
@@ -231,6 +230,8 @@ $diflexmo-button-sizes: (
       border-width: map.get($val, border-width);
       border-style: map.get($val, border-style);
       border-color: var(map.get($val, border-color));
+
+      transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     }
 
     .dfm-btn-#{$key}-#{$size}:focus {
@@ -241,6 +242,8 @@ $diflexmo-button-sizes: (
       border-width: map.get($val, border-width);
       border-style: map.get($val, border-style);
       border-color: var(map.get($val, border-color));
+
+      transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     }
 
     .dfm-btn-#{$key}-#{$size}:disabled {
