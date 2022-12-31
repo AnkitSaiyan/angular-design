@@ -70,7 +70,7 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
 
   public selectedItemTags: SelectItem[] = [];
 
-  public selectedItemTagsUnionIndex?: number | null = null;
+  public selectedItemTagsUnionIndex?: number;
 
   public filteredItems: SelectItem[] = [];
 
@@ -255,6 +255,7 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
     this.search = '';
     this.selectedItems = [];
     this.filteredItems = this.asyncSearch ? [] : [...this.items];
+    this.updateSelectedItems();
   }
 
   public focusout(value: any) {
