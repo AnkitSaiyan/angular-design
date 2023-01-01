@@ -1,4 +1,4 @@
-<div class="dfm-table-wrapper" #tableWrapper>
+<div class="dfm-table-wrapper" #tableWrapper infiniteScroll (scrolled)="scrolled.emit()" [scrollWindow]="false">
   <table
     class="dfm-table w-100"
     [class.first-frozen]="isHorizontalScrollDisplayed"

@@ -23,6 +23,8 @@ export class TableComponent implements OnInit {
 
   @Output() rowClicked = new EventEmitter<TableItem>();
 
+  @Output() scrolled = new EventEmitter();
+
   @ContentChild('headerRowTemplate') headerRowTemplate!: TemplateRef<any>;
 
   @ContentChild('bodyRowTemplate') bodyRowTemplate!: TemplateRef<any>;
