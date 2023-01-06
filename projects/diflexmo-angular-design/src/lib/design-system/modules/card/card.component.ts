@@ -18,7 +18,7 @@ import { Component, Input } from '@angular/core';
         </div>
       </div>
 
-      <div class="dfm-card-body-no-gutter">
+      <div *ngIf="!collapseBody" class="dfm-card-body-no-gutter">
         <ng-content></ng-content>
       </div>
     </div>
@@ -33,4 +33,6 @@ export class CardComponent {
   @Input() title: string = '';
 
   @Input() showHeader: boolean = true;
+
+  @Input() collapseBody: boolean = false;
 }
