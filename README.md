@@ -4,7 +4,7 @@
 
 ### Install NPM package
 
-`npm install diflexmo-angular-design --force`
+`npm install diflexmo-angular-design`
 
 ### Add assets to **angular.json**
 
