@@ -1,0 +1,27 @@
+@import 'mixins/base';
+
+.dfm-table {
+    @include border-radius-base;
+
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--dfm-table-border);
+}
+
+.dfm-sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.dfm-header-disabled {
+    color: var(--dfm-table-header-color-disabled);
+}
+
+.dfm-header {
+    color: var(--dfm-table-header-color);
+}
+
+.dfm-header:hover {
+    color: var(--dfm-table-header-color-hover);
+}
