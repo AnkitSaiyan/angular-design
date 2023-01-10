@@ -27,7 +27,8 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@types/bootstrap": "^5.2.6"
+    "@types/bootstrap": "^5.2.6",
+    "@angular/core": "^14.2.0"
   },
   "exports": {
     "./theming": {

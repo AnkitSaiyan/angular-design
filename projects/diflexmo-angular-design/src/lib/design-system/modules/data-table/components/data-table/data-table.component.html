@@ -2,8 +2,14 @@
     <thead *ngIf="headers && headers.length > 0">
         <tr>
             <th *ngFor="let header of headers" class="dfm-px-24 dfm-py-16">
-                <div class="d-flex dfm-gap-4">
-                    {{ header.title }}
+                <div class="d-flex dfm-gap-4 dfm-text-main-700">
+                    <div class="text-xs-bold">{{ header.title }}</div>
+                    <div *ngIf="header.tooltip" class="icon-16">
+                        <dfm-icon name="help-circle"></dfm-icon>
+                    </div>
+                    <div *ngIf="header.isSortable">
+
+                    </div>
                 </div>
             </th>
         </tr>
