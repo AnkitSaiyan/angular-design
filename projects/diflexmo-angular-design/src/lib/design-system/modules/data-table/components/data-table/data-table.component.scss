@@ -18,6 +18,22 @@
     background-color: var(--dfm-table-even-cell-bg);
 }
 
+.body-row {
+    border-top: 1px solid var(--dfm-table-border);
+
+    &:nth-child(even) {
+      background-color: var(--dfm-table-even-cell-bg);
+    }
+
+    &:nth-child(odd) {
+      background-color: var(--dfm-table-odd-cell-bg);
+    }
+}
+
+.body-row:hover {
+    background-color: var(--dfm-table-cell-bg-hover);
+}
+
 .dfm-header-cell-disabled {
     color: var(--dfm-table-header-color-disabled);
 }

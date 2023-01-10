@@ -75,7 +75,9 @@ export * from './lib/design-system/modules/data-table/data-table.module';
 export * from './lib/design-system/modules/data-table/components/data-table/data-table.component';
 export * from './lib/design-system/modules/data-table/models/table-header.model';
 export * from './lib/design-system/modules/data-table/models/table-row.model';
+export * from './lib/design-system/modules/data-table/models/datasource.model';
 export * from './lib/design-system/modules/data-table/types/table-header-size.type';
+export * from './lib/design-system/modules/data-table/types/column-sort.type';
 
 export * from './lib/design-system/modules/tag/tag.module';
 export * from './lib/design-system/modules/tag/tag.component';

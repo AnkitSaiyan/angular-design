@@ -1,5 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
+import { DfmDatasource } from '../../models/datasource.model';
 import { DfmTableHeader } from '../../models/table-header.model';
+import { TableRow } from '../../models/table-row.model';
 import { TableHeaderSize } from '../../types/table-header-size.type';
 
 @Component({
@@ -8,7 +10,7 @@ import { TableHeaderSize } from '../../types/table-header-size.type';
   styleUrls: ['./data-table.component.scss']
 })
 export class DataTableComponent implements OnInit {
-  // @Input() items: [] = [];
+  @Input() data?: DfmDatasource;
 
   @Input() rowSelectable: boolean = false;
 
@@ -22,7 +24,11 @@ export class DataTableComponent implements OnInit {
 
   @Input() headerSize: TableHeaderSize = 'lg';
 
+  @ContentChild('bodyRowTemplate') bodyRowTemplate!: TemplateRef<any>;
+
   @Output() sorted = new EventEmitter<DfmTableHeader>();
+
+  @Output() rowClicked = new EventEmitter<TableRow>();
 
   constructor() { }
 
@@ -35,9 +41,13 @@ export class DataTableComponent implements OnInit {
       return;
     }
 
-    this.headers.filter(h => h.isSortable).forEach(v => v.sort = 'None');
+    this.headers.filter(t => t.title !== headerTitle).filter(h => h.isSortable).forEach(v => v.sort = 'None');
 
     header.sort = header.sort === 'Asc' || header.sort === 'None' ? 'Desc' : 'Asc';
     this.sorted.emit(header);
+  }
+
+  public click(item: TableRow): void {
+    this.rowClicked.emit(item);
   }
 }
