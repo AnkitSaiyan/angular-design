@@ -1,12 +1,15 @@
 <table class="dfm-table" [ngClass]="{'w-100': fullWidth}">
     <thead *ngIf="headers && headers.length > 0" class="dfm-header" [ngClass]="{'dfm-sticky-header': stickyHeader}">
         <tr>
-            <th *ngFor="let header of headers" 
-                [ngClass]="{'pointer': header.isSortable, 'dfm-py-27': headerSize === 'lg', 'dfm-py-16': headerSize === 'md', 'dfm-py-13 dfm-text-main-700': headerSize === 'sm'}"
-                class="dfm-px-24">
-                <div class="d-flex dfm-gap-4"
-                     [ngClass]="{'dfm-header-cell-disabled': header.isDisabled, 'dfm-header-cell': !header.isDisabled}">
-                    <div class="text-xs-bold">{{ header.title }}</div>
+            <th *ngFor="let header of headers" [ngClass]="{
+                    'pointer': header.isSortable, 
+                    'dfm-py-27': headerSize === 'lg', 
+                    'dfm-py-16': headerSize === 'md', 
+                    'dfm-py-13 dfm-text-main-700': headerSize === 'sm', 
+                    'dfm-header-cell-disabled': header.isDisabled, 
+                    'dfm-header-cell': !header.isDisabled }" class="dfm-px-24">
+                <div class="d-flex dfm-gap-4">
+                    <div class="text-xs-medium">{{ header.title }}</div>
                     <div *ngIf="header.tooltip" class="icon-16 dfm-text-main-400">
                         <dfm-icon name="help-circle"></dfm-icon>
                     </div>

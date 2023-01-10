@@ -15,6 +15,9 @@
 }
 
 .dfm-header {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+
     background-color: var(--dfm-table-even-cell-bg);
 }
 
