@@ -13,3 +13,15 @@
     top: 0;
     z-index: 1;
 }
+
+.dfm-header-disabled {
+    color: var(--dfm-table-header-color-disabled);
+}
+
+.dfm-header {
+    color: var(--dfm-table-header-color);
+}
+
+.dfm-header:hover {
+    color: var(--dfm-table-header-color-hover);
+}

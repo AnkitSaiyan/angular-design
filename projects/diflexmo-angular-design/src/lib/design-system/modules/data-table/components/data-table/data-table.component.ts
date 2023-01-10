@@ -21,7 +21,7 @@ export class DataTableComponent implements OnInit {
 
   @Input() stickyHeader: boolean = true;
 
-  @Input() headerSize: TableHeaderSize = 'md';
+  @Input() headerSize: TableHeaderSize = 'lg';
 
   constructor() { }
 

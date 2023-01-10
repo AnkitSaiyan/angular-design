@@ -1,1 +1,1 @@
-export type TableHeaderSize = 'md' | 'sm' | 'xs';
+export type TableHeaderSize = 'lg' | 'md' | 'sm';
