@@ -1,0 +1,15 @@
+<table>
+    <thead *ngIf="headers && headers.length > 0">
+        <tr>
+            <th *ngFor="let header of headers" class="dfm-px-24 dfm-py-16">
+                <div class="d-flex dfm-gap-4">
+                    {{ header.title }}
+                </div>
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+    </tbody>
+</table>

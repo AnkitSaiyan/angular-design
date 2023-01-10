@@ -16,6 +16,7 @@ import { CardModule } from './modules/card/card.module';
 import { NavigationBarModule } from './modules/navigation-bar/navigation-bar.module';
 import { DirectivesModule } from './directives/directives.module';
 import { ClipboardModule } from './modules/clipboard/clipboard.module';
+import { DfmDataTableModule } from './modules/data-table/data-table.module';
 
 @NgModule({
   imports: [
@@ -35,6 +36,7 @@ import { ClipboardModule } from './modules/clipboard/clipboard.module';
     NotificationModule,
     DirectivesModule,
     ClipboardModule,
+    DfmDataTableModule
   ],
   exports: [
     ButtonModule,
@@ -53,6 +55,7 @@ import { ClipboardModule } from './modules/clipboard/clipboard.module';
     NotificationModule,
     DirectivesModule,
     ClipboardModule,
+    DfmDataTableModule
   ],
 })
 export class DesignSystemModule {}
