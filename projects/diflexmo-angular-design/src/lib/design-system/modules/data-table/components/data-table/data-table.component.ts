@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DfmTableHeader } from '../../models/table-header.model';
 import { TableHeaderSize } from '../../types/table-header-size.type';
 
@@ -22,6 +22,8 @@ export class DataTableComponent implements OnInit {
 
   @Input() headerSize: TableHeaderSize = 'lg';
 
+  @Output() sorted = new EventEmitter<DfmTableHeader>();
+
   constructor() { }
 
   ngOnInit(): void {
@@ -33,7 +35,9 @@ export class DataTableComponent implements OnInit {
       return;
     }
 
+    this.headers.filter(h => h.isSortable).forEach(v => v.sort = 'None');
+
     header.sort = header.sort === 'Asc' || header.sort === 'None' ? 'Desc' : 'Asc';
-    // this.sort.emit(this.sortOrder);
+    this.sorted.emit(header);
   }
 }
