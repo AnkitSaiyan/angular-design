@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DfmTableHeader } from '../../models/table-header.model';
-import { TableItem } from '../../models/table-item.model';
 import { TableHeaderSize } from '../../types/table-header-size.type';
 
 @Component({
@@ -9,7 +8,7 @@ import { TableHeaderSize } from '../../types/table-header-size.type';
   styleUrls: ['./data-table.component.scss']
 })
 export class DataTableComponent implements OnInit {
-  @Input() items: TableItem[] = [];
+  // @Input() items: [] = [];
 
   @Input() rowSelectable: boolean = false;
 
