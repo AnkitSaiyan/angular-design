@@ -1,3 +1,3 @@
 export interface TableRow {
-  id: string;
+  id: string | number;
 }

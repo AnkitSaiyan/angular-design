@@ -1,12 +1,11 @@
 @import 'mixins/base';
 
-.dfm-table-wrapper {
+.dfm-table {
     @include border-radius;
     
     border: 1px solid var(--dfm-table-border);
-}
-.dfm-table {
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
 }
 
 .dfm-sticky-header {

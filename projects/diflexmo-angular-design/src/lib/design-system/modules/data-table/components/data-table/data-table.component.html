@@ -1,30 +1,28 @@
-<div class="dfm-table-wrapper">
-    <table class="dfm-table" [ngClass]="{'w-100': fullWidth}">
-        <thead *ngIf="headers && headers.length > 0" class="dfm-header" [ngClass]="{'dfm-sticky-header': stickyHeader}">
-            <tr>
-                <th *ngFor="let header of headers" [ngClass]="{
+<table class="dfm-table" [ngClass]="{'w-100': fullWidth}">
+    <thead *ngIf="headers && headers.length > 0" class="dfm-header" [ngClass]="{'dfm-sticky-header': stickyHeader}">
+        <tr>
+            <th *ngFor="let header of headers" [ngClass]="{
                     'pointer': header.isSortable, 
                     'dfm-py-27': headerSize === 'lg', 
                     'dfm-py-16': headerSize === 'md', 
                     'dfm-py-13 dfm-text-main-700': headerSize === 'sm', 
                     'dfm-header-cell-disabled': header.isDisabled, 
-                    'dfm-header-cell': !header.isDisabled }" class="dfm-px-24">
-                    <div class="d-flex dfm-gap-4">
-                        <div class="text-xs-bold">{{ header.title }}</div>
-                        <div *ngIf="header.tooltip" class="icon-16 dfm-text-main-400">
-                            <dfm-icon name="help-circle"></dfm-icon>
-                        </div>
-                        <div *ngIf="header.isSortable" class="icon-16">
-                            <dfm-icon *ngIf="header.sort === 'Asc'" name="arrow-up"></dfm-icon>
-                            <dfm-icon *ngIf="header.sort === 'Desc'" name="arrow-down"></dfm-icon>
-                        </div>
+                    'dfm-header-cell': !header.isDisabled }" class="dfm-px-24" (click)="sortClicked(header.title)">
+                <div class="d-flex dfm-gap-4">
+                    <div class="text-xs-bold">{{ header.title }}</div>
+                    <div *ngIf="header.tooltip" class="icon-16 dfm-text-main-400">
+                        <dfm-icon name="help-circle"></dfm-icon>
                     </div>
-                </th>
-            </tr>
-        </thead>
+                    <div *ngIf="header.isSortable" class="icon-16">
+                        <dfm-icon *ngIf="header.sort && header.sort === 'Asc'" name="arrow-up"></dfm-icon>
+                        <dfm-icon *ngIf="header.sort && header.sort === 'Desc'" name="arrow-down"></dfm-icon>
+                    </div>
+                </div>
+            </th>
+        </tr>
+    </thead>
 
-        <tbody>
+    <tbody>
 
-        </tbody>
-    </table>
-</div>
+    </tbody>
+</table>

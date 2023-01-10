@@ -27,4 +27,13 @@ export class DataTableComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public sortClicked(headerTitle: string): void {
+    const header = this.headers.find(h => h.title === headerTitle);
+    if (!header || !header.isSortable) {
+      return;
+    }
+
+    header.sort = header.sort === 'Asc' || header.sort === 'None' ? 'Desc' : 'Asc';
+    // this.sort.emit(this.sortOrder);
+  }
 }
