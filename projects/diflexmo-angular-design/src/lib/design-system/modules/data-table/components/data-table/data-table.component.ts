@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DfmTableHeader } from '../../models/table-header.model';
 import { TableItem } from '../../models/table-item.model';
+import { TableHeaderSize } from '../../types/table-header-size.type';
 
 @Component({
   selector: 'dfm-data-table',
@@ -16,6 +17,11 @@ export class DataTableComponent implements OnInit {
 
   @Input() headers: Array<DfmTableHeader> = [];
 
+  @Input() fullWidth: boolean = true;
+
+  @Input() stickyHeader: boolean = true;
+
+  @Input() headerSize: TableHeaderSize = 'md';
 
   constructor() { }
 

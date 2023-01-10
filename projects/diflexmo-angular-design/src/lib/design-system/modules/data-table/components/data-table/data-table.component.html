@@ -1,5 +1,5 @@
-<table>
-    <thead *ngIf="headers && headers.length > 0">
+<table class="dfm-table" [ngClass]="{'w-100': fullWidth}">
+    <thead *ngIf="headers && headers.length > 0" [ngClass]="{'dfm-sticky-header': stickyHeader}">
         <tr>
             <th *ngFor="let header of headers" class="dfm-px-24 dfm-py-16">
                 <div class="d-flex dfm-gap-4 dfm-text-main-700">
