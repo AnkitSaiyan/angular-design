@@ -1,5 +1,19 @@
-<div></div>
-<table class="dfm-table" [ngClass]="{'w-100': fullWidth, 'dfm-table-margin-collapse': collapseOnMobile}">
+<div class="dfm-table">
+    <div class="dfm-table-header">
+        <div class="dfm-table-header-cell dfm-text-main-700 text-xs-bold" *ngFor="let header of headers">
+            {{ header.title }}
+        </div>
+    </div>
+
+    <ng-container *ngIf="data && data.items && data.items.length > 0">
+        <div *ngFor="let item of data.items" class="dfm-table-body-row" (click)="click(item)"
+            [class.pointer]="rowClickable">
+            <ng-container *ngTemplateOutlet="bodyRowTemplate; context: { $implicit: item }"></ng-container>
+        </div>
+    </ng-container>
+</div>
+
+<!-- <table class="dfm-table" [ngClass]="{'w-100': fullWidth, 'dfm-table-margin-collapse': collapseOnMobile}">
     <thead *ngIf="headers && headers.length > 0" class="dfm-header" [ngClass]="{'dfm-sticky-header': stickyHeader}">
         <tr class="dfm-table-first-row">
             <th *ngFor="let header of headers" [ngClass]="{
@@ -30,4 +44,4 @@
             </tr>
         </ng-container>
     </tbody>
-</table>
+</table> -->
