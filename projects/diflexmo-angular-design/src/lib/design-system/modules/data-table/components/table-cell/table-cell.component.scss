@@ -1,27 +1,27 @@
-@import 'mixins/base';
-@import 'mixins/text-mixins';
+// @import 'mixins/base';
+// @import 'mixins/text-mixins';
 
-// :host {
-//     display: contents;
-//     background-color: inherit;
+// // :host {
+// //     display: contents;
+// //     background-color: inherit;
   
-    .cell {
-      @include text-sm;
-      @include weight-normal;
+//     .cell {
+//       @include text-sm;
+//       @include weight-normal;
   
-      padding: 16px 24px;
-      vertical-align: middle;
-      background-color: inherit;
+//       padding: 16px 24px;
+//       vertical-align: middle;
+//       background-color: inherit;
   
-      .content {
+//       .content {
   
-        &-right-align {
-          float: right;
-        }
+//         &-right-align {
+//           float: right;
+//         }
   
-        &-non-clickable {
-          cursor: initial;
-        }
-      }
-    }
-// }  
+//         &-non-clickable {
+//           cursor: initial;
+//         }
+//       }
+//     }
+// // }  
