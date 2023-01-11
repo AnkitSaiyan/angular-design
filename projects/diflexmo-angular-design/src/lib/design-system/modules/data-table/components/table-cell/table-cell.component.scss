@@ -1,3 +1,6 @@
+@import 'mixins/base';
+@import 'mixins/text-mixins';
+
 :host {
     display: contents;
     background-color: inherit;
