@@ -1,6 +1,6 @@
-<table class="dfm-table" [ngClass]="{'w-100': fullWidth}">
+<table class="dfm-table" [ngClass]="{'w-100': fullWidth, 'dfm-table-margin-collapse': collapseOnMobile}">
     <thead *ngIf="headers && headers.length > 0" class="dfm-header" [ngClass]="{'dfm-sticky-header': stickyHeader}">
-        <tr>
+        <tr class="dfm-table-first-row">
             <th *ngFor="let header of headers" [ngClass]="{
                     'pointer': header.isSortable, 
                     'dfm-py-27': headerSize === 'lg', 
@@ -24,7 +24,7 @@
 
     <tbody>
         <ng-container *ngIf="data && data.items && data.items.length > 0">
-            <tr *ngFor="let item of data.items" class="body-row" (click)="click(item)" [class.pointer]="rowClickable">
+            <tr *ngFor="let item of data.items" class="body-row dfm-text-main-700 text-sm-normal" (click)="click(item)" [class.pointer]="rowClickable">
                 <ng-container *ngTemplateOutlet="bodyRowTemplate; context: { $implicit: item }"></ng-container>
             </tr>
         </ng-container>

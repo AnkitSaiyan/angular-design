@@ -12,6 +12,8 @@ import { TableHeaderSize } from '../../types/table-header-size.type';
 export class DataTableComponent implements OnInit {
   @Input() data?: DfmDatasource;
 
+  @Input() collapseOnMobile: boolean = true;
+
   @Input() rowSelectable: boolean = false;
 
   @Input() rowClickable: boolean = false;

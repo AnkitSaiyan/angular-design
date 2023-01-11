@@ -2,10 +2,18 @@
 
 .dfm-table {
     @include border-radius;
-    
+
     border: 1px solid var(--dfm-table-border);
     border-collapse: separate;
     border-spacing: 0;
+    overflow-x: auto;
+}
+
+@media (max-width: 490px) {
+    .dfm-table-margin-collapse {
+        margin-left: -16px;
+        margin-right: -16px;
+    }
 }
 
 .dfm-sticky-header {
@@ -16,19 +24,37 @@
 
 .dfm-header {
     background-color: var(--dfm-table-even-cell-bg);
+
+    &:first-child {
+        border-top-left-radius: 8px;
+    }
+
+    &:last-child {
+        border-top-right-radius: 8px;
+    }
+}
+
+.dfm-table-first-row {
     border-bottom: 1px solid var(--dfm-table-border);
 }
 
 .body-row {
-    border-top: 1px solid var(--dfm-table-border);
+
+    &:first-child {
+        position: sticky;
+    }
 
     &:nth-child(even) {
-      background-color: var(--dfm-table-even-cell-bg);
+        background-color: var(--dfm-table-even-cell-bg);
     }
 
     &:nth-child(odd) {
-      background-color: var(--dfm-table-odd-cell-bg);
+        background-color: var(--dfm-table-odd-cell-bg);
     }
+}
+
+.body-row>td {
+    padding: 16px 24px;
 }
 
 .body-row:hover {
