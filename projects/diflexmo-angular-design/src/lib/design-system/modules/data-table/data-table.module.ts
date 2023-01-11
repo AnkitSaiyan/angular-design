@@ -15,6 +15,7 @@ import { TableRowCellComponent } from './components/table-row-cell/table-row-cel
   ],
   exports: [
     DataTableComponent,
+    TableRowCellComponent
   ]
 })
 export class DfmDataTableModule { }
