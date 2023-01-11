@@ -16,7 +16,8 @@ import { TableCellComponent } from './components/table-cell/table-cell.component
     IconModule
   ],
   exports: [
-    DataTableComponent
+    DataTableComponent,
+    TableCellComponent
   ]
 })
 export class DfmDataTableModule { }
