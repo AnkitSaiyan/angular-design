@@ -1,3 +1,7 @@
-<td class="dfm-px-24 dfm-py-16 dfm-text-main-700 text-sm-normal">
-    <ng-content></ng-content>
+<td class="cell">
+    <div class="content" [class.content-right-align]="contentAlign === 'right'"
+        [class.content-non-clickable]="!propagateClick" (click)="propagateEvent($event)">
+        <ng-content></ng-content>
+    </div>
+
 </td>

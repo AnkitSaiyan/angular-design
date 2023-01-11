@@ -1,0 +1,29 @@
+:host {
+    display: contents;
+    background-color: inherit;
+  
+    .cell {
+      @include text-sm;
+      @include weight-normal;
+  
+      padding: 16px 24px;
+      vertical-align: middle;
+      background-color: inherit;
+      max-width: 40vw;
+      overflow: hidden;
+      text-overflow: ellipsis;
+  
+      .content {
+        width: fit-content;
+        max-width: 100%;
+  
+        &-right-align {
+          float: right;
+        }
+  
+        &-non-clickable {
+          cursor: initial;
+        }
+      }
+    }
+}  

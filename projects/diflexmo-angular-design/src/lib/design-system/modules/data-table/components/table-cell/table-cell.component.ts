@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'dfm-table-cell',
   templateUrl: './table-cell.component.html',
   styleUrls: ['./table-cell.component.scss']
 })
-export class TableCellComponent implements OnInit {
+export class TableCellComponent {
 
-  constructor() { }
+  @Input() propagateClick: boolean = true;
 
-  ngOnInit(): void {
+  @Input() contentAlign: 'right' | 'left' = 'left';
+
+  propagateEvent(clickEvent: any) {
+    if (!this.propagateClick) {
+      clickEvent.stopPropagation();
+    }
   }
 
 }
