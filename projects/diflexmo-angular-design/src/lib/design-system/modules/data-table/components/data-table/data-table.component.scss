@@ -14,6 +14,8 @@
     flex-direction: row;
     flex-wrap: nowrap;
     border-bottom: 1px solid var(--dfm-table-border);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
 }
 
 .dfm-table-header-cell {
@@ -21,6 +23,9 @@
 }
 
 .dfm-table-body-row {
+    display: flex;
+    flex-direction: row;
+
     &:nth-child(even) {
         background-color: var(--dfm-table-even-cell-bg);
     }
@@ -28,6 +33,10 @@
     &:nth-child(odd) {
         background-color: var(--dfm-table-odd-cell-bg);
     }
+}
+
+.dfm-table-body-row div {
+    padding: 24px 27px;
 }
 
 // .dfm-table tr:first-child {
