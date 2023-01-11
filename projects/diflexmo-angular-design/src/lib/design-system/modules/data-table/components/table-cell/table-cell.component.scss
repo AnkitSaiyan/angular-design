@@ -1,9 +1,9 @@
 @import 'mixins/base';
 @import 'mixins/text-mixins';
 
-:host {
-    display: contents;
-    background-color: inherit;
+// :host {
+//     display: contents;
+//     background-color: inherit;
   
     .cell {
       @include text-sm;
@@ -24,4 +24,4 @@
         }
       }
     }
-}  
+// }  
