@@ -1,24 +1,17 @@
 @import 'mixins/base';
 
-.dfm-table {
+.dfm-table-wrapper {
     @include border-radius;
 
     border: 1px solid var(--dfm-table-border);
+}
+
+.dfm-table {
     border-collapse: collapse;
 }
 
-.dfm-table tr:first-child {
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-}
-
-.dfm-table tr:last-child {
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-}
-
 @media (max-width: 490px) {
-    .dfm-table-margin-collapse {
+    .dfm-table-wrapper-collapse {
         margin-left: -16px;
         margin-right: -16px;
     }
@@ -26,7 +19,7 @@
 
 .dfm-sticky-header {
     position: sticky;
-    top: -16;
+    top: 0;
     z-index: 1;
 }
 
