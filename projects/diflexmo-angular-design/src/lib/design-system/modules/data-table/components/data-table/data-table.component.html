@@ -1,5 +1,5 @@
 <div class="dfm-table-wrapper" [ngClass]="{'dfm-table-wrapper-collapse': collapseOnMobile, 'w-100': fullWidth}">
-    <table class="dfm-table">
+    <table class="dfm-table" class="w-100">
         <thead *ngIf="headers && headers.length > 0" class="dfm-header" [ngClass]="{'dfm-sticky-header': stickyHeader}">
             <tr class="dfm-table-first-row">
                 <th *ngFor="let header of headers" [ngClass]="{
