@@ -32,8 +32,8 @@
     background-color: inherit;
 
     .content {
-      width: 100%;
-      
+      width: 100% !important;
+
       &-right-align {
         float: right;
       }
