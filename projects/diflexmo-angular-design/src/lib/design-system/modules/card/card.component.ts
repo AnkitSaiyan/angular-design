@@ -6,8 +6,13 @@ import { Component, Input } from '@angular/core';
     <div class="dfm-card">
       <div class="dfm-card-header" *ngIf="showHeader">
         <div class="dfm-card-title d-flex dfm-gap-8">
-          <div class="dfm-card-icon drag-handler">
-            <dfm-icon name="drag"></dfm-icon>
+          <div class="dfm-card-icon" [ngClass]="{'drag-handler pointer': isDraggable}"]>
+            <ng-container *ngIf="isDraggable">
+              <dfm-icon name="drag"></dfm-icon>
+            </ng-container>
+            <ng-container *ngIf="iconName && !isDraggable">
+              <dfm-icon [name]="iconName"></dfm-icon>
+            </ng-container>
           </div>
           <ng-container *ngIf="title; else contentTitle">
             {{ title }}
@@ -35,4 +40,8 @@ export class CardComponent {
   @Input() showHeader: boolean = true;
 
   @Input() collapseBody: boolean = false;
+
+  @Input() iconName?: string;
+
+  @Input() isDraggable: boolean = true;
 }
