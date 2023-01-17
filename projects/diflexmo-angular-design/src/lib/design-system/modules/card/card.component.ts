@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
     <div class="dfm-card">
       <div class="dfm-card-header" *ngIf="showHeader">
         <div class="dfm-card-title d-flex dfm-gap-8">
-          <div class="dfm-card-icon" [ngClass]="{'drag-handler pointer': isDraggable}"]>
+          <div class="dfm-card-icon" [ngClass]="{'drag-handler pointer': isDraggable}">
             <ng-container *ngIf="isDraggable">
               <dfm-icon name="drag"></dfm-icon>
             </ng-container>
