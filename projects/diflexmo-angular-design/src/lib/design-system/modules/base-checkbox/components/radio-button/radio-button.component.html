@@ -1,5 +1,13 @@
 <div class="dfm-radio-button form-check dfm-radio-button-{{ size }}">
-  <input class="radio-button form-check-input" [(ngModel)]="value" [disabled]="disabled" type="radio" [id]="id" [value]="checkedValue" />
+  <input
+    class="radio-button form-check-input"
+    [(ngModel)]="value"
+    [disabled]="disabled"
+    type="radio"
+    [id]="id"
+    [value]="checkedValue"
+    [name]="control.name?.toString() || ''"
+  />
   <label class="d-flex flex-column" [for]="id">
     <span class="text-{{ size }}-medium dfm-text-main-700">{{ label }}</span>
     <span class="text-{{ size }} dfm-text-main-500">{{ hint }}</span>
