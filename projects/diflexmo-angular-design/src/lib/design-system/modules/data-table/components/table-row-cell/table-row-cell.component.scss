@@ -30,17 +30,5 @@
     padding: 16px 24px;
     vertical-align: middle;
     background-color: inherit;
-
-    .content {
-      width: 100% !important;
-
-      &-right-align {
-        float: right;
-      }
-
-      &-non-clickable {
-        cursor: initial;
-      }
-    }
   }
 }
