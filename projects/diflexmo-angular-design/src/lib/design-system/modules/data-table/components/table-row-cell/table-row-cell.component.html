@@ -1,5 +1,5 @@
-<td>
-    <div [class.content-right-align]="contentAlign === 'right'"
+<td class="cell">
+    <div class="content" [class.content-right-align]="contentAlign === 'right'"
         [class.content-non-clickable]="!propagateClick" (click)="propagateEvent($event)">
         <ng-content></ng-content>
     </div>

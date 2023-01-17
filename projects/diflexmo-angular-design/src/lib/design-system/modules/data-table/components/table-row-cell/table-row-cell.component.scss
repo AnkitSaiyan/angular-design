@@ -20,21 +20,27 @@
 }
 
 :host {
-  @include text-sm;
-  @include weight-normal;
-
   display: contents;
   background-color: inherit;
-  padding: 16px 24px;
-  vertical-align: middle;
-  background-color: inherit;
-  width: 100%;
 
-  .right-align {
-    float: right;
-  }
+  .cell {
+    @include text-sm;
+    @include weight-normal;
 
-  .non-clickable {
-    cursor: initial;
+    padding: 16px 24px;
+    vertical-align: middle;
+    background-color: inherit;
+
+    .content {
+      width: 100%;
+      
+      &-right-align {
+        float: right;
+      }
+
+      &-non-clickable {
+        cursor: initial;
+      }
+    }
   }
 }
