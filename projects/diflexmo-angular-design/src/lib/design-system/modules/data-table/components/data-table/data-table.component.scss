@@ -8,6 +8,7 @@
 
 .dfm-table {
     border-collapse: collapse;
+    table-layout: fixed;
 }
 
 @media (max-width: 490px) {
