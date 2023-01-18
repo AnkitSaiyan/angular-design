@@ -13,6 +13,8 @@ export class TableRowCellComponent {
 
   @Input() widthStyle?: string;
 
+  @Input() maxWidthStyle?: string;
+
   public propagateEvent(clickEvent: any): void {
     if (!this.propagateClick) {
       clickEvent.stopPropagation();
