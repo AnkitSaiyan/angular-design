@@ -11,6 +11,8 @@ export class TableRowCellComponent {
 
   @Input() contentAlign: 'right' | 'left' = 'left';
 
+  @Input() widthStyle?: string;
+
   public propagateEvent(clickEvent: any): void {
     if (!this.propagateClick) {
       clickEvent.stopPropagation();
