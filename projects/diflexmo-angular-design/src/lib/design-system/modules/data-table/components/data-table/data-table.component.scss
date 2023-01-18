@@ -4,6 +4,8 @@
     @include border-radius;
 
     border: 1px solid var(--dfm-table-border);
+    overflow: overlay;
+    max-height: 100%;
 }
 
 .dfm-table {
@@ -26,9 +28,6 @@
 
 .dfm-header {
     background-color: var(--dfm-table-even-cell-bg);
-}
-
-.dfm-table-first-row {
     border-bottom: 1px solid var(--dfm-table-border);
 }
 
