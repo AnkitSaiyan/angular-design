@@ -30,6 +30,8 @@
     padding: 16px 24px;
     vertical-align: middle;
     background-color: inherit;
-    word-break: break-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
