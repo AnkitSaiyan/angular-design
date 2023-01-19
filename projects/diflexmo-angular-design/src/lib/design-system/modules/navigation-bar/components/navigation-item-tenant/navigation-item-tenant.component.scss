@@ -1,38 +1,18 @@
-.dfm-navigation-item {
-  .dropdown-icon {
-    display: inline-block;
+.dfm-tenants-dropdown-menu {
+  .option-selected {
     width: 20px;
     height: 20px;
+    color: var(--dfm-input-dropdown-option-selected-color);
   }
 }
 
-.dfm-tenants-dropdown-menu {
-  padding: 0;
+:host-context(.dfm-navigation-item-dropdown-menu) .dfm-navigation-item {
+  width: 100%;
+  justify-content: space-between;
+  background-color: transparent;
+  padding: 10px 14px;
 
-  .option {
-    display: flex;
-    justify-content: space-between;
-    cursor: pointer;
-    padding: 10px 14px;
-
-    &:hover {
-      background-color: var(--dfm-input-dropdown-option-bg-hover);
-
-      &:first-child {
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
-      }
-
-      &:last-child {
-        border-bottom-left-radius: 8px;
-        border-bottom-right-radius: 8px;
-      }
-    }
-
-    .option-selected {
-      width: 20px;
-      height: 20px;
-      color: var(--dfm-input-dropdown-option-selected-color);
-    }
+  &:hover {
+    background-color: var(--dfm-input-dropdown-option-bg-hover);
   }
 }

@@ -10,7 +10,7 @@ export class NavigationItemComponent {
 
   @Input() icon: string = '';
 
-  @Input() routerLink: string | null = null;
+  @Input() routerLink?: string;
 
   @Input() exact: boolean = false;
 }

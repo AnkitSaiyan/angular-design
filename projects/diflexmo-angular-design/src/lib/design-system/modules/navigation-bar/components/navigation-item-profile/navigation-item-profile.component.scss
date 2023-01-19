@@ -1,0 +1,21 @@
+.dfm-navigation-item-profile {
+  display: flex;
+}
+
+.dfm-navigation-item-profile-mobile {
+  display: none;
+}
+
+@media (max-width: 960px) {
+  .dfm-navigation-item-profile {
+    display: none;
+  }
+
+  .dfm-navigation-item-profile-mobile {
+    display: flex;
+
+    .dfm-navigation-item-dropdown-menu .tenant-option {
+      padding: 0;
+    }
+  }
+}

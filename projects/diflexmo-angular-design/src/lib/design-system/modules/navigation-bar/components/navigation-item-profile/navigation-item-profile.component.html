@@ -1,0 +1,25 @@
+<div class="dfm-navigation-item-profile">
+  <dfm-navigation-item-tenant
+    [tenants]="tenants"
+    [currentTenantValue]="currentTenantValue"
+    (tenantChanged)="tenantChanged.emit($event)"
+  ></dfm-navigation-item-tenant>
+  <dfm-navigation-item icon="user-01" [title]="title"></dfm-navigation-item>
+</div>
+
+<div class="dfm-navigation-item-profile-mobile">
+  <div class="dfm-navigation-item dfm-navigation-item-dropdown dropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+    <dfm-icon name="user-01" class="navigation-item-icon"></dfm-icon>
+  </div>
+
+  <div class="dropdown-menu dropdown-menu-end dfm-navigation-item-dropdown-menu">
+    <div class="option tenant-option">
+      <dfm-navigation-item-tenant
+        class="w-100"
+        [tenants]="tenants"
+        [currentTenantValue]="currentTenantValue"
+        (tenantChanged)="tenantChanged.emit($event)"
+      ></dfm-navigation-item-tenant>
+    </div>
+  </div>
+</div>

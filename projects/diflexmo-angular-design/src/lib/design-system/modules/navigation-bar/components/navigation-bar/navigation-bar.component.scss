@@ -58,17 +58,13 @@
   }
 }
 
-@media (max-width: 680px) {
+@media (max-width: 960px) {
   .dfm-navigation-bar,
   .dfm-navigation-bar.collapsed {
-    padding: 9px 16px 9px 18px;
+    padding: 0 0 0 16px;
 
-    .navigation-items {
-      display: none;
-    }
-
-    .profile-items {
-      gap: 30px;
+    .logo {
+      margin-right: 0;
     }
   }
 

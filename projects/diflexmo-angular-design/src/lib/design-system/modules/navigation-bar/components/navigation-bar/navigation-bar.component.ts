@@ -6,7 +6,7 @@ import { AfterViewInit, Component, ContentChild, Input, TemplateRef } from '@ang
   styleUrls: ['./navigation-bar.component.scss'],
 })
 export class NavigationBarComponent implements AfterViewInit {
-  @Input() content: HTMLDivElement | null = null;
+  @Input() content?: HTMLDivElement;
 
   @ContentChild('navigationItems') navigationItems!: TemplateRef<any>;
 
