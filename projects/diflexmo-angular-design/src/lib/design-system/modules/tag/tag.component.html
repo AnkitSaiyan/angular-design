@@ -1,6 +1,6 @@
 <span class="tag tag-{{ color }} tag-{{ size }}" [ngClass]="{ 'tag-with-action': action, 'tag-with-icon': icon }">
   <dfm-icon *ngIf="icon" [name]="icon" class="icon icon-{{ size }}"></dfm-icon>
   <ng-content></ng-content>
-  <dfm-icon *ngIf="action === 'close'" name="x-close" class="close-action" (click)="clickCloseAction()"></dfm-icon>
+  <dfm-icon *ngIf="action === 'close'" name="x-close" class="close-action" (click)="clickCloseAction($event)"></dfm-icon>
   <div *ngIf="action === 'count'" class="count-action">{{ count }}</div>
 </span>

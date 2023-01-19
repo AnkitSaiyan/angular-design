@@ -21,7 +21,7 @@ export class TagComponent {
 
   @Output() public closeAction = new EventEmitter();
 
-  public clickCloseAction(): void {
-    this.closeAction.emit();
+  public clickCloseAction(event: Event): void {
+    this.closeAction.emit(event);
   }
 }
