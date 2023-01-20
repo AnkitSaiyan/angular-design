@@ -2,12 +2,28 @@
   <img src="assets/images/logo.svg" class="logo" routerLink="/" />
   <div class="navigation-items">
     <ng-container *ngTemplateOutlet="navigationItems"></ng-container>
+    <ng-container *ngIf="moreNavigationItems">
+      <ng-container *ngTemplateOutlet="moreNavigationItems"></ng-container>
+    </ng-container>
   </div>
   <div class="profile-items">
     <ng-container *ngTemplateOutlet="profileItems"></ng-container>
   </div>
 </div>
-
-<div class="dfm-navigation-bar-mobile">
+<div class="dfm-navigation-bar-mobile" (click)="updateMoreItemsSection(false)">
   <ng-container *ngTemplateOutlet="navigationItems"></ng-container>
+  <ng-container *ngIf="moreNavigationItems">
+    <dfm-navigation-item
+      title="More"
+      icon="dots-horizontal"
+      (click)="isMoreItemsSectionShown = !isMoreItemsSectionShown; $event.stopPropagation()"
+      [selected]="isMoreItemSelected"
+    >
+    </dfm-navigation-item>
+  </ng-container>
+  <ng-container *ngIf="isMoreItemsSectionShown">
+    <div *ngIf="moreNavigationItems" class="more-navigation-items" (click)="updateMoreItemsSection(true); $event.stopPropagation()">
+      <ng-container *ngTemplateOutlet="moreNavigationItems"></ng-container>
+    </div>
+  </ng-container>
 </div>

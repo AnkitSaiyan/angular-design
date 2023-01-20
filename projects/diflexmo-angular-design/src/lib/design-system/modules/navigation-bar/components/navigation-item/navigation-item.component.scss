@@ -9,7 +9,8 @@
   display: flex;
   color: var(--dfm-navbar-item-color);
   background-color: var(--dfm-navbar-item-bg);
-  width: fit-content;
+  width: 100%;
+  height: 100%;
   padding: 14px 16px;
   gap: 8px;
   text-decoration: none;
@@ -30,57 +31,75 @@
     width: 20px;
     height: 20px;
   }
+
+  .navigation-item-label {
+    white-space: nowrap;
+  }
 }
 
 @mixin navigation-item-collapsed {
-  padding: 8px 14px;
+  @include text-xxs;
   @include border-radius-base(0px);
 
-  .navigation-label {
+  padding: 5px 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+@mixin navigation-group-collapsed {
+  display: flex;
+  flex: 1 1 20%;
+  min-width: 0;
+}
+
+:host-context(.dfm-navigation-bar.collapsed) {
+  :host-context(.navigation-items) {
+    @include navigation-group-collapsed;
+  }
+
+  :host-context(.profile-items) .navigation-item-label {
     display: none;
   }
 
-  &-selected {
-    .navigation-label {
-      display: block;
-    }
+  .dfm-navigation-item {
+    @include navigation-item-collapsed;
   }
-}
-
-:host-context(.dfm-navigation-bar.collapsed) .dfm-navigation-item {
-  @include navigation-item-collapsed;
 }
 
 @media (max-width: 1440px) {
   .dfm-navigation-item {
     @include navigation-item-collapsed;
   }
+
+  :host-context(.dfm-navigation-bar .navigation-items) {
+    @include navigation-group-collapsed;
+  }
+
+  :host-context(.dfm-navigation-bar .profile-items) .navigation-item-label {
+    display: none;
+  }
 }
 
 @media (max-width: 960px) {
   :host-context(.dfm-navigation-bar .navigation-items) .dfm-navigation-item {
     display: none;
-
-    &-selected {
-      display: block;
-      box-shadow: none;
-      background-color: var(--dfm-navbar-bg);
-
-      .navigation-item-icon {
-        display: none;
-      }
-    }
   }
 
+  :host-context(.dfm-navigation-bar .profile-items) .dfm-navigation-item {
+    padding: 8px 14px;
+  }
 
-  :host-context(.dfm-navigation-bar-mobile) .dfm-navigation-item {
-    padding: 14px;
-    border-radius: 24px;
+  :host-context(.dfm-navigation-bar-mobile) {
+    @include navigation-group-collapsed;
 
-    &-selected {
-      .navigation-label {
-        display: none;
-      }
+    .dfm-navigation-item {
+      padding: 10px;
+    }
+
+    :host-context(.more-navigation-items) {
+      flex: 0 1 20%;
     }
   }
 }

@@ -14,6 +14,25 @@
   @include weight-bold;
 }
 
+.text-xxs {
+  @include text-xxs;
+
+  &-medium {
+    @extend .text-xxs;
+    @include weight-medium;
+  }
+
+  &-semi-bold {
+    @extend .text-xxs;
+    @include weight-semi-bold;
+  }
+
+  &-bold {
+    @extend .text-xxs;
+    @include weight-bold;
+  }
+}
+
 .text-xs {
   @include text-xs;
 

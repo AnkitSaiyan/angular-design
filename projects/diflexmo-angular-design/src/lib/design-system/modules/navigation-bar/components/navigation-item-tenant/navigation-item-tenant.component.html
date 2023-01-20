@@ -1,5 +1,5 @@
-<div *ngIf="currentTenant">
-  <div class="dfm-navigation-item dfm-navigation-item-dropdown dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+<ng-container *ngIf="currentTenant">
+  <div class="dfm-navigation-item dfm-navigation-item-dropdown dfm-navigation-item-tenant dropdown" data-bs-toggle="dropdown" aria-expanded="false">
     {{ currentTenant.name }}
     <dfm-icon name="chevron-down" class="dropdown-icon"></dfm-icon>
   </div>
@@ -10,4 +10,4 @@
       <dfm-icon *ngIf="currentTenant.value === tenant.value" name="check" class="option-selected"></dfm-icon>
     </div>
   </div>
-</div>
+</ng-container>

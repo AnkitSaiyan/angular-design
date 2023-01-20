@@ -13,4 +13,6 @@ export class NavigationItemComponent {
   @Input() routerLink?: string;
 
   @Input() exact: boolean = false;
+
+  @Input() selected: boolean = false;
 }
