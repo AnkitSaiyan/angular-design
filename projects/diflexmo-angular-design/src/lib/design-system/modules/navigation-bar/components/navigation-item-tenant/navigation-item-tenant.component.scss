@@ -1,3 +1,5 @@
+@import 'mixins/text-mixins';
+
 .dfm-tenants-dropdown-menu {
   .option-selected {
     width: 20px;
@@ -6,13 +8,10 @@
   }
 }
 
-:host-context(.dfm-navigation-item-dropdown-menu) .dfm-navigation-item {
-  width: 100%;
-  justify-content: space-between;
-  background-color: transparent;
-  padding: 10px 14px;
-
-  &:hover {
-    background-color: var(--dfm-input-dropdown-option-bg-hover);
-  }
+:host-context(.dfm-navigation-bar.dfm-navigation-bar-collapsed) .dfm-navigation-item.dfm-navigation-item-tenant,
+.dfm-navigation-item.dfm-navigation-item-tenant {
+  @include text-sm;
+  flex-direction: row;
+  height: 100%;
+  gap: 8px;
 }

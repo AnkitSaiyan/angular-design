@@ -25,6 +25,10 @@
     @include font-weight-base(700);
 }
 
+@mixin text-xxs {
+    @include font-style-base(10px, 14px)
+}
+
 @mixin text-xs {
     @include font-style-base(12px, 18px);
 }

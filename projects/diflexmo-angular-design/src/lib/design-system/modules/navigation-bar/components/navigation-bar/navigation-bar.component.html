@@ -1,13 +1,61 @@
-<div class="dfm-navigation-bar" [class.collapsed]="isCollapsed">
-  <img src="assets/images/logo.svg" class="logo" routerLink="/" />
-  <div class="navigation-items">
-    <ng-container *ngTemplateOutlet="navigationItems"></ng-container>
+<div class="dfm-navigation-bar-container">
+  <div class="dfm-navigation-bar" [class.dfm-navigation-bar-collapsed]="isCollapsed">
+    <img src="assets/images/logo.svg" class="logo" routerLink="/" />
+    <div class="navigation-items">
+      <dfm-navigation-item
+        *ngFor="let item of navigationItems"
+        [title]="item.title"
+        [icon]="item.icon"
+        [routerLink]="item.routerLink"
+        [exact]="item.exact"
+      >
+      </dfm-navigation-item>
+    </div>
+    <div class="profile-items">
+      <dfm-navigation-item-tenant
+        *ngIf="isTenantDropdownShown && tenants.length && currentTenant"
+        title="Tenants"
+        [tenants]="tenants"
+        [currentTenantValue]="currentTenant"
+        (tenantChanged)="tenantChanged.emit($event)"
+      ></dfm-navigation-item-tenant>
+      <dfm-navigation-item *ngIf="isProfileShown" icon="user-01" title="Profile"></dfm-navigation-item>
+      <dfm-navigation-item *ngIf="isNotificationsCounterShown" icon="bell-03"></dfm-navigation-item>
+      <dfm-navigation-item *ngIf="isMessagesCounterShown" icon="message-text-square-02"></dfm-navigation-item>
+    </div>
   </div>
-  <div class="profile-items">
-    <ng-container *ngTemplateOutlet="profileItems"></ng-container>
+  <div class="dfm-content" #content (click)="isMoreItemsSectionShown = false">
+    <ng-content></ng-content>
   </div>
-</div>
-
-<div class="dfm-navigation-bar-mobile">
-  <ng-container *ngTemplateOutlet="navigationItems"></ng-container>
+  <div class="dfm-navigation-bar-mobile" [style.grid-template-columns]="gridTemplateColumnsStyle" (click)="isMoreItemsSectionShown = false">
+    <dfm-navigation-item
+      *ngFor="let item of mobileNavigationItemsToShow"
+      [title]="item.title"
+      [icon]="item.icon"
+      [routerLink]="item.routerLink"
+      [exact]="item.exact"
+      (routerLinkActivated)="isMoreItemSelected = false"
+    >
+    </dfm-navigation-item>
+    <ng-container *ngIf="mobileNavigationItemsToHide.length">
+      <dfm-navigation-item
+        title="More"
+        icon="dots-horizontal"
+        (click)="isMoreItemsSectionShown = !isMoreItemsSectionShown; $event.stopPropagation()"
+        [selected]="isMoreItemSelected"
+      >
+      </dfm-navigation-item>
+      <ng-container *ngIf="isMoreItemsSectionShown">
+        <dfm-navigation-item
+          *ngFor="let item of mobileNavigationItemsToHide"
+          [title]="item.title"
+          [icon]="item.icon"
+          [routerLink]="item.routerLink"
+          [exact]="item.exact"
+          (routerLinkActivated)="isMoreItemSelected = true"
+        >
+        </dfm-navigation-item>
+      </ng-container>
+    </ng-container>
+  </div>
 </div>
