@@ -5,11 +5,10 @@ import { NavigationBarComponent } from './components/navigation-bar/navigation-b
 import { NavigationItemComponent } from './components/navigation-item/navigation-item.component';
 import { IconModule } from '../icon/icon.module';
 import { NavigationItemTenantComponent } from './components/navigation-item-tenant/navigation-item-tenant.component';
-import { NavigationItemProfileComponent } from './components/navigation-item-profile/navigation-item-profile.component';
 
 @NgModule({
-  declarations: [NavigationBarComponent, NavigationItemComponent, NavigationItemTenantComponent, NavigationItemProfileComponent],
+  declarations: [NavigationBarComponent, NavigationItemComponent, NavigationItemTenantComponent],
   imports: [CommonModule, IconModule, RouterModule],
-  exports: [NavigationBarComponent, NavigationItemComponent, NavigationItemTenantComponent, NavigationItemProfileComponent],
+  exports: [NavigationBarComponent, NavigationItemComponent, NavigationItemTenantComponent],
 })
 export class NavigationBarModule {}

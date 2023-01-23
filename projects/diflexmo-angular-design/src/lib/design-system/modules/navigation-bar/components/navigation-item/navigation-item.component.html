@@ -1,4 +1,11 @@
-<a class="dfm-navigation-item" [routerLink]="routerLink" routerLinkActive="dfm-navigation-item-selected" [routerLinkActiveOptions]="{ exact: exact }">
+<a
+  class="dfm-navigation-item"
+  [routerLink]="routerLink"
+  routerLinkActive
+  [routerLinkActiveOptions]="{ exact: exact }"
+  [class.dfm-navigation-item-selected]="routerLinkActive.isActive || selected"
+  #routerLinkActive="routerLinkActive"
+>
   <dfm-icon [name]="icon" class="navigation-item-icon"></dfm-icon>
-  <span class="navigation-label">{{ title }}</span>
+  <span class="navigation-item-label" *ngIf="title">{{ title }}</span>
 </a>
