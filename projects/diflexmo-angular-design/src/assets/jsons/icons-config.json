@@ -277,6 +277,10 @@
       "iconPath": "/assets/icons/search-sm.svg"
     },
     {
+      "iconName": "send-03",
+      "iconPath": "/assets/icons/send-03.svg"
+    },
+    {
       "iconName": "search-lg",
       "iconPath": "/assets/icons/search-lg.svg"
     },
