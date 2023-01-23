@@ -117,6 +117,22 @@
       "iconPath": "/assets/icons/drag.svg"
     },
     {
+      "iconName": "fas-plane",
+      "iconPath": "/assets/icons/fas-plane.svg"
+    },
+    {
+      "iconName": "fas-ship",
+      "iconPath": "/assets/icons/fas-ship.svg"
+    },
+    {
+      "iconName": "fas-train",
+      "iconPath": "/assets/icons/fas-train.svg"
+    },
+    {
+      "iconName": "fas-truck",
+      "iconPath": "/assets/icons/fas-truck.svg"
+    },
+    {
       "iconName": "file-06",
       "iconPath": "/assets/icons/file-06.svg"
     },
