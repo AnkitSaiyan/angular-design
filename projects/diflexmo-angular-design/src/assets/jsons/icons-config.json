@@ -117,6 +117,18 @@
       "iconPath": "/assets/icons/drag.svg"
     },
     {
+      "iconName": "fas-invoice-dollar",
+      "iconPath": "/assets/icons/fas-invoice-dollar.svg"
+    },
+    {
+      "iconName": "fas-invoice",
+      "iconPath": "/assets/icons/fas-invoice.svg"
+    },
+    {
+      "iconName": "fas-enveloppe",
+      "iconPath": "/assets/icons/fas-enveloppe.svg"
+    },
+    {
       "iconName": "fas-plane",
       "iconPath": "/assets/icons/fas-plane.svg"
     },
