@@ -8,7 +8,7 @@
   }
 }
 
-:host-context(.dfm-navigation-bar.collapsed) .dfm-navigation-item.dfm-navigation-item-tenant,
+:host-context(.dfm-navigation-bar.dfm-navigation-bar-collapsed) .dfm-navigation-item.dfm-navigation-item-tenant,
 .dfm-navigation-item.dfm-navigation-item-tenant {
   @include text-sm;
   flex-direction: row;

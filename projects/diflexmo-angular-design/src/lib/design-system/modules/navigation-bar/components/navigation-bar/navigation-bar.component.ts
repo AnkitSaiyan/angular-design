@@ -1,42 +1,60 @@
-import { AfterContentInit, AfterViewInit, Component, ContentChild, Input, TemplateRef } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { SelectItem } from '../../../input-dropdown/models/select-item';
+import { NavigationItem } from '../../models/navigation-item';
 
 @Component({
   selector: 'dfm-navigation-bar',
   templateUrl: './navigation-bar.component.html',
   styleUrls: ['./navigation-bar.component.scss'],
 })
-export class NavigationBarComponent implements AfterViewInit, AfterContentInit {
-  @Input() content?: HTMLDivElement;
+export class NavigationBarComponent implements OnInit, AfterViewInit {
+  @Input() navigationItems: NavigationItem[] = [];
 
-  @ContentChild('navigationItems') navigationItems!: TemplateRef<any>;
+  @Input() isTenantDropdownShown: boolean = false;
 
-  @ContentChild('moreNavigationItems') moreNavigationItems?: TemplateRef<any>;
+  @Input() tenants: SelectItem[] = [];
 
-  @ContentChild('profileItems') profileItems!: TemplateRef<any>;
+  @Input() currentTenant?: string;
+
+  @Input() isProfileShown: boolean = true;
+
+  @Input() isNotificationsCounterShown: boolean = false;
+
+  @Input() isMessagesCounterShown: boolean = false;
+
+  @Output() tenantChanged = new EventEmitter<string>();
+
+  @ViewChild('content') content!: ElementRef;
 
   public isCollapsed: boolean = false;
 
-  public isMoreItemsSectionShown: boolean = true;
+  public isMoreItemsSectionShown: boolean = false;
 
-  public isMoreItemSelected: boolean = true;
+  public isMoreItemSelected: boolean = false;
 
-  ngAfterContentInit(): void {
-    const isMoreItemSelected = !!document.querySelectorAll('.more-navigation-items .dfm-navigation-item-selected').length;
-    this.updateMoreItemsSection(isMoreItemSelected);
+  public mobileNavigationItemsToShow: NavigationItem[] = [];
+
+  public mobileNavigationItemsToHide: NavigationItem[] = [];
+
+  public gridTemplateColumnsStyle: string = '';
+
+  ngOnInit(): void {
+    this.navigationItems.forEach((navigationItem) =>
+      navigationItem.isHiddenForMobile
+        ? this.mobileNavigationItemsToHide.push(navigationItem)
+        : this.mobileNavigationItemsToShow.push(navigationItem),
+    );
+
+    const gridColumnsCount = this.mobileNavigationItemsToHide.length
+      ? this.mobileNavigationItemsToShow.length + 1
+      : this.mobileNavigationItemsToHide.length;
+
+    this.gridTemplateColumnsStyle = `repeat(${gridColumnsCount}, 1fr)`;
   }
 
   ngAfterViewInit(): void {
     if (this.content) {
-      this.content.onscroll = (e: Event) => (this.isCollapsed = (e.target as HTMLElement).scrollTop > 64);
+      this.content.nativeElement.onscroll = (e: Event) => (this.isCollapsed = (e.target as HTMLElement).scrollTop > 64);
     }
-  }
-
-  updateMoreItemsSection(isMoreItemSelected: boolean) {
-    if (!this.moreNavigationItems) {
-      return;
-    }
-
-    this.isMoreItemSelected = isMoreItemSelected;
-    this.isMoreItemsSectionShown = false;
   }
 }

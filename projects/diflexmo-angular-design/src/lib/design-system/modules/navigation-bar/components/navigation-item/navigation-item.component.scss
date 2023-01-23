@@ -1,6 +1,17 @@
 @import 'mixins/base';
 @import 'mixins/text-mixins';
 
+@mixin dfm-navigation-item-collapsed {
+  @include text-xxs;
+  @include border-radius-base(0px);
+
+  padding: 5px 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
 .dfm-navigation-item {
   @include text-sm;
   @include weight-medium;
@@ -14,7 +25,6 @@
   padding: 14px 16px;
   gap: 8px;
   text-decoration: none;
-  transition: all 0.2s ease-in-out;
 
   &-selected {
     background-color: var(--dfm-navbar-item-selected-bg);
@@ -37,44 +47,19 @@
   }
 }
 
-@mixin navigation-item-collapsed {
-  @include text-xxs;
-  @include border-radius-base(0px);
-
-  padding: 5px 10px;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2px;
-}
-
-@mixin navigation-group-collapsed {
-  display: flex;
-  flex: 1 1 20%;
-  min-width: 0;
-}
-
-:host-context(.dfm-navigation-bar.collapsed) {
-  :host-context(.navigation-items) {
-    @include navigation-group-collapsed;
+:host-context(.dfm-navigation-bar.dfm-navigation-bar-collapsed) {
+  .dfm-navigation-item {
+    @include dfm-navigation-item-collapsed;
   }
 
   :host-context(.profile-items) .navigation-item-label {
     display: none;
   }
-
-  .dfm-navigation-item {
-    @include navigation-item-collapsed;
-  }
 }
 
 @media (max-width: 1440px) {
   .dfm-navigation-item {
-    @include navigation-item-collapsed;
-  }
-
-  :host-context(.dfm-navigation-bar .navigation-items) {
-    @include navigation-group-collapsed;
+    @include dfm-navigation-item-collapsed;
   }
 
   :host-context(.dfm-navigation-bar .profile-items) .navigation-item-label {
@@ -83,23 +68,13 @@
 }
 
 @media (max-width: 960px) {
-  :host-context(.dfm-navigation-bar .navigation-items) .dfm-navigation-item {
-    display: none;
-  }
-
   :host-context(.dfm-navigation-bar .profile-items) .dfm-navigation-item {
     padding: 8px 14px;
   }
 
   :host-context(.dfm-navigation-bar-mobile) {
-    @include navigation-group-collapsed;
-
     .dfm-navigation-item {
       padding: 10px;
-    }
-
-    :host-context(.more-navigation-items) {
-      flex: 0 1 20%;
     }
   }
 }

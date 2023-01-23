@@ -7,5 +7,5 @@
   #routerLinkActive="routerLinkActive"
 >
   <dfm-icon [name]="icon" class="navigation-item-icon"></dfm-icon>
-  <span class="navigation-item-label">{{ title }}</span>
+  <span class="navigation-item-label" *ngIf="title">{{ title }}</span>
 </a>
