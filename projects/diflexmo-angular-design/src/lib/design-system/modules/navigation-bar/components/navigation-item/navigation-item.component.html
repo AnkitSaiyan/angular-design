@@ -1,11 +1,32 @@
-<a
-  class="dfm-navigation-item"
-  [routerLink]="routerLink"
-  routerLinkActive
-  [routerLinkActiveOptions]="{ exact: exact }"
-  [class.dfm-navigation-item-selected]="routerLinkActive.isActive || selected"
-  #routerLinkActive="routerLinkActive"
->
-  <dfm-icon [name]="icon" class="navigation-item-icon"></dfm-icon>
-  <span class="navigation-item-label" *ngIf="title">{{ title }}</span>
-</a>
+<ng-container *ngIf="children.length; else withoutChildren">
+  <span class="dfm-navigation-item" [class.dfm-navigation-item-selected]="selectedChildIndex !== undefined" data-bs-toggle="dropdown">
+    <dfm-icon [name]="selectedChildIndex !== undefined ? children[selectedChildIndex].icon : icon" class="navigation-item-icon"></dfm-icon>
+    <span class="navigation-item-label" *ngIf="title">{{ selectedChildIndex !== undefined ? children[selectedChildIndex].title : title }}</span>
+  </span>
+  <div class="dropdown-menu dfm-navigation-item-dropdown-menu">
+    <div
+      *ngFor="let item of children"
+      class="option justify-content-start dfm-gap-8"
+      [routerLink]="item.routerLink"
+      routerLinkActive
+      #childRouterLinkActive="routerLinkActive"
+    >
+      <dfm-icon [name]="item.icon" class="icon-20"></dfm-icon>
+      {{ item.title }}
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #withoutChildren>
+  <a
+    class="dfm-navigation-item"
+    [routerLink]="routerLink"
+    routerLinkActive
+    [routerLinkActiveOptions]="{ exact: exact }"
+    [class.dfm-navigation-item-selected]="routerLinkActive.isActive || selected"
+    #routerLinkActive="routerLinkActive"
+  >
+    <dfm-icon [name]="icon" class="navigation-item-icon"></dfm-icon>
+    <span class="navigation-item-label" *ngIf="title">{{ title }}</span>
+  </a>
+</ng-template>

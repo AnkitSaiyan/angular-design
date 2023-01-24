@@ -1,6 +1,7 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { RouterLinkActive } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { NavigationItem } from '../../models/navigation-item';
 
 @Component({
   selector: 'dfm-navigation-item',
@@ -18,9 +19,15 @@ export class NavigationItemComponent implements AfterViewInit, OnDestroy {
 
   @Input() selected: boolean = false;
 
+  @Input() children: NavigationItem[] = [];
+
   @Output() routerLinkActivated = new EventEmitter();
 
   @ViewChild('routerLinkActive') routerLinkActive?: RouterLinkActive;
+
+  @ViewChildren('childRouterLinkActive') childRouterLinksActive?: QueryList<RouterLinkActive>;
+
+  public selectedChildIndex?: number;
 
   private subscriptions = new Subscription();
 
@@ -31,6 +38,20 @@ export class NavigationItemComponent implements AfterViewInit, OnDestroy {
       }
     });
 
+    if (this.children.length && this.childRouterLinksActive) {
+      [...this.childRouterLinksActive].forEach((link, index) => {
+        const childSubscription = link.isActiveChange.subscribe((isActive) => {
+          if (isActive) {
+            this.selectedChildIndex = index;
+            this.routerLinkActivated.emit();
+          } else if (this.selectedChildIndex === index) {
+            this.selectedChildIndex = undefined;
+          }
+
+          this.subscriptions.add(childSubscription);
+        });
+      });
+    }
     this.subscriptions.add(subscription);
   }
 

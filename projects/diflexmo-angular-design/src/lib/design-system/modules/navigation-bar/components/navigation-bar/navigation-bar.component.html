@@ -8,6 +8,7 @@
         [icon]="item.icon"
         [routerLink]="item.routerLink"
         [exact]="item.exact"
+        [children]="item.children"
       >
       </dfm-navigation-item>
     </div>
@@ -24,16 +25,17 @@
       <dfm-navigation-item *ngIf="isMessagesCounterShown" icon="message-text-square-02"></dfm-navigation-item>
     </div>
   </div>
-  <div class="dfm-content" #content (click)="isMoreItemsSectionShown = false">
+  <div class="dfm-content" #content (mousedown)="isMoreItemsSectionShown = false">
     <ng-content></ng-content>
   </div>
-  <div class="dfm-navigation-bar-mobile" [style.grid-template-columns]="gridTemplateColumnsStyle" (click)="isMoreItemsSectionShown = false">
+  <div class="dfm-navigation-bar-mobile" [style.grid-template-columns]="gridTemplateColumnsStyle">
     <dfm-navigation-item
       *ngFor="let item of mobileNavigationItemsToShow"
       [title]="item.title"
       [icon]="item.icon"
       [routerLink]="item.routerLink"
       [exact]="item.exact"
+      [children]="item.children"
       (routerLinkActivated)="isMoreItemSelected = false"
     >
     </dfm-navigation-item>
@@ -41,21 +43,20 @@
       <dfm-navigation-item
         title="More"
         icon="dots-horizontal"
-        (click)="isMoreItemsSectionShown = !isMoreItemsSectionShown; $event.stopPropagation()"
+        (click)="isMoreItemsSectionShown = !isMoreItemsSectionShown"
         [selected]="isMoreItemSelected"
+      ></dfm-navigation-item>
+      <dfm-navigation-item
+        [class.d-none]="!isMoreItemsSectionShown"
+        *ngFor="let item of mobileNavigationItemsToHide"
+        [title]="item.title"
+        [icon]="item.icon"
+        [routerLink]="item.routerLink"
+        [exact]="item.exact"
+        [children]="item.children"
+        (routerLinkActivated)="isMoreItemSelected = true"
       >
       </dfm-navigation-item>
-      <ng-container *ngIf="isMoreItemsSectionShown">
-        <dfm-navigation-item
-          *ngFor="let item of mobileNavigationItemsToHide"
-          [title]="item.title"
-          [icon]="item.icon"
-          [routerLink]="item.routerLink"
-          [exact]="item.exact"
-          (routerLinkActivated)="isMoreItemSelected = true"
-        >
-        </dfm-navigation-item>
-      </ng-container>
     </ng-container>
   </div>
 </div>

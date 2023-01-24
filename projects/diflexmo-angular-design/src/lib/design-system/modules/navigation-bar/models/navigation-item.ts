@@ -5,5 +5,6 @@ export class NavigationItem {
     public routerLink?: string,
     public exact: boolean = false,
     public isHiddenForMobile: boolean = false,
+    public children: NavigationItem[] = [],
   ) {}
 }

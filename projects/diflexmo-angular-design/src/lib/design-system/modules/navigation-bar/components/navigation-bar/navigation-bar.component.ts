@@ -1,4 +1,6 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { NavigationStart, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { SelectItem } from '../../../input-dropdown/models/select-item';
 import { NavigationItem } from '../../models/navigation-item';
 
@@ -7,7 +9,7 @@ import { NavigationItem } from '../../models/navigation-item';
   templateUrl: './navigation-bar.component.html',
   styleUrls: ['./navigation-bar.component.scss'],
 })
-export class NavigationBarComponent implements OnInit, AfterViewInit {
+export class NavigationBarComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() navigationItems: NavigationItem[] = [];
 
   @Input() isTenantDropdownShown: boolean = false;
@@ -38,6 +40,10 @@ export class NavigationBarComponent implements OnInit, AfterViewInit {
 
   public gridTemplateColumnsStyle: string = '';
 
+  private subscriptions = new Subscription();
+
+  constructor(private router: Router) {}
+
   ngOnInit(): void {
     this.navigationItems.forEach((navigationItem) =>
       navigationItem.isHiddenForMobile
@@ -50,11 +56,23 @@ export class NavigationBarComponent implements OnInit, AfterViewInit {
       : this.mobileNavigationItemsToHide.length;
 
     this.gridTemplateColumnsStyle = `repeat(${gridColumnsCount}, 1fr)`;
+
+    const subscription = this.router.events.subscribe((e) => {
+      if (e instanceof NavigationStart) {
+        this.isMoreItemsSectionShown = false;
+      }
+    });
+
+    this.subscriptions.add(subscription);
   }
 
   ngAfterViewInit(): void {
     if (this.content) {
       this.content.nativeElement.onscroll = (e: Event) => (this.isCollapsed = (e.target as HTMLElement).scrollTop > 64);
     }
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 }
