@@ -16,15 +16,15 @@ export class TableRowCellComponent implements AfterViewInit, OnDestroy {
 
   @Input() maxWidthStyle?: string;
 
-  @ContentChild('projected', { static: false }) projectedContent: any;
+  @Input() fullContent?: string;
 
   @ViewChild('tableCell', { read: ElementRef }) tableCell!: ElementRef;
 
   private tooltips: Tooltip[] = [];
 
   ngAfterViewInit(): void {
-    if (this.isEllipsisActive(this.projectedContent.nativeElement.innerHTML)) {
-      const copyTooltip = new Tooltip(this.tableCell.nativeElement, { title: this.projectedContent.nativeElement.innerHTML });
+    if (this.isEllipsisActive() && this.fullContent) {
+      const copyTooltip = new Tooltip(this.tableCell.nativeElement, { title: this.fullContent });
 
       this.tooltips.push(copyTooltip);
     }
@@ -40,7 +40,7 @@ export class TableRowCellComponent implements AfterViewInit, OnDestroy {
     this.tooltips.forEach((t) => t.dispose());
   }
 
-  isEllipsisActive(e: any) {
-    return (e.offsetWidth < e.scrollWidth);
+  isEllipsisActive() {
+    return (this.tableCell.nativeElement.offsetWidth < this.tableCell.nativeElement.scrollWidth);
   }
 }
