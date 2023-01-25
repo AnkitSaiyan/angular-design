@@ -8,6 +8,8 @@
     border-collapse: separate;  
     border: 1px solid var(--dfm-table-border);
     table-layout: fixed;
+    background-color: var(--dfm-table-even-cell-bg);
+    overflow: hidden;
 }
 
 @media (max-width: 490px) {
@@ -24,7 +26,6 @@
 }
 
 .dfm-header {
-    background-color: var(--dfm-table-even-cell-bg);
     border-bottom: 1px solid var(--dfm-table-border);
 }
 
