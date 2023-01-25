@@ -7,6 +7,22 @@
     border-collapse: collapse;
     border: 1px solid var(--dfm-table-border);
     table-layout: fixed;
+
+    tr:first-child td:first-child {
+        @include border-radius;
+    }
+        
+    tr:first-child td:last-child {
+        @include border-radius;
+    }
+
+    tr:last-child td:first-child {
+        @include border-radius;
+    }
+        
+    tr:last-child td:last-child {
+        @include border-radius;
+    }
 }
 
 @media (max-width: 490px) {
