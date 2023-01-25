@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ContentChild, ElementRef, Input, OnDestroy, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnDestroy, ViewChild } from '@angular/core';
 import { Tooltip } from 'bootstrap';
 
 @Component({

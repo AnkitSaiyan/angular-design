@@ -1,4 +1,4 @@
-import { Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
+import { Component, ContentChild, EventEmitter, HostBinding, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { DfmDatasource } from '../../models/datasource.model';
 import { DfmTableHeader } from '../../models/table-header.model';
 import { TableRow } from '../../models/table-row.model';
@@ -12,15 +12,24 @@ import { TableHeaderSize } from '../../types/table-header-size.type';
 export class DataTableComponent implements OnInit {
   @Input() data?: DfmDatasource;
 
-  @Input() collapseOnMobile: boolean = true;
+  @HostBinding('style.margin-right') marginRight = '0px';
+  @HostBinding('style.margin-left') marginLeft = '0px';
+  
+  @Input() public set collapseOnMobile(value: boolean) {
+    if (value) {
+      this.marginRight = '-16px';
+      this.marginLeft = '-16px';
+    } else {
+      this.marginRight = '0px';
+      this.marginLeft = '0px';
+    }
+  }
 
   @Input() rowSelectable: boolean = false;
 
   @Input() rowClickable: boolean = false;
 
   @Input() headers: Array<DfmTableHeader> = [];
-
-  @Input() fullWidth: boolean = true;
 
   @Input() stickyHeader: boolean = true;
 
