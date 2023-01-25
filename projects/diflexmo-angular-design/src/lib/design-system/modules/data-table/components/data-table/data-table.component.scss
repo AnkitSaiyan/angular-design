@@ -5,13 +5,18 @@
 
     display: block;
     border: 1px solid var(--dfm-table-border);
-    overflow: auto;
+    overflow: overlay;
 
     table {
-        border-collapse: collapse;
-        table-layout: fixed;
+        border-collapse: separate;
+        border-spacing: 0;
         width: 100%;
         background-color: var(--dfm-table-even-cell-bg);
+    }
+
+    table > thead {
+        border-bottom: 1px solid var(--dfm-table-border);
+        white-space: nowrap;
     }
 }
 
