@@ -1,7 +1,7 @@
-<table class="first-frozen">
+<table [class.first-frozen]="stickyFirstRow && isHorizontalScrollDisplayed" (resized)="checkTableSize($event)">
     <thead *ngIf="headers && headers.length > 0" [ngClass]="{'dfm-sticky-header': stickyHeader}">
         <tr>
-            <th *ngFor="let header of headers" [ngClass]="{
+            <body-row-cell *ngFor="let header of headers" [ngClass]="{
                     'pointer': header.isSortable, 
                     'dfm-py-27': headerSize === 'lg', 
                     'dfm-py-16': headerSize === 'md', 
@@ -18,7 +18,7 @@
                         <dfm-icon *ngIf="header.sort && header.sort === 'Desc'" name="arrow-down"></dfm-icon>
                     </div>
                 </div>
-            </th>
+            </body-row-cell>
         </tr>
     </thead>
 

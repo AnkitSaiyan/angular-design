@@ -1,4 +1,6 @@
-import { Component, ContentChild, EventEmitter, HostBinding, Input, OnInit, Output, TemplateRef } from '@angular/core';
+import { Component, ContentChild, ElementRef, EventEmitter, HostBinding, Input, OnInit, Output, TemplateRef } from '@angular/core';
+import { ResizedEvent } from 'angular-resize-event';
+import { debounceTime, Subject } from 'rxjs';
 import { DfmDatasource } from '../../models/datasource.model';
 import { DfmTableHeader } from '../../models/table-header.model';
 import { TableRow } from '../../models/table-row.model';
@@ -10,6 +12,7 @@ import { TableHeaderSize } from '../../types/table-header-size.type';
   styleUrls: ['./data-table.component.scss']
 })
 export class DataTableComponent implements OnInit {
+
   @Input() data?: DfmDatasource;
 
   @HostBinding('style.margin-right') marginRight = '0px';
@@ -34,6 +37,8 @@ export class DataTableComponent implements OnInit {
 
   @Input() stickyHeader: boolean = true;
 
+  @Input() stickyFirstRow: boolean = true;
+
   @Input() headerSize: TableHeaderSize = 'lg';
 
   @ContentChild('bodyRowTemplate') bodyRowTemplate!: TemplateRef<any>;
@@ -42,9 +47,27 @@ export class DataTableComponent implements OnInit {
 
   @Output() rowClicked = new EventEmitter<TableRow>();
 
-  constructor() { }
+  public isHorizontalScrollDisplayed: boolean = false;
+
+  public tableSizeChanged$ = new Subject<ResizedEvent>();
+
+  constructor(
+    private elRef:ElementRef
+  ) { }
 
   ngOnInit(): void {
+    this.tableSizeChanged$
+      .pipe(
+        debounceTime(100)
+      ).subscribe((event: ResizedEvent) => {
+      const tableWrapperWidth = this.elRef.nativeElement.offsetWidth;
+      const tableWidth = event.newRect.width;
+      this.isHorizontalScrollDisplayed = tableWrapperWidth < tableWidth;
+    });
+  }
+
+  public checkTableSize(event: ResizedEvent): void {
+    this.tableSizeChanged$.next(event);
   }
 
   public sortClicked(headerTitle: string): void {
