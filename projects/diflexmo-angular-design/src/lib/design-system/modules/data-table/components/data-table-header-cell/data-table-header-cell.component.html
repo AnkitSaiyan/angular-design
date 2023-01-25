@@ -4,7 +4,7 @@
     'dfm-py-16': headerSize === 'md', 
     'dfm-py-13 dfm-text-main-700': headerSize === 'sm', 
     'dfm-header-cell-disabled': header?.isDisabled, 
-    'dfm-header-cell': !header?.isDisabled }">
+    'dfm-header-cell': !header?.isDisabled }" class="dfm-px-24">
     <div class="d-flex dfm-gap-4">
         <div class="text-xs-bold">{{ header?.title ?? '' }}</div>
         <div *ngIf="header?.tooltip" class="icon-16 dfm-text-main-400">
