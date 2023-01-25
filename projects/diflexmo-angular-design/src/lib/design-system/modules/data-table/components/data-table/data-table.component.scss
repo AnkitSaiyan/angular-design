@@ -16,6 +16,7 @@
 
     table > thead {
         border-bottom: 1px solid var(--dfm-table-border);
+        background-color: var(--dfm-table-even-cell-bg);
         white-space: nowrap;
     }
 }
@@ -54,16 +55,4 @@
 
 .body-row:hover {
     background-color: var(--dfm-table-cell-bg-hover);
-}
-
-.dfm-header-cell-disabled {
-    color: var(--dfm-table-header-color-disabled);
-}
-
-.dfm-header-cell {
-    color: var(--dfm-table-header-color);
-}
-
-.dfm-header-cell:hover {
-    color: var(--dfm-table-header-color-hover);
 }

@@ -1,0 +1,46 @@
+@import 'mixins/base';
+@import 'mixins/text-mixins';
+
+$table-first-td-width: 200px;
+$table-border: 1px solid var(--dfm-table-border);
+$table-border-radius: 8px;
+
+:host-context(.checkbox-cell.checkbox-first-frozen) ~ :host:nth-child(2) .cell,
+:host-context(.first-frozen) :host:first-child .cell {
+  // min-width: $table-first-td-width;
+  box-shadow: 12px 0px 8px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  left: 0;
+  z-index: 2;
+}
+
+:host-context(.checkbox-cell.checkbox-first-frozen) .cell {
+  min-width: initial;
+}
+
+:host {
+  display: contents;
+}
+
+:host-context(.checkbox-cell) {
+  .cell {
+    width: 1%;
+    padding-right: 0px;
+  }
+
+  & ~ :host:nth-child(2) .cell {
+    padding-left: 0px;
+  }
+}
+
+.dfm-header-cell-disabled {
+  color: var(--dfm-table-header-color-disabled);
+}
+
+.dfm-header-cell {
+  color: var(--dfm-table-header-color);
+}
+
+.dfm-header-cell:hover {
+  color: var(--dfm-table-header-color-hover);
+}

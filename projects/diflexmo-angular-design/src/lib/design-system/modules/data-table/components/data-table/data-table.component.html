@@ -1,24 +1,9 @@
 <table [class.first-frozen]="stickyFirstRow && isHorizontalScrollDisplayed" (resized)="checkTableSize($event)">
     <thead *ngIf="headers && headers.length > 0" [ngClass]="{'dfm-sticky-header': stickyHeader}">
         <tr>
-            <body-row-cell *ngFor="let header of headers" [ngClass]="{
-                    'pointer': header.isSortable, 
-                    'dfm-py-27': headerSize === 'lg', 
-                    'dfm-py-16': headerSize === 'md', 
-                    'dfm-py-13 dfm-text-main-700': headerSize === 'sm', 
-                    'dfm-header-cell-disabled': header.isDisabled, 
-                    'dfm-header-cell': !header.isDisabled }" class="dfm-px-24" (click)="sortClicked(header.title)">
-                <div class="d-flex dfm-gap-4">
-                    <div class="text-xs-bold">{{ header.title }}</div>
-                    <div *ngIf="header.tooltip" class="icon-16 dfm-text-main-400">
-                        <dfm-icon name="help-circle"></dfm-icon>
-                    </div>
-                    <div *ngIf="header.isSortable" class="icon-16">
-                        <dfm-icon *ngIf="header.sort && header.sort === 'Asc'" name="arrow-up"></dfm-icon>
-                        <dfm-icon *ngIf="header.sort && header.sort === 'Desc'" name="arrow-down"></dfm-icon>
-                    </div>
-                </div>
-            </body-row-cell>
+            <ng-container *ngFor="let header of headers">
+                <dfm-data-table-header-cell (click)="sortClicked(header.title)" [header]="header" [headerSize]="headerSize"></dfm-data-table-header-cell>
+            </ng-container>
         </tr>
     </thead>
 
