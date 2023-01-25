@@ -1,14 +1,17 @@
 @import 'mixins/base';
 
 :host {
+    @include border-radius;
+    
     display: table;
     border-collapse: collapse;
+    border: 1px solid var(--dfm-table-border);
 }
 
 .dfm-table-wrapper {
-    @include border-radius;
+    
 
-    border: 1px solid var(--dfm-table-border);
+    
     overflow: overlay;
     max-height: 100%;
 }
