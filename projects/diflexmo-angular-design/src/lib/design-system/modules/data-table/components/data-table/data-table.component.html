@@ -1,4 +1,8 @@
-<table [class.first-frozen]="stickyFirstRow && isHorizontalScrollDisplayed" (resized)="checkTableSize($event)">
+<table infiniteScroll
+    [fromRoot]="true"
+    (scrolled)="scrolled.emit()" 
+    [class.first-frozen]="stickyFirstRow && isHorizontalScrollDisplayed" 
+    (resized)="checkTableSize($event)">
     <thead *ngIf="headers && headers.length > 0" [ngClass]="{'dfm-sticky-header': stickyHeader}">
         <tr>
             <ng-container *ngFor="let header of headers">
