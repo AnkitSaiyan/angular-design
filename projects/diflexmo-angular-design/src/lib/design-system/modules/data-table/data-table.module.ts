@@ -5,7 +5,6 @@ import { NgModule } from '@angular/core';
 import { TableRowCellComponent } from './components/table-row-cell/table-row-cell.component';
 import { AngularResizeEventModule } from 'angular-resize-event';
 import { DataTableHeaderCellComponent } from './components/data-table-header-cell/data-table-header-cell.component';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -17,7 +16,6 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     CommonModule,
     IconModule,
     AngularResizeEventModule,
-    InfiniteScrollModule
   ],
   exports: [
     DataTableComponent,

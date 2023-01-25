@@ -47,8 +47,6 @@ export class DataTableComponent implements OnInit {
 
   @Output() rowClicked = new EventEmitter<TableRow>();
 
-  @Output() scrolled = new EventEmitter();
-
   public isHorizontalScrollDisplayed: boolean = false;
 
   public tableSizeChanged$ = new Subject<ResizedEvent>();
