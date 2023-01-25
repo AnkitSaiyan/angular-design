@@ -25,7 +25,7 @@
       <dfm-navigation-item *ngIf="isMessagesCounterShown" icon="message-text-square-02"></dfm-navigation-item>
     </div>
   </div>
-  <div class="dfm-content" #content (mousedown)="isMoreItemsSectionShown = false">
+  <div class="dfm-content" #content>
     <ng-content></ng-content>
   </div>
   <div class="dfm-navigation-bar-mobile" [style.grid-template-columns]="gridTemplateColumnsStyle">
