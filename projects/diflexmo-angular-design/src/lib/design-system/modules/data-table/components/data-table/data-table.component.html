@@ -1,5 +1,7 @@
 <table infiniteScroll
-    (scrolled)="scrolled.emit()" 
+    (scrolled)="scrolled.emit()"
+    [infiniteScrollDistance]="2"
+      [infiniteScrollThrottle]="50"
     [class.first-frozen]="stickyFirstRow && isHorizontalScrollDisplayed" 
     (resized)="checkTableSize($event)">
     <thead *ngIf="headers && headers.length > 0" [ngClass]="{'dfm-sticky-header': stickyHeader}">
