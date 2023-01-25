@@ -1,5 +1,4 @@
 <table infiniteScroll
-    [fromRoot]="true"
     (scrolled)="scrolled.emit()" 
     [class.first-frozen]="stickyFirstRow && isHorizontalScrollDisplayed" 
     (resized)="checkTableSize($event)">
