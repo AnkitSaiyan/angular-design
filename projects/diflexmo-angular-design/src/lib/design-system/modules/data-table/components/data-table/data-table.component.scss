@@ -3,13 +3,16 @@
 :host {
     @include border-radius;
 
-    display: table;
-    border-spacing: 0;
-    border-collapse: separate;  
+    display: block;
     border: 1px solid var(--dfm-table-border);
-    table-layout: fixed;
-    background-color: var(--dfm-table-even-cell-bg);
-    overflow: hidden;
+    overflow: auto;
+
+    table {
+        border-collapse: collapse;
+        table-layout: fixed;
+        width: 100%;
+        background-color: var(--dfm-table-even-cell-bg);
+    }
 }
 
 @media (max-width: 490px) {
