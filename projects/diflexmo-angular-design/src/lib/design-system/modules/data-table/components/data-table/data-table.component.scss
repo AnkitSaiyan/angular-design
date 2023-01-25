@@ -31,10 +31,6 @@
 
 .body-row {
 
-    &:first-child {
-        position: sticky;
-    }
-
     &:nth-child(even) {
         background-color: var(--dfm-table-even-cell-bg);
     }
