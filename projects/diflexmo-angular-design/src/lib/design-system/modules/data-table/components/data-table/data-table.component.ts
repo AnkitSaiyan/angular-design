@@ -53,6 +53,8 @@ export class DataTableComponent implements OnInit {
 
   public tableSizeChanged$ = new Subject<ResizedEvent>();
 
+  selector: string = ".main-panel";
+
   constructor(
     private elRef:ElementRef
   ) { }
