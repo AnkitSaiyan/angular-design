@@ -1,4 +1,4 @@
-<thead *ngIf="headers && headers.length > 0" class="dfm-header" [ngClass]="{'dfm-sticky-header': stickyHeader}">
+<thead *ngIf="headers && headers.length > 0" [ngClass]="{'dfm-sticky-header': stickyHeader}">
     <tr>
         <th *ngFor="let header of headers" [ngClass]="{
                     'pointer': header.isSortable, 

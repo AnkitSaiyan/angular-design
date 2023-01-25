@@ -15,6 +15,7 @@ export class DataTableComponent implements OnInit {
   @HostBinding('style.margin-right') marginRight = '0px';
   @HostBinding('style.margin-left') marginLeft = '0px';
   
+  private _collapseOnMobile: boolean = true;
   @Input() public set collapseOnMobile(value: boolean) {
     if (value) {
       this.marginRight = '-16px';

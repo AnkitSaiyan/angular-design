@@ -4,25 +4,10 @@
     @include border-radius;
 
     display: table;
-    border-collapse: collapse;
+    border-spacing: 0;
+    border-collapse: separate;  
     border: 1px solid var(--dfm-table-border);
     table-layout: fixed;
-
-    tr:first-child td:first-child {
-        @include border-radius;
-    }
-        
-    tr:first-child td:last-child {
-        @include border-radius;
-    }
-
-    tr:last-child td:first-child {
-        @include border-radius;
-    }
-        
-    tr:last-child td:last-child {
-        @include border-radius;
-    }
 }
 
 @media (max-width: 490px) {
