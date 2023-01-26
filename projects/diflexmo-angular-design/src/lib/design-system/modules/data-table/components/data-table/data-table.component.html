@@ -20,8 +20,8 @@
 
                 <ng-container *ngIf="showActions && actions && actions.length > 0">
                     <dfm-table-row-cell [maxWidthStyle]="'120px'" [propagateClick]="false">
-                        <ng-container *ngIf="!stickyActions || !isHorizontalScrollDisplayed">
-                            <ng-container *ngIf="actions.length < 3">
+                        <ng-container *ngIf="(!stickyActions || !isHorizontalScrollDisplayed) && actions.length < 4">
+                            <ng-container *ngIf="">
                                 <div class="d-flex dfm-gap-6">
                                     <ng-container *ngFor="let action of actions">
                                         <div class="icon-20 pointer table-actions">
@@ -32,15 +32,16 @@
                                 </div>
                             </ng-container>
                         </ng-container>
-                        <ng-container *ngIf="stickyActions && isHorizontalScrollDisplayed">
+                        <ng-container *ngIf="(stickyActions && isHorizontalScrollDisplayed) || actions.length >= 4">
                             <div class="dropdown">
-                                <dfm-button-icon data-bs-toggle="dropdown" aria-expanded="false" color="tertiary-gray" icon="dots-vertical"></dfm-button-icon>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <div *ngFor="let action of actions" class="option" (click)="actionClicked.emit(action)">
-                                      <dfm-icon [name]="action.icon" class="option-selected"></dfm-icon>
-                                      {{ action.label }}
-                                    </div>
-                                  </div>
+                                <dfm-button-icon data-bs-toggle="dropdown" aria-expanded="false" color="tertiary-gray"
+                                    icon="dots-vertical"></dfm-button-icon>
+                                <ul class="dropdown-menu">
+                                    <li class="pointer" *ngFor="let action of actions" (click)="actionClicked.emit(action)">
+                                        <dfm-icon [name]="action.icon" class="option-selected"></dfm-icon>
+                                        {{ action.label }}
+                                    </li>
+                                </ul>
                             </div>
                         </ng-container>
                     </dfm-table-row-cell>
