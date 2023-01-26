@@ -6,7 +6,7 @@
     #dropdown
   >
     <dfm-icon [name]="selectedChildIndex !== undefined ? children[selectedChildIndex].icon : icon" class="navigation-item-icon"></dfm-icon>
-    <span class="navigation-item-label d-inline-flex align-items-center dfm-gap-2" *ngIf="title"
+    <span class="navigation-item-label d-inline-flex align-items-center" *ngIf="title"
       >{{ selectedChildIndex !== undefined ? children[selectedChildIndex].title : title }} <dfm-icon name="chevron-down" class="arrow-icon"></dfm-icon
     ></span>
   </span>
