@@ -13,22 +13,14 @@ import { TableHeaderSize } from '../../types/table-header-size.type';
 })
 export class DataTableComponent implements OnInit {
 
-  @Input() data?: DfmDatasource;
-
-  @HostBinding('style.margin-right') marginRight = '0px';
-  @HostBinding('style.margin-left') marginLeft = '0px';
+  @HostBinding('class.dfm-table-wrapper-collapse') tableWrapperClass: boolean = true;
   
-  private _collapseOnMobile: boolean = true;
-  @Input() public set collapseOnMobile(value: boolean) {
-    if (value) {
-      this.marginRight = '-16px';
-      this.marginLeft = '-16px';
-    } else {
-      this.marginRight = '0px';
-      this.marginLeft = '0px';
-    }
+  @Input() public set removeMarginsOnMobile(value: boolean) {
+    this.tableWrapperClass = value
   }
 
+  @Input() data?: DfmDatasource;
+  
   @Input() rowSelectable: boolean = false;
 
   @Input() rowClickable: boolean = false;
