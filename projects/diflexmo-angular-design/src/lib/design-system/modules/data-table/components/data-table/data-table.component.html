@@ -20,7 +20,7 @@
 
                 <ng-container *ngIf="showActions && actions && actions.length > 0">
                     <dfm-table-row-cell [maxWidthStyle]="'120px'" [propagateClick]="false">
-                        <ng-container *ngIf="!stickyActions && !isHorizontalScrollDisplayed">
+                        <ng-container *ngIf="!stickyActions || !isHorizontalScrollDisplayed">
                             <ng-container *ngIf="actions.length < 3">
                                 <div class="d-flex dfm-gap-6">
                                     <ng-container *ngFor="let action of actions">
@@ -33,7 +33,15 @@
                             </ng-container>
                         </ng-container>
                         <ng-container *ngIf="stickyActions && isHorizontalScrollDisplayed">
-                            <dfm-button-icon color="tertiary-gray" icon="dots-vertical"></dfm-button-icon>
+                            <div class="dropdown">
+                                <dfm-button-icon data-bs-toggle="dropdown" aria-expanded="false" color="tertiary-gray" icon="dots-vertical"></dfm-button-icon>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <div *ngFor="let action of actions" class="option" (click)="actionClicked.emit(action)">
+                                      <dfm-icon [name]="action.icon" class="option-selected"></dfm-icon>
+                                      {{ action.label }}
+                                    </div>
+                                  </div>
+                            </div>
                         </ng-container>
                     </dfm-table-row-cell>
                 </ng-container>
