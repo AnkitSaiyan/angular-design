@@ -20,7 +20,7 @@
   max-width: 10vw;
   background-color: var(--dfm-table-even-cell-bg);
   white-space: nowrap;
-  overflow-x: hidden;
+  overflow: visible;
   text-overflow: ellipsis;
 }
 

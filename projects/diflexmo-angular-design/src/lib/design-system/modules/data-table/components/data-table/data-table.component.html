@@ -30,10 +30,10 @@
                             </div>
                         </ng-container>
                         <ng-container *ngIf="(stickyActions && isHorizontalScrollDisplayed) || actions.length >= 4">
-                            <div class="dfm-dropdown">
+                            <div class="dropdown">
                                 <dfm-button-icon data-bs-toggle="dropdown" aria-expanded="false" color="tertiary-gray"
                                     icon="dots-vertical"></dfm-button-icon>
-                                <ul class="dfm-dropdown-menu">
+                                <ul class="dropdown-menu">
                                     <li class="pointer" *ngFor="let action of actions"
                                         (click)="actionClicked.emit(action)">
                                         <!-- <dfm-icon [name]="action.icon" class="option-selected"></dfm-icon> -->
