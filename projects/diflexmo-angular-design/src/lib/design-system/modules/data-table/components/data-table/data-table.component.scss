@@ -67,3 +67,8 @@
 .dfm-dropdown {
     position: relative;
 }
+
+.dfm-dropdown-menu {
+    position: absolute;
+    inset: 0px auto auto 0px;
+}
