@@ -1,4 +1,4 @@
-import { Component, ContentChild, ElementRef, EventEmitter, HostBinding, Input, OnInit, Output, TemplateRef } from '@angular/core';
+import { Component, ContentChild, ElementRef, EventEmitter, HostBinding, Input, OnInit, Output, Renderer2, TemplateRef } from '@angular/core';
 import { ResizedEvent } from 'angular-resize-event';
 import { debounceTime, Subject } from 'rxjs';
 import { DfmDatasource } from '../../models/datasource.model';
@@ -13,10 +13,16 @@ import { TableHeaderSize } from '../../types/table-header-size.type';
 })
 export class DataTableComponent implements OnInit {
 
-  @HostBinding('class.dfm-table-wrapper-collapse') tableWrapperClass: boolean = true;
+  // @HostBinding('class.dfm-table-wrapper-collapse') tableWrapperClass: boolean = true;
   
+  private _removeMarginsOnMobile: boolean = true;
   @Input() public set removeMarginsOnMobile(value: boolean) {
-    this.tableWrapperClass = value
+    this._removeMarginsOnMobile = value;
+    if (this._removeMarginsOnMobile) {
+      this.renderer.addClass(this.elRef, 'dfm-table-wrapper-collapse');
+    } else {
+      this.renderer.removeClass(this.elRef, 'dfm-table-wrapper-collapse');
+    }
   }
 
   @Input() data?: DfmDatasource;
@@ -44,7 +50,8 @@ export class DataTableComponent implements OnInit {
   public tableSizeChanged$ = new Subject<ResizedEvent>();
 
   constructor(
-    private elRef:ElementRef
+    private elRef:ElementRef,
+    private renderer: Renderer2
   ) { }
 
   ngOnInit(): void {
@@ -56,6 +63,10 @@ export class DataTableComponent implements OnInit {
       const tableWidth = event.newRect.width;
       this.isHorizontalScrollDisplayed = tableWrapperWidth < tableWidth;
     });
+
+    if (this._removeMarginsOnMobile) {
+      this.renderer.addClass(this.elRef, 'dfm-table-wrapper-collapse');
+    }
   }
 
   public checkTableSize(event: ResizedEvent): void {
