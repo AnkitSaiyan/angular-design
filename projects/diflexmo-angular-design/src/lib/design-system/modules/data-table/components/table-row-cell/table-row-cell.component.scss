@@ -7,7 +7,23 @@
   position: sticky;
   left: 0;
   max-width: 33vw;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+
+:host-context(.last-frozen) :host:last-child .cell {
+  box-shadow: -12px 0px 8px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  right: 0;
+  z-index: 2;
+  max-width: 10vw;
+  background-color: var(--dfm-table-even-cell-bg);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 
 :host-context(.checkbox-cell) {
   .cell {

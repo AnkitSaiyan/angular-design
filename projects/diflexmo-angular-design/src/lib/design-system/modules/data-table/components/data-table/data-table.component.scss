@@ -49,3 +49,11 @@
 .body-row:hover {
     background-color: var(--dfm-table-cell-bg-hover);
 }
+
+.table-actions {
+    color: var(--dfm-table-list-actions-icon-color);
+}
+
+.table-actions:hover {
+    color: var(--dfm-table-list-actions-icon-hover-color);
+}

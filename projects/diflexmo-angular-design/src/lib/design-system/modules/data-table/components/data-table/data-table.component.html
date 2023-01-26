@@ -1,4 +1,5 @@
-<table [class.first-frozen]="stickyFirstRow && isHorizontalScrollDisplayed" (resized)="checkTableSize($event)">
+<table [class.last-frozen]="stickyActions && isHorizontalScrollDisplayed"
+    [class.first-frozen]="stickyFirstRow && isHorizontalScrollDisplayed" (resized)="checkTableSize($event)">
     <thead *ngIf="headers && headers.length > 0" [ngClass]="{'dfm-sticky-header': stickyHeader}">
         <tr>
             <ng-container *ngFor="let header of headers">
@@ -6,7 +7,8 @@
                     [headerSize]="headerSize"></dfm-data-table-header-cell>
             </ng-container>
             <ng-container *ngIf="showActions && actions && actions.length > 0">
-                <dfm-data-table-header-cell [header]="actionsHeader" [headerSize]="headerSize"></dfm-data-table-header-cell>
+                <dfm-data-table-header-cell [header]="actionsHeader"
+                    [headerSize]="headerSize"></dfm-data-table-header-cell>
             </ng-container>
         </tr>
     </thead>
@@ -18,14 +20,20 @@
 
                 <ng-container *ngIf="showActions && actions && actions.length > 0">
                     <dfm-table-row-cell [maxWidthStyle]="'120px'" [propagateClick]="false">
-                        <ng-container *ngIf="actions.length < 4">
-                            <div class="d-flex dfm-gap-6">
-                                <ng-container *ngFor="let action of actions">
-                                    <div class="icon-20">
-                                        <dfm-icon [name]="action.icon" (click)="actionClicked.emit(action)"></dfm-icon>
-                                    </div>
-                                </ng-container>
-                            </div>
+                        <ng-container *ngIf="!stickyActions && !isHorizontalScrollDisplayed">
+                            <ng-container *ngIf="actions.length < 3">
+                                <div class="d-flex dfm-gap-6">
+                                    <ng-container *ngFor="let action of actions">
+                                        <div class="icon-20 pointer table-actions">
+                                            <dfm-icon [name]="action.icon"
+                                                (click)="actionClicked.emit(action)"></dfm-icon>
+                                        </div>
+                                    </ng-container>
+                                </div>
+                            </ng-container>
+                        </ng-container>
+                        <ng-container *ngIf="stickyActions && isHorizontalScrollDisplayed">
+                            <dfm-button-icon icon="dots-vertical"></dfm-button-icon>
                         </ng-container>
                     </dfm-table-row-cell>
                 </ng-container>
