@@ -1,0 +1,29 @@
+<dfm-navigation-item [icon]="icon" [selected]="shouldBeRendered" data-bs-toggle="dropdown" data-bs-auto-close="outside" #dropdown>
+  <div class="dfm-navigation-item-events-count d-flex align-items-center justify-content-center pointer" *ngIf="events.length">
+    {{ events.length > maxEventsCountToShowInBadge ? maxEventsCountToShowInBadge : events.length }}
+  </div>
+</dfm-navigation-item>
+<div class="dropdown-menu dfm-navigation-item-dropdown-menu dfm-navigation-item-events-dropdown-menu">
+  <ng-container *ngIf="shouldBeRendered">
+    <ng-container *ngIf="events.length; else noEvents">
+      <div class="events-container d-flex flex-column">
+        <div class="events">
+          <ng-container *ngFor="let event of eventsToShow">
+            <dfm-navigation-item-event
+              [event]="event"
+              (eventDismissed)="eventsDismissed.emit([$event])"
+              class="event-option option d-block dfm-p-0"
+            ></dfm-navigation-item-event>
+          </ng-container>
+        </div>
+        <div class="event-buttons d-flex justify-content-end dfm-gap-18">
+          <dfm-button *ngIf="events.length !== eventsToShow.length" color="link-gray" size="sm" (click)="showAll()">Show all</dfm-button>
+          <dfm-button color="link-gray" size="sm" (click)="dismissAll()">Dismiss all</dfm-button>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #noEvents>
+      <div class="no-events option">No items to display</div>
+    </ng-template>
+  </ng-container>
+</div>

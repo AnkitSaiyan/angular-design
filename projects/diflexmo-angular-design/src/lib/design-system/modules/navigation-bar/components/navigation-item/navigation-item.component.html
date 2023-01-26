@@ -1,7 +1,14 @@
 <ng-container *ngIf="children.length; else withoutChildren">
-  <span class="dfm-navigation-item" [class.dfm-navigation-item-selected]="selectedChildIndex !== undefined" data-bs-toggle="dropdown">
+  <span
+    class="dfm-navigation-item"
+    [class.dfm-navigation-item-selected]="selectedChildIndex !== undefined || isDropdownOpened"
+    data-bs-toggle="dropdown"
+    #dropdown
+  >
     <dfm-icon [name]="selectedChildIndex !== undefined ? children[selectedChildIndex].icon : icon" class="navigation-item-icon"></dfm-icon>
-    <span class="navigation-item-label" *ngIf="title">{{ selectedChildIndex !== undefined ? children[selectedChildIndex].title : title }}</span>
+    <span class="navigation-item-label d-inline-flex align-items-center dfm-gap-2" *ngIf="title"
+      >{{ selectedChildIndex !== undefined ? children[selectedChildIndex].title : title }} <dfm-icon name="chevron-down" class="arrow-icon"></dfm-icon
+    ></span>
   </span>
   <div class="dropdown-menu dfm-navigation-item-dropdown-menu">
     <div
@@ -30,3 +37,5 @@
     <span class="navigation-item-label" *ngIf="title">{{ title }}</span>
   </a>
 </ng-template>
+
+<ng-content></ng-content>

@@ -1,5 +1,11 @@
 <ng-container *ngIf="currentTenant">
-  <div class="dfm-navigation-item dfm-navigation-item-dropdown dfm-navigation-item-tenant dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+  <div
+    class="dfm-navigation-item dfm-navigation-item-dropdown dfm-navigation-item-tenant dropdown"
+    [class.dfm-navigation-item-selected]="isDropdownOpened"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+    #dropdown
+  >
     {{ currentTenant.name }}
     <dfm-icon name="chevron-down" class="dropdown-icon"></dfm-icon>
   </div>

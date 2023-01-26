@@ -1,0 +1,55 @@
+.dfm-navigation-item-event {
+  padding: 12px 20px;
+
+  .date {
+    color: var(--dfm-navigation-item-event-date-color);
+  }
+
+  .message {
+    color: var(--dfm-navigation-item-event-message-color);
+  }
+
+  .details {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--dfm-navigation-item-event-details-bg);
+    border-radius: 8px;
+    margin: 0 -8px;
+
+    .details-content {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    &.is-expanded {
+      flex-direction: column;
+
+      .details-content {
+        text-overflow: initial;
+        overflow: initial;
+        white-space: initial;
+      }
+    }
+
+    .details-toggle-button {
+      text-decoration: 1px var(--dfm-navigation-item-event-message-color) underline;
+    }
+  }
+
+  .close-icon {
+    width: 18px;
+    height: 18px;
+    color: var(--dfm-navigation-item-event-close-icon-color);
+
+    &:hover {
+      color: var(--dfm-navigation-item-event-close-icon-color-hover)
+    }
+  }
+
+  &:hover {
+    .details {
+      background-color: var(--dfm-navigation-item-event-details-bg-hover);
+    }
+  }
+}

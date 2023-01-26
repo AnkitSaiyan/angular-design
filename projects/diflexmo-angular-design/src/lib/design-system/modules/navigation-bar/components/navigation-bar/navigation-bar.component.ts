@@ -3,6 +3,7 @@ import { NavigationStart, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SelectItem } from '../../../input-dropdown/models/select-item';
 import { NavigationItem } from '../../models/navigation-item';
+import { NavigationItemEvent } from '../../models/navigation-item-event';
 
 @Component({
   selector: 'dfm-navigation-bar',
@@ -24,9 +25,17 @@ export class NavigationBarComponent implements OnInit, AfterViewInit, OnDestroy 
 
   @Input() isMessagesCounterShown: boolean = false;
 
+  @Input() notifications: NavigationItemEvent[] = [];
+
+  @Input() messages: NavigationItemEvent[] = [];
+
   @Output() tenantChanged = new EventEmitter<string>();
 
-  @ViewChild('content') content!: ElementRef;
+  @Output() notificationsDismissed = new EventEmitter<string[]>();
+
+  @Output() messagesDismissed = new EventEmitter<string[]>();
+
+  @ViewChild('content') content?: ElementRef;
 
   public isCollapsed: boolean = false;
 
@@ -77,6 +86,6 @@ export class NavigationBarComponent implements OnInit, AfterViewInit, OnDestroy 
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
-    this.content.nativeElement.removeEventListener('click');
+    this.content?.nativeElement.removeEventListener('click');
   }
 }

@@ -57,6 +57,8 @@ export * from './lib/design-system/modules/navigation-bar/components/navigation-
 export * from './lib/design-system/modules/navigation-bar/components/navigation-item/navigation-item.component';
 export * from './lib/design-system/modules/navigation-bar/components/navigation-item-tenant/navigation-item-tenant.component';
 export * from './lib/design-system/modules/navigation-bar/models/navigation-item';
+export * from './lib/design-system/modules/navigation-bar/models/navigation-item-event';
+export * from './lib/design-system/modules/navigation-bar/types/navigation-item-event.type';
 
 export * from './lib/design-system/modules/notification/notification.module';
 export * from './lib/design-system/modules/notification/components/notification/notification.component';

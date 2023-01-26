@@ -21,8 +21,20 @@
         (tenantChanged)="tenantChanged.emit($event)"
       ></dfm-navigation-item-tenant>
       <dfm-navigation-item *ngIf="isProfileShown" icon="user-01" title="Profile"></dfm-navigation-item>
-      <dfm-navigation-item *ngIf="isNotificationsCounterShown" icon="bell-03"></dfm-navigation-item>
-      <dfm-navigation-item *ngIf="isMessagesCounterShown" icon="message-text-square-02"></dfm-navigation-item>
+      <ng-container *ngIf="isNotificationsCounterShown">
+        <dfm-navigation-item-events
+          icon="bell-03"
+          [events]="notifications"
+          (eventsDismissed)="notificationsDismissed.emit($event)"
+        ></dfm-navigation-item-events>
+      </ng-container>
+      <ng-container *ngIf="isMessagesCounterShown">
+        <dfm-navigation-item-events
+          icon="message-text-square-02"
+          [events]="messages"
+          (eventsDismissed)="messagesDismissed.emit($event)"
+        ></dfm-navigation-item-events>
+      </ng-container>
     </div>
   </div>
   <div class="dfm-content" #content>

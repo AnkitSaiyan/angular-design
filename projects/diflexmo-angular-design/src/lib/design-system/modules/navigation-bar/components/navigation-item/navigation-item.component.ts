@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { RouterLinkActive } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { NavigationItem } from '../../models/navigation-item';
@@ -27,7 +27,11 @@ export class NavigationItemComponent implements AfterViewInit, OnDestroy {
 
   @ViewChildren('childRouterLinkActive') childRouterLinksActive?: QueryList<RouterLinkActive>;
 
+  @ViewChild('dropdown') dropdown?: ElementRef;
+
   public selectedChildIndex?: number;
+
+  public isDropdownOpened: boolean = false;
 
   private subscriptions = new Subscription();
 
@@ -52,10 +56,17 @@ export class NavigationItemComponent implements AfterViewInit, OnDestroy {
         });
       });
     }
+
+    if (this.dropdown) {
+      this.dropdown.nativeElement.addEventListener('shown.bs.dropdown', () => (this.isDropdownOpened = true));
+      this.dropdown.nativeElement.addEventListener('hidden.bs.dropdown', () => (this.isDropdownOpened = false));
+    }
     this.subscriptions.add(subscription);
   }
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
+    this.dropdown?.nativeElement.removeEventListener('shown.bs.dropdown');
+    this.dropdown?.nativeElement.removeEventListener('hidden.bs.dropdown');
   }
 }

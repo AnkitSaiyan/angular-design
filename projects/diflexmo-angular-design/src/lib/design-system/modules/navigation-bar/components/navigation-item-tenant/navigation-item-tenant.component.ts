@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { SelectItem } from '../../../input-dropdown/models/select-item';
 
 @Component({
@@ -6,19 +6,33 @@ import { SelectItem } from '../../../input-dropdown/models/select-item';
   templateUrl: './navigation-item-tenant.component.html',
   styleUrls: ['./navigation-item-tenant.component.scss', '../navigation-item/navigation-item.component.scss'],
 })
-export class NavigationItemTenantComponent implements OnInit {
+export class NavigationItemTenantComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() public tenants: SelectItem[] = [];
 
   @Input() public currentTenantValue: string = '';
 
   @Output() public tenantChanged = new EventEmitter<string>();
 
-  public currentTenant: SelectItem | null = null;
+  @ViewChild('dropdown') dropdown?: ElementRef;
+
+  public currentTenant?: SelectItem;
+
+  public isDropdownOpened: boolean = false;
 
   ngOnInit(): void {
     if (this.currentTenantValue) {
-      this.currentTenant = this.tenants.find((t) => t.value === this.currentTenantValue) || null;
+      this.currentTenant = this.tenants.find((t) => t.value === this.currentTenantValue);
     }
+  }
+
+  ngAfterViewInit(): void {
+    this.dropdown?.nativeElement.addEventListener('shown.bs.dropdown', () => (this.isDropdownOpened = true));
+    this.dropdown?.nativeElement.addEventListener('hidden.bs.dropdown', () => (this.isDropdownOpened = false));
+  }
+
+  ngOnDestroy(): void {
+    this.dropdown?.nativeElement.removeEventListener('shown.bs.dropdown');
+    this.dropdown?.nativeElement.removeEventListener('hidden.bs.dropdown');
   }
 
   public select(tenant: SelectItem): void {
