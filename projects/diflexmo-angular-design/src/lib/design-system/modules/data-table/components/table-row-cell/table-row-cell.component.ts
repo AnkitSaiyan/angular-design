@@ -18,6 +18,8 @@ export class TableRowCellComponent implements AfterViewInit, OnDestroy {
 
   @Input() fullContent?: string;
 
+  @Input() collapsePaddingX: boolean = false;
+
   @ViewChild('tableCell', { read: ElementRef }) tableCell!: ElementRef;
 
   private tooltips: Tooltip[] = [];

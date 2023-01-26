@@ -31,11 +31,11 @@
 :host-context(.checkbox-cell) {
   .cell {
     width: 1%;
-    padding-right: 0px;
+    padding-right: 0px !important;
   }
 
   & ~ :host:nth-child(2) .cell {
-    padding-left: 0px;
+    padding-left: 0px !important;
   }
 }
 
@@ -47,7 +47,6 @@
     @include text-sm;
     @include weight-normal;
 
-    padding: 16px 24px;
     vertical-align: middle;
     background-color: inherit;
     white-space: nowrap;

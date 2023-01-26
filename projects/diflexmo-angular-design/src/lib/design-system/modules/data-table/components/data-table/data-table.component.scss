@@ -61,7 +61,11 @@
 .option-selected {
     width: 20px;
     height: 20px;
-    color: var(--dfm-input-dropdown-option-selected-color);
+    // color: var(--dfm-input-dropdown-option-selected-color);
+}
+
+.dfm-option:hover {
+    background-color: var(--dfm-main-200);
 }
 
 .dfm-dropdown {

@@ -1,3 +1,5 @@
-<td #tableCell class="cell" [style.max-width]="maxWidthStyle" [style.width]="widthStyle" (click)="propagateEvent($event)">
+<td #tableCell class="cell dfm-py16" 
+    [ngClass]="{'dfm-px-24': !collapsePaddingX, 'dfm-ps-6 dfm-pe-12': collapsePaddingX}"
+    [style.max-width]="maxWidthStyle" [style.width]="widthStyle" (click)="propagateEvent($event)">
     <ng-content></ng-content>
 </td>
