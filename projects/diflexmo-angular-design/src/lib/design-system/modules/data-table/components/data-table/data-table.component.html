@@ -19,7 +19,7 @@
                 <ng-container *ngTemplateOutlet="bodyRowTemplate; context: { $implicit: item }"></ng-container>
 
                 <ng-container *ngIf="showActions && actions && actions.length > 0">
-                    <dfm-table-row-cell [maxWidthStyle]="'120px'" [propagateClick]="false">
+                    <dfm-table-row-cell [maxWidthStyle]="'120px'" [propagateClick]="false" [collapsePaddingX]="true">
                         <ng-container *ngIf="(!stickyActions || !isHorizontalScrollDisplayed) && actions.length < 4">
                             <div class="d-flex dfm-gap-12">
                                 <ng-container *ngFor="let action of actions">
