@@ -13,6 +13,10 @@ $table-border-radius: 8px;
   left: 0;
   z-index: 2;
   max-width: 33vw;
+  background-color: var(--dfm-table-even-cell-bg);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 :host {
