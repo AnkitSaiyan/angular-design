@@ -26,13 +26,9 @@ export class NavigationItemEventsComponent implements AfterViewInit, OnChanges, 
   private areAllEventsShown: boolean = true;
 
   ngAfterViewInit(): void {
-    this.dropdown?.nativeElement.addEventListener('shown.bs.dropdown', () => {
-      this.shouldBeRendered = true;
-      this.areAllEventsShown = this.events.length <= this.maxEventsCount;
-      this.eventsToShow = this.getEvents();
-    });
+    this.dropdown?.nativeElement.addEventListener('shown.bs.dropdown', this.initializeDropdownMenu);
 
-    this.dropdown?.nativeElement.addEventListener('hidden.bs.dropdown', () => (this.shouldBeRendered = false));
+    this.dropdown?.nativeElement.addEventListener('hidden.bs.dropdown', this.destroyDropdownMenu);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -42,8 +38,8 @@ export class NavigationItemEventsComponent implements AfterViewInit, OnChanges, 
   }
 
   ngOnDestroy(): void {
-    this.dropdown?.nativeElement.removeEventListener('shown.bs.dropdown');
-    this.dropdown?.nativeElement.removeEventListener('hidden.bs.dropdown');
+    this.dropdown?.nativeElement.removeEventListener('shown.bs.dropdown', this.initializeDropdownMenu);
+    this.dropdown?.nativeElement.removeEventListener('hidden.bs.dropdown', this.destroyDropdownMenu);
   }
 
   dismissAll() {
@@ -58,5 +54,15 @@ export class NavigationItemEventsComponent implements AfterViewInit, OnChanges, 
 
   private getEvents() {
     return this.areAllEventsShown ? [...this.events] : this.events.slice(0, this.maxEventsCount);
+  }
+
+  private initializeDropdownMenu() {
+    this.shouldBeRendered = true;
+    this.areAllEventsShown = this.events.length <= this.maxEventsCount;
+    this.eventsToShow = this.getEvents();
+  }
+
+  private destroyDropdownMenu() {
+    this.shouldBeRendered = false;
   }
 }

@@ -58,15 +58,23 @@ export class NavigationItemComponent implements AfterViewInit, OnDestroy {
     }
 
     if (this.dropdown) {
-      this.dropdown.nativeElement.addEventListener('shown.bs.dropdown', () => (this.isDropdownOpened = true));
-      this.dropdown.nativeElement.addEventListener('hidden.bs.dropdown', () => (this.isDropdownOpened = false));
+      this.dropdown.nativeElement.addEventListener('shown.bs.dropdown', this.markDropdownAsOpened);
+      this.dropdown.nativeElement.addEventListener('hidden.bs.dropdown', this.markDropdownAsClosed);
     }
     this.subscriptions.add(subscription);
   }
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
-    this.dropdown?.nativeElement.removeEventListener('shown.bs.dropdown');
-    this.dropdown?.nativeElement.removeEventListener('hidden.bs.dropdown');
+    this.dropdown?.nativeElement.removeEventListener('shown.bs.dropdown', this.markDropdownAsOpened);
+    this.dropdown?.nativeElement.removeEventListener('hidden.bs.dropdown', this.markDropdownAsClosed);
+  }
+
+  private markDropdownAsOpened() {
+    this.isDropdownOpened = true;
+  }
+
+  private markDropdownAsClosed() {
+    this.isDropdownOpened = false;
   }
 }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { AngularResizeEventModule } from 'angular-resize-event';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { NavigationItemComponent } from './components/navigation-item/navigation-item.component';
 import { IconModule } from '../icon/icon.module';
@@ -18,7 +19,7 @@ import { NavigationItemEventsComponent } from './components/navigation-item-even
     NavigationItemEventComponent,
     NavigationItemEventsComponent,
   ],
-  imports: [CommonModule, IconModule, RouterModule, BadgeModule, ButtonModule],
+  imports: [CommonModule, IconModule, RouterModule, BadgeModule, ButtonModule, AngularResizeEventModule],
   exports: [NavigationBarComponent, NavigationItemComponent, NavigationItemTenantComponent],
 })
 export class NavigationBarModule {}
