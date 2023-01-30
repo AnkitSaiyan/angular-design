@@ -19,7 +19,8 @@
     "moment": "^2.29.4",
     "ngx-infinite-scroll": "^14.0.1",
     "rxjs": "^7.6.0",
-    "zone.js": "^0.11.8"
+    "zone.js": "^0.11.8",
+    "@ng-bootstrap/ng-bootstrap": "^13.1.1"
   },
   "dependencies": {
   },
@@ -29,8 +30,7 @@
     "@angular/cli": "^14.2.0",
     "@angular/compiler-cli": "^14.2.0",
     "@angular/core": "^14.2.0",
-    "@types/bootstrap": "^5.2.6",
-    "@ng-bootstrap/ng-bootstrap": "^13.1.1"
+    "@types/bootstrap": "^5.2.6"
   },
   "exports": {
     "./theming": {
