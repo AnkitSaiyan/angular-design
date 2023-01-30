@@ -26,9 +26,8 @@ export class NavigationItemEventsComponent implements AfterViewInit, OnChanges, 
   private areAllEventsShown: boolean = true;
 
   ngAfterViewInit(): void {
-    this.dropdown?.nativeElement.addEventListener('shown.bs.dropdown', this.initializeDropdownMenu);
-
-    this.dropdown?.nativeElement.addEventListener('hidden.bs.dropdown', this.destroyDropdownMenu);
+    this.dropdown?.nativeElement.addEventListener('shown.bs.dropdown', this.initializeDropdownMenu.bind(this));
+    this.dropdown?.nativeElement.addEventListener('hidden.bs.dropdown', this.destroyDropdownMenu.bind(this));
   }
 
   ngOnChanges(changes: SimpleChanges): void {

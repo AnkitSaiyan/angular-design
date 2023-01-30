@@ -72,7 +72,7 @@ export class NavigationBarComponent implements OnInit, AfterViewInit, OnDestroy 
   ngAfterViewInit(): void {
     if (this.content) {
       this.content.nativeElement.onscroll = (e: Event) => (this.isCollapsed = (e.target as HTMLElement).scrollTop > 64);
-      this.content.nativeElement.addEventListener('click', this.hideMoreItemsSection);
+      this.content.nativeElement.addEventListener('click', this.hideMoreItemsSection.bind(this));
     }
   }
 

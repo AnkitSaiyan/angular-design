@@ -26,8 +26,8 @@ export class NavigationItemTenantComponent implements OnInit, AfterViewInit, OnD
   }
 
   ngAfterViewInit(): void {
-    this.dropdown?.nativeElement.addEventListener('shown.bs.dropdown', this.markDropdownAsOpened);
-    this.dropdown?.nativeElement.addEventListener('hidden.bs.dropdown', this.markDropdownAsClosed);
+    this.dropdown?.nativeElement.addEventListener('shown.bs.dropdown', this.markDropdownAsOpened.bind(this));
+    this.dropdown?.nativeElement.addEventListener('hidden.bs.dropdown', this.markDropdownAsClosed.bind(this));
   }
 
   ngOnDestroy(): void {
