@@ -1,36 +1,38 @@
-<table [class.last-frozen]="stickyActions && isHorizontalScrollDisplayed"
-    [class.first-frozen]="stickyFirstRow && isHorizontalScrollDisplayed" (resized)="checkTableSize($event)">
-    <thead *ngIf="headers && headers.length > 0" [ngClass]="{'dfm-sticky-header': stickyHeader}">
-        <tr>
-            <ng-container *ngFor="let header of headers">
-                <dfm-data-table-header-cell (click)="sortClicked(header.title)" [header]="header"
-                    [headerSize]="headerSize"></dfm-data-table-header-cell>
-            </ng-container>
-            <ng-container *ngIf="showActions && actions && actions.length > 0">
-                <dfm-data-table-header-cell [header]="actionsHeader"
-                    [headerSize]="headerSize"></dfm-data-table-header-cell>
-            </ng-container>
-        </tr>
-    </thead>
+<table
+  [class.last-frozen]="stickyActions && isHorizontalScrollDisplayed"
+  [class.first-frozen]="stickyFirstRow && isHorizontalScrollDisplayed"
+  (resized)="checkTableSize($event)"
+>
+  <thead *ngIf="headers && headers.length > 0" [ngClass]="{ 'dfm-sticky-header': stickyHeader }">
+    <tr>
+      <ng-container *ngFor="let header of headers">
+        <dfm-data-table-header-cell (click)="sortClicked(header.title)" [header]="header" [headerSize]="headerSize"></dfm-data-table-header-cell>
+      </ng-container>
+      <ng-container *ngIf="showActions && actions && actions.length > 0">
+        <dfm-data-table-header-cell [header]="actionsHeader" [headerSize]="headerSize"></dfm-data-table-header-cell>
+      </ng-container>
+    </tr>
+  </thead>
 
-    <tbody>
-        <ng-container *ngIf="data && data.items && data.items.length > 0">
-            <tr *ngFor="let item of data.items" class="body-row" (click)="click(item)" [class.pointer]="rowClickable">
-                <ng-container *ngTemplateOutlet="bodyRowTemplate; context: { $implicit: item }"></ng-container>
+  <tbody>
+    <ng-container *ngIf="data && data.items && data.items.length > 0">
+      <tr *ngFor="let item of data.items" class="body-row" (click)="click(item)" [class.pointer]="rowClickable">
+        <ng-container *ngTemplateOutlet="bodyRowTemplate; context: { $implicit: item }"></ng-container>
 
-                <ng-container *ngIf="showActions && actions && actions.length > 0">
-                    <dfm-table-row-cell [maxWidthStyle]="'120px'" [propagateClick]="false" [collapsePaddingX]="true">
-                        <ng-container *ngIf="(!stickyActions || !isHorizontalScrollDisplayed) && actions.length < 4">
-                            <div class="d-flex dfm-gap-12">
-                                <ng-container *ngFor="let action of actions">
-                                    <div class="icon-20 pointer table-actions">
-                                        <dfm-icon [name]="action.icon" (click)="actionClicked.emit(action)"></dfm-icon>
-                                    </div>
-                                </ng-container>
-                            </div>
-                        </ng-container>
-                        <ng-container *ngIf="(stickyActions && isHorizontalScrollDisplayed) || actions.length >= 4">
-                            <div class="dropdown">
+        <ng-container *ngIf="showActions && actions && actions.length > 0">
+          <dfm-table-row-cell [maxWidthStyle]="'120px'" [propagateClick]="false" [collapsePaddingX]="true">
+            <ng-container *ngIf="(!stickyActions || !isHorizontalScrollDisplayed) && actions.length < 4">
+              <div class="d-flex dfm-gap-12">
+                <ng-container *ngFor="let action of actions">
+                  <div class="icon-20 pointer table-actions">
+                    <dfm-icon [name]="action.icon" (click)="actionClicked.emit(action)"></dfm-icon>
+                  </div>
+                </ng-container>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="(stickyActions && isHorizontalScrollDisplayed) || actions.length >= 4">
+              <dfm-dropdown-button [items]="actions"> </dfm-dropdown-button>
+              <!-- <div class="dropdown">
                                 <div class="icon-20 pointer table-actions" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
                                     <dfm-icon name="dots-vertical"></dfm-icon>
                                 </div>
@@ -44,11 +46,11 @@
                                         </div>
                                     </li>
                                 </ul>
-                            </div>
-                        </ng-container>
-                    </dfm-table-row-cell>
-                </ng-container>
-            </tr>
+                            </div> -->
+            </ng-container>
+          </dfm-table-row-cell>
         </ng-container>
-    </tbody>
+      </tr>
+    </ng-container>
+  </tbody>
 </table>
