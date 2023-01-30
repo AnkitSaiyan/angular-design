@@ -9,3 +9,15 @@
 .dropdown-toggle::after {
     display:none;
 }
+
+.dropdown-icon-button {
+    height: 35px;
+    width: 35px;
+    color: var(--dfm-btn-link-gray-color);
+    padding: 6px;
+}
+
+.dropdown-icon-button:hover {
+    color: $gray-modern-900;
+    background-color: $gray-modern-200;
+}
