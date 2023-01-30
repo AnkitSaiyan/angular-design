@@ -6,6 +6,8 @@ import { TableRowCellComponent } from './components/table-row-cell/table-row-cel
 import { AngularResizeEventModule } from 'angular-resize-event';
 import { DataTableHeaderCellComponent } from './components/data-table-header-cell/data-table-header-cell.component';
 import { ButtonModule } from '../button/button.module';
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { ButtonModule } from '../button/button.module';
     CommonModule,
     IconModule,
     AngularResizeEventModule,
-    ButtonModule
+    ButtonModule,
+    NgbDropdownModule
   ],
   exports: [
     DataTableComponent,

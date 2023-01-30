@@ -17,6 +17,7 @@ import { NavigationBarModule } from './modules/navigation-bar/navigation-bar.mod
 import { DirectivesModule } from './directives/directives.module';
 import { ClipboardModule } from './modules/clipboard/clipboard.module';
 import { DfmDataTableModule } from './modules/data-table/data-table.module';
+import { NgDfmDropdownModule } from './modules/dropdown/dropdown.module';
 
 @NgModule({
   imports: [
@@ -55,7 +56,8 @@ import { DfmDataTableModule } from './modules/data-table/data-table.module';
     NotificationModule,
     DirectivesModule,
     ClipboardModule,
-    DfmDataTableModule
+    DfmDataTableModule,
+    NgDfmDropdownModule
   ],
 })
 export class DesignSystemModule {}
