@@ -29,6 +29,10 @@ export class NavigationBarComponent implements OnInit, AfterViewInit, OnDestroy 
 
   @Input() messages: NavigationItemEvent[] = [];
 
+  @Input() logoPath?: string;
+
+  @Input() miniLogoPath?: string;
+
   @Output() tenantChanged = new EventEmitter<string>();
 
   @Output() notificationsDismissed = new EventEmitter<string[]>();
@@ -54,18 +58,6 @@ export class NavigationBarComponent implements OnInit, AfterViewInit, OnDestroy 
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    this.navigationItems.forEach((navigationItem) =>
-      navigationItem.isHiddenForMobile
-        ? this.mobileNavigationItemsToHide.push(navigationItem)
-        : this.mobileNavigationItemsToShow.push(navigationItem),
-    );
-
-    const gridColumnsCount = this.mobileNavigationItemsToHide.length
-      ? this.mobileNavigationItemsToShow.length + 1
-      : this.mobileNavigationItemsToHide.length;
-
-    this.gridTemplateColumnsStyle = `repeat(${gridColumnsCount}, 1fr)`;
-
     const subscription = this.router.events.subscribe((e) => {
       if (e instanceof NavigationStart) {
         this.isMoreItemsSectionShown = false;
@@ -73,19 +65,41 @@ export class NavigationBarComponent implements OnInit, AfterViewInit, OnDestroy 
     });
 
     this.subscriptions.add(subscription);
+
+    this.recalculateNavigationItemsDisplaying();
   }
 
   ngAfterViewInit(): void {
     if (this.content) {
       this.content.nativeElement.onscroll = (e: Event) => (this.isCollapsed = (e.target as HTMLElement).scrollTop > 64);
-      this.content.nativeElement.addEventListener('click', () => {
-        this.isMoreItemsSectionShown = false;
-      });
+      this.content.nativeElement.addEventListener('click', this.hideMoreItemsSection);
     }
   }
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
-    this.content?.nativeElement.removeEventListener('click');
+    this.content?.nativeElement.removeEventListener('click', this.hideMoreItemsSection);
+  }
+
+  recalculateNavigationItemsDisplaying() {
+    if (window.innerWidth <= 980 && window.innerWidth > 680) {
+      this.updateNavigationItems(4);
+    } else if (window.innerWidth <= 680 && window.innerWidth > 490) {
+      this.updateNavigationItems(3);
+    } else if (window.innerWidth <= 490) {
+      this.updateNavigationItems(2);
+    }
+  }
+
+  private hideMoreItemsSection() {
+    this.isMoreItemsSectionShown = false;
+  }
+
+  private updateNavigationItems(countToShow: number) {
+    const count = countToShow > this.navigationItems.length ? this.navigationItems.length : countToShow;
+    this.mobileNavigationItemsToShow = this.navigationItems.slice(0, count);
+    this.mobileNavigationItemsToHide = this.navigationItems.slice(count);
+
+    this.gridTemplateColumnsStyle = `repeat(${this.mobileNavigationItemsToHide.length ? count + 1 : count}, 1fr)`;
   }
 }

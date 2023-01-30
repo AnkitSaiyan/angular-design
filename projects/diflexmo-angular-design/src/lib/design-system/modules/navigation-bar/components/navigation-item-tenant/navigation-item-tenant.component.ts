@@ -26,13 +26,13 @@ export class NavigationItemTenantComponent implements OnInit, AfterViewInit, OnD
   }
 
   ngAfterViewInit(): void {
-    this.dropdown?.nativeElement.addEventListener('shown.bs.dropdown', () => (this.isDropdownOpened = true));
-    this.dropdown?.nativeElement.addEventListener('hidden.bs.dropdown', () => (this.isDropdownOpened = false));
+    this.dropdown?.nativeElement.addEventListener('shown.bs.dropdown', this.markDropdownAsOpened);
+    this.dropdown?.nativeElement.addEventListener('hidden.bs.dropdown', this.markDropdownAsClosed);
   }
 
   ngOnDestroy(): void {
-    this.dropdown?.nativeElement.removeEventListener('shown.bs.dropdown');
-    this.dropdown?.nativeElement.removeEventListener('hidden.bs.dropdown');
+    this.dropdown?.nativeElement.removeEventListener('shown.bs.dropdown', this.markDropdownAsOpened);
+    this.dropdown?.nativeElement.removeEventListener('hidden.bs.dropdown', this.markDropdownAsClosed);
   }
 
   public select(tenant: SelectItem): void {
@@ -43,5 +43,13 @@ export class NavigationItemTenantComponent implements OnInit, AfterViewInit, OnD
     this.currentTenantValue = tenant.value;
     this.currentTenant = tenant;
     this.tenantChanged.emit(this.currentTenantValue);
+  }
+
+  private markDropdownAsOpened() {
+    this.isDropdownOpened = true;
+  }
+
+  private markDropdownAsClosed() {
+    this.isDropdownOpened = false;
   }
 }
