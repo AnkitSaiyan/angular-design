@@ -11,6 +11,9 @@ import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     CommonModule,
     NgbDropdownModule
+  ],
+  exports: [
+    DropdownButtonComponent
   ]
 })
 export class NgDfmDropdownModule { }
