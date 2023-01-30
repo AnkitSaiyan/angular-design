@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DropdownButtonComponent } from './components/dropdown-button/dropdown-button.component';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { IconModule } from '../icon/icon.module';
 
 
 @NgModule({
@@ -10,7 +11,8 @@ import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   imports: [
     CommonModule,
-    NgbDropdownModule
+    NgbDropdownModule,
+    IconModule
   ],
   exports: [
     DropdownButtonComponent

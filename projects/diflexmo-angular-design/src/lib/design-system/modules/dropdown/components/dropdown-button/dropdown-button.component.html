@@ -1,7 +1,16 @@
 <div ngbDropdown>
-    <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
-        Toggle dropdown
-    </button>
+    <ng-container *ngIf="useEllipsis; else regularButton">
+        <div class="icon-20 pointer dropdown-ellipsis-icon">
+            <dfm-icon name="dots-vertical"></dfm-icon>
+        </div>
+    </ng-container>
+    <ng-template #regularButton>
+        <!-- TODO -->
+        <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+            Toggle dropdown
+        </button>
+    </ng-template>
+
     <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
         <button ngbDropdownItem>Action - 1</button>
         <button ngbDropdownItem>Another Action</button>
