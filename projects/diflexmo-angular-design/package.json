@@ -22,7 +22,6 @@
     "zone.js": "^0.11.8"
   },
   "dependencies": {
-    "@ng-bootstrap/ng-bootstrap": "^13.1.1"
   },
   "devDependencies": {
     "@angular-eslint/schematics": "14.2.0",
@@ -30,7 +29,8 @@
     "@angular/cli": "^14.2.0",
     "@angular/compiler-cli": "^14.2.0",
     "@angular/core": "^14.2.0",
-    "@types/bootstrap": "^5.2.6"
+    "@types/bootstrap": "^5.2.6",
+    "@ng-bootstrap/ng-bootstrap": "^13.1.1"
   },
   "exports": {
     "./theming": {
