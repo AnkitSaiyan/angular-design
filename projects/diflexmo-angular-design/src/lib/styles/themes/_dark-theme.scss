@@ -1,7 +1,7 @@
 @import './light-theme';
-@mixin dark {
-}
+
+@mixin lib-dark {}
 
 .dark {
-  @include light();
+  @include lib-light();
 }
