@@ -1,3 +1,5 @@
+import iconsConfig from './assets/jsons/icons-config.json';
+
 export * from './lib/design-system/design-system.module';
 export * from './lib/design-system/design-system.core.module';
 
@@ -102,3 +104,5 @@ export * from './lib/design-system/types/input-size.type';
 
 export * from './lib/design-system/modules/dropdown/dropdown.module';
 export * from './lib/design-system/modules/dropdown/components/dropdown-button/dropdown-button.component';
+
+export { iconsConfig };
