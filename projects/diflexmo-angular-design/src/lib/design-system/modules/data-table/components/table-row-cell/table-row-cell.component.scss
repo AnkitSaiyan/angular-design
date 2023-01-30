@@ -11,9 +11,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-:host-context(.last-frozen) :host:last-child .cell:hover {
-  z-index: 3;
-}
 
 :host-context(.last-frozen) :host:last-child .cell {
   box-shadow: -12px 0px 8px rgba(0, 0, 0, 0.05);

@@ -9,9 +9,13 @@
     <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle dropdown</button>
   </ng-template>
 
-  <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="d-flex flex-column">
-    <ng-container *ngFor="let item of items">
-      <dfm-icon ngbDropdownItem [name]="item.icon"></dfm-icon>
-    </ng-container>
+  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+    <div class="d-flex flex-column">
+      <ng-container *ngFor="let item of items">
+        <div class="icon-20 pointer">
+          <dfm-icon [name]="item.icon"></dfm-icon>
+        </div>
+      </ng-container>
+    </div>
   </div>
 </div>
