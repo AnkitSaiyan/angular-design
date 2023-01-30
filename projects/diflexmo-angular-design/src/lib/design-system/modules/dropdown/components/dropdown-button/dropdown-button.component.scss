@@ -5,3 +5,7 @@
 .dropdown-ellipsis-icon:hover {
     color: var(--dfm-table-list-actions-icon-hover-color);
 }
+
+.dropdown-toggle::after {
+    display:none;
+}
