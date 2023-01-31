@@ -40,7 +40,7 @@ export class TableRowCellComponent {
   //   this.tooltips.forEach((t) => t.dispose());
   // }
 
-  isEllipsisActive() {
+  public isEllipsisActive(): boolean {
     return this.tableCell.nativeElement.offsetWidth < this.tableCell.nativeElement.scrollWidth;
   }
 }
