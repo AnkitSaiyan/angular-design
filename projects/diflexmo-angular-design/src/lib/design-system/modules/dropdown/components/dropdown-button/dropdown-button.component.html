@@ -12,7 +12,7 @@
   <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dfm-dropdown-menu">
     <div class="d-flex flex-column">
       <ng-container *ngFor="let item of items">
-        <div class="dropdown-icon-button pointer" (click)="actionClicked.emit(item)">
+        <div class="dropdown-icon-button pointer" (click)="actionClicked.emit(item)" [ngbTooltip]="item.label">
           <dfm-icon [name]="item.icon"></dfm-icon>
         </div>
       </ng-container>
