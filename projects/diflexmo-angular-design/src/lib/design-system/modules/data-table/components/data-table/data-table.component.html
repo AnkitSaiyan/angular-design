@@ -5,6 +5,11 @@
 >
   <thead *ngIf="headers && headers.length > 0" [ngClass]="{ 'dfm-sticky-header': stickyHeader }">
     <tr>
+      <ng-container *ngIf="selectable">
+        <dfm-data-table-header-cell class="checkbox-cell" [class.checkbox-first-frozen]="isHorizontalScrollDisplayed">
+          <dfm-checkbox class="d-flex dfm-me-2" [ngModel]="areAllSelected" (click)="selectAllItems()" [disabled]="!data?.items.length"></dfm-checkbox>
+        </dfm-data-table-header-cell>
+      </ng-container>
       <ng-container *ngFor="let header of headers">
         <dfm-data-table-header-cell (click)="sortClicked(header.title)" [header]="header" [headerSize]="headerSize"></dfm-data-table-header-cell>
       </ng-container>
@@ -14,6 +19,11 @@
   <tbody>
     <ng-container *ngIf="data && data.items && data.items.length > 0">
       <tr *ngFor="let item of data.items" class="body-row" (click)="click(item)" [class.pointer]="rowClickable">
+        <ng-container *ngIf="selectable">
+          <dfm-table-row-cell [propagateClick]="false" class="checkbox-cell" [class.checkbox-first-frozen]="isHorizontalScrollDisplayed">
+            <dfm-checkbox class="d-flex dfm-me-2" [ngModel]="selectedItems[item.id]" (ngModelChange)="selectItem($event, item.id)"></dfm-checkbox>
+          </dfm-table-row-cell>
+        </ng-container>
         <ng-container *ngTemplateOutlet="bodyRowTemplate; context: { $implicit: item }"></ng-container>
 
         <ng-container *ngIf="showActions && actions && actions.length > 0">

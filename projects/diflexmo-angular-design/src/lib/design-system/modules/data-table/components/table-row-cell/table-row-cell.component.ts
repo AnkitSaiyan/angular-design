@@ -1,11 +1,11 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'dfm-table-row-cell',
   templateUrl: './table-row-cell.component.html',
   styleUrls: ['./table-row-cell.component.scss'],
 })
-export class TableRowCellComponent {
+export class TableRowCellComponent implements AfterViewInit {
   @Input() propagateClick: boolean = true;
 
   @Input() contentAlign: 'right' | 'left' = 'left';
@@ -20,6 +20,8 @@ export class TableRowCellComponent {
 
   @ViewChild('tableCell', { read: ElementRef }) tableCell!: ElementRef;
 
+  private isInit: boolean = false;
+
   public get hasFullContent(): boolean {
     if (this.fullContent) {
       return true;
@@ -28,15 +30,17 @@ export class TableRowCellComponent {
     return false;
   }
 
-  // private tooltips: Tooltip[] = [];
+  ngAfterViewInit(): void {
+    this.isInit = true;
+  }
 
-  // ngAfterViewInit(): void {
-  //   if (this.isEllipsisActive() && this.fullContent) {
-  //     const copyTooltip = new Tooltip(this.tableCell.nativeElement, { title: this.fullContent });
+  public canShowTooltip(): boolean {
+    if (!this.isInit) {
+      return false;
+    }
 
-  //     this.tooltips.push(copyTooltip);
-  //   }
-  // }
+    return !this.hasFullContent || !this.isEllipsisActive();
+  }
 
   public propagateEvent(clickEvent: any): void {
     if (!this.propagateClick) {

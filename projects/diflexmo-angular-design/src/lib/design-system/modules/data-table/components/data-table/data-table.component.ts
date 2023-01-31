@@ -67,6 +67,17 @@ export class DataTableComponent implements OnInit {
       const tableWidth = event.newRect.width;
       this.isHorizontalScrollDisplayed = tableWrapperWidth < tableWidth;
     });
+
+    if (this.selectable) {
+      this.data?.items.forEach((i) => (this.selectedItems[i.id] = false));
+    }
+
+    if (this.clearSelected$) {
+      this.clearSelected$.subscribe(() => {
+        this.selectedItems = {};
+        this.selected.emit([]);
+      });
+    }
   }
 
   public checkTableSize(event: ResizedEvent): void {

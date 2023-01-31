@@ -8,10 +8,11 @@ import { TableRowCellComponent } from './components/table-row-cell/table-row-cel
 import { DataTableHeaderCellComponent } from './components/data-table-header-cell/data-table-header-cell.component';
 import { ButtonModule } from '../button/button.module';
 import { NgDfmDropdownModule } from '../dropdown/dropdown.module';
+import { BaseCheckboxModule } from '../base-checkbox/base-checkbox.module';
 
 @NgModule({
   declarations: [DataTableComponent, TableRowCellComponent, DataTableHeaderCellComponent],
-  imports: [CommonModule, IconModule, AngularResizeEventModule, ButtonModule, NgDfmDropdownModule, NgbTooltipModule],
+  imports: [CommonModule, IconModule, AngularResizeEventModule, ButtonModule, NgDfmDropdownModule, NgbTooltipModule, BaseCheckboxModule],
   exports: [DataTableComponent, TableRowCellComponent],
 })
 export class DfmDataTableModule {}
