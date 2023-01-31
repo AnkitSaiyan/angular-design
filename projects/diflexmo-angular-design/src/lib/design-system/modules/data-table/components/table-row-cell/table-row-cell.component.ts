@@ -20,6 +20,14 @@ export class TableRowCellComponent {
 
   @ViewChild('tableCell', { read: ElementRef }) tableCell!: ElementRef;
 
+  public get hasFullContent(): boolean {
+    if (this.fullContent) {
+      return true;
+    }
+
+    return false;
+  }
+
   // private tooltips: Tooltip[] = [];
 
   // ngAfterViewInit(): void {
