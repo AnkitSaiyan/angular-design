@@ -4,17 +4,16 @@ import { Tooltip } from 'bootstrap';
 @Component({
   selector: 'dfm-table-row-cell',
   templateUrl: './table-row-cell.component.html',
-  styleUrls: ['./table-row-cell.component.scss']
+  styleUrls: ['./table-row-cell.component.scss'],
 })
 export class TableRowCellComponent implements AfterViewInit, OnDestroy {
-  
   @Input() propagateClick: boolean = true;
 
   @Input() contentAlign: 'right' | 'left' = 'left';
 
   @Input() widthStyle?: string;
 
-  @Input() maxWidthStyle?: string;
+  @Input() maxWidthStyle?: string = '40vw';
 
   @Input() fullContent?: string;
 
@@ -43,6 +42,6 @@ export class TableRowCellComponent implements AfterViewInit, OnDestroy {
   }
 
   isEllipsisActive() {
-    return (this.tableCell.nativeElement.offsetWidth < this.tableCell.nativeElement.scrollWidth);
+    return this.tableCell.nativeElement.offsetWidth < this.tableCell.nativeElement.scrollWidth;
   }
 }

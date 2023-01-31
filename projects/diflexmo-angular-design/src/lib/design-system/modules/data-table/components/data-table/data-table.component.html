@@ -20,18 +20,18 @@
         <ng-container *ngTemplateOutlet="bodyRowTemplate; context: { $implicit: item }"></ng-container>
 
         <ng-container *ngIf="showActions && actions && actions.length > 0">
-          <dfm-table-row-cell [maxWidthStyle]="'120px'" [propagateClick]="false" [collapsePaddingX]="true">
+          <dfm-table-row-cell [propagateClick]="false" [collapsePaddingX]="true">
             <ng-container *ngIf="(!stickyActions || !isHorizontalScrollDisplayed) && actions.length < 4">
               <div class="d-flex dfm-gap-12">
                 <ng-container *ngFor="let action of actions">
-                  <div class="icon-20 pointer table-actions">
+                  <div class="icon-20 pointer table-actions" [ngbTooltip]="action.label">
                     <dfm-icon [name]="action.icon" (click)="actionClicked.emit(action)"></dfm-icon>
                   </div>
                 </ng-container>
               </div>
             </ng-container>
             <ng-container *ngIf="(stickyActions && isHorizontalScrollDisplayed) || actions.length >= 4">
-              <dfm-dropdown-button [items]="actions"> </dfm-dropdown-button>
+              <dfm-dropdown-button [items]="actions" (actionClicked)="actionClicked.emit($event)"> </dfm-dropdown-button>
               <!-- <div class="dropdown">
                                 <div class="icon-20 pointer table-actions" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
                                     <dfm-icon name="dots-vertical"></dfm-icon>

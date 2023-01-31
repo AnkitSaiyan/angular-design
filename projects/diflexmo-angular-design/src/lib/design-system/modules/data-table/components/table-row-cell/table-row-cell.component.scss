@@ -6,7 +6,7 @@
   box-shadow: 12px 0px 8px rgba(0, 0, 0, 0.05);
   position: sticky;
   left: 0;
-  max-width: 33vw;
+  max-width: 33vw !important;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -17,11 +17,11 @@
   position: sticky;
   right: 0;
   z-index: 2;
-  max-width: 10vw;
-  background-color: var(--dfm-table-even-cell-bg);
+  background-color: inherit;
   white-space: nowrap;
   overflow: visible;
   text-overflow: ellipsis;
+  float: right;
 }
 
 

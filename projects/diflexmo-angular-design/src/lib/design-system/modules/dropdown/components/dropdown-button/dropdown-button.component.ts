@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DfmDropdownItem } from '../../models/dropdown-item.model';
 
 @Component({
@@ -10,4 +10,6 @@ export class DropdownButtonComponent {
   useEllipsis: boolean = true;
 
   @Input() items: Array<DfmDropdownItem> = [];
+
+  @Output() actionClicked = new EventEmitter<DfmDropdownItem>();
 }
