@@ -2,8 +2,7 @@
   <div class="dfm-navigation-bar" [class.dfm-navigation-bar-collapsed]="isCollapsed">
     <img [src]="logoPath ?? 'assets/images/logo.svg'" class="logo pointer" routerLink="/" />
     <img [src]="miniLogoPath ?? 'assets/images/logo-sm.svg'" class="logo-mobile pointer" routerLink="/" />
-
-    <div class="navigation-items">
+    <div class="navigation-items h-100">
       <dfm-navigation-item
         *ngFor="let item of navigationItems"
         [title]="item.title"
@@ -14,7 +13,7 @@
       >
       </dfm-navigation-item>
     </div>
-    <div class="profile-items">
+    <div class="profile-items h-100">
       <dfm-navigation-item-tenant
         *ngIf="isTenantDropdownShown && tenants.length && currentTenant"
         title="Tenants"
