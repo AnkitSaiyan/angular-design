@@ -24,20 +24,82 @@ Add the assets to angular.json assets section like this:
 
 Add DesignSystemCoreModule and DesignSystemModule to the imports of the app module
 
-## Migration to new navigation-bar component (v. 20231.26.23)
+## How Tos
+
+### How to override library variables
+
+Design library provides set of scss variables, which could be imported from `abstracts/variables` and used in components styles. These library variables can be overriden and it will change the way of how library components are rendered.
+In order to use base library theme, but change the primary color of it, please, go to `abstracts/_variables.scss` file and add new variable value:
+
+```
+$diflexmo-primary: {{your value}};
+```
+
+In order to use base library theme, but change some component variables (text color, background color of a component), please, go to `themes/{{your theme}}.scss` and add new value of css variable:
+
+```
+@mixin {{your theme mixing name}} {
+  --dfm-btn-primary-bg: {{your value}};
+
+  ... // your custom component variables go there
+}
+```
+
+This works only if the right way of style files import is implemented. As an example of the right import you can refer to this instruction:
+
+1. `abstracts/_variables.scss` file is created. It contains scss variables which you want to override.
+2. `styles/_vendors.scss` file is created. It includes css/scss files imports from 3d party libraries. The design library import is added there:
+
+```
+@import '../../node_modules/bootstrap/scss/functions';
+
+@import '../../node_modules/diflexmo-angular-design/lib/styles/styles.scss';
+
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+```
+
+3. The import of the custom `abstracts/_variables.scss` is added **before** the import of `styles/_vendors.scss` in `styles/styles.scss` file. This way the design library can take overriden scss variables and use them in themes:
+
+```
+@import './abstracts/variables';
+
+@import './vendors';
+
+@import './themes/theme';
+```
+
+## Migrations
+
+<details>
+<summary>Migration to new mobile navigation-bar (v. 20231.31.11)</summary>
+
+### Remove isHiddenForMobile from NavigationItem model
+
+From this version, navigation items will be hidden on mobile view dynamically, based on the width of device screen. Because of it, isHiddenForMobile parameter is not supported. If it was used, please, remove it from your NavigationItem objects creation.
+
+</details>
+
+<details>
+<summary>Migration to new navigation-bar component (v. 20231.26.23)</summary>
 
 ### Navigation items
- All navigation items should be passed as an array of objects to **[navigationItems]** input property of navigation-bar component. Please, update previous implementation, such as:
+
+All navigation items should be passed as an array of objects to **[navigationItems]** input property of navigation-bar component. Please, update previous implementation, such as:
+
 ```
 <dfm-navigation-item icon="home-03" title="Dashboard" routerLink="/" [exact]="true"></dfm-navigation-item>
 <dfm-navigation-item icon="speedometer-02" title="OVER-C Edge" routerLink="/overc-edge"></dfm-navigation-item>
 ```
+
 To this one:
+
 ```
 new NavigationItem('Dashboard', 'home-03', '/', true),
 new NavigationItem('OVER-C Edge', 'speedometer-02', '/overc-edge')
 ```
+
 If you need to pass child navigation items, you can specify them in NavigationItem object:
+
 ```
 new NavigationItem('Operations', 'dots-grid', undefined, false, true, [
       new NavigationItem('Problems', 'package-x', '/operations/problems'),
@@ -46,9 +108,12 @@ new NavigationItem('Operations', 'dots-grid', undefined, false, true, [
       new NavigationItem('Configurations', 'package-x', '/operations/configurations'),
     ])
 ```
+
 ### Tenants dropdown and profile items
- Tenant dropdown and profile items have been moved directly to navigation bar component. Please, remove them from the code and use **[tenants]**, **[currentTenant]**, **(tenantChanged)** properties of navigation-bar.
+
+Tenant dropdown and profile items have been moved directly to navigation bar component. Please, remove them from the code and use **[tenants]**, **[currentTenant]**, **(tenantChanged)** properties of navigation-bar.
 Before:
+
 ```
 <dfm-navigation-bar [content]="content">
   ...
@@ -63,9 +128,11 @@ Before:
   </ng-template>
 </dfm-navigation-bar>
 ```
+
 After
+
 ```
-<dfm-navigation-bar 
+<dfm-navigation-bar
     [tenants]="tenants"
     [currentTenant]="currentTenant"
     (tenantChanged)="changeTenant($event)"
@@ -74,17 +141,25 @@ After
 ```
 
 ### Content
+
 All content of page should go into navigation bar tag. The example of change:
 From
+
 ```
 <dfm-navigation-bar [content]="content"> ... <dfm-navigation-bar>
 <div class="content"></div>
 ```
+
 To
+
 ```
 <dfm-navigation-bar><div class="content"></div><dfm-navigation-bar>
 
 ```
+
 ### Messages and notifications
+
 New properties such as **[isTenantDropdownShown]**, **[isNotificationsCounterShown]**, **[isMessagesCounterShown]** have been added. Please, use them in order to configure what should be displayed in navigation bar
-To pass notifications and messages use **[notifications]** and **[messages]** properties. In order to dismiss notification or message, subscribe to **(notificationsDismissed)** and **(messagesDismissed)**. 
+To pass notifications and messages use **[notifications]** and **[messages]** properties. In order to dismiss notification or message, subscribe to **(notificationsDismissed)** and **(messagesDismissed)**.
+
+</details>
