@@ -1,12 +1,11 @@
-import { AfterViewInit, Component, ElementRef, Input, OnDestroy, ViewChild } from '@angular/core';
-import { Tooltip } from 'bootstrap';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'dfm-table-row-cell',
   templateUrl: './table-row-cell.component.html',
   styleUrls: ['./table-row-cell.component.scss'],
 })
-export class TableRowCellComponent implements AfterViewInit, OnDestroy {
+export class TableRowCellComponent {
   @Input() propagateClick: boolean = true;
 
   @Input() contentAlign: 'right' | 'left' = 'left';
@@ -21,15 +20,15 @@ export class TableRowCellComponent implements AfterViewInit, OnDestroy {
 
   @ViewChild('tableCell', { read: ElementRef }) tableCell!: ElementRef;
 
-  private tooltips: Tooltip[] = [];
+  // private tooltips: Tooltip[] = [];
 
-  ngAfterViewInit(): void {
-    if (this.isEllipsisActive() && this.fullContent) {
-      const copyTooltip = new Tooltip(this.tableCell.nativeElement, { title: this.fullContent });
+  // ngAfterViewInit(): void {
+  //   if (this.isEllipsisActive() && this.fullContent) {
+  //     const copyTooltip = new Tooltip(this.tableCell.nativeElement, { title: this.fullContent });
 
-      this.tooltips.push(copyTooltip);
-    }
-  }
+  //     this.tooltips.push(copyTooltip);
+  //   }
+  // }
 
   public propagateEvent(clickEvent: any): void {
     if (!this.propagateClick) {
@@ -37,9 +36,9 @@ export class TableRowCellComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  ngOnDestroy(): void {
-    this.tooltips.forEach((t) => t.dispose());
-  }
+  // ngOnDestroy(): void {
+  //   this.tooltips.forEach((t) => t.dispose());
+  // }
 
   isEllipsisActive() {
     return this.tableCell.nativeElement.offsetWidth < this.tableCell.nativeElement.scrollWidth;

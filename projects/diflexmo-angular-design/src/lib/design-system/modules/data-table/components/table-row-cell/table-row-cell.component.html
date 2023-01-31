@@ -1,5 +1,7 @@
 <td
   #tableCell
+  [ngbTooltip]="fullContent"
+  [disableTooltip]="fullContent && isEllipsisActive()"
   class="cell dfm-py-16"
   [ngClass]="{ 'dfm-px-24': !collapsePaddingX, 'dfm-px-12': collapsePaddingX }"
   [style.max-width]="maxWidthStyle"
