@@ -19,19 +19,6 @@ $table-border-radius: 8px;
   text-overflow: ellipsis;
 }
 
-:host-context(.last-frozen) :host:last-child .cell {
-  // min-width: $table-first-td-width;
-  box-shadow: -12px 0px 8px rgba(0, 0, 0, 0.05);
-  position: sticky;
-  right: 0;
-  z-index: 2;
-  max-width: 10vw;
-  background-color: var(--dfm-table-even-cell-bg);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 :host {
   display: contents;
 }
