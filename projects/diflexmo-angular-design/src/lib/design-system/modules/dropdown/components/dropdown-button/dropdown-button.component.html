@@ -9,7 +9,7 @@
     <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle dropdown</button>
   </ng-template>
 
-  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+  <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dfm-dropdown-menu">
     <div class="d-flex flex-column">
       <ng-container *ngFor="let item of items">
         <div class="dropdown-icon-button pointer" (click)="actionClicked.emit(item)">

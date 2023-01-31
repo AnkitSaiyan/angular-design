@@ -7,7 +7,7 @@
 }
 
 .dropdown-toggle::after {
-    display:none;
+    display: none;
 }
 
 .dropdown-icon-button {
@@ -20,4 +20,9 @@
 .dropdown-icon-button:hover {
     color: var(--dfm-main-800);
     background-color: var(--dfm-main-200);
+}
+
+.dfm-dropdown-menu {
+    min-width: none !important;
+    padding: 0px !important;
 }
