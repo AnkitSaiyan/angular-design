@@ -10,6 +10,15 @@
   align-items: center;
   justify-content: center;
   gap: 2px;
+
+  .navigation-item-label {
+    gap: 2px;
+
+    .arrow-icon {
+      width: 12px;
+      height: 12px;
+    }
+  }
 }
 
 .dfm-navigation-item {
@@ -68,15 +77,6 @@
 @media (max-width: 1440px) {
   .dfm-navigation-item {
     @include dfm-navigation-item-collapsed;
-
-    .navigation-item-label {
-      gap: 2px;
-  
-      .arrow-icon {
-        width: 12px;
-        height: 12px;
-      }
-    }
   }
 
   :host-context(.dfm-navigation-bar .profile-items) .navigation-item-label {
