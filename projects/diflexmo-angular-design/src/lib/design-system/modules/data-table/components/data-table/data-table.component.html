@@ -8,9 +8,6 @@
       <ng-container *ngFor="let header of headers">
         <dfm-data-table-header-cell (click)="sortClicked(header.title)" [header]="header" [headerSize]="headerSize"></dfm-data-table-header-cell>
       </ng-container>
-      <ng-container *ngIf="showActions && actions && actions.length > 0">
-        <dfm-data-table-header-cell [header]="actionsHeader" [headerSize]="headerSize"></dfm-data-table-header-cell>
-      </ng-container>
     </tr>
   </thead>
 

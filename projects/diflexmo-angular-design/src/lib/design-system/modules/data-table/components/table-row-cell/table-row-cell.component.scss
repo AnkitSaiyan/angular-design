@@ -13,7 +13,7 @@
 }
 
 :host-context(.last-frozen) :host:last-child .cell {
-  box-shadow: -12px 0px 8px rgba(0, 0, 0, 0.05);
+  // box-shadow: -12px 0px 8px rgba(0, 0, 0, 0.05);
   position: sticky;
   right: 0;
   z-index: 2;

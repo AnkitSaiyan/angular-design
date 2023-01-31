@@ -1,4 +1,4 @@
-import { Component, ContentChild, ElementRef, EventEmitter, HostBinding, Input, OnInit, Output, Renderer2, TemplateRef } from '@angular/core';
+import { Component, ContentChild, ElementRef, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { ResizedEvent } from 'angular-resize-event';
 import { debounceTime, Subject } from 'rxjs';
 import { DfmDatasource } from '../../models/datasource.model';
@@ -10,24 +10,11 @@ import { TableHeaderSize } from '../../types/table-header-size.type';
 @Component({
   selector: 'dfm-data-table',
   templateUrl: './data-table.component.html',
-  styleUrls: ['./data-table.component.scss']
+  styleUrls: ['./data-table.component.scss'],
 })
 export class DataTableComponent implements OnInit {
-
-  // @HostBinding('class.dfm-table-wrapper-collapse') tableWrapperClass: boolean = true;
-  
-  // private _removeMarginsOnMobile: boolean = true;
-  // @Input() public set removeMarginsOnMobile(value: boolean) {
-  //   this._removeMarginsOnMobile = value;
-  //   if (this._removeMarginsOnMobile) {
-  //     this.renderer.addClass(this.elRef, 'dfm-table-wrapper-collapse');
-  //   } else {
-  //     this.renderer.removeClass(this.elRef, 'dfm-table-wrapper-collapse');
-  //   }
-  // }
-
   @Input() data?: DfmDatasource;
-  
+
   @Input() rowSelectable: boolean = false;
 
   @Input() rowClickable: boolean = false;
@@ -46,6 +33,10 @@ export class DataTableComponent implements OnInit {
 
   @Input() headerSize: TableHeaderSize = 'lg';
 
+  @Input() selectable: boolean = false;
+
+  @Input() clearSelected$?: Subject<void> | null;
+
   @ContentChild('bodyRowTemplate') bodyRowTemplate!: TemplateRef<any>;
 
   @Output() sorted = new EventEmitter<DfmTableHeader>();
@@ -54,21 +45,24 @@ export class DataTableComponent implements OnInit {
 
   @Output() actionClicked = new EventEmitter<DfmTableAction>();
 
+  @Output() selected = new EventEmitter<any[]>();
+
   public isHorizontalScrollDisplayed: boolean = false;
 
   public tableSizeChanged$ = new Subject<ResizedEvent>();
 
-  public actionsHeader: DfmTableHeader = {id: 'dfm-actions', title: ''};
+  public actionsHeader: DfmTableHeader = { id: 'dfm-actions', title: '' };
 
-  constructor(
-    private elRef:ElementRef,
-  ) { }
+  public selectedItems: { [key: string | number]: boolean } = {};
+
+  public get areAllSelected() {
+    return this.data?.items.length && Object.values(this.selectedItems).filter((v) => v).length === this.data?.items.length;
+  }
+
+  constructor(private elRef: ElementRef) {}
 
   ngOnInit(): void {
-    this.tableSizeChanged$
-      .pipe(
-        debounceTime(100)
-      ).subscribe((event: ResizedEvent) => {
+    this.tableSizeChanged$.pipe(debounceTime(100)).subscribe((event: ResizedEvent) => {
       const tableWrapperWidth = this.elRef.nativeElement.offsetWidth;
       const tableWidth = event.newRect.width;
       this.isHorizontalScrollDisplayed = tableWrapperWidth < tableWidth;
@@ -80,12 +74,15 @@ export class DataTableComponent implements OnInit {
   }
 
   public sortClicked(headerTitle: string): void {
-    const header = this.headers.find(h => h.title === headerTitle);
+    const header = this.headers.find((h) => h.title === headerTitle);
     if (!header || !header.isSortable) {
       return;
     }
 
-    this.headers.filter(t => t.title !== headerTitle).filter(h => h.isSortable).forEach(v => v.sort = 'None');
+    this.headers
+      .filter((t) => t.title !== headerTitle)
+      .filter((h) => h.isSortable)
+      .forEach((v) => (v.sort = 'None'));
 
     header.sort = header.sort === 'Asc' || header.sort === 'None' ? 'Desc' : 'Asc';
     this.sorted.emit(header);
@@ -93,5 +90,28 @@ export class DataTableComponent implements OnInit {
 
   public click(item: TableRow): void {
     this.rowClicked.emit(item);
+  }
+
+  selectItem(selected: boolean, id: string) {
+    this.selectedItems[id] = selected;
+
+    const ids = Object.entries(this.selectedItems)
+      .filter(([, value]) => value)
+      .map(([key]) => key);
+
+    this.selected.emit(ids);
+  }
+
+  selectAllItems() {
+    if (!this.areAllSelected) {
+      const ids = this.data?.items.map((i) => {
+        this.selectedItems[i.id] = true;
+        return i.id;
+      });
+      this.selected.emit(ids);
+    } else {
+      this.selectedItems = {};
+      this.selected.emit([]);
+    }
   }
 }
