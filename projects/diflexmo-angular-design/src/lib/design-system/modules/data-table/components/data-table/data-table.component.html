@@ -11,7 +11,7 @@
             class="d-flex dfm-me-2"
             [ngModel]="areAllSelected"
             (click)="selectAllItems()"
-            [disabled]="!data || !data?.items.length"
+            [disabled]="!data || !data?.items || !data?.items?.length"
           ></dfm-checkbox>
         </dfm-data-table-header-cell>
       </ng-container>

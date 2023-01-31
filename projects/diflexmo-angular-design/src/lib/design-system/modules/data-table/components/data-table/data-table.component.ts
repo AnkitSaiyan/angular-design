@@ -103,7 +103,7 @@ export class DataTableComponent implements OnInit {
     this.rowClicked.emit(item);
   }
 
-  selectItem(selected: boolean, id: string) {
+  selectItem(selected: boolean, id: string | number) {
     this.selectedItems[id] = selected;
 
     const ids = Object.entries(this.selectedItems)
