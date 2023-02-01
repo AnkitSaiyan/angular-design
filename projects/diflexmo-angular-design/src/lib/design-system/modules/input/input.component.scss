@@ -149,3 +149,7 @@ input[type='number'] {
   @include weight-medium;
   height: 36px;
 }
+
+.dfm-invalid {
+  border-color: var(--dfm-danger-300) !important;
+}

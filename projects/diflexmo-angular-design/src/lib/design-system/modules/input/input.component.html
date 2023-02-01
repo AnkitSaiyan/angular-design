@@ -4,7 +4,7 @@
   <input
     [type]="type"
     class="dfm-input dfm-input-{{ size }}"
-    [ngClass]="{ 'hint-control': hint, 'is-invalid': (control && control.touched && !control.valid) || isInvalid, 'leading-icon-control': icon }"
+    [ngClass]="{ 'hint-control': hint, 'dfm-invalid': (control && control.touched && !control.valid) || isInvalid, 'leading-icon-control': icon }"
     [(ngModel)]="value"
     (ngModelChange)="onValueChanged($event)"
     [placeholder]="placeholder"
