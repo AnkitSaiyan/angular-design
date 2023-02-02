@@ -172,21 +172,34 @@ Selector: dfm-data-table
 
 ### INPUTS
 data: Of type dfmDataSource, contains items which will contain the actual table data
+
 selectable: boolean, when true will add a column with a checkbox at the beginning of the table. Default= false
+
 rowClickable: boolean, when true the data table will report when a row has been clicked and change the mouse to a pointer. Default= false
+
 headers: an array of DfmTableHeader, to pass the title for each column, if the column can be sortable and if a tooltip should be displayed
+
 actions: an array of DfmTableAction, this will add a column at the end of the table with a list of clickable icons
+
 showActions: boolean, when true will show the actions column if any actions were passed to the table. Default= true
+
 stickyActions: boolean, when true will always show the actions column on the write when the table is horizontally scrollable. Default= true
+
 stickyHeader: boolean, when true will always show the header row when table is vertically scrollable. Default= true
+
 stickyFirstRow: boolean, when true will always the first row of the table when it is horizontally scrollable. Default= true
+
 headerSze: 'lg' | 'md' | 'sm', size of the header. Default= 'lg'
+
 clearSelected$: subject, when passing any value to the subject the table will set all checkboxes to false in the first row when **[rowSelectable]** is set to true
 
 ### OUTPUTS
 sorted: the datatable will report back which column the user wishes to sort
+
 rowClicked: report of which row was clicked when **[rowClickable]** was set to true
+
 actionClicked: report of which action icon was clicked when **[showActions]** was set to true and at least one item was **[actions]**
+
 selected: report which row had its checkbox value changed
 
 ### MIGRATING FROM DFM-TABLE
