@@ -163,3 +163,35 @@ New properties such as **[isTenantDropdownShown]**, **[isNotificationsCounterSho
 To pass notifications and messages use **[notifications]** and **[messages]** properties. In order to dismiss notification or message, subscribe to **(notificationsDismissed)** and **(messagesDismissed)**.
 
 </details>
+<details>
+<summary>Data table documentation (v20231.31.13+)</summary>
+
+### Dfm Data table
+
+Selector: dfm-data-table
+
+### INPUTS
+data: Of type dfmDataSource, contains items which will contain the actual table data
+selectable: boolean, when true will add a column with a checkbox at the beginning of the table. Default= false
+rowClickable: boolean, when true the data table will report when a row has been clicked and change the mouse to a pointer. Default= false
+headers: an array of DfmTableHeader, to pass the title for each column, if the column can be sortable and if a tooltip should be displayed
+actions: an array of DfmTableAction, this will add a column at the end of the table with a list of clickable icons
+showActions: boolean, when true will show the actions column if any actions were passed to the table. Default= true
+stickyActions: boolean, when true will always show the actions column on the write when the table is horizontally scrollable. Default= true
+stickyHeader: boolean, when true will always show the header row when table is vertically scrollable. Default= true
+stickyFirstRow: boolean, when true will always the first row of the table when it is horizontally scrollable. Default= true
+headerSze: 'lg' | 'md' | 'sm', size of the header. Default= 'lg'
+clearSelected$: subject, when passing any value to the subject the table will set all checkboxes to false in the first row when **[rowSelectable]** is set to true
+
+### OUTPUTS
+sorted: the datatable will report back which column the user wishes to sort
+rowClicked: report of which row was clicked when **[rowClickable]** was set to true
+actionClicked: report of which action icon was clicked when **[showActions]** was set to true and at least one item was **[actions]**
+selected: report which row had its checkbox value changed
+
+### MIGRATING FROM DFM-TABLE
+To migrate from the old dfm-table, change the selector to dfm-data-table then remove the ng-template containing the **<table-header-cell>** tags and pass an array to the **[header]** parameter to show the header row, the items in the array need at least 'id' and 'label' (label will be shown in the row). After this change all **<table-body-cell>** to **<table-row-cell>**. 
+
+### TRUNCATING DATA IN CELLS
+To have the table truncate data in cells, you have to set the max width of the cell by the using the **[maxWidthStyle]** parameter on **<table-row-cell>**, which takes a css value as input (ie. '120px', or '20vw'). To automatically add a tooltip when a cell is truncated, add the value to appear in the tooltip in the **[fullContent]** parameter. Please be aware that when **[stickyFirstRow]** on the data table is set to true and the table is horizontally scrollable, the maxwidth of that row will always be 33vw, no matter what value is passed in **[maxWidthStyle]**.
+</details>
