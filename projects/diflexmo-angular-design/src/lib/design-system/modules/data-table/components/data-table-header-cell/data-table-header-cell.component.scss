@@ -41,6 +41,7 @@ $table-border-radius: 8px;
 .dfm-header-cell {
   border-bottom: 1px solid var(--dfm-table-border);
   color: var(--dfm-table-header-color);
+  vertical-align: middle;
 }
 
 .dfm-header-cell:hover {
