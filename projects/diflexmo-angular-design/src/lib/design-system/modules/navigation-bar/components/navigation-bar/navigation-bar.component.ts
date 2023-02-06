@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { SelectItem } from '../../../input-dropdown/models/select-item';
 import { NavigationItem } from '../../models/navigation-item';
 import { NavigationItemEvent } from '../../models/navigation-item-event';
+import { NavigationProfileData } from '../../models/navigation-profile-data';
 
 @Component({
   selector: 'dfm-navigation-bar',
@@ -33,11 +34,15 @@ export class NavigationBarComponent implements OnInit, AfterViewInit, OnDestroy 
 
   @Input() miniLogoPath?: string;
 
+  @Input() profileData?: NavigationProfileData;
+
   @Output() tenantChanged = new EventEmitter<string>();
 
   @Output() notificationsDismissed = new EventEmitter<string[]>();
 
   @Output() messagesDismissed = new EventEmitter<string[]>();
+
+  @Output() logout = new EventEmitter();
 
   @ViewChild('content') content?: ElementRef;
 

@@ -1,25 +1,44 @@
-<div class="dfm-navigation-item-profile">
-  <dfm-navigation-item-tenant
-    [tenants]="tenants"
-    [currentTenantValue]="currentTenantValue"
-    (tenantChanged)="tenantChanged.emit($event)"
-  ></dfm-navigation-item-tenant>
-  <dfm-navigation-item icon="user-01" [title]="title"></dfm-navigation-item>
-</div>
+<ng-container *ngIf="profileData">
+  <dfm-navigation-item
+    icon="user-01"
+    title="Profile"
+    data-bs-toggle="dropdown"
+    data-bs-auto-close="outside"
+    aria-expanded="false"
+    [selected]="isDropdownOpened"
+    #dropdown
+  ></dfm-navigation-item>
 
-<div class="dfm-navigation-item-profile-mobile">
-  <div class="dfm-navigation-item dfm-navigation-item-dropdown dropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-    <dfm-icon name="user-01" class="navigation-item-icon"></dfm-icon>
-  </div>
-
-  <div class="dropdown-menu dropdown-menu-end dfm-navigation-item-dropdown-menu">
-    <div class="option tenant-option">
-      <dfm-navigation-item-tenant
-        class="w-100"
-        [tenants]="tenants"
-        [currentTenantValue]="currentTenantValue"
-        (tenantChanged)="tenantChanged.emit($event)"
-      ></dfm-navigation-item-tenant>
+  <div class="dropdown-menu dfm-profile-dropdown-menu">
+    <div class="profile-header dfm-p-16 d-flex flex-row dfm-gap-12">
+      <div class="avatar-container">
+        <img *ngIf="profileData.user.avatar" class="avatar" [src]="'data:image/png;base64,' + profileData.user.avatar" />
+      </div>
+      <div class="d-flex flex-column">
+        <span class="name text-md-medium">{{ profileData.user.name }}</span>
+        <span class="email text-sm">{{ profileData.user.email }} </span>
+      </div>
+    </div>
+    <hr class="dfm-mx-16 dfm-my-0" />
+    <div class="d-flex flex-column dfm-px-16 dfm-py-8">
+      <a
+        [href]="link.url"
+        [target]="link.openInNewTab ? '_blank' : '_self'"
+        class="link d-flex align-items-center dfm-py-12 dfm-gap-8 pointer text-sm-medium"
+        *ngFor="let link of profileData.links"
+      >
+        <dfm-icon [name]="link.icon" class="icon-20"></dfm-icon>
+        {{ link.title }}
+        <dfm-icon *ngIf="link.openInNewTab" class="icon-12" name="link-external-01"></dfm-icon
+      ></a>
+    </div>
+    <hr class="dfm-mx-16 dfm-my-0" />
+    <div class="d-flex flex-column dfm-p-16 dfm-gap-8 align-items-end">
+      <div class="d-flex dfm-gap-8 w-100">
+        <dfm-button leadingIcon="settings-01" color="secondary-gray" size="md" class="w-100">Settings</dfm-button>
+        <dfm-button leadingIcon="log-out-04" color="secondary-gray" size="md" class="w-100" (click)="logout.emit()">Log out</dfm-button>
+      </div>
+      <span class="text-xs">Powered by Diflexmo</span>
     </div>
   </div>
-</div>
+</ng-container>

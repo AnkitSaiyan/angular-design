@@ -194,6 +194,7 @@ $diflexmo-button-sizes: (
   @include weight-medium;
 
   outline: none;
+  width: 100%;
 }
 
 @each $key, $val in $diflexmo-buttons {
@@ -255,11 +256,5 @@ $diflexmo-button-sizes: (
       border-style: map.get($val, border-style);
       border-color: var(map.get($val, border-disabled));
     }
-  }
-}
-
-@media (max-width: 680px) {
-  .dfm-btn {
-    width: 100%;
   }
 }
