@@ -225,6 +225,10 @@
       "iconPath": "/assets/icons/line-chart-up-01.svg"
     },
     {
+      "iconName": "link-external-01",
+      "iconPath": "/assets/icons/link-external-01.svg"
+    },
+    {
       "iconName": "list",
       "iconPath": "/assets/icons/list.svg"
     },

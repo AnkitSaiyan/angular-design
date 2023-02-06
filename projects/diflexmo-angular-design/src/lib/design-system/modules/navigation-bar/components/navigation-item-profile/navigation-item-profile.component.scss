@@ -1,21 +1,32 @@
-.dfm-navigation-item-profile {
-  display: flex;
-}
+.dfm-profile-dropdown-menu {
+  padding: 0;
 
-.dfm-navigation-item-profile-mobile {
-  display: none;
-}
+  .avatar-container {
+    width: 50px;
+    height: 50px;
+    background-color: lightgray;
+    border-radius: 50%;
 
-@media (max-width: 960px) {
-  .dfm-navigation-item-profile {
-    display: none;
+    .avatar {
+      width: 50px;
+      height: 50px;
+    }
   }
 
-  .dfm-navigation-item-profile-mobile {
-    display: flex;
+  .name {
+    color: var(--dfm-navigation-item-profile-user-name-color);
+  }
 
-    .dfm-navigation-item-dropdown-menu .tenant-option {
-      padding: 0;
+  .email {
+    color: var(--dfm-navigation-item-profile-user-email-color)
+  }
+
+  .link {
+    text-decoration: none;
+    color: var(--dfm-navigation-item-profile-link-color);
+
+    &:hover {
+      color: var(--dfm-navigation-item-profile-link-color-hover);
     }
   }
 }

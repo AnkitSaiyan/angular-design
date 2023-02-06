@@ -10,6 +10,7 @@ import { NavigationItemEventComponent } from './components/navigation-item-event
 import { BadgeModule } from '../badge/badge.module';
 import { ButtonModule } from '../button/button.module';
 import { NavigationItemEventsComponent } from './components/navigation-item-events/navigation-item-events.component';
+import { NavigationItemProfileComponent } from './components/navigation-item-profile/navigation-item-profile.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { NavigationItemEventsComponent } from './components/navigation-item-even
     NavigationItemTenantComponent,
     NavigationItemEventComponent,
     NavigationItemEventsComponent,
+    NavigationItemProfileComponent,
   ],
   imports: [CommonModule, IconModule, RouterModule, BadgeModule, ButtonModule, AngularResizeEventModule],
   exports: [NavigationBarComponent, NavigationItemComponent, NavigationItemTenantComponent],

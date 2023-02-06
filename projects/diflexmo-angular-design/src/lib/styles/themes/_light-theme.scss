@@ -260,6 +260,11 @@
   --dfm-navigation-item-events-count-color: #{$diflexmo-white};
   --dfm-navigation-item-events-count-bg: #{$orange-dark-500};
 
+  --dfm-navigation-item-profile-user-name-color: #{$gray-modern-900};
+  --dfm-navigation-item-profile-user-email-color: #{$gray-modern-500};
+  --dfm-navigation-item-profile-link-color: #{$gray-modern-600};
+  --dfm-navigation-item-profile-link-color-hover: #{$gray-modern-900};
+
   --dfm-checkbox-border-hover: #{$diflexmo-primary};
   --dfm-checkbox-bg-img-checked: url("data:image/svg+xml,<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M20 6L9 17L4 12' stroke='rgba(83, 20, 34, 1)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>");
   --dfm-checkbox-bg-img-checked-disabled: url("data:image/svg+xml,<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M20 6L9 17L4 12' stroke='rgba(208, 213, 221, 1)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>");
