@@ -1,0 +1,12 @@
+@import 'mixins/base';
+@import 'mixins/text-mixins';
+
+.dfm-datepicker-container {
+    @include text-sm;
+    @include weight-normal;
+  
+    border-radius: 8px;
+    border: 1px solid var(--dfm-datepicker-border);
+    box-shadow: 0px 16px 64px -12px rgba(16, 24, 40, 0.14);
+    background-color: var(--dfm-datepicker-bg);
+}

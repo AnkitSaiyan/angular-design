@@ -35,6 +35,10 @@ export * from './lib/design-system/modules/clipboard/clipboard.component';
 export * from './lib/design-system/modules/datepicker/datepicker.module';
 export * from './lib/design-system/modules/datepicker/datepicker.component';
 
+export * from './lib/design-system/modules/date-range-picker/date-picker.module';
+export * from './lib/design-system/modules/date-range-picker/components/date-picker/date-picker.component';
+export * from './lib/design-system/modules/date-range-picker/components/date-range-picker/date-range-picker.component';
+
 export * from './lib/design-system/modules/error/error.module';
 export * from './lib/design-system/modules/error/error.component';
 

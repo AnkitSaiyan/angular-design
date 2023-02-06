@@ -18,6 +18,7 @@ import { DirectivesModule } from './directives/directives.module';
 import { ClipboardModule } from './modules/clipboard/clipboard.module';
 import { DfmDataTableModule } from './modules/data-table/data-table.module';
 import { NgDfmDropdownModule } from './modules/dropdown/dropdown.module';
+import { NgDfmDatePickerModule } from './modules/date-range-picker/date-picker.module';
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ import { NgDfmDropdownModule } from './modules/dropdown/dropdown.module';
     NotificationModule,
     DirectivesModule,
     ClipboardModule,
-    DfmDataTableModule
+    DfmDataTableModule,
+    NgDfmDatePickerModule,
   ],
   exports: [
     ButtonModule,
@@ -57,7 +59,8 @@ import { NgDfmDropdownModule } from './modules/dropdown/dropdown.module';
     DirectivesModule,
     ClipboardModule,
     DfmDataTableModule,
-    NgDfmDropdownModule
+    NgDfmDropdownModule,
+    NgDfmDatePickerModule,
   ],
 })
 export class DesignSystemModule {}
