@@ -7,12 +7,7 @@
     <tr>
       <ng-container *ngIf="selectable">
         <dfm-data-table-header-cell class="checkbox-cell" [class.checkbox-first-frozen]="isHorizontalScrollDisplayed">
-          <dfm-checkbox
-            class="d-flex dfm-me-2"
-            [ngModel]="areAllSelected"
-            (click)="selectAllItems()"
-            [disabled]="!data || !data?.items || data?.items?.length === 0"
-          ></dfm-checkbox>
+          <dfm-checkbox class="d-flex dfm-me-2" [ngModel]="areAllSelected" (click)="selectAllItems()"></dfm-checkbox>
         </dfm-data-table-header-cell>
       </ng-container>
       <ng-container *ngFor="let header of headers">
