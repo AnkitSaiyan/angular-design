@@ -9,14 +9,19 @@
     'dfm-header-cell': !header?.isDisabled
   }"
 >
-  <div class="d-flex dfm-gap-4">
-    <div class="text-xs-bold">{{ header?.title ?? '' }}</div>
-    <div *ngIf="header?.tooltip" class="icon-16 dfm-text-main-400">
-      <dfm-icon name="help-circle" container="body" [ngbTooltip]="header?.tooltip"></dfm-icon>
+  <ng-container *ngIf="header">
+    <div class="d-flex dfm-gap-4">
+      <div class="text-xs-bold">{{ header?.title ?? '' }}</div>
+      <div *ngIf="header?.tooltip" class="icon-16 dfm-text-main-400">
+        <dfm-icon name="help-circle" container="body" [ngbTooltip]="header?.tooltip"></dfm-icon>
+      </div>
+      <div *ngIf="header?.isSortable" class="icon-16">
+        <dfm-icon *ngIf="header?.sort && header?.sort === 'Asc'" name="arrow-up"></dfm-icon>
+        <dfm-icon *ngIf="header?.sort && header?.sort === 'Desc'" name="arrow-down"></dfm-icon>
+      </div>
     </div>
-    <div *ngIf="header?.isSortable" class="icon-16">
-      <dfm-icon *ngIf="header?.sort && header?.sort === 'Asc'" name="arrow-up"></dfm-icon>
-      <dfm-icon *ngIf="header?.sort && header?.sort === 'Desc'" name="arrow-down"></dfm-icon>
-    </div>
-  </div>
+  </ng-container>
+  <ng-container *ngIf="!header">
+    <ng-content></ng-content>
+  </ng-container>
 </th>
