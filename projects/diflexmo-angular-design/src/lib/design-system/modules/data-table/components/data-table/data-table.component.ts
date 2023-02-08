@@ -61,6 +61,13 @@ export class DataTableComponent implements OnInit {
 
   constructor(private elRef: ElementRef) {}
 
+  public getSelectedById(id: number | string): boolean {
+    if (id) {
+      return this.selectedItems[id];
+    }
+    return false;
+  }
+
   ngOnInit(): void {
     this.tableSizeChanged$.pipe(debounceTime(100)).subscribe((event: ResizedEvent) => {
       const tableWrapperWidth = this.elRef.nativeElement.offsetWidth;

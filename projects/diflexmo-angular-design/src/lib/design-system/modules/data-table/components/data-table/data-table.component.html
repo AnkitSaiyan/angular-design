@@ -21,7 +21,7 @@
       <tr *ngFor="let item of data.items" class="body-row" (click)="click(item)" [class.pointer]="rowClickable">
         <ng-container *ngIf="selectable">
           <dfm-table-row-cell [propagateClick]="false" class="checkbox-cell" [class.checkbox-first-frozen]="isHorizontalScrollDisplayed">
-            <dfm-checkbox class="d-flex dfm-me-2" [ngModel]="selectedItems[item.id]" (ngModelChange)="selectItem($event, item.id)"></dfm-checkbox>
+            <dfm-checkbox class="d-flex dfm-me-2" [ngModel]="getSelectedById(item.id)" (ngModelChange)="selectItem($event, item.id)"></dfm-checkbox>
           </dfm-table-row-cell>
         </ng-container>
         <ng-container *ngTemplateOutlet="bodyRowTemplate; context: { $implicit: item }"></ng-container>
