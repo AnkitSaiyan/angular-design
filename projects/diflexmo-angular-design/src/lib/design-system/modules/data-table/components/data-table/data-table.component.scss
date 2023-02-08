@@ -1,11 +1,10 @@
 @import 'mixins/base';
 
-:host {
-    @include border-radius;
-
-    display: block;
-    border: 1px solid var(--dfm-table-border);
+.dfm-table-wrapper {
     overflow: overlay;
+    border: 1px solid var(--dfm-table-border);
+    @include border-radius;
+    white-space: nowrap;
 
     table {
         border-collapse: separate;
@@ -14,7 +13,7 @@
         background-color: var(--dfm-table-even-cell-bg);
     }
 
-    table > thead {
+    table>thead {
         border-bottom: 1px solid var(--dfm-table-border);
         background-color: var(--dfm-table-even-cell-bg);
         white-space: nowrap;

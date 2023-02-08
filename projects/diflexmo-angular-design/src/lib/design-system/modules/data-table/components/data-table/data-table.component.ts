@@ -1,4 +1,4 @@
-import { Component, ContentChild, ElementRef, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
+import { Component, ContentChild, ElementRef, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
 import { ResizedEvent } from 'angular-resize-event';
 import { debounceTime, Subject } from 'rxjs';
 import { DfmDatasource } from '../../models/datasource.model';
@@ -47,6 +47,10 @@ export class DataTableComponent implements OnInit {
 
   @Output() selected = new EventEmitter<any[]>();
 
+  @Output() scrolled = new EventEmitter();
+
+  @ViewChild('tableWrapper', { static: false }) tableWrapper!: ElementRef;
+
   public isHorizontalScrollDisplayed: boolean = false;
 
   public tableSizeChanged$ = new Subject<ResizedEvent>();
@@ -59,8 +63,6 @@ export class DataTableComponent implements OnInit {
     return this.data?.items.length && Object.values(this.selectedItems).filter((v) => v).length === this.data?.items.length;
   }
 
-  constructor(private elRef: ElementRef) {}
-
   public getSelectedById(id?: number | string): boolean {
     if (id) {
       return this.selectedItems[id];
@@ -70,7 +72,7 @@ export class DataTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.tableSizeChanged$.pipe(debounceTime(100)).subscribe((event: ResizedEvent) => {
-      const tableWrapperWidth = this.elRef.nativeElement.offsetWidth;
+      const tableWrapperWidth = this.tableWrapper.nativeElement.offsetWidth;
       const tableWidth = event.newRect.width;
       this.isHorizontalScrollDisplayed = tableWrapperWidth < tableWidth;
     });
