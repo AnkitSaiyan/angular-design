@@ -70,6 +70,8 @@ export class DataTableComponent implements OnInit {
     return false;
   }
 
+  constructor(private el: ElementRef) {}
+
   ngOnInit(): void {
     this.tableSizeChanged$.pipe(debounceTime(100)).subscribe((event: ResizedEvent) => {
       const tableWrapperWidth = this.tableWrapper.nativeElement.offsetWidth;
