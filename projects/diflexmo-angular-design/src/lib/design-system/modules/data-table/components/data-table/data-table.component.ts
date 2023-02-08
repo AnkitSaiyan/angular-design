@@ -61,7 +61,7 @@ export class DataTableComponent implements OnInit {
 
   constructor(private elRef: ElementRef) {}
 
-  public getSelectedById(id: number | string): boolean {
+  public getSelectedById(id?: number | string): boolean {
     if (id) {
       return this.selectedItems[id];
     }
@@ -114,7 +114,10 @@ export class DataTableComponent implements OnInit {
     this.rowClicked.emit(item);
   }
 
-  selectItem(selected: boolean, id: string | number) {
+  selectItem(selected: boolean, id?: string | number) {
+    if (!id) {
+      return;
+    }
     this.selectedItems[id] = selected;
 
     const ids = Object.entries(this.selectedItems)
