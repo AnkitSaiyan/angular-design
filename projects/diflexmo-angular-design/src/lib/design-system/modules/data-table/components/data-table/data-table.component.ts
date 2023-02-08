@@ -69,7 +69,11 @@ export class DataTableComponent implements OnInit {
     });
 
     if (this.selectable) {
-      this.data?.items.forEach((i) => (this.selectedItems[i.id] = false));
+      this.data?.items.forEach((i) => {
+        if (i.id) {
+          this.selectedItems[i.id] = false;
+        }
+      });
     }
 
     if (this.clearSelected$) {
@@ -116,7 +120,9 @@ export class DataTableComponent implements OnInit {
   selectAllItems() {
     if (!this.areAllSelected) {
       const ids = this.data?.items.map((i) => {
-        this.selectedItems[i.id] = true;
+        if (i.id) {
+          this.selectedItems[i.id] = true;
+        }
         return i.id;
       });
       this.selected.emit(ids);
