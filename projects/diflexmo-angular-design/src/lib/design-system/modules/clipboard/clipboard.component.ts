@@ -29,7 +29,6 @@ import { Tooltip } from 'bootstrap';
           [ngClass]="{ hide: !alwaysVisible, 'd-none': !isCopied }"
         ></dfm-icon>
       </div>
-      <div (click)="copyToClipboard(); $event.stopPropagation()"></div>
     </div>
   `,
   styleUrls: ['./clipboard.component.scss'],
