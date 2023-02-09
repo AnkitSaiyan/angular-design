@@ -7,11 +7,6 @@ import { TranslateService } from '@ngx-translate/core';
     <div class="d-flex dfm-gap-8 show-hidden">
       <div><ng-content></ng-content></div>
       <ng-container *ngIf="!isCopied; else copiedNgTemp">
-        <div class="pointer icon-15 align-self-center" (click)="$event.stopPropagation()" [ngbTooltip]="copiedToClipboardText" container="body">
-          <dfm-icon name="check" class="dfm-clipboard-copied" [ngClass]="{ hide: !alwaysVisible }"></dfm-icon>
-        </div>
-      </ng-container>
-      <ng-template #copiedNgTemp>
         <div
           (cbOnSuccess)="copySuccess($event)"
           ngxClipboard
@@ -21,6 +16,11 @@ import { TranslateService } from '@ngx-translate/core';
           (click)="$event.stopPropagation()"
         >
           <dfm-icon name="copy-06" class="dfm-clipboard" [ngbTooltip]="copyToClipboardText" container="body"></dfm-icon>
+        </div>
+      </ng-container>
+      <ng-template #copiedNgTemp>
+        <div class="pointer icon-15 align-self-center" (click)="$event.stopPropagation()" [ngbTooltip]="copiedToClipboardText" container="body">
+          <dfm-icon name="check" class="dfm-clipboard-copied" [ngClass]="{ hide: !alwaysVisible }"></dfm-icon>
         </div>
       </ng-template>
     </div>
