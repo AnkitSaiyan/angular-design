@@ -4,13 +4,14 @@ import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'dfm-clipboard',
   template: `
-    <div class="d-flex dfm-gap-8 show-hidden">
+    <div class="d-flex dfm-gap-8 show-hidden" #container>
       <div><ng-content></ng-content></div>
       <ng-container *ngIf="!isCopied; else copiedNgTemp">
         <div
           (cbOnSuccess)="copySuccess($event)"
           ngxClipboard
           [cbContent]="clip"
+          [container]="container"
           class="pointer icon-15 align-self-center"
           [ngClass]="{ hide: !alwaysVisible }"
           (click)="$event.stopPropagation()"
