@@ -1,46 +1,38 @@
-import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { Tooltip } from 'bootstrap';
 
 @Component({
   selector: 'dfm-clipboard',
   template: `
     <div class="d-flex dfm-gap-8 show-hidden">
       <div><ng-content></ng-content></div>
-      <div #container class="pointer icon-15 align-self-center">
-        <dfm-icon
+      <ng-container *ngIf="!isCopied; else copiedNgTemp">
+        <div class="pointer icon-15 align-self-center" (click)="$event.stopPropagation()" [ngbTooltip]="copiedToClipboardText" container="body">
+          <dfm-icon name="check" class="dfm-clipboard-copied" [ngClass]="{ hide: !alwaysVisible }"></dfm-icon>
+        </div>
+      </ng-container>
+      <ng-template #copiedNgTemp>
+        <div
+          (cbOnSuccess)="copySuccess($event)"
           ngxClipboard
-          *ngxClipboardIfSupported
-          (cbOnSuccess)="copySuccess()"
           [cbContent]="clip"
-          [container]="container"
-          #copyIcon
+          class="pointer icon-15 align-self-center"
+          [ngClass]="{ hide: !alwaysVisible }"
           (click)="$event.stopPropagation()"
-          class="dfm-clipboard"
-          [ngClass]="{ hide: !alwaysVisible, 'd-none': isCopied }"
-          name="copy-06"
+          [ngbTooltip]="copyToClipboardText"
+          container="body"
         >
-        </dfm-icon>
-        <dfm-icon
-          #copiedIcon
-          (click)="$event.stopPropagation()"
-          name="check"
-          class="dfm-clipboard-copied"
-          [ngClass]="{ hide: !alwaysVisible, 'd-none': !isCopied }"
-        ></dfm-icon>
-      </div>
+          <dfm-icon name="copy-06" class="dfm-clipboard"></dfm-icon>
+        </div>
+      </ng-template>
     </div>
   `,
   styleUrls: ['./clipboard.component.scss'],
 })
-export class ClipboardComponent implements OnInit, AfterViewInit, OnDestroy {
+export class ClipboardComponent implements OnInit {
   @Input() clip: string = '';
 
   @Input() alwaysVisible: boolean = false;
-
-  @ViewChild('copyIcon', { read: ElementRef }) copyIcon!: ElementRef;
-
-  @ViewChild('copiedIcon', { read: ElementRef }) copiedIcon!: ElementRef;
 
   public isCopied: boolean = false;
 
@@ -51,8 +43,6 @@ export class ClipboardComponent implements OnInit, AfterViewInit, OnDestroy {
   private copyToClipboardTextKey: string = 'DESIGN_SYSTEM.MODULES.CLIPBOARD.COPY_TEXT';
 
   private copiedToClipboardTextKey: string = 'DESIGN_SYSTEM.MODULES.CLIPBOARD.COPIED_TEXT';
-
-  private tooltips: Tooltip[] = [];
 
   constructor(private translateService: TranslateService) {}
 
@@ -70,19 +60,8 @@ export class ClipboardComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  ngAfterViewInit(): void {
-    const copyTooltip = new Tooltip(this.copyIcon.nativeElement, { title: this.copyToClipboardText });
-    const copiedTooltip = new Tooltip(this.copiedIcon.nativeElement, { title: this.copiedToClipboardText });
-
-    this.tooltips.push(copyTooltip, copiedTooltip);
-  }
-
-  ngOnDestroy(): void {
-    this.tooltips.forEach((t) => t.dispose());
-  }
-
-  public copySuccess(): void {
-    this.isCopied = true;
+  public copySuccess(event: any): void {
+    this.isCopied = event.isSuccess;
 
     setTimeout(() => {
       this.isCopied = false;
