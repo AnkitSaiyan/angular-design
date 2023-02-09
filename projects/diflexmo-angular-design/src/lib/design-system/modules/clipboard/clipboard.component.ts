@@ -8,25 +8,26 @@ import { ClipboardService } from '../../services/clipboard.service';
   template: `
     <div class="d-flex dfm-gap-8 show-hidden">
       <div><ng-content></ng-content></div>
-      <div #container class="dfm-clipboard pointer icon-15 align-self-center">
+      <div #container class="pointer icon-15 align-self-center">
         <dfm-icon
           ngxClipboard
           [cbContent]="clip"
           [container]="container"
           #copyIcon
+          class="dfm-clipboard"
           (click)="copyToClipboard(); $event.stopPropagation()"
           [ngClass]="{ hide: !alwaysVisible, 'd-none': isCopied }"
           name="copy-06"
         >
         </dfm-icon>
+        <dfm-icon
+          #copiedIcon
+          (click)="$event.stopPropagation()"
+          name="check"
+          class="dfm-clipboard-copied pointer icon-15 align-self-center"
+          [ngClass]="{ hide: !alwaysVisible, 'd-none': !isCopied }"
+        ></dfm-icon>
       </div>
-      <dfm-icon
-        #copiedIcon
-        (click)="$event.stopPropagation()"
-        name="check"
-        class="dfm-clipboard-copied pointer icon-15 align-self-center"
-        [ngClass]="{ hide: !alwaysVisible, 'd-none': !isCopied }"
-      ></dfm-icon>
     </div>
   `,
   styleUrls: ['./clipboard.component.scss'],
