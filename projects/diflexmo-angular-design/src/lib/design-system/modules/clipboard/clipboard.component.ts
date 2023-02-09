@@ -36,9 +36,9 @@ export class ClipboardComponent implements OnInit {
 
   public isCopied: boolean = false;
 
-  private copyToClipboardText: string = 'Copy to clipboard';
+  public copyToClipboardText: string = 'Copy to clipboard';
 
-  private copiedToClipboardText: string = 'Copied!';
+  public copiedToClipboardText: string = 'Copied!';
 
   private copyToClipboardTextKey: string = 'DESIGN_SYSTEM.MODULES.CLIPBOARD.COPY_TEXT';
 
