@@ -30,6 +30,10 @@ export class TableRowCellComponent implements AfterViewInit {
     return false;
   }
 
+  constructor() {
+    this.isInit = false;
+  }
+
   ngAfterViewInit(): void {
     this.isInit = true;
   }
@@ -47,10 +51,6 @@ export class TableRowCellComponent implements AfterViewInit {
       clickEvent.stopPropagation();
     }
   }
-
-  // ngOnDestroy(): void {
-  //   this.tooltips.forEach((t) => t.dispose());
-  // }
 
   public isEllipsisActive(): boolean {
     return this.tableCell.nativeElement.offsetWidth < this.tableCell.nativeElement.scrollWidth;

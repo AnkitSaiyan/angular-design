@@ -6,24 +6,26 @@ import { TranslateService } from '@ngx-translate/core';
   template: `
     <div class="d-flex dfm-gap-8 show-hidden" #container>
       <div><ng-content></ng-content></div>
-      <ng-container *ngIf="!isCopied; else copiedNgTemp">
-        <div
-          (cbOnSuccess)="copySuccess($event)"
-          ngxClipboard
-          [cbContent]="clip"
-          [container]="container"
-          class="pointer icon-15 align-self-center"
-          [ngClass]="{ hide: !alwaysVisible }"
-          (click)="$event.stopPropagation()"
-        >
-          <dfm-icon name="copy-06" class="dfm-clipboard" [ngbTooltip]="copyToClipboardText" container="body"></dfm-icon>
-        </div>
-      </ng-container>
-      <ng-template #copiedNgTemp>
-        <div class="pointer icon-15 align-self-center" (click)="$event.stopPropagation()" [ngbTooltip]="copiedToClipboardText" container="body">
-          <dfm-icon name="check" class="dfm-clipboard-copied" [ngClass]="{ hide: !alwaysVisible }"></dfm-icon>
-        </div>
-      </ng-template>
+      <div [ngbTooltip]="tooltipContent" container="body">
+        <ng-container *ngIf="!isCopied; else copiedNgTemp">
+          <div
+            (cbOnSuccess)="copySuccess($event)"
+            ngxClipboard
+            [cbContent]="clip"
+            [container]="container"
+            class="pointer icon-15 align-self-center"
+            [ngClass]="{ hide: !alwaysVisible }"
+            (click)="$event.stopPropagation()"
+          >
+            <dfm-icon name="copy-06" class="dfm-clipboard"></dfm-icon>
+          </div>
+        </ng-container>
+        <ng-template #copiedNgTemp>
+          <div class="pointer icon-15 align-self-center" (click)="$event.stopPropagation()">
+            <dfm-icon name="check" class="dfm-clipboard-copied" [ngClass]="{ hide: !alwaysVisible }"></dfm-icon>
+          </div>
+        </ng-template>
+      </div>
     </div>
   `,
   styleUrls: ['./clipboard.component.scss'],
@@ -35,9 +37,11 @@ export class ClipboardComponent implements OnInit {
 
   public isCopied: boolean = false;
 
-  public copyToClipboardText: string = 'Copy to clipboard';
+  public tooltipContent: string = '';
 
-  public copiedToClipboardText: string = 'Copied!';
+  private copyToClipboardText: string = 'Copy to clipboard';
+
+  private copiedToClipboardText: string = 'Copied!';
 
   private copyToClipboardTextKey: string = 'DESIGN_SYSTEM.MODULES.CLIPBOARD.COPY_TEXT';
 
@@ -50,6 +54,7 @@ export class ClipboardComponent implements OnInit {
       if (t !== this.copyToClipboardTextKey) {
         this.copyToClipboardText = t;
       }
+      this.tooltipContent = this.copyToClipboardText;
     });
 
     this.translateService.get(this.copiedToClipboardTextKey).subscribe((t) => {
@@ -61,9 +66,12 @@ export class ClipboardComponent implements OnInit {
 
   public copySuccess(event: any): void {
     this.isCopied = event.isSuccess;
-
-    setTimeout(() => {
-      this.isCopied = false;
-    }, 1000);
+    if (this.isCopied) {
+      this.tooltipContent = this.copiedToClipboardText;
+      setTimeout(() => {
+        this.isCopied = false;
+        this.tooltipContent = this.copyToClipboardText;
+      }, 1000);
+    }
   }
 }
