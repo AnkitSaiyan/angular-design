@@ -30,12 +30,8 @@ export class TableRowCellComponent implements AfterViewInit {
     return false;
   }
 
-  constructor() {
-    this.isInit = false;
-  }
-
   ngAfterViewInit(): void {
-    this.isInit = true;
+    Promise.resolve(null).then(() => (this.isInit = true));
   }
 
   public canShowTooltip(): boolean {
