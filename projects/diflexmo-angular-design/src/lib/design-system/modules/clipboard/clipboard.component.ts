@@ -8,13 +8,16 @@ import { ClipboardService } from '../../services/clipboard.service';
   template: `
     <div class="d-flex dfm-gap-8 show-hidden">
       <div><ng-content></ng-content></div>
-      <div #container>
-        <dfm-icon ngxClipboard [cbContent]="clip" [container]="container"
+      <div #container class="dfm-clipboard pointer icon-15 align-self-center">
+        <dfm-icon
+          ngxClipboard
+          [cbContent]="clip"
+          [container]="container"
           #copyIcon
-          (click)="$event.stopPropagation()"
-          class="dfm-clipboard pointer icon-15 align-self-center"
+          (click)="copyToClipboard(); $event.stopPropagation()"
           [ngClass]="{ hide: !alwaysVisible, 'd-none': isCopied }"
-          name="copy-06">
+          name="copy-06"
+        >
         </dfm-icon>
       </div>
       <dfm-icon
@@ -49,7 +52,7 @@ export class ClipboardComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private tooltips: Tooltip[] = [];
 
-  constructor(private clipboardSerice: ClipboardService, private translateService: TranslateService) { }
+  constructor(private clipboardSerice: ClipboardService, private translateService: TranslateService) {}
 
   ngOnInit(): void {
     this.translateService.get(this.copyToClipboardTextKey).subscribe((t) => {
@@ -77,7 +80,7 @@ export class ClipboardComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public copyToClipboard(): void {
-    this.clipboardSerice.emitToClipboard(this.clip);
+    // this.clipboardSerice.emitToClipboard(this.clip);
     this.isCopied = true;
 
     setTimeout(() => {
