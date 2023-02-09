@@ -10,11 +10,13 @@ import { Tooltip } from 'bootstrap';
       <div #container class="pointer icon-15 align-self-center">
         <dfm-icon
           ngxClipboard
+          *ngxClipboardIfSupported
+          (cbOnSuccess)="copySuccess()"
           [cbContent]="clip"
           [container]="container"
           #copyIcon
+          (click)="$event.stopPropagation()"
           class="dfm-clipboard"
-          (click)="copyToClipboard(); $event.stopPropagation()"
           [ngClass]="{ hide: !alwaysVisible, 'd-none': isCopied }"
           name="copy-06"
         >
@@ -27,6 +29,7 @@ import { Tooltip } from 'bootstrap';
           [ngClass]="{ hide: !alwaysVisible, 'd-none': !isCopied }"
         ></dfm-icon>
       </div>
+      <div (click)="copyToClipboard(); $event.stopPropagation()"></div>
     </div>
   `,
   styleUrls: ['./clipboard.component.scss'],
@@ -79,7 +82,7 @@ export class ClipboardComponent implements OnInit, AfterViewInit, OnDestroy {
     this.tooltips.forEach((t) => t.dispose());
   }
 
-  public copyToClipboard(): void {
+  public copySuccess(): void {
     this.isCopied = true;
 
     setTimeout(() => {
