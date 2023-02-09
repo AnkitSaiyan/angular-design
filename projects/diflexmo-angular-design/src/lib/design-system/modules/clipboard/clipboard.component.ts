@@ -19,10 +19,8 @@ import { TranslateService } from '@ngx-translate/core';
           class="pointer icon-15 align-self-center"
           [ngClass]="{ hide: !alwaysVisible }"
           (click)="$event.stopPropagation()"
-          [ngbTooltip]="copyToClipboardText"
-          container="body"
         >
-          <dfm-icon name="copy-06" class="dfm-clipboard"></dfm-icon>
+          <dfm-icon name="copy-06" class="dfm-clipboard" [ngbTooltip]="copyToClipboardText" container="body"></dfm-icon>
         </div>
       </ng-template>
     </div>
