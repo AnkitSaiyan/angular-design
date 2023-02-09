@@ -15,7 +15,7 @@ import { InputDropdownModule } from './modules/input-dropdown/input-dropdown.mod
 import { CardModule } from './modules/card/card.module';
 import { NavigationBarModule } from './modules/navigation-bar/navigation-bar.module';
 import { DirectivesModule } from './directives/directives.module';
-import { ClipboardModule } from './modules/clipboard/clipboard.module';
+import { NgDfmClipboardModule } from './modules/clipboard/clipboard.module';
 import { DfmDataTableModule } from './modules/data-table/data-table.module';
 import { NgDfmDropdownModule } from './modules/dropdown/dropdown.module';
 import { NgDfmDatePickerModule } from './modules/date-range-picker/date-picker.module';
@@ -37,7 +37,7 @@ import { NgDfmDatePickerModule } from './modules/date-range-picker/date-picker.m
     NavigationBarModule,
     NotificationModule,
     DirectivesModule,
-    ClipboardModule,
+    NgDfmClipboardModule,
     DfmDataTableModule,
     NgDfmDatePickerModule,
   ],
@@ -57,7 +57,7 @@ import { NgDfmDatePickerModule } from './modules/date-range-picker/date-picker.m
     NavigationBarModule,
     NotificationModule,
     DirectivesModule,
-    ClipboardModule,
+    NgDfmClipboardModule,
     DfmDataTableModule,
     NgDfmDropdownModule,
     NgDfmDatePickerModule,
