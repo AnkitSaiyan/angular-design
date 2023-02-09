@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Tooltip } from 'bootstrap';
-import { ClipboardService } from '../../services/clipboard.service';
 
 @Component({
   selector: 'dfm-clipboard',
@@ -24,7 +23,7 @@ import { ClipboardService } from '../../services/clipboard.service';
           #copiedIcon
           (click)="$event.stopPropagation()"
           name="check"
-          class="dfm-clipboard-copied pointer icon-15 align-self-center"
+          class="dfm-clipboard-copied"
           [ngClass]="{ hide: !alwaysVisible, 'd-none': !isCopied }"
         ></dfm-icon>
       </div>
@@ -53,7 +52,7 @@ export class ClipboardComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private tooltips: Tooltip[] = [];
 
-  constructor(private clipboardSerice: ClipboardService, private translateService: TranslateService) {}
+  constructor(private translateService: TranslateService) {}
 
   ngOnInit(): void {
     this.translateService.get(this.copyToClipboardTextKey).subscribe((t) => {
@@ -81,7 +80,6 @@ export class ClipboardComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public copyToClipboard(): void {
-    // this.clipboardSerice.emitToClipboard(this.clip);
     this.isCopied = true;
 
     setTimeout(() => {
