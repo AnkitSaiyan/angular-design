@@ -45,6 +45,11 @@
           </ng-container>
         </tr>
       </ng-container>
+      <ng-template #noData>
+        <tr>
+          <td [attr.colspan]="headers.length">No data</td>
+        </tr>
+      </ng-template>
     </tbody>
   </table>
 </div>
