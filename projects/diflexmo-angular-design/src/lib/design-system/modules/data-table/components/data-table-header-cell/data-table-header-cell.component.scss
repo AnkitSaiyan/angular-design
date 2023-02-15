@@ -5,7 +5,16 @@ $table-first-td-width: 200px;
 $table-border: 1px solid var(--dfm-table-border);
 $table-border-radius: 8px;
 
-:host-context(.checkbox-cell.checkbox-first-frozen) ~ :host:nth-child(2) .cell,
+:host-context(.checkbox-cell.checkbox-first-frozen) ~ :host:nth-child(2) .cell {
+  box-shadow: 12px 0px 8px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  left: 64px;
+  max-width: 33vw !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 :host-context(.first-frozen) :host:first-child .cell {
   // min-width: $table-first-td-width;
   box-shadow: 12px 0px 8px rgba(0, 0, 0, 0.05);
