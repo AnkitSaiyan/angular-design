@@ -2,6 +2,7 @@
 @import 'mixins/text-mixins';
 
 :host-context(.checkbox-cell.checkbox-first-frozen) ~ :host:nth-child(2) .cell,
+:host-context(.checkbox-cell.checkbox-first-frozen) ~ :host:first-child .cell,
 :host-context(.first-frozen) :host:first-child .cell {
   box-shadow: 12px 0px 8px rgba(0, 0, 0, 0.05);
   position: sticky;
@@ -19,7 +20,6 @@
   z-index: 2;
   background-color: inherit;
 }
-
 
 :host-context(.checkbox-cell) {
   .cell {

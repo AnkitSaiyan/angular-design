@@ -30,7 +30,7 @@
           <ng-container *ngIf="showActions && actions && actions.length > 0">
             <dfm-table-row-cell [propagateClick]="false" [collapsePaddingX]="true">
               <ng-container *ngIf="(!stickyActions || !isHorizontalScrollDisplayed) && actions.length < 4">
-                <div class="d-flex dfm-gap-12">
+                <div class="d-flex dfm-gap-12 float-right">
                   <ng-container *ngFor="let action of actions">
                     <div class="icon-20 pointer table-actions" [ngbTooltip]="action.label">
                       <dfm-icon [name]="action.icon" (click)="actionClicked.emit(action)"></dfm-icon>
