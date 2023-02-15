@@ -6,7 +6,7 @@ $table-border: 1px solid var(--dfm-table-border);
 $table-border-radius: 8px;
 
 :host-context(.checkbox-cell.checkbox-first-frozen) ~ :host:nth-child(2) .cell,
-:host-context(.checkbox-cell.checkbox-frozen) ~ :host:first-child .cell,
+:host-context(.checkbox-cell.checkbox-frozen) :host:first-child .cell,
 :host-context(.first-frozen) :host:first-child .cell {
   // min-width: $table-first-td-width;
   box-shadow: 12px 0px 8px rgba(0, 0, 0, 0.05);
