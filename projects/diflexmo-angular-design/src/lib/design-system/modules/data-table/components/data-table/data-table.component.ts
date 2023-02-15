@@ -37,6 +37,8 @@ export class DataTableComponent implements OnInit {
 
   @Input() clearSelected$?: Subject<void> | null;
 
+  @Input() stickyCheckbox: boolean = true;
+ 
   @ContentChild('bodyRowTemplate') bodyRowTemplate!: TemplateRef<any>;
 
   @Output() sorted = new EventEmitter<DfmTableHeader>();
