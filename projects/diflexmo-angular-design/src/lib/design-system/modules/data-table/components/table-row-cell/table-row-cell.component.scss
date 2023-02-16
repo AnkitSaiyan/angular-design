@@ -29,6 +29,10 @@
 }
 
 :host-context(.checkbox-cell) {
+  .cell {
+    width: 80px;
+  }
+  
   & ~ :host:nth-child(2) .cell {
     padding-left: 0px !important;
   }
