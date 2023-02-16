@@ -8,7 +8,7 @@ $table-border-radius: 8px;
 :host-context(.checkbox-cell.checkbox-first-frozen) ~ :host:nth-child(2) .cell {
   box-shadow: 12px 0px 8px rgba(0, 0, 0, 0.05);
   position: sticky;
-  left: 64px;
+  left: 80px;
   max-width: 33vw !important;
   white-space: nowrap;
   overflow: hidden;
@@ -30,11 +30,6 @@ $table-border-radius: 8px;
 }
 
 :host-context(.checkbox-cell) {
-  .cell {
-    width: 1%;
-    padding-right: 0px;
-  }
-
   & ~ :host:nth-child(2) .cell {
     padding-left: 0px;
   }
