@@ -1,6 +1,6 @@
 @mixin lib-light {
-  --dfm-primary: $diflexmo-primary;
-  --dfm-secondary: $diflexmo-secondary;
+  --dfm-primary: #{$diflexmo-primary};
+  --dfm-secondary: #{$diflexmo-secondary};
 
   --dfm-main-25: #{$gray-modern-25};
   --dfm-main-50: #{$gray-modern-50};
