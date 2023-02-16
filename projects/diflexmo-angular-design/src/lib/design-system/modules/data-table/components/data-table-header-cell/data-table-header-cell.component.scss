@@ -13,6 +13,7 @@ $table-border-radius: 8px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  background-color: var(--dfm-table-even-cell-bg);
 }
 
 :host-context(.first-frozen) :host:first-child .cell {
@@ -43,6 +44,7 @@ $table-border-radius: 8px;
   .cell {
     left: 0;
     position: sticky;
+    box-shadow: none !important;
   }
 }
 
