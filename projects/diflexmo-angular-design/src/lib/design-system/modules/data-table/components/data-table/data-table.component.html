@@ -43,7 +43,7 @@
                 </div>
               </ng-container>
               <ng-container *ngIf="(stickyActions && isHorizontalScrollDisplayed) || actions.length >= 4">
-                <dfm-dropdown-button [items]="actions" (actionClicked)="actionEvent($event, item)"></dfm-dropdown-button>
+                <dfm-dropdown-button [items]="actions" (actionClicked)="dropdownActionEvent($event, item)"></dfm-dropdown-button>
               </ng-container>
             </dfm-table-row-cell>
           </ng-container>

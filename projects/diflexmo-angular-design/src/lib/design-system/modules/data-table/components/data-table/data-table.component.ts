@@ -1,6 +1,7 @@
 import { Component, ContentChild, ElementRef, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
 import { ResizedEvent } from 'angular-resize-event';
 import { debounceTime, Subject } from 'rxjs';
+import { DfmDropdownItem } from '../../../dropdown/models/dropdown-item.model';
 import { DfmDatasource } from '../../models/datasource.model';
 import { DfmTableActionEvent } from '../../models/table-action-event.model';
 import { DfmTableAction } from '../../models/table-action.model';
@@ -94,7 +95,11 @@ export class DataTableComponent<T> implements OnInit {
     }
   }
 
-  public actionEvent(event, row): void {
+  public actionEvent(event: DfmTableAction, row: TableRow<T>): void {
+    this.actionClicked.emit({actionId: event.id, row: row});
+  }
+  
+  public dropdownActionEvent(event: DfmDropdownItem, row: TableRow<T>): void {
     this.actionClicked.emit({actionId: event.id, row: row});
   }
 
