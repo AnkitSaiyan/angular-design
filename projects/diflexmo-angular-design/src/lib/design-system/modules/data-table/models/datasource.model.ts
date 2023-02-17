@@ -1,7 +1,7 @@
 import { TableRow } from "./table-row.model";
 
-export interface DfmDatasource {
-    items: Array<TableRow>;
+export interface DfmDatasource<T> {
+    items: Array<TableRow<T>>;
     total?: number;
     isInitialLoading?: boolean;
     isLoading?: boolean;

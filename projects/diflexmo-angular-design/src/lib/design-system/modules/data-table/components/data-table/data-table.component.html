@@ -37,13 +37,13 @@
                 <div class="d-flex dfm-gap-12 float-right">
                   <ng-container *ngFor="let action of actions">
                     <div class="icon-20 pointer table-actions" [ngbTooltip]="action.label">
-                      <dfm-icon [name]="action.icon" (click)="actionClicked.emit(action)"></dfm-icon>
+                      <dfm-icon [name]="action.icon" (click)="actionEvent(action, item)"></dfm-icon>
                     </div>
                   </ng-container>
                 </div>
               </ng-container>
               <ng-container *ngIf="(stickyActions && isHorizontalScrollDisplayed) || actions.length >= 4">
-                <dfm-dropdown-button [items]="actions" (actionClicked)="actionClicked.emit($event)"></dfm-dropdown-button>
+                <dfm-dropdown-button [items]="actions" (actionClicked)="actionEvent($event, item)"></dfm-dropdown-button>
               </ng-container>
             </dfm-table-row-cell>
           </ng-container>

@@ -1,3 +1,3 @@
-export interface TableRow {
-  id?: string | number;
+export interface TableRow<T> {
+  id: T;
 }

@@ -2,6 +2,7 @@ import { Component, ContentChild, ElementRef, EventEmitter, Input, OnInit, Outpu
 import { ResizedEvent } from 'angular-resize-event';
 import { debounceTime, Subject } from 'rxjs';
 import { DfmDatasource } from '../../models/datasource.model';
+import { DfmTableActionEvent } from '../../models/table-action-event.model';
 import { DfmTableAction } from '../../models/table-action.model';
 import { DfmTableHeader } from '../../models/table-header.model';
 import { TableRow } from '../../models/table-row.model';
@@ -12,8 +13,8 @@ import { TableHeaderSize } from '../../types/table-header-size.type';
   templateUrl: './data-table.component.html',
   styleUrls: ['./data-table.component.scss'],
 })
-export class DataTableComponent implements OnInit {
-  @Input() data?: DfmDatasource;
+export class DataTableComponent<T> implements OnInit {
+  @Input() data?: DfmDatasource<T>;
 
   @Input() rowSelectable: boolean = false;
 
@@ -43,9 +44,9 @@ export class DataTableComponent implements OnInit {
 
   @Output() sorted = new EventEmitter<DfmTableHeader>();
 
-  @Output() rowClicked = new EventEmitter<TableRow>();
+  @Output() rowClicked = new EventEmitter<TableRow<T>>();
 
-  @Output() actionClicked = new EventEmitter<DfmTableAction>();
+  @Output() actionClicked = new EventEmitter<DfmTableActionEvent<T>>();
 
   @Output() selected = new EventEmitter<any[]>();
 
@@ -59,7 +60,7 @@ export class DataTableComponent implements OnInit {
 
   public actionsHeader: DfmTableHeader = { id: 'dfm-actions', title: '' };
 
-  public selectedItems: { [key: string | number]: boolean } = {};
+  public selectedItems: Map<T, boolean> = new Map<T, boolean>();
 
   public get areAllSelected() {
     return this.data?.items.length && Object.values(this.selectedItems).filter((v) => v).length === this.data?.items.length;
@@ -83,18 +84,20 @@ export class DataTableComponent implements OnInit {
 
     if (this.selectable) {
       this.data?.items.forEach((i) => {
-        if (i.id) {
-          this.selectedItems[i.id] = false;
-        }
+        this.selectedItems.set(i.id, false);
       });
     }
 
     if (this.clearSelected$) {
       this.clearSelected$.subscribe(() => {
-        this.selectedItems = {};
+        this.selectedItems = new Map<T, boolean>();
         this.selected.emit([]);
       });
     }
+  }
+
+  public actionEvent(event, row): void {
+    this.actionClicked.emit({actionId: event.id, row: row});
   }
 
   public checkTableSize(event: ResizedEvent): void {
@@ -116,7 +119,7 @@ export class DataTableComponent implements OnInit {
     this.sorted.emit(header);
   }
 
-  public click(item: TableRow): void {
+  public click(item: TableRow<T>): void {
     this.rowClicked.emit(item);
   }
 
@@ -137,13 +140,13 @@ export class DataTableComponent implements OnInit {
     if (!this.areAllSelected) {
       const ids = this.data?.items.map((i) => {
         if (i.id) {
-          this.selectedItems[i.id] = true;
+          this.selectedItems.set(i.id, true);
         }
         return i.id;
       });
       this.selected.emit(ids);
     } else {
-      this.selectedItems = {};
+      this.selectedItems = new Map<T, boolean>();
       this.selected.emit([]);
     }
   }
