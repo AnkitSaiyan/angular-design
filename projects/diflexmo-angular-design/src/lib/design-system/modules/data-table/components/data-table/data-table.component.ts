@@ -66,14 +66,12 @@ export class DataTableComponent<T> implements OnInit {
     return this.data?.items.length && Object.values(this.selectedItems).filter((v) => v).length === this.data?.items.length;
   }
 
-  public getSelectedById(id?: number | string): boolean {
+  public getSelectedById(id: T): boolean {
     if (id) {
-      return this.selectedItems[id];
+      return this.selectedItems.get(id) ?? false;
     }
     return false;
   }
-
-  constructor(private el: ElementRef) {}
 
   ngOnInit(): void {
     this.tableSizeChanged$.pipe(debounceTime(100)).subscribe((event: ResizedEvent) => {
@@ -123,11 +121,11 @@ export class DataTableComponent<T> implements OnInit {
     this.rowClicked.emit(item);
   }
 
-  selectItem(selected: boolean, id?: string | number) {
+  selectItem(selected: boolean, id: T) {
     if (!id) {
       return;
     }
-    this.selectedItems[id] = selected;
+    this.selectedItems.set(id, selected);
 
     const ids = Object.entries(this.selectedItems)
       .filter(([, value]) => value)
