@@ -9,10 +9,10 @@ import { BadgeSize } from '../../types/badge-size.type';
   template: `
     <div [ngClass]="getStyles()">
       <div *ngIf="iconStyle === 'bullet'" class="dfm-bullet dfm-bullet-{{ color }}"></div>
-      <dfm-icon class="icon-12" *ngIf="iconStyle === 'icon-left'" [name]="icon"></dfm-icon>
+      <dfm-icon class="dfm-badge-icon icon-12" *ngIf="iconStyle === 'icon-left'" [name]="icon"></dfm-icon>
       <ng-content></ng-content>
-      <dfm-icon class="icon-12" *ngIf="iconStyle === 'icon-right'" [name]="icon"></dfm-icon>
-      <dfm-icon class="icon-12 pointer" *ngIf="iconStyle === 'close'" name="x-close" (click)="close()"></dfm-icon>
+      <dfm-icon class="dfm-badge-icon icon-12" *ngIf="iconStyle === 'icon-right'" [name]="icon"></dfm-icon>
+      <dfm-icon class="dfm-badge-icon icon-12 pointer" *ngIf="iconStyle === 'close'" name="x-close" (click)="close()"></dfm-icon>
     </div>
   `,
   styleUrls: ['./badge.component.scss'],

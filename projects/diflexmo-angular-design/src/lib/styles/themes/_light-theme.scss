@@ -296,18 +296,26 @@
 
   --dfm-badge-gray-color: #{$gray-modern-700};
   --dfm-badge-gray-bg: #{$gray-modern-100};
+  --dfm-badge-gray-icon-color: #{$gray-modern-500};
   --dfm-badge-primary-color: #{$danger-700};
-  --dfm-badge-primary-bg: #{$danger-100};
+  --dfm-badge-primary-bg: #{$danger-50};
+  --dfm-badge-primary-icon-color: #{$danger-500};
   --dfm-badge-primary-dark-color: #{$danger-100};
   --dfm-badge-primary-dark-bg: #{$danger-500};
+  --dfm-badge-primary-dark-icon-color: #{$danger-100};
   --dfm-badge-warning-color: #{$warning-700};
   --dfm-badge-warning-bg: #{$warning-50};
+  --dfm-badge-warning-icon-color: #{$warning-500};
   --dfm-badge-success-color: #{$success-700};
   --dfm-badge-success-bg: #{$success-50};
+  --dfm-badge-success-icon-color: #{success-500};
   --dfm-badge-success-dark-color: #{$success-100};
   --dfm-badge-success-dark-bg: #{$success-500};
+  --dfm-badge-success-dark-icon-color: #{$success-100};
   --dfm-badge-gray-blue-color: #{$gray-blue-700};
   --dfm-badge-gray-blue-bg: #{$gray-blue-50};
+  --dfm-badge-gray-blue-icon-color: #{$gray-blue-500};
+
   --dfm-badge-secondary-color: #{rgba(83, 20, 34, 0.7)};
   --dfm-badge-secondary-bg: var(--dfm-secondary);
 

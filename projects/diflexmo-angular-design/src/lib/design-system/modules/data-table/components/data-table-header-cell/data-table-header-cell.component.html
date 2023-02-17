@@ -11,7 +11,7 @@
 >
   <ng-container *ngIf="header">
     <div class="d-flex dfm-gap-4">
-      <div class="text-xs-bold">{{ header?.title ?? '' }}</div>
+      <div [class.text-xs-bold]="headerSize !== 'sm'" [class.text-xs-medium]="headerSize === 'sm'">{{ header?.title ?? '' }}</div>
       <div *ngIf="header?.tooltip" class="icon-16 dfm-text-main-400">
         <dfm-icon name="help-circle" container="body" [ngbTooltip]="header?.tooltip"></dfm-icon>
       </div>

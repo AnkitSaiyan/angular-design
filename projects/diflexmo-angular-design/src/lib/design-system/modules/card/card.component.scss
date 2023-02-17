@@ -10,8 +10,8 @@
   display: flex;
   -webkit-box-pack: justify;
   justify-content: space-between;
-  -webkit-box-align: stretch;
-  align-items: stretch;
+  -webkit-box-align: start;
+  align-items: flex-start;
   flex-wrap: wrap;
   padding: 16px;
   margin-bottom: 0;
@@ -59,10 +59,3 @@
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 }
-
-// :host {
-//   display: flex;
-//   align-items: stretch;
-//   height: 100%;
-//   width: 100%;
-// }
