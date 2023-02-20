@@ -31,19 +31,25 @@
           </ng-container>
           <ng-container *ngTemplateOutlet="bodyRowTemplate; context: { $implicit: item }"></ng-container>
 
-          <ng-container *ngIf="showActions && actions && actions.length > 0">
+          <ng-container *ngIf="showActions">
             <dfm-table-row-cell [propagateClick]="false" [collapsePaddingX]="true">
-              <ng-container *ngIf="(!stickyActions || !isHorizontalScrollDisplayed) && actions.length < 4">
-                <div class="d-flex dfm-gap-12 float-right">
-                  <ng-container *ngFor="let action of actions">
-                    <div class="icon-20 pointer table-actions" [ngbTooltip]="action.label">
-                      <dfm-icon [name]="action.icon" (click)="actionEvent(action, item)"></dfm-icon>
-                    </div>
-                  </ng-container>
+              <ng-container *ngIf="!stickyActions || !isHorizontalScrollDisplayed">
+                <div class="d-flex dfm-gap-12 float-right dfm-regular-actions">
+                  <ng-container *ngTemplateOutlet="actionCellTemplate; context: { $implicit: item }"></ng-container>
                 </div>
               </ng-container>
-              <ng-container *ngIf="(stickyActions && isHorizontalScrollDisplayed) || actions.length >= 4">
-                <dfm-dropdown-button [items]="actions" (actionClicked)="dropdownActionEvent($event, item)"></dfm-dropdown-button>
+              <ng-container *ngIf="stickyActions && isHorizontalScrollDisplayed">
+                <div ngbDropdown container="body" placement="left">
+                  <div class="icon-20 pointer dropdown-ellipsis-icon" id="dropdownBasic1" ngbDropdownToggle>
+                    <dfm-icon name="dots-vertical"></dfm-icon>
+                  </div>                
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dfm-dropdown-menu">
+                    <div class="d-flex flex-column">
+                      <ng-container *ngTemplateOutlet="actionCellTemplate; context: { $implicit: item }"></ng-container>
+                    </div>
+                  </div>
+                </div>
+                                <!-- <dfm-dropdown-button [items]="actions" (actionClicked)="dropdownActionEvent($event, item)"></dfm-dropdown-button> -->
               </ng-container>
             </dfm-table-row-cell>
           </ng-container>

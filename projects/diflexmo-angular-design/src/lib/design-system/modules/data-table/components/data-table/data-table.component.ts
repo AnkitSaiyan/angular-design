@@ -42,6 +42,8 @@ export class DataTableComponent<T> implements OnInit {
   @Input() stickyCheckbox: boolean = true;
  
   @ContentChild('bodyRowTemplate') bodyRowTemplate!: TemplateRef<any>;
+  
+  @ContentChild('actionCellTemplate') actionCellTemplate!: TemplateRef<any>;
 
   @Output() sorted = new EventEmitter<DfmTableHeader>();
 

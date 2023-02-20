@@ -1,0 +1,19 @@
+.dfm-table-action {
+    color: var(--dfm-table-list-actions-icon-color);
+}
+
+.dfm-table-action:hover {
+    color: var(--dfm-table-list-actions-icon-hover-color);
+}
+
+.dropdown-icon-button {
+    height: 39px;
+    width: 42px;
+    color: var(--dfm-btn-link-gray-color);
+    padding: 8px;
+}
+
+.dropdown-icon-button:hover {
+    color: var(--dfm-main-800);
+    background-color: var(--dfm-main-200);
+}

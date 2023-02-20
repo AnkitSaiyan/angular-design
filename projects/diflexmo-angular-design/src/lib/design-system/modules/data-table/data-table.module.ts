@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { AngularResizeEventModule } from 'angular-resize-event';
-import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdownModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { DataTableComponent } from './components/data-table/data-table.component';
@@ -11,9 +11,10 @@ import { DataTableHeaderCellComponent } from './components/data-table-header-cel
 import { ButtonModule } from '../button/button.module';
 import { NgDfmDropdownModule } from '../dropdown/dropdown.module';
 import { BaseCheckboxModule } from '../base-checkbox/base-checkbox.module';
+import { DataTableActionComponent } from './components/data-table-action/data-table-action.component';
 
 @NgModule({
-  declarations: [DataTableComponent, TableRowCellComponent, DataTableHeaderCellComponent],
+  declarations: [DataTableComponent, TableRowCellComponent, DataTableHeaderCellComponent, DataTableActionComponent],
   imports: [
     CommonModule,
     IconModule,
@@ -24,7 +25,8 @@ import { BaseCheckboxModule } from '../base-checkbox/base-checkbox.module';
     FormsModule,
     BaseCheckboxModule,
     InfiniteScrollModule,
+    NgbDropdownModule
   ],
-  exports: [DataTableComponent, TableRowCellComponent],
+  exports: [DataTableComponent, TableRowCellComponent, DataTableActionComponent],
 })
 export class DfmDataTableModule {}
