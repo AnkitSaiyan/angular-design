@@ -7,6 +7,7 @@ import { DfmTableActionEvent } from '../../models/table-action-event.model';
 import { DfmTableAction } from '../../models/table-action.model';
 import { DfmTableHeader } from '../../models/table-header.model';
 import { TableRow } from '../../models/table-row.model';
+import { DataTableSizeService } from '../../services/data-table-size.service';
 import { TableHeaderSize } from '../../types/table-header-size.type';
 
 @Component({
@@ -43,8 +44,6 @@ export class DataTableComponent<T> implements OnInit {
  
   @ContentChild('bodyRowTemplate') bodyRowTemplate!: TemplateRef<any>;
   
-  @ContentChild('actionCellTemplate') actionCellTemplate!: TemplateRef<any>;
-
   @Output() sorted = new EventEmitter<DfmTableHeader>();
 
   @Output() rowClicked = new EventEmitter<TableRow<T>>();
@@ -56,8 +55,6 @@ export class DataTableComponent<T> implements OnInit {
   @Output() scrolled = new EventEmitter();
 
   @ViewChild('tableWrapper', { static: false }) tableWrapper!: ElementRef;
-
-  public isHorizontalScrollDisplayed: boolean = false;
 
   public tableSizeChanged$ = new Subject<ResizedEvent>();
 
@@ -76,11 +73,15 @@ export class DataTableComponent<T> implements OnInit {
     return false;
   }
 
+  constructor(
+    public dataTableSizeService: DataTableSizeService
+  ) {}
+
   ngOnInit(): void {
     this.tableSizeChanged$.pipe(debounceTime(100)).subscribe((event: ResizedEvent) => {
       const tableWrapperWidth = this.tableWrapper.nativeElement.offsetWidth;
       const tableWidth = event.newRect.width;
-      this.isHorizontalScrollDisplayed = tableWrapperWidth < tableWidth;
+      this.dataTableSizeService.setOverflow(tableWrapperWidth < tableWidth);
     });
 
     if (this.selectable) {

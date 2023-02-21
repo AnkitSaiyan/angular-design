@@ -12,9 +12,10 @@ import { ButtonModule } from '../button/button.module';
 import { NgDfmDropdownModule } from '../dropdown/dropdown.module';
 import { BaseCheckboxModule } from '../base-checkbox/base-checkbox.module';
 import { DataTableActionComponent } from './components/data-table-action/data-table-action.component';
+import { DataTableActionCellComponent } from './components/data-table-action-cell/data-table-action-cell.component';
 
 @NgModule({
-  declarations: [DataTableComponent, TableRowCellComponent, DataTableHeaderCellComponent, DataTableActionComponent],
+  declarations: [DataTableComponent, TableRowCellComponent, DataTableHeaderCellComponent, DataTableActionComponent, DataTableActionCellComponent],
   imports: [
     CommonModule,
     IconModule,
@@ -27,6 +28,6 @@ import { DataTableActionComponent } from './components/data-table-action/data-ta
     InfiniteScrollModule,
     NgbDropdownModule
   ],
-  exports: [DataTableComponent, TableRowCellComponent, DataTableActionComponent],
+  exports: [DataTableComponent, TableRowCellComponent, DataTableActionComponent, DataTableActionCellComponent],
 })
 export class DfmDataTableModule {}
