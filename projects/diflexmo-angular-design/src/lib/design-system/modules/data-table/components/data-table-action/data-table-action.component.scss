@@ -1,4 +1,6 @@
 .dfm-table-action {
+    height: 20px;
+    width: 20px;
     color: var(--dfm-table-list-actions-icon-color);
 }
 
@@ -6,14 +8,14 @@
     color: var(--dfm-table-list-actions-icon-hover-color);
 }
 
-:host-context(.last-frozen) .dfm-table-action {
-    height: 39px;
-    width: 42px;
+:host-context(.last-frozen) :host:last-child .dfm-table-action {
+    height: 39px !important;
+    width: 42px !important;
     color: var(--dfm-btn-link-gray-color) !important;
     padding: 8px;
 }
 
-:host-context(.last-frozen) .dfm-table-action:hover {
+:host-context(.last-frozen) :host:last-child .dfm-table-action:hover {
     color: var(--dfm-main-800);
     background-color: var(--dfm-main-200) !important;
 }
