@@ -26,13 +26,11 @@ export class DataTableComponent<T> implements OnInit {
 
   @Input() actions: Array<DfmTableAction> = [];
 
-  @Input() showActions: boolean = true;
-
-  @Input() stickyActions: boolean = true;
-
   @Input() stickyHeader: boolean = true;
 
   @Input() stickyFirstRow: boolean = true;
+
+  @Input() stickyActions: boolean = true;
 
   @Input() headerSize: TableHeaderSize = 'lg';
 
@@ -41,6 +39,8 @@ export class DataTableComponent<T> implements OnInit {
   @Input() clearSelected$?: Subject<void> | null;
 
   @Input() stickyCheckbox: boolean = true;
+
+  @Input() noDataMessage: string = 'No data';
  
   @ContentChild('bodyRowTemplate') bodyRowTemplate!: TemplateRef<any>;
   

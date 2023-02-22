@@ -1,6 +1,5 @@
 <div class="dfm-table-wrapper" #tableWrapper infiniteScroll (scrolled)="scrolled.emit()" [scrollWindow]="false">
   <table
-    [class.last-frozen]="stickyActions && dataTableSizeService.isOverflown() && actions && actions.length > 0"
     [class.first-frozen]="stickyFirstRow && dataTableSizeService.isOverflown()"
     (resized)="checkTableSize($event)"
   >
@@ -15,9 +14,9 @@
         <ng-container *ngFor="let header of headers">
           <dfm-data-table-header-cell (click)="sortClicked(header.title)" [header]="header" [headerSize]="headerSize"></dfm-data-table-header-cell>
         </ng-container>
-        <ng-container *ngIf="showActions && actions && actions.length > 0">
+        <div>
           <dfm-data-table-header-cell></dfm-data-table-header-cell>
-        </ng-container>
+        </div>
       </tr>
     </thead>
 
@@ -30,15 +29,13 @@
             </dfm-table-row-cell>
           </ng-container>
           <ng-container *ngTemplateOutlet="bodyRowTemplate; context: { $implicit: item }"></ng-container>
-
-          <ng-container *ngIf="showActions">
-
-          </ng-container>
         </tr>
       </ng-container>
       <ng-template #noData>
         <tr>
-          <td [attr.colspan]="headers.length" class="no-data-cell dfm-py-16 text-sm-medium dfm-text-main-700">No data</td>
+          <td [attr.colspan]="headers.length" class="no-data-cell dfm-py-16 text-sm-medium dfm-text-main-700">
+            {{ noDataMessage }}
+          </td>
         </tr>
       </ng-template>
     </tbody>
