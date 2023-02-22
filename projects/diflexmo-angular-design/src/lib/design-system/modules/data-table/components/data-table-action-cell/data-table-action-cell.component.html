@@ -1,10 +1,10 @@
 <dfm-table-row-cell [propagateClick]="false" [collapsePaddingX]="true">
-  <ng-container *ngIf="!stickyActions || !dataTableSizeService.isOverflown()">
+  <ng-container *ngIf="!dataTableSizeService.isStickyActions() || !dataTableSizeService.isOverflown()">
     <div class="d-flex dfm-gap-12 float-right dfm-regular-actions">
       <ng-container *ngTemplateOutlet="actionCellTemplate"></ng-container>
     </div>
   </ng-container>
-  <ng-container *ngIf="stickyActions && dataTableSizeService.isOverflown()">
+  <ng-container *ngIf="dataTableSizeService.isStickyActions() && dataTableSizeService.isOverflown()">
     <div ngbDropdown container="body" placement="left">
       <div class="icon-20 pointer dropdown-ellipsis-icon" id="dropdownBasic1" ngbDropdownToggle>
         <dfm-icon name="dots-vertical"></dfm-icon>

@@ -30,7 +30,14 @@ export class DataTableComponent<T> implements OnInit {
 
   @Input() stickyFirstRow: boolean = true;
 
-  @Input() stickyActions: boolean = true;
+  private _stickyActions: boolean = true;
+  public get stickyActions(): boolean {
+    return this._stickyActions;
+  }
+  @Input() public set stickyActions(value: boolean) {
+    this._stickyActions = value;
+    this.dataTableSizeService.setStickyActions(value);
+  }
 
   @Input() headerSize: TableHeaderSize = 'lg';
 

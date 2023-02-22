@@ -18,11 +18,11 @@ export class DataTableSizeService {
     return this.isCurrentOverflown.asObservable();
   }
 
-  public isStickyAtions(): boolean {
+  public isStickyActions(): boolean {
     return this.stickyActions.value;
   }
   
-  public isStickyAtions$(): Observable<boolean> {
+  public isStickyActions$(): Observable<boolean> {
     return this.stickyActions.asObservable();
   }
 
