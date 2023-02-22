@@ -1,6 +1,6 @@
 {
   "name": "diflexmo-angular-design",
-  "version": "0.0.17",
+  "version": "202201.16.213",
   "peerDependencies": {
     "@angular/animations": "^14.2.0",
     "@angular/common": "^14.2.0",

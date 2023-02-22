@@ -25,7 +25,7 @@ import { SelectItem } from './models/select-item';
 @Component({
   selector: 'dfm-input-dropdown',
   templateUrl: './input-dropdown.component.html',
-  styleUrls: ['./input-dropdown.component.scss'],
+  styleUrls: ['./input-dropdown.component.scss', '../input/input.component.scss'],
 })
 export class InputDropdownComponent extends BaseControlValueAccessor implements OnInit, AfterViewInit, OnChanges {
   @Input() public items: SelectItem[] = [];
@@ -62,7 +62,7 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
 
   @ViewChildren('selectedItemRef', { read: ElementRef }) selectedItemsRef!: QueryList<ElementRef>;
 
-  @ViewChild('searchInputRef', { read: ElementRef }) searchInputRef!: ElementRef;
+  @ViewChild('searchInputRef') searchInputRef!: ElementRef;
 
   @ViewChild('dropdown') dropdownRef!: ElementRef;
 
@@ -80,7 +80,7 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
 
   private isDropdownClosed: boolean = true;
 
-  private dropdownInstance?: Dropdown;
+  public dropdownInstance?: Dropdown;
 
   public selectedItems: SelectItem[] = [];
 
@@ -195,7 +195,7 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
     this.selectedItemTagsUnionIndex = itemsUnionIndex;
 
     const paddingRight = this.typeToSearch ? this.defaultMultipleDropdownPaddingRight : this.multipleDropdownWithIconPaddingRight;
-    this.searchInputRef.nativeElement.querySelector('.dfm-input').style.paddingRight = `${containerWidth + paddingRight}px`;
+    this.searchInputRef.nativeElement.style.paddingRight = `${containerWidth + paddingRight}px`;
   }
 
   openDropdown() {
@@ -260,9 +260,7 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
 
   public focusout(value: any) {
     setTimeout(() => {
-      if (!this.search) {
-        this.onTouch(value);
-      }
+      this.onTouch(value);
     }, 250);
   }
 }

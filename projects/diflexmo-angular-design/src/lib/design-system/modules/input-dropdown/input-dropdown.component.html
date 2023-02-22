@@ -1,19 +1,23 @@
 <div class="dropdown input-dropdown input-dropdown-{{ size }}">
   <div #dropdown>
-    <div class="input-container" (click)="openDropdown()">
-      <dfm-input
-        [placeholder]="placeholder"
-        [icon]="icon"
-        [size]="size"
-        [ngModel]="search"
-        (ngModelChange)="updateSearch($event)"
-        (focusout)="focusout($event)"
-        [isInvalid]="!!(control && control.touched && !control.valid)"
-        [readonly]="!typeToSearch"
-        [label]="label"
-        #searchInputRef
-      ></dfm-input>
-      <dfm-icon name="chevron-down" *ngIf="!typeToSearch" class="dropdown-icon"></dfm-icon>
+    <div class="input-container">
+      <label *ngIf="label" class="dfm-input-label">{{ label }}</label>
+      <div class="input-container input-container-{{ size }}">
+        <dfm-icon *ngIf="icon" [name]="icon" class="leading-icon"></dfm-icon>
+        <input
+          class="dfm-input dfm-input-{{ size }}"
+          [ngClass]="{ 'dfm-invalid': control && control.touched && !control.valid, 'leading-icon-control': icon }"
+          [ngModel]="search"
+          (ngModelChange)="updateSearch($event)"
+          [placeholder]="placeholder"
+          [disabled]="disabled"
+          [readonly]="!typeToSearch"
+          (focusout)="focusout($event)"
+          #searchInputRef
+          (click)="dropdownInstance?.toggle()"
+        />
+      </div>
+      <dfm-icon name="chevron-down" *ngIf="!typeToSearch" class="dropdown-icon" (click)="dropdownInstance?.toggle()"></dfm-icon>
     </div>
   </div>
   <div *ngIf="selectedItemTags.length" class="selected-items" [class.selected-items-with-dropdown-icon]="!typeToSearch" #selectedItemsContainerRef>
@@ -29,7 +33,7 @@
   </div>
   <span *ngIf="hint" class="dfm-input-hint">{{ hint }}</span>
   <dfm-error [control]="control"></dfm-error>
-  <div class="dropdown-menu dropdown-menu-end w-100 p-0" (dfmDomChange)="checkIfDropdownIsClosed($event)">
+  <div class="input-dropdown-menu dropdown-menu dropdown-menu-end w-100 p-0" (dfmDomChange)="checkIfDropdownIsClosed($event)">
     <ng-container *ngIf="loading; then loadingTemplate; else searchTemplate"></ng-container>
 
     <ng-template #loadingTemplate>
