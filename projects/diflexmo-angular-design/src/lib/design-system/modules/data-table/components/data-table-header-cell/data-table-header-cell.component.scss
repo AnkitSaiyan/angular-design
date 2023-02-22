@@ -32,6 +32,7 @@ $table-border-radius: 8px;
 :host-context(.checkbox-cell) {
   .cell {
     width: 80px;
+    background-color: var(--dfm-table-even-cell-bg);
   }
   
   & ~ :host:nth-child(2) .cell {

@@ -6,14 +6,14 @@
     color: var(--dfm-table-list-actions-icon-hover-color);
 }
 
-.dropdown-icon-button {
+:host-context(.last-frozen) .dfm-table-action {
     height: 39px;
     width: 42px;
-    color: var(--dfm-btn-link-gray-color);
+    color: var(--dfm-btn-link-gray-color) !important;
     padding: 8px;
 }
 
-.dropdown-icon-button:hover {
+:host-context(.last-frozen) .dfm-table-action:hover {
     color: var(--dfm-main-800);
-    background-color: var(--dfm-main-200);
+    background-color: var(--dfm-main-200) !important;
 }
