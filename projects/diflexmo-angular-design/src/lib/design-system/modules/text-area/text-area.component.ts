@@ -44,4 +44,9 @@ export class TextAreaComponent implements ControlValueAccessor {
   setDisabledState?(isDisabled: boolean): void {
     this.disabled = isDisabled;
   }
+
+  onValueChanged(value: any): void {
+    const changedValue = value;
+    this.onChange(changedValue);
+  }
 }
