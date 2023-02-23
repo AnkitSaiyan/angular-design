@@ -4,7 +4,7 @@
     class="form-control dfm-text-area"
     rows="3"
     [ngClass]="{ 'hint-control': hint, 'is-invalid': control && control.touched && !control.valid }"
-    [ngModel]="value"
+    [(ngModel)]="value"
     (ngModelChange)="onChange($event)"
     [disabled]="disabled"
     [placeholder]="placeholder"

@@ -30,7 +30,6 @@ export class TextAreaComponent implements ControlValueAccessor {
   }
 
   writeValue(obj: any): void {
-    console.log(obj)
     this.value = obj;
   }
 
