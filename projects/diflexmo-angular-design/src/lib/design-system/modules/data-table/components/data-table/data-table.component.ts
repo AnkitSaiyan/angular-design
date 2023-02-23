@@ -29,7 +29,7 @@ export class DataTableComponent<T> implements OnInit {
 
   @Input() stickyHeader: boolean = true;
 
-  @Input() stickyFirstRow: boolean = true;
+  @Input() stickyFirstColumn: boolean = true;
 
   private _stickyActions: boolean = true;
   public get stickyActions(): boolean {
