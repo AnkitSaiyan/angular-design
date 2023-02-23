@@ -46,7 +46,7 @@ export class TextAreaComponent implements ControlValueAccessor {
   }
 
   onValueChanged(value: any): void {
-    const changedValue = value;
-    this.onChange(changedValue);
+    console.log(value)
+    this.onChange(value);
   }
 }
