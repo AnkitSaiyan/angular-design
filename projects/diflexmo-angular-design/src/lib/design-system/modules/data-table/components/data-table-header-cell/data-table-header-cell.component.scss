@@ -5,6 +5,13 @@ $table-first-td-width: 200px;
 $table-border: 1px solid var(--dfm-table-border);
 $table-border-radius: 8px;
 
+:host-context(.last-frozen) :host:last-child .cell {
+  position: sticky;
+  right: 0;
+  z-index: 2;
+  background-color: var(--dfm-table-even-cell-bg);
+}
+
 :host-context(.checkbox-cell.checkbox-first-frozen) ~ :host:nth-child(2) .cell {
   box-shadow: 12px 0px 8px rgba(0, 0, 0, 0.05);
   position: sticky;
