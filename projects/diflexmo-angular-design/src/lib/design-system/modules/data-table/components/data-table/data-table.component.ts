@@ -14,6 +14,7 @@ import { TableHeaderSize } from '../../types/table-header-size.type';
   selector: 'dfm-data-table',
   templateUrl: './data-table.component.html',
   styleUrls: ['./data-table.component.scss'],
+  providers: [DataTableSizeService]
 })
 export class DataTableComponent<T> implements OnInit {
   @Input() data?: DfmDatasource<T>;
