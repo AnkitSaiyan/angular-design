@@ -1,20 +1,18 @@
 import { Component, ContentChild, ElementRef, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
 import { ResizedEvent } from 'angular-resize-event';
 import { debounceTime, Subject } from 'rxjs';
-import { DfmDropdownItem } from '../../../dropdown/models/dropdown-item.model';
 import { DfmDatasource } from '../../models/datasource.model';
-import { DfmTableActionEvent } from '../../models/table-action-event.model';
 import { DfmTableAction } from '../../models/table-action.model';
 import { DfmTableHeader } from '../../models/table-header.model';
 import { TableRow } from '../../models/table-row.model';
-import { DataTableSizeService } from '../../services/data-table-size.service';
+import { DataTableService } from '../../services/data-table.service';
 import { TableHeaderSize } from '../../types/table-header-size.type';
 
 @Component({
   selector: 'dfm-data-table',
   templateUrl: './data-table.component.html',
   styleUrls: ['./data-table.component.scss'],
-  providers: [DataTableSizeService]
+  providers: [DataTableService]
 })
 export class DataTableComponent<T> implements OnInit {
   @Input() data?: DfmDatasource<T>;
@@ -37,7 +35,7 @@ export class DataTableComponent<T> implements OnInit {
   }
   @Input() public set stickyActions(value: boolean) {
     this._stickyActions = value;
-    this.dataTableSizeService.setStickyActions(value);
+    this.dataTableService.setStickyActions(value);
   }
 
   @Input() headerSize: TableHeaderSize = 'lg';
@@ -49,14 +47,14 @@ export class DataTableComponent<T> implements OnInit {
   @Input() stickyCheckbox: boolean = true;
 
   @Input() noDataMessage: string = 'No data';
+
+  @Input() collapseOnMobile: boolean = false;
  
   @ContentChild('bodyRowTemplate') bodyRowTemplate!: TemplateRef<any>;
   
   @Output() sorted = new EventEmitter<DfmTableHeader>();
 
   @Output() rowClicked = new EventEmitter<TableRow<T>>();
-
-  @Output() actionClicked = new EventEmitter<DfmTableActionEvent<T>>();
 
   @Output() selected = new EventEmitter<any[]>();
 
@@ -82,14 +80,14 @@ export class DataTableComponent<T> implements OnInit {
   }
 
   constructor(
-    public dataTableSizeService: DataTableSizeService
+    public dataTableService: DataTableService
   ) {}
 
   ngOnInit(): void {
     this.tableSizeChanged$.pipe(debounceTime(100)).subscribe((event: ResizedEvent) => {
       const tableWrapperWidth = this.tableWrapper.nativeElement.offsetWidth;
       const tableWidth = event.newRect.width;
-      this.dataTableSizeService.setOverflow(tableWrapperWidth < tableWidth);
+      this.dataTableService.setOverflow(tableWrapperWidth < tableWidth);
     });
 
     if (this.selectable) {
@@ -104,14 +102,6 @@ export class DataTableComponent<T> implements OnInit {
         this.selected.emit([]);
       });
     }
-  }
-
-  public actionEvent(event: DfmTableAction, row: TableRow<T>): void {
-    this.actionClicked.emit({actionId: event.id, row: row});
-  }
-  
-  public dropdownActionEvent(event: DfmDropdownItem, row: TableRow<T>): void {
-    this.actionClicked.emit({actionId: event.id, row: row});
   }
 
   public checkTableSize(event: ResizedEvent): void {

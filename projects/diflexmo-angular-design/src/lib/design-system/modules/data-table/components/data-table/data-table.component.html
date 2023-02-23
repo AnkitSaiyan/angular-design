@@ -1,21 +1,21 @@
-<div class="dfm-table-wrapper" #tableWrapper infiniteScroll (scrolled)="scrolled.emit()" [scrollWindow]="false">
+<div [class.dfm-table-wrapper-collapse]="collapseOnMobile" class="dfm-table-wrapper" #tableWrapper infiniteScroll (scrolled)="scrolled.emit()" [scrollWindow]="false">
   <table
-    [class.last-frozen]="stickyActions && dataTableSizeService.isOverflown()"
-    [class.first-frozen]="stickyFirstColumn && dataTableSizeService.isOverflown()"
+    [class.last-frozen]="stickyActions && dataTableService.isOverflown()"
+    [class.first-frozen]="stickyFirstColumn && dataTableService.isOverflown()"
     (resized)="checkTableSize($event)"
   >
     <thead *ngIf="headers && headers.length > 0" [ngClass]="{ 'dfm-sticky-header': stickyHeader }">
       <tr>
         <ng-container *ngIf="selectable">
-          <dfm-data-table-header-cell class="checkbox-cell" [class.checkbox-frozen]="stickyCheckbox && dataTableSizeService.isOverflown()" 
-            [class.checkbox-first-frozen]="stickyFirstColumn && dataTableSizeService.isOverflown()">
+          <dfm-data-table-header-cell class="checkbox-cell" [class.checkbox-frozen]="stickyCheckbox && dataTableService.isOverflown()" 
+            [class.checkbox-first-frozen]="stickyFirstColumn && dataTableService.isOverflown()">
             <dfm-checkbox class="d-flex dfm-me-2" [ngModel]="areAllSelected" (click)="selectAllItems()"></dfm-checkbox>
           </dfm-data-table-header-cell>
         </ng-container>
         <ng-container *ngFor="let header of headers">
           <dfm-data-table-header-cell (click)="sortClicked(header.title)" [header]="header" [headerSize]="headerSize"></dfm-data-table-header-cell>
         </ng-container>
-        <div>
+        <div *ngIf="dataTableService.hasActions$() | async">
           <dfm-data-table-header-cell></dfm-data-table-header-cell>
         </div>
       </tr>
@@ -25,7 +25,7 @@
       <ng-container *ngIf="data && data.items && data.items.length > 0; else noData">
         <tr *ngFor="let item of data.items" class="body-row" (click)="click(item)" [class.pointer]="rowClickable">
           <ng-container *ngIf="selectable">
-            <dfm-table-row-cell [propagateClick]="false" class="checkbox-cell" [class.checkbox-frozen]="stickyCheckbox && dataTableSizeService.isOverflown()" [class.checkbox-first-frozen]="stickyFirstColumn && dataTableSizeService.isOverflown()">
+            <dfm-table-row-cell [propagateClick]="false" class="checkbox-cell" [class.checkbox-frozen]="stickyCheckbox && dataTableService.isOverflown()" [class.checkbox-first-frozen]="stickyFirstColumn && dataTableService.isOverflown()">
               <dfm-checkbox class="d-flex dfm-me-2" [ngModel]="getSelectedById(item.id)" (ngModelChange)="selectItem($event, item.id)"></dfm-checkbox>
             </dfm-table-row-cell>
           </ng-container>

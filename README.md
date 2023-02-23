@@ -179,19 +179,65 @@ rowClickable: boolean, when true the data table will report when a row has been 
 
 headers: an array of DfmTableHeader, to pass the title for each column, if the column can be sortable and if a tooltip should be displayed
 
-actions: an array of DfmTableAction, this will add a column at the end of the table with a list of clickable icons
-
-showActions: boolean, when true will show the actions column if any actions were passed to the table. Default= true
-
 stickyActions: boolean, when true will always show the actions column on the write when the table is horizontally scrollable. Default= true
 
 stickyHeader: boolean, when true will always show the header row when table is vertically scrollable. Default= true
 
-stickyFirstRow: boolean, when true will always the first row of the table when it is horizontally scrollable. Default= true
+stickyFirstColumn: boolean, when true will always the first row of the table when it is horizontally scrollable. Default= true
 
 headerSze: 'lg' | 'md' | 'sm', size of the header. Default= 'lg'
 
 clearSelected$: subject, when passing any value to the subject the table will set all checkboxes to false in the first row when **[rowSelectable]** is set to true
+
+### EXAMPLE
+
+ts-file must contain the following;
+```
+public tableHeaders: Array<DfmTableHeader> = [
+  { title: 'Vessel name', id: 'vesselName' },
+  { title: 'Vessel imo', id: 'vesselImo' },
+  { title: 'Last update', id: 'lastUpdate' }
+];
+
+public datasource: DfmDatasource<number> = { items: [
+  {id: 1, name: "test", "imo": "test imo", lastUpdate: new Date()}
+  {id: 2, name: "test", "imo": "test imo", lastUpdate: new Date()}
+  {id: 3, name: "test", "imo": "test imo", lastUpdate: new Date()}
+  {id: 4, name: "test", "imo": "test imo", lastUpdate: new Date()}
+]};
+```
+tableHeaders will be used to render the header of the table while datasource will contain all the data for the body of the table. 
+
+The html file will contain the following;
+```
+<dfm-data-table
+  [headers]="tableHeaders"
+  [data]="datasource"
+  [stickyActions]="true"
+>
+  <ng-template #bodyRowTemplate let-item>
+    <dfm-table-row-cell [maxWidthStyle]="'200px'" [fullContent]="item.vesselName">
+      {{ item.name }}
+    </dfm-table-row-cell>
+    <dfm-table-row-cell>
+      {{ item.imo }}
+    </dfm-table-row-cell>
+    <dfm-table-row-cell>
+      {{ item.lastUpdate | date }}
+    </dfm-table-row-cell>
+    <dfm-data-table-action-cell>
+      <ng-template #actionCellTemplate>
+        <ng-container *ngIf="item.id === 3">
+          <dfm-data-table-action icon="pencil-02" tooltip="test" (click)="test()"></dfm-data-table-action>
+        </ng-container>
+        <dfm-data-table-action [icon]="item.id === '2' ? 'pencil-02' : 'trash-01'" tooltip="test">
+        </dfm-data-table-action>
+        <dfm-data-table-action tooltip="test"></dfm-data-table-action>
+      </ng-template>
+    </dfm-data-table-action-cell>
+  </ng-template>
+</dfm-data-table>
+```
 
 ### OUTPUTS
 sorted: the datatable will report back which column the user wishes to sort

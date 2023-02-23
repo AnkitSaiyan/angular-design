@@ -4,11 +4,13 @@ import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class DataTableSizeService {
+export class DataTableService {
 
   private isCurrentOverflown: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   private stickyActions: BehaviorSubject<boolean> = new BehaviorSubject(false);
+
+  private actions: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   public isOverflown(): boolean {
     return this.isCurrentOverflown.value;
@@ -16,6 +18,14 @@ export class DataTableSizeService {
   
   public isOverflown$(): Observable<boolean> {
     return this.isCurrentOverflown.asObservable();
+  }
+
+  public hasActions(): boolean {
+    return this.actions.value;
+  }
+  
+  public hasActions$(): Observable<boolean> {
+    return this.actions.asObservable();
   }
 
   public isStickyActions(): boolean {
@@ -32,5 +42,9 @@ export class DataTableSizeService {
 
   public setStickyActions(isSticky: boolean): void {
     this.stickyActions.next(isSticky);
+  }
+  
+  public setHasActions(isSticky: boolean): void {
+    this.actions.next(isSticky);
   }
 }
