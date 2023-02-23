@@ -1,5 +1,5 @@
 import { Component, ContentChild, Input, TemplateRef } from '@angular/core';
-import { DataTableSizeService } from '../../services/data-table-size.service';
+import { DataTableService } from '../../services/data-table.service';
 
 @Component({
   selector: 'dfm-data-table-action-cell',
@@ -13,6 +13,6 @@ export class DataTableActionCellComponent {
   @ContentChild('actionCellTemplate') actionCellTemplate!: TemplateRef<any>;
   
   constructor(
-    public dataTableSizeService: DataTableSizeService
+    public dataTableService: DataTableService
   ) { }
 }
