@@ -15,9 +15,7 @@
         <ng-container *ngFor="let header of headers">
           <dfm-data-table-header-cell (click)="sortClicked(header.title)" [header]="header" [headerSize]="headerSize"></dfm-data-table-header-cell>
         </ng-container>
-        <div *ngIf="dataTableService.hasActions$() | async">
-          <dfm-data-table-header-cell></dfm-data-table-header-cell>
-        </div>
+        <dfm-data-table-header-cell *ngIf="dataTableService.hasActions()"></dfm-data-table-header-cell>
       </tr>
     </thead>
 
