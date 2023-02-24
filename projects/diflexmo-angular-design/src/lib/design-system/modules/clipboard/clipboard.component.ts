@@ -6,24 +6,26 @@ import { TranslateService } from '@ngx-translate/core';
   template: `
     <div class="d-flex dfm-gap-8 show-hidden" #container>
       <div><ng-content></ng-content></div>
-      <ng-container *ngIf="!isCopied; else copiedNgTemp">
-        <div
-          (cbOnSuccess)="copySuccess($event)"
-          ngxClipboard
-          [cbContent]="clip"
-          [container]="container"
-          class="pointer icon-15 align-self-center"
-          [ngClass]="{ hide: !alwaysVisible }"
-          (click)="$event.stopPropagation()"
-        >
-          <dfm-icon name="copy-06" class="dfm-clipboard" [ngbTooltip]="copyToClipboardText" container="body"></dfm-icon>
-        </div>
+      <ng-container *ngIf="!disabled">
+        <ng-container *ngIf="!isCopied; else copiedNgTemp">
+          <div
+            (cbOnSuccess)="copySuccess($event)"
+            ngxClipboard
+            [cbContent]="clip"
+            [container]="container"
+            class="pointer icon-15 align-self-center"
+            [ngClass]="{ hide: !alwaysVisible }"
+            (click)="$event.stopPropagation()"
+          >
+            <dfm-icon name="copy-06" class="dfm-clipboard" [ngbTooltip]="copyToClipboardText" container="body"></dfm-icon>
+          </div>
+        </ng-container>
+        <ng-template #copiedNgTemp>
+          <div class="pointer icon-15 align-self-center" (click)="$event.stopPropagation()" [ngbTooltip]="copiedToClipboardText" container="body">
+            <dfm-icon name="check" class="dfm-clipboard-copied" [ngClass]="{ hide: !alwaysVisible }"></dfm-icon>
+          </div>
+        </ng-template>
       </ng-container>
-      <ng-template #copiedNgTemp>
-        <div class="pointer icon-15 align-self-center" (click)="$event.stopPropagation()" [ngbTooltip]="copiedToClipboardText" container="body">
-          <dfm-icon name="check" class="dfm-clipboard-copied" [ngClass]="{ hide: !alwaysVisible }"></dfm-icon>
-        </div>
-      </ng-template>
     </div>
   `,
   styleUrls: ['./clipboard.component.scss'],
@@ -32,6 +34,8 @@ export class ClipboardComponent implements OnInit {
   @Input() clip: string = '';
 
   @Input() alwaysVisible: boolean = false;
+
+  @Input() disabled: boolean = false;
 
   public isCopied: boolean = false;
 
