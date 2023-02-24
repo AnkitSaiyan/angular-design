@@ -54,6 +54,8 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
 
   @Input() public asyncSearch: boolean = false;
 
+  @Input() public showDropdownIcon: boolean = true;
+  
   @Output() public searchInput = new EventEmitter<string>();
 
   @Output() public menuClosed = new EventEmitter();

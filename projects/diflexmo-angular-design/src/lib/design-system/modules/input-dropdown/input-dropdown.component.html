@@ -17,7 +17,7 @@
           (click)="dropdownInstance?.toggle()"
         />
       </div>
-      <dfm-icon name="chevron-down" *ngIf="!typeToSearch" class="dropdown-icon" (click)="dropdownInstance?.toggle()"></dfm-icon>
+      <dfm-icon name="chevron-down" *ngIf="showDropdownIcon" class="dropdown-icon" (click)="dropdownInstance?.toggle()"></dfm-icon>
     </div>
   </div>
   <div *ngIf="selectedItemTags.length" class="selected-items" [class.selected-items-with-dropdown-icon]="!typeToSearch" #selectedItemsContainerRef>
