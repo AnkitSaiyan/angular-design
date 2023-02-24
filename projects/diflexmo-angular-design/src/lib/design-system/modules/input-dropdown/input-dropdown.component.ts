@@ -118,6 +118,8 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
     }
 
     this.filteredItems = [...this.items];
+
+    this.updateSearch("");
   }
 
   ngAfterViewInit(): void {
@@ -154,7 +156,8 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
       this.value = null;
     }
 
-    if (query && query.length >= this.minQueryLength) {
+    const queryLength = query ? query.length : 0;
+    if (queryLength >= this.minQueryLength) {
       this.searchInput.emit(query);
     } else {
       this.filteredItems = this.asyncSearch ? [] : [...this.items];
