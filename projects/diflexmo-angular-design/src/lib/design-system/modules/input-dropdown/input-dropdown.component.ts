@@ -55,6 +55,8 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
   @Input() public asyncSearch: boolean = false;
 
   @Input() public showDropdownIcon: boolean = true;
+
+  @Input() public showSelectAll: boolean = false;
   
   @Output() public searchInput = new EventEmitter<string>();
 
@@ -85,6 +87,10 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
   public dropdownInstance?: Dropdown;
 
   public selectedItems: SelectItem[] = [];
+
+  public get isAllSelected(): boolean {
+    return this.filteredItems.every(i => this.value.includes(i.value));
+  }
 
   constructor(private changeDetectionRef: ChangeDetectorRef, @Optional() public control: NgControl, private eRef: ElementRef) {
     super();
@@ -267,5 +273,17 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
     setTimeout(() => {
       this.onTouch(value);
     }, 250);
+  }
+
+  public toggleSelectAll(): void {
+    if (!this.multiple) {
+      return;
+    }
+    if (this.isAllSelected) {
+      this.value = [];
+    }
+    else {
+      this.filteredItems.filter(i => this.value.includes(i.value)).forEach(v => this.value.push(v));
+    }
   }
 }

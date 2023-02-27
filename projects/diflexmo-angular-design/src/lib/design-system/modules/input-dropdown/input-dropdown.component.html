@@ -48,6 +48,15 @@
     </ng-template>
 
     <ng-template #itemsTemplate>
+      <div class="option-content" *ngIf="multiple && showSelectAll" (click)="toggleSelectAll()">
+        <ng-container *ngIf="isAllSelected; then selectAllTemplate; else selectNoneTemplate"></ng-container>
+        <ng-template #selectAllTemplate>
+          Select all
+        </ng-template>
+        <ng-template #selectNoneTemplate>
+          Select none
+        </ng-template>
+      </div>
       <div *ngFor="let item of filteredItems" (click)="selectItem(item)" clickable class="input-dropdown-item option">
         <div class="option-content">
           {{ item.name }}
