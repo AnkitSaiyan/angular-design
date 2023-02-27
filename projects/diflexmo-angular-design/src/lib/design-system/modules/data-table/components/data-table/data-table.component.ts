@@ -98,7 +98,7 @@ export class DataTableComponent<T> implements OnInit {
 
     if (this.clearSelected$) {
       this.clearSelected$.subscribe(() => {
-        this.selectedItems = new Map<T, boolean>();
+        this.selectedItems.clear();
         this.selected.emit([]);
       });
     }
@@ -150,7 +150,7 @@ export class DataTableComponent<T> implements OnInit {
       });
       this.selected.emit(ids);
     } else {
-      this.selectedItems = new Map<T, boolean>();
+      this.selectedItems.clear();
       this.selected.emit([]);
     }
   }
