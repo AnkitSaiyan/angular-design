@@ -1,6 +1,6 @@
 <div [class.dfm-table-wrapper-collapse]="collapseOnMobile" class="dfm-table-wrapper" #tableWrapper infiniteScroll (scrolled)="scrolled.emit()" [scrollWindow]="false">
   <table
-    [class.last-frozen]="stickyActions && dataTableService.isOverflown()"
+    [class.last-frozen]="stickyActions && dataTableService.isOverflown() && dataTableService.hasActions()"
     [class.first-frozen]="stickyFirstColumn && dataTableService.isOverflown()"
     (resized)="checkTableSize($event)"
   >

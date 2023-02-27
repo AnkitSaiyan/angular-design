@@ -1,4 +1,4 @@
-import { Component, ContentChild, Input, TemplateRef } from '@angular/core';
+import { Component, ContentChild, Input, OnInit, TemplateRef } from '@angular/core';
 import { DataTableService } from '../../services/data-table.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { DataTableService } from '../../services/data-table.service';
   templateUrl: './data-table-action-cell.component.html',
   styleUrls: ['./data-table-action-cell.component.scss']
 })
-export class DataTableActionCellComponent {
+export class DataTableActionCellComponent implements OnInit {
 
   @Input() stickyActions: boolean = true;
 
@@ -15,4 +15,8 @@ export class DataTableActionCellComponent {
   constructor(
     public dataTableService: DataTableService
   ) { }
+
+  public ngOnInit(): void {
+    this.dataTableService.setHasActions(true);
+  }
 }
