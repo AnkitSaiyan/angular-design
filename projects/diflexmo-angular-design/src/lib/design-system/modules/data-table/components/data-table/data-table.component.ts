@@ -69,7 +69,7 @@ export class DataTableComponent<T> implements OnInit {
   public selectedItems: Map<T, boolean> = new Map<T, boolean>();
 
   public get areAllSelected() {
-    return this.data?.items.length && Object.values(this.selectedItems).filter((v) => v).length === this.data?.items.length;
+    return Array.from(this.selectedItems.values()).every(i => i);
   }
 
   public getSelectedById(id: T): boolean {
