@@ -4,36 +4,26 @@
       <label *ngIf="label" class="dfm-input-label">{{ label }}</label>
       <div class="input-container input-container-{{ size }}">
         <dfm-icon *ngIf="icon" [name]="icon" class="leading-icon"></dfm-icon>
-        <input
-          class="dfm-input dfm-input-{{ size }}"
+        <input class="dfm-input dfm-input-{{ size }}"
           [ngClass]="{ 'dfm-invalid': control && control.touched && !control.valid, 'leading-icon-control': icon }"
-          [ngModel]="search"
-          (ngModelChange)="updateSearch($event)"
-          [placeholder]="placeholder"
-          [disabled]="disabled"
-          [readonly]="!typeToSearch"
-          (focusout)="focusout($event)"
-          #searchInputRef
-          (click)="dropdownInstance?.toggle()"
-        />
+          [ngModel]="search" (ngModelChange)="updateSearch($event)" [placeholder]="placeholder" [disabled]="disabled"
+          [readonly]="!typeToSearch" (focusout)="focusout($event)" #searchInputRef
+          (click)="dropdownInstance?.toggle()" />
       </div>
-      <dfm-icon name="chevron-down" *ngIf="showDropdownIcon" class="dropdown-icon" (click)="dropdownInstance?.toggle()"></dfm-icon>
+      <dfm-icon name="chevron-down" *ngIf="showDropdownIcon" class="dropdown-icon"
+        (click)="dropdownInstance?.toggle()"></dfm-icon>
     </div>
   </div>
-  <div *ngIf="selectedItemTags.length" class="selected-items" [class.selected-items-with-dropdown-icon]="!typeToSearch" #selectedItemsContainerRef>
-    <dfm-tag
-      *ngFor="let selectedItem of selectedItemTags; let i = index"
-      color="brown"
-      [action]="selectedItemTagsUnionIndex === i ? null : 'close'"
-      size="lg"
-      (closeAction)="removeItem(selectedItem)"
-      #selectedItemRef
-      >{{ selectedItem.name }}</dfm-tag
-    >
+  <div *ngIf="selectedItemTags.length" class="selected-items" [class.selected-items-with-dropdown-icon]="!typeToSearch"
+    #selectedItemsContainerRef>
+    <dfm-tag *ngFor="let selectedItem of selectedItemTags; let i = index" color="brown"
+      [action]="selectedItemTagsUnionIndex === i ? null : 'close'" size="lg" (closeAction)="removeItem(selectedItem)"
+      #selectedItemRef>{{ selectedItem.name }}</dfm-tag>
   </div>
   <span *ngIf="hint" class="dfm-input-hint">{{ hint }}</span>
   <dfm-error [control]="control"></dfm-error>
-  <div class="input-dropdown-menu dropdown-menu dropdown-menu-end w-100 p-0" (dfmDomChange)="checkIfDropdownIsClosed($event)">
+  <div class="input-dropdown-menu dropdown-menu dropdown-menu-end w-100 p-0"
+    (dfmDomChange)="checkIfDropdownIsClosed($event)">
     <ng-container *ngIf="loading; then loadingTemplate; else searchTemplate"></ng-container>
 
     <ng-template #loadingTemplate>
@@ -41,32 +31,33 @@
     </ng-template>
 
     <ng-template #searchTemplate>
-      <div *ngIf="search.length < minQueryLength" class="input-dropdown-item type-to-search">{{ typeToSearchText }}</div>
+      <div *ngIf="search.length < minQueryLength" class="input-dropdown-item type-to-search">{{ typeToSearchText }}
+      </div>
       <ng-container *ngIf="search.length >= minQueryLength">
-        <ng-container *ngIf="filteredItems && filteredItems.length; then itemsTemplate; else noItemsTemplate"> </ng-container>
+        <ng-container *ngIf="filteredItems && filteredItems.length; then itemsTemplate; else noItemsTemplate">
+        </ng-container>
       </ng-container>
     </ng-template>
 
     <ng-template #itemsTemplate>
-      <div class="option-content" *ngIf="multiple && showSelectAll" (click)="toggleSelectAll()">
-        <ng-container *ngIf="isAllSelected; then selectAllTemplate; else selectNoneTemplate"></ng-container>
-        <ng-template #selectAllTemplate>
-          Select all
-        </ng-template>
-        <ng-template #selectNoneTemplate>
-          Select none
-        </ng-template>
+      <div class="input-dropdown-item option" clickable (click)="toggleSelectAll()" *ngIf="multiple && showSelectAll">
+        <div class="option-content">
+          <ng-container *ngIf="isAllSelected; then selectAllTemplate; else selectNoneTemplate"></ng-container>
+          <ng-template #selectAllTemplate>
+            Select all
+          </ng-template>
+          <ng-template #selectNoneTemplate>
+            Select none
+          </ng-template>
+        </div>
       </div>
       <div *ngFor="let item of filteredItems" (click)="selectItem(item)" clickable class="input-dropdown-item option">
         <div class="option-content">
           {{ item.name }}
           <span *ngIf="showDescription" class="option-description">{{ item.description }}</span>
         </div>
-        <dfm-icon
-          *ngIf="value && ((!multiple && value === item.value) || (multiple && value.includes(item.value)))"
-          name="check"
-          class="option-selected"
-        ></dfm-icon>
+        <dfm-icon *ngIf="value && ((!multiple && value === item.value) || (multiple && value.includes(item.value)))"
+          name="check" class="option-selected"></dfm-icon>
       </div>
     </ng-template>
 
