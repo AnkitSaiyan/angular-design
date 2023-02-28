@@ -11,8 +11,13 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
+      $buildReason = "$(Build.Reason)"
+      if($buildReason -ne "PullRequest")
+      {
+          exit 0
+      }
+
       $sourceBranch = "$(System.PullRequest.SourceBranch)"
-      
       if($sourceBranch -ne "refs/heads/staging")
       {
           exit 1
