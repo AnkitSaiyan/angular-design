@@ -1,4 +1,4 @@
-name: $(Year:yyyy).$(Month).$(DayOfMonth)$(Rev:.r)
+name: $(Year:yyyy)$(Month).$(DayOfMonth)$(Rev:.r)
 
 variables:
   version: $(Build.BuildNumber)
