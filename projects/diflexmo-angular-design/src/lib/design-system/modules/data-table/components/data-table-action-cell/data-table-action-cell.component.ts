@@ -4,17 +4,14 @@ import { DataTableService } from '../../services/data-table.service';
 @Component({
   selector: 'dfm-data-table-action-cell',
   templateUrl: './data-table-action-cell.component.html',
-  styleUrls: ['./data-table-action-cell.component.scss']
+  styleUrls: ['./data-table-action-cell.component.scss'],
 })
 export class DataTableActionCellComponent implements OnInit {
-
   @Input() stickyActions: boolean = true;
 
   @ContentChild('actionCellTemplate') actionCellTemplate!: TemplateRef<any>;
-  
-  constructor(
-    public dataTableService: DataTableService
-  ) { }
+
+  constructor(public dataTableService: DataTableService) {}
 
   public ngOnInit(): void {
     this.dataTableService.setHasActions(true);

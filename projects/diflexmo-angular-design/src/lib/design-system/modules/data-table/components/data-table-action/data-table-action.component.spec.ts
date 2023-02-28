@@ -8,9 +8,8 @@ describe('DataTableActionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DataTableActionComponent ]
-    })
-    .compileComponents();
+      declarations: [DataTableActionComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(DataTableActionComponent);
     component = fixture.componentInstance;

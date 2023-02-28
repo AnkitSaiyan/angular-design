@@ -8,9 +8,8 @@ describe('DataTableHeaderCellComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DataTableHeaderCellComponent ]
-    })
-    .compileComponents();
+      declarations: [DataTableHeaderCellComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(DataTableHeaderCellComponent);
     component = fixture.componentInstance;
