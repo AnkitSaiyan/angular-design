@@ -1,4 +1,5 @@
 # Diflexmo Angular Design System
+Includes components used in developing Angular Apps for Diflexmo.
 
 ## Usage
 
