@@ -26,7 +26,7 @@ import { DataTableActionCellComponent } from './components/data-table-action-cel
     FormsModule,
     BaseCheckboxModule,
     InfiniteScrollModule,
-    NgbDropdownModule
+    NgbDropdownModule,
   ],
   exports: [DataTableComponent, TableRowCellComponent, DataTableActionComponent, DataTableActionCellComponent],
 })

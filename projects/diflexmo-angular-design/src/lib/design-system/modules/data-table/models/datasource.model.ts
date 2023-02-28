@@ -1,9 +1,9 @@
-import { TableRow } from "./table-row.model";
+import { TableRow } from './table-row.model';
 
 export interface DfmDatasource<T> {
-    items: Array<TableRow<T>>;
-    total?: number;
-    isInitialLoading?: boolean;
-    isLoading?: boolean;
-    isLoadingMore?: boolean;
+  items: Array<TableRow<T>>;
+  total?: number;
+  isInitialLoading?: boolean;
+  isLoading?: boolean;
+  isLoadingMore?: boolean;
 }

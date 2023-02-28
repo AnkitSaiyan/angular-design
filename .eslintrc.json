@@ -38,6 +38,12 @@
             "style": "kebab-case"
           }
         ],
+        "prettier/prettier": [
+          "error",
+          {
+            "endOfLine": "auto"
+          }
+        ],
         "import/prefer-default-export": "off",
         "class-methods-use-this": "off",
         "no-plusplus": "off",

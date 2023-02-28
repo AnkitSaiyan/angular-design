@@ -12,7 +12,7 @@ import { TableHeaderSize } from '../../types/table-header-size.type';
   selector: 'dfm-data-table',
   templateUrl: './data-table.component.html',
   styleUrls: ['./data-table.component.scss'],
-  providers: [DataTableService]
+  providers: [DataTableService],
 })
 export class DataTableComponent<T> implements OnInit {
   @Input() data?: DfmDatasource<T>;
@@ -29,12 +29,14 @@ export class DataTableComponent<T> implements OnInit {
 
   @Input() stickyFirstColumn: boolean = true;
 
-  private _stickyActions: boolean = true;
+  private stickyActionsValue: boolean = true;
+
   public get stickyActions(): boolean {
-    return this._stickyActions;
+    return this.stickyActionsValue;
   }
+
   @Input() public set stickyActions(value: boolean) {
-    this._stickyActions = value;
+    this.stickyActionsValue = value;
     this.dataTableService.setStickyActions(value);
   }
 
@@ -49,9 +51,9 @@ export class DataTableComponent<T> implements OnInit {
   @Input() noDataMessage: string = 'No data';
 
   @Input() collapseOnMobile: boolean = false;
- 
+
   @ContentChild('bodyRowTemplate') bodyRowTemplate!: TemplateRef<any>;
-  
+
   @Output() sorted = new EventEmitter<DfmTableHeader>();
 
   @Output() rowClicked = new EventEmitter<TableRow<T>>();
@@ -69,7 +71,7 @@ export class DataTableComponent<T> implements OnInit {
   public selectedItems: Map<T, boolean> = new Map<T, boolean>();
 
   public get areAllSelected() {
-    return Array.from(this.selectedItems.values()).filter(i => i).length === this.data?.items.length;
+    return Array.from(this.selectedItems.values()).filter((i) => i).length === this.data?.items.length;
   }
 
   public getSelectedById(id: T): boolean {
@@ -79,9 +81,7 @@ export class DataTableComponent<T> implements OnInit {
     return false;
   }
 
-  constructor(
-    public dataTableService: DataTableService
-  ) {}
+  constructor(public dataTableService: DataTableService) {}
 
   ngOnInit(): void {
     if (this.stickyActions !== false) {
