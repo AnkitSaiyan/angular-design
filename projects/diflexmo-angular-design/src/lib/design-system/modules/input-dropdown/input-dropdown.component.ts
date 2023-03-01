@@ -280,6 +280,7 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
       return;
     }
     this.value = [];
+    this.selectedItems = [];
     if (!this.isAllSelected) {
       this.filteredItems.forEach((i) => {
         this.value.push(i);
