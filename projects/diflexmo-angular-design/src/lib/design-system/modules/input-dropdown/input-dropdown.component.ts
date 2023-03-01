@@ -89,7 +89,10 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
   public selectedItems: SelectItem[] = [];
 
   public get isAllSelected(): boolean {
-    return this.filteredItems.every((i) => this.value && this.value === typeof Array && this.value.includes(i.value));
+    if (!this.multiple || !this.value || Array.isArray(this.value)) {
+      return false;
+    }
+    return this.filteredItems.every((i) => this.value.includes(i.value));
   }
 
   constructor(private changeDetectionRef: ChangeDetectorRef, @Optional() public control: NgControl, private eRef: ElementRef) {
@@ -279,10 +282,9 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
     if (!this.multiple) {
       return;
     }
-    if (this.isAllSelected) {
-      this.value = [];
-    } else {
-      this.filteredItems.filter((i) => this.value.includes(i.value)).forEach((v) => this.value.push(v));
+    this.value = [];
+    if (!this.isAllSelected) {
+      this.filteredItems.forEach((i) => this.value.push(i));
     }
   }
 }
