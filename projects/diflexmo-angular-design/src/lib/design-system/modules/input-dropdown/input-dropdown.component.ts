@@ -279,6 +279,7 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
   }
 
   public toggleSelectAll(): void {
+    console.log('test: ', this.isAllSelected);
     if (!this.multiple) {
       return;
     }
