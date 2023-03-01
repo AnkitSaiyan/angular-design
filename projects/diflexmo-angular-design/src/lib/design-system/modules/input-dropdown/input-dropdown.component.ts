@@ -279,7 +279,6 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
   }
 
   public toggleSelectAll(): void {
-    console.log('test: ', this.isAllSelected);
     if (!this.multiple) {
       return;
     }
@@ -288,6 +287,8 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
       this.filteredItems.forEach((i) => {
         this.value.push(i);
         this.selectedItems.push(i);
+        console.log('test: ', this.selectedItems);
+        console.log('test: ', this.value);
       });
     }
   }
