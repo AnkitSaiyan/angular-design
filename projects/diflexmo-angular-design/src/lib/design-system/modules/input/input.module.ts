@@ -10,4 +10,4 @@ import { NgDfmErrorModule } from '../error/error.module';
   imports: [CommonModule, FormsModule, ReactiveFormsModule, NgDfmIconModule, NgDfmErrorModule],
   exports: [InputComponent],
 })
-export class InputModule {}
+export class NgDfmInputModule {}

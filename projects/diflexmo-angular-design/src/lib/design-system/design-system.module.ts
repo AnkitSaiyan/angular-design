@@ -4,7 +4,7 @@ import { NotificationModule } from './modules/notification/notification.module';
 import { NgDfmIconModule } from './modules/icon/icon.module';
 import { NgDfmCheckboxModule } from './modules/base-checkbox/base-checkbox.module';
 import { NgDfmButtonModule } from './modules/button/button.module';
-import { InputModule } from './modules/input/input.module';
+import { NgDfmInputModule } from './modules/input/input.module';
 import { NgDfmErrorModule } from './modules/error/error.module';
 import { TagModule } from './modules/tag/tag.module';
 import { TextAreaModule } from './modules/text-area/text-area.module';
@@ -26,7 +26,7 @@ import { NgDfmBadgeModule } from './modules/badge/badge.module';
     NgDfmButtonModule,
     NgDfmIconModule,
     NgDfmBadgeModule,
-    InputModule,
+    NgDfmInputModule,
     NgDfmErrorModule,
     TagModule,
     NgDfmCheckboxModule,
@@ -46,7 +46,7 @@ import { NgDfmBadgeModule } from './modules/badge/badge.module';
     NgDfmButtonModule,
     NgDfmIconModule,
     NgDfmBadgeModule,
-    InputModule,
+    NgDfmInputModule,
     NgDfmErrorModule,
     TagModule,
     NgDfmCheckboxModule,
