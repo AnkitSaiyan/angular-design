@@ -9,4 +9,4 @@ import { NgDfmIconModule } from '../icon/icon.module';
   exports: [NotificationComponent],
   imports: [CommonModule, NgDfmCardModule, NgDfmIconModule],
 })
-export class NotificationModule {}
+export class NgDfmNotificationModule {}

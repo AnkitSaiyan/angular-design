@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NotificationModule } from './modules/notification/notification.module';
+import { NgDfmNotificationModule } from './modules/notification/notification.module';
 import { NgDfmIconModule } from './modules/icon/icon.module';
 import { NgDfmCheckboxModule } from './modules/base-checkbox/base-checkbox.module';
 import { NgDfmButtonModule } from './modules/button/button.module';
@@ -36,7 +36,7 @@ import { NgDfmBadgeModule } from './modules/badge/badge.module';
     TableModule,
     NgDfmCardModule,
     NgDfmNavigationBarModule,
-    NotificationModule,
+    NgDfmNotificationModule,
     DirectivesModule,
     NgDfmClipboardModule,
     NgDfmDataTableModule,
@@ -56,7 +56,7 @@ import { NgDfmBadgeModule } from './modules/badge/badge.module';
     TableModule,
     NgDfmCardModule,
     NgDfmNavigationBarModule,
-    NotificationModule,
+    NgDfmNotificationModule,
     DirectivesModule,
     NgDfmClipboardModule,
     NgDfmDataTableModule,
