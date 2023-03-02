@@ -6,12 +6,12 @@ import { IconModule } from '../icon/icon.module';
 import { InputModule } from '../input/input.module';
 import { TagModule } from '../tag/tag.module';
 import { InputDropdownComponent } from './input-dropdown.component';
-import { ErrorModule } from '../error/error.module';
+import { NgDfmErrorModule } from '../error/error.module';
 import { DirectivesModule } from '../../directives/directives.module';
 
 @NgModule({
   declarations: [InputDropdownComponent],
-  imports: [CommonModule, FormsModule, IconModule, InputModule, TagModule, ErrorModule, DirectivesModule, AngularResizeEventModule],
+  imports: [CommonModule, FormsModule, IconModule, InputModule, TagModule, NgDfmErrorModule, DirectivesModule, AngularResizeEventModule],
   exports: [InputDropdownComponent],
 })
 export class InputDropdownModule {}

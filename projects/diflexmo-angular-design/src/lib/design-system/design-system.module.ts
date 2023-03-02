@@ -5,7 +5,7 @@ import { IconModule } from './modules/icon/icon.module';
 import { NgDfmCheckboxModule } from './modules/base-checkbox/base-checkbox.module';
 import { NgDfmButtonModule } from './modules/button/button.module';
 import { InputModule } from './modules/input/input.module';
-import { ErrorModule } from './modules/error/error.module';
+import { NgDfmErrorModule } from './modules/error/error.module';
 import { TagModule } from './modules/tag/tag.module';
 import { TextAreaModule } from './modules/text-area/text-area.module';
 import { DatepickerModule } from './modules/datepicker/datepicker.module';
@@ -27,7 +27,7 @@ import { NgDfmBadgeModule } from './modules/badge/badge.module';
     IconModule,
     NgDfmBadgeModule,
     InputModule,
-    ErrorModule,
+    NgDfmErrorModule,
     TagModule,
     NgDfmCheckboxModule,
     TextAreaModule,
@@ -47,7 +47,7 @@ import { NgDfmBadgeModule } from './modules/badge/badge.module';
     IconModule,
     NgDfmBadgeModule,
     InputModule,
-    ErrorModule,
+    NgDfmErrorModule,
     TagModule,
     NgDfmCheckboxModule,
     TextAreaModule,

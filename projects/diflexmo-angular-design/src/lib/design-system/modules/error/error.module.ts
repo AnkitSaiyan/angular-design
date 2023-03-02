@@ -8,4 +8,4 @@ import { ErrorComponent } from './error.component';
   imports: [CommonModule, FormsModule],
   exports: [ErrorComponent],
 })
-export class ErrorModule {}
+export class NgDfmErrorModule {}
