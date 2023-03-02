@@ -8,4 +8,4 @@ import { IconModule } from '../icon/icon.module';
   imports: [CommonModule, IconModule],
   exports: [CardComponent],
 })
-export class CardModule {}
+export class NgDfmCardModule {}
