@@ -24,4 +24,4 @@ import { NavigationItemProfileComponent } from './components/navigation-item-pro
   imports: [CommonModule, NgDfmIconModule, RouterModule, NgDfmBadgeModule, NgDfmButtonModule, AngularResizeEventModule],
   exports: [NavigationBarComponent, NavigationItemComponent, NavigationItemTenantComponent],
 })
-export class NavigationBarModule {}
+export class NgDfmNavigationBarModule {}

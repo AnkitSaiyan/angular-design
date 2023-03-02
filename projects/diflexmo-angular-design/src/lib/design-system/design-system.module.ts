@@ -12,7 +12,7 @@ import { DatepickerModule } from './modules/datepicker/datepicker.module';
 import { TableModule } from './modules/table/table.module';
 import { NgDfmInputDropdownModule } from './modules/input-dropdown/input-dropdown.module';
 import { NgDfmCardModule } from './modules/card/card.module';
-import { NavigationBarModule } from './modules/navigation-bar/navigation-bar.module';
+import { NgDfmNavigationBarModule } from './modules/navigation-bar/navigation-bar.module';
 import { DirectivesModule } from './directives/directives.module';
 import { NgDfmClipboardModule } from './modules/clipboard/clipboard.module';
 import { NgDfmDataTableModule } from './modules/data-table/data-table.module';
@@ -35,7 +35,7 @@ import { NgDfmBadgeModule } from './modules/badge/badge.module';
     DatepickerModule,
     TableModule,
     NgDfmCardModule,
-    NavigationBarModule,
+    NgDfmNavigationBarModule,
     NotificationModule,
     DirectivesModule,
     NgDfmClipboardModule,
@@ -55,7 +55,7 @@ import { NgDfmBadgeModule } from './modules/badge/badge.module';
     DatepickerModule,
     TableModule,
     NgDfmCardModule,
-    NavigationBarModule,
+    NgDfmNavigationBarModule,
     NotificationModule,
     DirectivesModule,
     NgDfmClipboardModule,
