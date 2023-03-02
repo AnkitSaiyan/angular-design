@@ -1,6 +1,6 @@
 <div class="dropdown input-dropdown input-dropdown-{{ size }}">
   <div #dropdown>
-    <div class="input-container">
+    <div class="input-container" (resized)="inputResized()">
       <label *ngIf="label" class="dfm-input-label">{{ label }}</label>
       <div class="input-container input-container-{{ size }}">
         <dfm-icon *ngIf="icon" [name]="icon" class="leading-icon"></dfm-icon>
@@ -19,7 +19,7 @@
         <div
           *ngIf="selectedItemTags.length"
           class="selected-items"
-          [class.selected-items-with-dropdown-icon]="!typeToSearch"
+          [class.selected-items-with-dropdown-icon]="showDropdownIcon"
           #selectedItemsContainerRef
         >
           <dfm-tag
