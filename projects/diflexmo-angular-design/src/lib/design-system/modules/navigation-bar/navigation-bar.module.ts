@@ -8,7 +8,7 @@ import { IconModule } from '../icon/icon.module';
 import { NavigationItemTenantComponent } from './components/navigation-item-tenant/navigation-item-tenant.component';
 import { NavigationItemEventComponent } from './components/navigation-item-event/navigation-item-event.component';
 import { NgDfmBadgeModule } from '../badge/badge.module';
-import { ButtonModule } from '../button/button.module';
+import { NgDfmButtonModule } from '../button/button.module';
 import { NavigationItemEventsComponent } from './components/navigation-item-events/navigation-item-events.component';
 import { NavigationItemProfileComponent } from './components/navigation-item-profile/navigation-item-profile.component';
 
@@ -21,7 +21,7 @@ import { NavigationItemProfileComponent } from './components/navigation-item-pro
     NavigationItemEventsComponent,
     NavigationItemProfileComponent,
   ],
-  imports: [CommonModule, IconModule, RouterModule, NgDfmBadgeModule, ButtonModule, AngularResizeEventModule],
+  imports: [CommonModule, IconModule, RouterModule, NgDfmBadgeModule, NgDfmButtonModule, AngularResizeEventModule],
   exports: [NavigationBarComponent, NavigationItemComponent, NavigationItemTenantComponent],
 })
 export class NavigationBarModule {}

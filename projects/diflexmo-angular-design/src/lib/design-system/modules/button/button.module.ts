@@ -11,4 +11,4 @@ import { ButtonGroupItemComponent } from './components/button-group-item/button-
   imports: [CommonModule, IconModule],
   exports: [ButtonComponent, ButtonGroupComponent, ButtonGroupItemComponent, ButtonIconComponent],
 })
-export class ButtonModule {}
+export class NgDfmButtonModule {}

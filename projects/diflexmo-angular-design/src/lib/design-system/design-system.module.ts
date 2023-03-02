@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NotificationModule } from './modules/notification/notification.module';
 import { IconModule } from './modules/icon/icon.module';
 import { NgDfmCheckboxModule } from './modules/base-checkbox/base-checkbox.module';
-import { ButtonModule } from './modules/button/button.module';
+import { NgDfmButtonModule } from './modules/button/button.module';
 import { InputModule } from './modules/input/input.module';
 import { ErrorModule } from './modules/error/error.module';
 import { TagModule } from './modules/tag/tag.module';
@@ -23,6 +23,7 @@ import { NgDfmBadgeModule } from './modules/badge/badge.module';
 @NgModule({
   imports: [
     CommonModule,
+    NgDfmButtonModule,
     IconModule,
     NgDfmBadgeModule,
     InputModule,
@@ -42,7 +43,7 @@ import { NgDfmBadgeModule } from './modules/badge/badge.module';
     NgDfmDatePickerModule,
   ],
   exports: [
-    ButtonModule,
+    NgDfmButtonModule,
     IconModule,
     NgDfmBadgeModule,
     InputModule,
