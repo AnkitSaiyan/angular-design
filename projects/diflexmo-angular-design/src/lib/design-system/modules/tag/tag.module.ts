@@ -8,4 +8,4 @@ import { NgDfmIconModule } from '../icon/icon.module';
   imports: [CommonModule, NgDfmIconModule],
   exports: [TagComponent],
 })
-export class TagModule {}
+export class NgDfmTagModule {}
