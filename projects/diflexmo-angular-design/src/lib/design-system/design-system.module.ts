@@ -10,7 +10,7 @@ import { TagModule } from './modules/tag/tag.module';
 import { TextAreaModule } from './modules/text-area/text-area.module';
 import { DatepickerModule } from './modules/datepicker/datepicker.module';
 import { TableModule } from './modules/table/table.module';
-import { InputDropdownModule } from './modules/input-dropdown/input-dropdown.module';
+import { NgDfmInputDropdownModule } from './modules/input-dropdown/input-dropdown.module';
 import { NgDfmCardModule } from './modules/card/card.module';
 import { NavigationBarModule } from './modules/navigation-bar/navigation-bar.module';
 import { DirectivesModule } from './directives/directives.module';
@@ -31,7 +31,7 @@ import { NgDfmBadgeModule } from './modules/badge/badge.module';
     TagModule,
     NgDfmCheckboxModule,
     TextAreaModule,
-    InputDropdownModule,
+    NgDfmInputDropdownModule,
     DatepickerModule,
     TableModule,
     NgDfmCardModule,
@@ -51,7 +51,7 @@ import { NgDfmBadgeModule } from './modules/badge/badge.module';
     TagModule,
     NgDfmCheckboxModule,
     TextAreaModule,
-    InputDropdownModule,
+    NgDfmInputDropdownModule,
     DatepickerModule,
     TableModule,
     NgDfmCardModule,

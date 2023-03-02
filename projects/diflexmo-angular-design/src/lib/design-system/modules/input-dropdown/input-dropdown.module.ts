@@ -14,4 +14,4 @@ import { DirectivesModule } from '../../directives/directives.module';
   imports: [CommonModule, FormsModule, NgDfmIconModule, NgDfmInputModule, TagModule, NgDfmErrorModule, DirectivesModule, AngularResizeEventModule],
   exports: [InputDropdownComponent],
 })
-export class InputDropdownModule {}
+export class NgDfmInputDropdownModule {}
