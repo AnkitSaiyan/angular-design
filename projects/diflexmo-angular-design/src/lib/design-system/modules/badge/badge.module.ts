@@ -9,4 +9,4 @@ import { BadgeIconComponent } from './components/badge-icon/badge-icon.component
   imports: [CommonModule, IconModule],
   exports: [BadgeIconComponent, BadgeComponent],
 })
-export class BadgeModule {}
+export class NgDfmBadgeModule {}

@@ -6,7 +6,6 @@ import { BaseCheckboxModule } from './modules/base-checkbox/base-checkbox.module
 import { ButtonModule } from './modules/button/button.module';
 import { InputModule } from './modules/input/input.module';
 import { ErrorModule } from './modules/error/error.module';
-import { BadgeModule } from './modules/badge/badge.module';
 import { TagModule } from './modules/tag/tag.module';
 import { TextAreaModule } from './modules/text-area/text-area.module';
 import { DatepickerModule } from './modules/datepicker/datepicker.module';
@@ -19,12 +18,13 @@ import { NgDfmClipboardModule } from './modules/clipboard/clipboard.module';
 import { DfmDataTableModule } from './modules/data-table/data-table.module';
 import { NgDfmDropdownModule } from './modules/dropdown/dropdown.module';
 import { NgDfmDatePickerModule } from './modules/date-range-picker/date-picker.module';
+import { NgDfmBadgeModule } from './modules/badge/badge.module';
 
 @NgModule({
   imports: [
     CommonModule,
     IconModule,
-    BadgeModule,
+    NgDfmBadgeModule,
     InputModule,
     ErrorModule,
     TagModule,
@@ -44,7 +44,7 @@ import { NgDfmDatePickerModule } from './modules/date-range-picker/date-picker.m
   exports: [
     ButtonModule,
     IconModule,
-    BadgeModule,
+    NgDfmBadgeModule,
     InputModule,
     ErrorModule,
     TagModule,
