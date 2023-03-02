@@ -16,22 +16,22 @@
           #searchInputRef
           (click)="dropdownInstance?.toggle()"
         />
-      </div>
-      <div
-        *ngIf="selectedItemTags.length"
-        class="selected-items"
-        [class.selected-items-with-dropdown-icon]="!typeToSearch"
-        #selectedItemsContainerRef
-      >
-        <dfm-tag
-          *ngFor="let selectedItem of selectedItemTags; let i = index"
-          color="brown"
-          [action]="selectedItemTagsUnionIndex === i ? null : 'close'"
-          size="lg"
-          (closeAction)="removeItem(selectedItem)"
-          #selectedItemRef
-          >{{ selectedItem.name }}</dfm-tag
+        <div
+          *ngIf="selectedItemTags.length"
+          class="selected-items"
+          [class.selected-items-with-dropdown-icon]="!typeToSearch"
+          #selectedItemsContainerRef
         >
+          <dfm-tag
+            *ngFor="let selectedItem of selectedItemTags; let i = index"
+            color="brown"
+            [action]="selectedItemTagsUnionIndex === i ? null : 'close'"
+            size="lg"
+            (closeAction)="removeItem(selectedItem)"
+            #selectedItemRef
+            >{{ selectedItem.name }}</dfm-tag
+          >
+        </div>
       </div>
       <dfm-icon name="chevron-down" *ngIf="showDropdownIcon" class="dropdown-icon" (click)="dropdownInstance?.toggle()"></dfm-icon>
     </div>
