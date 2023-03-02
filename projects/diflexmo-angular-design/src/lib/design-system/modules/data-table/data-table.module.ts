@@ -30,4 +30,4 @@ import { DataTableActionCellComponent } from './components/data-table-action-cel
   ],
   exports: [DataTableComponent, TableRowCellComponent, DataTableActionComponent, DataTableActionCellComponent],
 })
-export class DfmDataTableModule {}
+export class NgDfmDataTableModule {}
