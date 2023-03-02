@@ -57,7 +57,7 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
   @Input() public showDropdownIcon: boolean = true;
 
   @Input() public showSelectAll: boolean = false;
-  
+
   @Output() public searchInput = new EventEmitter<string>();
 
   @Output() public menuClosed = new EventEmitter();
@@ -89,7 +89,7 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
   public selectedItems: SelectItem[] = [];
 
   public get isAllSelected(): boolean {
-    return this.filteredItems.every(i => this.value && this.value === typeof(Array) && this.value.includes(i.value));
+    return this.filteredItems.length === this.selectedItems.length;
   }
 
   constructor(private changeDetectionRef: ChangeDetectorRef, @Optional() public control: NgControl, private eRef: ElementRef) {
@@ -125,7 +125,7 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
 
     this.filteredItems = [...this.items];
 
-    this.updateSearch("");
+    this.updateSearch('');
   }
 
   ngAfterViewInit(): void {
@@ -279,11 +279,18 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
     if (!this.multiple) {
       return;
     }
-    if (this.isAllSelected) {
+
+    if (!this.isAllSelected) {
       this.value = [];
+      this.selectedItems = [];
+      this.filteredItems.forEach((i) => {
+        this.value.push(i.value);
+        this.selectedItems.push(i);
+      });
+    } else {
+      this.value = [];
+      this.selectedItems = [];
     }
-    else {
-      this.filteredItems.filter(i => this.value.includes(i.value)).forEach(v => this.value.push(v));
-    }
+    this.updateSelectedItems();
   }
 }

@@ -1,6 +1,6 @@
-import { TableRow } from "./table-row.model";
+import { TableRow } from './table-row.model';
 
 export interface DfmTableActionEvent<T> {
-    actionId: string;
-    row: TableRow<T>;
+  actionId: string;
+  row: TableRow<T>;
 }

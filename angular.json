@@ -36,8 +36,8 @@
           "builder": "@angular-eslint/builder:lint",
           "options": {
             "lintFilePatterns": [
-              "projects/diflexmo-angular-design/**/*.ts",
-              "projects/diflexmo-angular-design/**/*.html"
+              "projects/diflexmo-angular-design/src/**/*.ts",
+              "projects/diflexmo-angular-design/src/**/*.html"
             ]
           }
         }
