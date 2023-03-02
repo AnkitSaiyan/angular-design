@@ -276,18 +276,20 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
   }
 
   public toggleSelectAll(): void {
-    console.log(this.isAllSelected);
     if (!this.multiple) {
       return;
     }
-    this.value = [];
-    this.selectedItems = [];
+
     if (!this.isAllSelected) {
-      console.log('test');
+      this.value = [];
+      this.selectedItems = [];
       this.filteredItems.forEach((i) => {
         this.value.push(i);
         this.selectedItems.push(i);
       });
+    } else {
+      this.value = [];
+      this.selectedItems = [];
     }
     this.updateSelectedItems();
   }
