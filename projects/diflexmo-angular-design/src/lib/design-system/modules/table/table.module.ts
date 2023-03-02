@@ -7,11 +7,11 @@ import { TableComponent } from './components/table/table.component';
 import { TableHeaderCellComponent } from './components/table-header-cell/table-header-cell.component';
 import { IconModule } from '../icon/icon.module';
 import { TableBodyCellComponent } from './components/table-body-cell/table-body-cell.component';
-import { BaseCheckboxModule } from '../base-checkbox/base-checkbox.module';
+import { NgDfmCheckboxModule } from '../base-checkbox/base-checkbox.module';
 
 @NgModule({
   declarations: [TableComponent, TableHeaderCellComponent, TableBodyCellComponent],
-  imports: [CommonModule, IconModule, AngularResizeEventModule, BaseCheckboxModule, FormsModule, InfiniteScrollModule],
+  imports: [CommonModule, IconModule, AngularResizeEventModule, NgDfmCheckboxModule, FormsModule, InfiniteScrollModule],
   exports: [TableComponent, TableHeaderCellComponent, TableBodyCellComponent],
 })
 export class TableModule {}

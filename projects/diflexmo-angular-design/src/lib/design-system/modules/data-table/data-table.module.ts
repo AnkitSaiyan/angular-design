@@ -10,7 +10,7 @@ import { TableRowCellComponent } from './components/table-row-cell/table-row-cel
 import { DataTableHeaderCellComponent } from './components/data-table-header-cell/data-table-header-cell.component';
 import { ButtonModule } from '../button/button.module';
 import { NgDfmDropdownModule } from '../dropdown/dropdown.module';
-import { BaseCheckboxModule } from '../base-checkbox/base-checkbox.module';
+import { NgDfmCheckboxModule } from '../base-checkbox/base-checkbox.module';
 import { DataTableActionComponent } from './components/data-table-action/data-table-action.component';
 import { DataTableActionCellComponent } from './components/data-table-action-cell/data-table-action-cell.component';
 
@@ -24,7 +24,7 @@ import { DataTableActionCellComponent } from './components/data-table-action-cel
     NgDfmDropdownModule,
     NgbTooltipModule,
     FormsModule,
-    BaseCheckboxModule,
+    NgDfmCheckboxModule,
     InfiniteScrollModule,
     NgbDropdownModule,
   ],

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NotificationModule } from './modules/notification/notification.module';
 import { IconModule } from './modules/icon/icon.module';
-import { BaseCheckboxModule } from './modules/base-checkbox/base-checkbox.module';
+import { NgDfmCheckboxModule } from './modules/base-checkbox/base-checkbox.module';
 import { ButtonModule } from './modules/button/button.module';
 import { InputModule } from './modules/input/input.module';
 import { ErrorModule } from './modules/error/error.module';
@@ -28,7 +28,7 @@ import { NgDfmBadgeModule } from './modules/badge/badge.module';
     InputModule,
     ErrorModule,
     TagModule,
-    BaseCheckboxModule,
+    NgDfmCheckboxModule,
     TextAreaModule,
     InputDropdownModule,
     DatepickerModule,
@@ -48,7 +48,7 @@ import { NgDfmBadgeModule } from './modules/badge/badge.module';
     InputModule,
     ErrorModule,
     TagModule,
-    BaseCheckboxModule,
+    NgDfmCheckboxModule,
     TextAreaModule,
     InputDropdownModule,
     DatepickerModule,
