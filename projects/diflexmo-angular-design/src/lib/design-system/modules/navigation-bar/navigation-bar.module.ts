@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { AngularResizeEventModule } from 'angular-resize-event';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { NavigationItemComponent } from './components/navigation-item/navigation-item.component';
-import { IconModule } from '../icon/icon.module';
+import { NgDfmIconModule } from '../icon/icon.module';
 import { NavigationItemTenantComponent } from './components/navigation-item-tenant/navigation-item-tenant.component';
 import { NavigationItemEventComponent } from './components/navigation-item-event/navigation-item-event.component';
 import { NgDfmBadgeModule } from '../badge/badge.module';
@@ -21,7 +21,7 @@ import { NavigationItemProfileComponent } from './components/navigation-item-pro
     NavigationItemEventsComponent,
     NavigationItemProfileComponent,
   ],
-  imports: [CommonModule, IconModule, RouterModule, NgDfmBadgeModule, NgDfmButtonModule, AngularResizeEventModule],
+  imports: [CommonModule, NgDfmIconModule, RouterModule, NgDfmBadgeModule, NgDfmButtonModule, AngularResizeEventModule],
   exports: [NavigationBarComponent, NavigationItemComponent, NavigationItemTenantComponent],
 })
 export class NavigationBarModule {}

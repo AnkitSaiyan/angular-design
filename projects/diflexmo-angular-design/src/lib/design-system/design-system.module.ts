@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NotificationModule } from './modules/notification/notification.module';
-import { IconModule } from './modules/icon/icon.module';
+import { NgDfmIconModule } from './modules/icon/icon.module';
 import { NgDfmCheckboxModule } from './modules/base-checkbox/base-checkbox.module';
 import { NgDfmButtonModule } from './modules/button/button.module';
 import { InputModule } from './modules/input/input.module';
@@ -24,7 +24,7 @@ import { NgDfmBadgeModule } from './modules/badge/badge.module';
   imports: [
     CommonModule,
     NgDfmButtonModule,
-    IconModule,
+    NgDfmIconModule,
     NgDfmBadgeModule,
     InputModule,
     NgDfmErrorModule,
@@ -44,7 +44,7 @@ import { NgDfmBadgeModule } from './modules/badge/badge.module';
   ],
   exports: [
     NgDfmButtonModule,
-    IconModule,
+    NgDfmIconModule,
     NgDfmBadgeModule,
     InputModule,
     NgDfmErrorModule,

@@ -5,7 +5,7 @@ import { NgbDropdownModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap'
 import { FormsModule } from '@angular/forms';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { DataTableComponent } from './components/data-table/data-table.component';
-import { IconModule } from '../icon/icon.module';
+import { NgDfmIconModule } from '../icon/icon.module';
 import { TableRowCellComponent } from './components/table-row-cell/table-row-cell.component';
 import { DataTableHeaderCellComponent } from './components/data-table-header-cell/data-table-header-cell.component';
 import { NgDfmButtonModule } from '../button/button.module';
@@ -18,7 +18,7 @@ import { DataTableActionCellComponent } from './components/data-table-action-cel
   declarations: [DataTableComponent, TableRowCellComponent, DataTableHeaderCellComponent, DataTableActionComponent, DataTableActionCellComponent],
   imports: [
     CommonModule,
-    IconModule,
+    NgDfmIconModule,
     AngularResizeEventModule,
     NgDfmButtonModule,
     NgDfmDropdownModule,
