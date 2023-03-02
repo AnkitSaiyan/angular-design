@@ -9,4 +9,4 @@ import { NgDfmErrorModule } from '../error/error.module';
   imports: [CommonModule, FormsModule, ReactiveFormsModule, NgDfmErrorModule],
   exports: [TextAreaComponent],
 })
-export class TextAreaModule {}
+export class NgDfmTextAreaModule {}

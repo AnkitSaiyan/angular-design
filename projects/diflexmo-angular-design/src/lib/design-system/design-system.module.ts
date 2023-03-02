@@ -7,7 +7,7 @@ import { NgDfmButtonModule } from './modules/button/button.module';
 import { NgDfmInputModule } from './modules/input/input.module';
 import { NgDfmErrorModule } from './modules/error/error.module';
 import { NgDfmTagModule } from './modules/tag/tag.module';
-import { TextAreaModule } from './modules/text-area/text-area.module';
+import { NgDfmTextAreaModule } from './modules/text-area/text-area.module';
 import { DatepickerModule } from './modules/datepicker/datepicker.module';
 import { TableModule } from './modules/table/table.module';
 import { NgDfmInputDropdownModule } from './modules/input-dropdown/input-dropdown.module';
@@ -30,7 +30,7 @@ import { NgDfmBadgeModule } from './modules/badge/badge.module';
     NgDfmErrorModule,
     NgDfmTagModule,
     NgDfmCheckboxModule,
-    TextAreaModule,
+    NgDfmTextAreaModule,
     NgDfmInputDropdownModule,
     DatepickerModule,
     TableModule,
@@ -50,7 +50,7 @@ import { NgDfmBadgeModule } from './modules/badge/badge.module';
     NgDfmErrorModule,
     NgDfmTagModule,
     NgDfmCheckboxModule,
-    TextAreaModule,
+    NgDfmTextAreaModule,
     NgDfmInputDropdownModule,
     DatepickerModule,
     TableModule,
