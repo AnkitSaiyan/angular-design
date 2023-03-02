@@ -89,7 +89,7 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
   public selectedItems: SelectItem[] = [];
 
   public get isAllSelected(): boolean {
-    return this.filteredItems.every((i) => this.selectedItems.includes(i));
+    return this.filteredItems.length === this.selectedItems.length;
   }
 
   constructor(private changeDetectionRef: ChangeDetectorRef, @Optional() public control: NgControl, private eRef: ElementRef) {
@@ -276,6 +276,7 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
   }
 
   public toggleSelectAll(): void {
+    console.log(this.isAllSelected);
     if (!this.multiple) {
       return;
     }
