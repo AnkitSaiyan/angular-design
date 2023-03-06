@@ -1,0 +1,7 @@
+:host {
+    @include auto-layout;
+    @include border-radius;
+    @include weight-medium;
+
+    outline: none;
+}
