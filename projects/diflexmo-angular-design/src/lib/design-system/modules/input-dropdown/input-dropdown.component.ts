@@ -60,6 +60,8 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
 
   @Input() public showSelectAll: boolean = false;
 
+  @Input() public readonly: boolean = false;
+
   @Output() public searchInput = new EventEmitter<string>();
 
   @Output() public menuClosed = new EventEmitter();
@@ -312,5 +314,11 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
       this.selectedItems = [];
     }
     this.updateSelectedItems();
+  }
+
+  toggleDropdownMenu() {
+    if (!this.readonly) {
+      this.dropdownInstance?.toggle();
+    }
   }
 }

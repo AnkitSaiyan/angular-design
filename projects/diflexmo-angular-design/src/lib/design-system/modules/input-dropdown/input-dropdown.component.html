@@ -11,10 +11,10 @@
           (ngModelChange)="updateSearch($event)"
           [placeholder]="placeholder"
           [disabled]="disabled"
-          [readonly]="!typeToSearch"
+          [readonly]="!typeToSearch || readonly"
           (focusout)="focusout($event)"
           #searchInputRef
-          (click)="dropdownInstance?.toggle()"
+          (click)="toggleDropdownMenu()"
         />
         <div
           *ngIf="selectedItemTags.length"
