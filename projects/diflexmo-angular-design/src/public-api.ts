@@ -19,6 +19,7 @@ export * from './lib/design-system/modules/base-checkbox/components/toggle/toggl
 
 export * from './lib/design-system/modules/button/button.module';
 export * from './lib/design-system/modules/button/components/button/button.component';
+export * from './lib/design-system/modules/button/components/button-directive/button-directive.component';
 export * from './lib/design-system/modules/button/components/button-group/button-group.component';
 export * from './lib/design-system/modules/button/components/button-group-item/button-group-item.component';
 export * from './lib/design-system/modules/button/components/button-icon/button-icon.component';
