@@ -17,7 +17,7 @@ export class ButtonDirectiveComponent {
   @Input() public set color(value: ButtonColor) {
     this.privateColor = value;
 
-    this.classes = `dfm-btn-${this.color}-${this.size}`;
+    this.classes = `dfm-btn dfm-btn-${this.color}-${this.size}`;
   }
 
   private privateSize: ButtonSize = 'lg';
@@ -29,7 +29,7 @@ export class ButtonDirectiveComponent {
   @Input() public set size(value: ButtonSize) {
     this.privateSize = value;
 
-    this.classes = `dfm-btn-${this.color}-${this.size}`;
+    this.classes = `dfm-btn dfm-btn-${this.color}-${this.size}`;
   }
 
   @Input() set disabled(value: any) {
@@ -43,7 +43,7 @@ export class ButtonDirectiveComponent {
 
   @HostBinding('attr.disabled') isDisabled = null;
 
-  @HostBinding('class') classes = 'dfm-btn-primary-lg';
+  @HostBinding('class') classes = 'dfm-btn dfm-btn-primary-lg';
 
   @Input() leadingIcon: string = '';
 
