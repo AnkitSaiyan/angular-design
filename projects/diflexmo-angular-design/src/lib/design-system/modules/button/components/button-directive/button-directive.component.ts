@@ -5,7 +5,7 @@ import { ButtonSize } from '../../types/button-size.type';
 @Component({
   selector: 'button[dfm-button]',
   templateUrl: './button-directive.component.html',
-  styleUrls: ['../button-directive.component.scss'],
+  styleUrls: ['../button/button.component.scss'],
 })
 export class ButtonDirectiveComponent {
   private privateColor: ButtonColor = 'primary';
