@@ -194,7 +194,7 @@ $diflexmo-button-sizes: (
   @include weight-medium;
 
   outline: none;
-  width: 100%;
+  width: inherit;
 }
 
 @each $key, $val in $diflexmo-buttons {
