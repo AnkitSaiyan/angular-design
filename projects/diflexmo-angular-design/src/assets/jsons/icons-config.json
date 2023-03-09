@@ -141,6 +141,10 @@
       "iconPath": "/assets/icons/drag.svg"
     },
     {
+      "iconName": "edit-02",
+      "iconPath": "/assets/icons/edit-02.svg"
+    },
+    {
       "iconName": "eye",
       "iconPath": "/assets/icons/eye.svg"
     },

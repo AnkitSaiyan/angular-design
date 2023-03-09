@@ -78,7 +78,7 @@
     }
 
     &[readonly] {
-      cursor: pointer;
+      cursor: default;
     }
 
     &.leading-icon-control {
@@ -119,7 +119,7 @@
     }
 
     &[readonly] {
-      cursor: pointer;
+      cursor: default;
     }
   }
 }

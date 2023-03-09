@@ -9,6 +9,7 @@
     [disabled]="disabled"
     [placeholder]="placeholder"
     (blur)="onTouched($event)"
+    [readonly]="readonly"
   >
   </textarea>
   <span *ngIf="hint" class="dfm-input-hint">{{ hint }}</span>

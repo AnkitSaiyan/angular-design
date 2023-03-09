@@ -1,64 +1,65 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NotificationModule } from './modules/notification/notification.module';
-import { IconModule } from './modules/icon/icon.module';
-import { BaseCheckboxModule } from './modules/base-checkbox/base-checkbox.module';
-import { ButtonModule } from './modules/button/button.module';
-import { InputModule } from './modules/input/input.module';
-import { ErrorModule } from './modules/error/error.module';
-import { BadgeModule } from './modules/badge/badge.module';
-import { TagModule } from './modules/tag/tag.module';
-import { TextAreaModule } from './modules/text-area/text-area.module';
+import { NgDfmNotificationModule } from './modules/notification/notification.module';
+import { NgDfmIconModule } from './modules/icon/icon.module';
+import { NgDfmCheckboxModule } from './modules/base-checkbox/base-checkbox.module';
+import { NgDfmButtonModule } from './modules/button/button.module';
+import { NgDfmInputModule } from './modules/input/input.module';
+import { NgDfmErrorModule } from './modules/error/error.module';
+import { NgDfmTagModule } from './modules/tag/tag.module';
+import { NgDfmTextAreaModule } from './modules/text-area/text-area.module';
 import { DatepickerModule } from './modules/datepicker/datepicker.module';
 import { TableModule } from './modules/table/table.module';
-import { InputDropdownModule } from './modules/input-dropdown/input-dropdown.module';
-import { CardModule } from './modules/card/card.module';
-import { NavigationBarModule } from './modules/navigation-bar/navigation-bar.module';
+import { NgDfmInputDropdownModule } from './modules/input-dropdown/input-dropdown.module';
+import { NgDfmCardModule } from './modules/card/card.module';
+import { NgDfmNavigationBarModule } from './modules/navigation-bar/navigation-bar.module';
 import { DirectivesModule } from './directives/directives.module';
 import { NgDfmClipboardModule } from './modules/clipboard/clipboard.module';
-import { DfmDataTableModule } from './modules/data-table/data-table.module';
+import { NgDfmDataTableModule } from './modules/data-table/data-table.module';
 import { NgDfmDropdownModule } from './modules/dropdown/dropdown.module';
 import { NgDfmDatePickerModule } from './modules/date-range-picker/date-picker.module';
+import { NgDfmBadgeModule } from './modules/badge/badge.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    IconModule,
-    BadgeModule,
-    InputModule,
-    ErrorModule,
-    TagModule,
-    BaseCheckboxModule,
-    TextAreaModule,
-    InputDropdownModule,
+    NgDfmButtonModule,
+    NgDfmIconModule,
+    NgDfmBadgeModule,
+    NgDfmInputModule,
+    NgDfmErrorModule,
+    NgDfmTagModule,
+    NgDfmCheckboxModule,
+    NgDfmTextAreaModule,
+    NgDfmInputDropdownModule,
     DatepickerModule,
     TableModule,
-    CardModule,
-    NavigationBarModule,
-    NotificationModule,
+    NgDfmCardModule,
+    NgDfmNavigationBarModule,
+    NgDfmNotificationModule,
     DirectivesModule,
     NgDfmClipboardModule,
-    DfmDataTableModule,
+    NgDfmDataTableModule,
     NgDfmDatePickerModule,
   ],
   exports: [
-    ButtonModule,
-    IconModule,
-    BadgeModule,
-    InputModule,
-    ErrorModule,
-    TagModule,
-    BaseCheckboxModule,
-    TextAreaModule,
-    InputDropdownModule,
+    NgDfmButtonModule,
+    NgDfmIconModule,
+    NgDfmBadgeModule,
+    NgDfmInputModule,
+    NgDfmErrorModule,
+    NgDfmTagModule,
+    NgDfmCheckboxModule,
+    NgDfmTextAreaModule,
+    NgDfmInputDropdownModule,
     DatepickerModule,
     TableModule,
-    CardModule,
-    NavigationBarModule,
-    NotificationModule,
+    NgDfmCardModule,
+    NgDfmNavigationBarModule,
+    NgDfmNotificationModule,
     DirectivesModule,
     NgDfmClipboardModule,
-    DfmDataTableModule,
+    NgDfmDataTableModule,
     NgDfmDropdownModule,
     NgDfmDatePickerModule,
   ],

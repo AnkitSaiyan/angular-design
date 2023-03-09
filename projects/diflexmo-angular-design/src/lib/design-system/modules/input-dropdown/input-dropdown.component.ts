@@ -7,6 +7,7 @@ import {
   HostListener,
   Input,
   OnChanges,
+  OnDestroy,
   OnInit,
   Optional,
   Output,
@@ -17,6 +18,7 @@ import {
 } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { Dropdown } from 'bootstrap';
+import { debounceTime, Subject, Subscription } from 'rxjs';
 import { ItemsCompactHelper } from '../../helpers/items-compact-helper';
 import { InputSize } from '../../types/input-size.type';
 import { BaseControlValueAccessor } from '../base-control-value-accessor';
@@ -27,7 +29,7 @@ import { SelectItem } from './models/select-item';
   templateUrl: './input-dropdown.component.html',
   styleUrls: ['./input-dropdown.component.scss', '../input/input.component.scss'],
 })
-export class InputDropdownComponent extends BaseControlValueAccessor implements OnInit, AfterViewInit, OnChanges {
+export class InputDropdownComponent extends BaseControlValueAccessor implements OnInit, AfterViewInit, OnChanges, OnDestroy {
   @Input() public items: SelectItem[] = [];
 
   @Input() public label: string = '';
@@ -57,6 +59,8 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
   @Input() public showDropdownIcon: boolean = true;
 
   @Input() public showSelectAll: boolean = false;
+
+  @Input() public readonly: boolean = false;
 
   @Output() public searchInput = new EventEmitter<string>();
 
@@ -88,6 +92,12 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
 
   public selectedItems: SelectItem[] = [];
 
+  private resizeSelectedItems$ = new Subject<void>();
+
+  private wasInside = false;
+
+  private subscriptions = new Subscription();
+
   public get isAllSelected(): boolean {
     return this.filteredItems.length === this.selectedItems.length;
   }
@@ -101,8 +111,6 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
       this.control.valueAccessor = this;
     }
   }
-
-  private wasInside = false;
 
   @HostListener('click')
   clickInside() {
@@ -126,6 +134,9 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
     this.filteredItems = [...this.items];
 
     this.updateSearch('');
+
+    const subscription = this.resizeSelectedItems$.pipe(debounceTime(50)).subscribe(() => this.updateSelectedItems());
+    this.subscriptions.add(subscription);
   }
 
   ngAfterViewInit(): void {
@@ -138,6 +149,10 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
     if (changes['items']?.previousValue !== changes['items']?.currentValue) {
       this.filteredItems = [...changes['items'].currentValue];
     }
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 
   override writeValue(value: string | string[]) {
@@ -156,6 +171,8 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
   }
 
   updateSearch(query: string): void {
+    this.dropdownInstance?.show();
+
     this.search = query;
 
     if (!this.multiple && this.value) {
@@ -205,7 +222,7 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
     this.selectedItemTags = [...items];
     this.selectedItemTagsUnionIndex = itemsUnionIndex;
 
-    const paddingRight = this.typeToSearch ? this.defaultMultipleDropdownPaddingRight : this.multipleDropdownWithIconPaddingRight;
+    const paddingRight = !this.showDropdownIcon ? this.defaultMultipleDropdownPaddingRight : this.multipleDropdownWithIconPaddingRight;
     this.searchInputRef.nativeElement.style.paddingRight = `${containerWidth + paddingRight}px`;
   }
 
@@ -221,6 +238,10 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
         this.menuClosed.emit();
       }
     }
+  }
+
+  inputResized() {
+    this.resizeSelectedItems$.next();
   }
 
   private updateInputDropdown(item: SelectItem, isSelected: boolean): void {
@@ -244,6 +265,7 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
 
     this.filteredItems = this.asyncSearch ? [] : [...this.items];
     this.search = '';
+    this.searchInputRef.nativeElement.select();
   }
 
   private updateSingleInputDropdown(item: SelectItem): void {
@@ -292,5 +314,11 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
       this.selectedItems = [];
     }
     this.updateSelectedItems();
+  }
+
+  toggleDropdownMenu() {
+    if (!this.readonly) {
+      this.dropdownInstance?.toggle();
+    }
   }
 }
