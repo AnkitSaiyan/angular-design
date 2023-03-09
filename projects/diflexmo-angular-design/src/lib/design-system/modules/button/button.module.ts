@@ -10,6 +10,6 @@ import { ButtonDirectiveComponent } from './components/button-directive/button-d
 @NgModule({
   declarations: [ButtonComponent, ButtonGroupComponent, ButtonIconComponent, ButtonGroupItemComponent, ButtonDirectiveComponent],
   imports: [CommonModule, NgDfmIconModule],
-  exports: [ButtonComponent, ButtonGroupComponent, ButtonGroupItemComponent, ButtonIconComponent],
+  exports: [ButtonComponent, ButtonGroupComponent, ButtonGroupItemComponent, ButtonIconComponent, ButtonDirectiveComponent],
 })
 export class NgDfmButtonModule {}
