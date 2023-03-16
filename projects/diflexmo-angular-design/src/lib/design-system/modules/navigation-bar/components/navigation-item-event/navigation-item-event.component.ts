@@ -57,6 +57,8 @@ export class NavigationItemEventComponent implements OnInit, AfterViewInit {
         return 'warning';
       case NavigationItemEventType.ERROR:
         return 'primary';
+       case NavigationItemEventType.NEW:
+        return 'primary';
       default:
         return 'gray';
     }
@@ -70,6 +72,8 @@ export class NavigationItemEventComponent implements OnInit, AfterViewInit {
         return 'Warning';
       case NavigationItemEventType.ERROR:
         return 'Error';
+      case NavigationItemEventType.NEW:
+        return 'New';
       default:
         return 'Info';
     }
