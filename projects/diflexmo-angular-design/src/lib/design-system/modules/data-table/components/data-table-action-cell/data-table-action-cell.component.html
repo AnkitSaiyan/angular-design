@@ -1,4 +1,4 @@
-<dfm-table-row-cell [propagateClick]="false" [collapsePaddingX]="true">
+<dfm-table-row-cell [contentAlign]="'right'" [propagateClick]="false" [collapsePaddingX]="true">
   <ng-container *ngIf="!dataTableService.isStickyActions() || !dataTableService.isOverflown()">
     <div class="d-flex dfm-gap-12 float-right dfm-regular-actions">
       <ng-container *ngTemplateOutlet="actionCellTemplate"></ng-container>
