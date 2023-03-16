@@ -1,11 +1,14 @@
 # Diflexmo Angular Design System
+
 Includes components used in developing Angular Apps for Diflexmo.
 
 ## Getting Started
 
 ### Install NPM package
 
-`npm install diflexmo-angular-design`
+1. `npm i diflexmo-angular-design-dev` to install development version
+2. `npm i diflexmo-angular-design@prerelease` to install prerelease version
+3. `npm i diflexmo-angular-design` to install released version
 
 ### Add assets to **angular.json**
 
@@ -172,6 +175,7 @@ To pass notifications and messages use **[notifications]** and **[messages]** pr
 Selector: dfm-data-table
 
 ### INPUTS
+
 data: Of type dfmDataSource, contains items which will contain the actual table data
 
 selectable: boolean, when true will add a column with a checkbox at the beginning of the table. Default= false
@@ -191,6 +195,7 @@ headerSze: 'lg' | 'md' | 'sm', size of the header. Default= 'lg'
 clearSelected$: subject, when passing any value to the subject the table will set all checkboxes to false in the first row when **[rowSelectable]** is set to true
 
 ### OUTPUTS
+
 sorted: the datatable will report back which column the user wishes to sort
 
 rowClicked: report of which row was clicked when **[rowClickable]** was set to true
@@ -202,6 +207,7 @@ selected: report which row had its checkbox value changed
 ### EXAMPLE
 
 ts-file must contain the following;
+
 ```
 public tableHeaders: Array<DfmTableHeader> = [
   { title: 'Vessel name', id: 'vesselName' },
@@ -216,9 +222,11 @@ public datasource: DfmDatasource<number> = { items: [
   {id: 4, name: "test", "imo": "test imo", lastUpdate: new Date()}
 ]};
 ```
-tableHeaders will be used to render the header of the table while datasource will contain all the data for the body of the table. 
+
+tableHeaders will be used to render the header of the table while datasource will contain all the data for the body of the table.
 
 The html file will contain the following;
+
 ```
 <dfm-data-table
   [headers]="tableHeaders"
@@ -250,10 +258,13 @@ The html file will contain the following;
 ```
 
 ### MIGRATING FROM DFM-TABLE
-To migrate from the old dfm-table, change the selector to dfm-data-table then remove the ng-template containing the **<table-header-cell>** tags and pass an array to the **[header]** parameter to show the header row, the items in the array need at least 'id' and 'label' (label will be shown in the row). After this change all **<table-body-cell>** to **<table-row-cell>**. 
+
+To migrate from the old dfm-table, change the selector to dfm-data-table then remove the ng-template containing the **<table-header-cell>** tags and pass an array to the **[header]** parameter to show the header row, the items in the array need at least 'id' and 'label' (label will be shown in the row). After this change all **<table-body-cell>** to **<table-row-cell>**.
 
 ### TRUNCATING DATA IN CELLS
+
 To have the table truncate data in cells, you have to set the max width of the cell by the using the **[maxWidthStyle]** parameter on **<table-row-cell>**, which takes a css value as input (ie. '120px', or '20vw'). To automatically add a tooltip when a cell is truncated, add the value to appear in the tooltip in the **[fullContent]** parameter. Please be aware that when **[stickyFirstRow]** on the data table is set to true and the table is horizontally scrollable, the maxwidth of that row will always be 33vw, no matter what value is passed in **[maxWidthStyle]**.
+
 </details>
 
 <details>
@@ -265,6 +276,7 @@ Selector: dfm-button
 Directive: dfm-button
 
 ### INPUTS
+
 color: 'primary' | 'secondary' | 'secondary-gray' | 'tertiary' | 'tertiary-gray' | 'link' | 'link-gray', Sets the style of the button. default: primary
 size: 'sm' | 'md' | 'lg' | 'xl' | '2xl', Set the size of the button. Default: lg
 disabled: boolean, when sets the button in disabled state
@@ -272,7 +284,9 @@ leadingIcon: icon name of the icon that will be shown before button contents.
 trailingIcon: icon name of the icon that will be shown after button contents.
 
 ### EXAMPLE
+
 The following code will create a medium sized button with the secondary gray style.
+
 ```
 <button dfm-button color="secondary-gray" size="md">Click me</button>
 ```
