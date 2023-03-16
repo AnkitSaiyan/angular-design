@@ -12,6 +12,6 @@ The diflexmo-angular-design project has three branches, which are used in pipeli
 
 ## PR flow overview
 
-1. No PRs are needed in order to push changes to development branch.
+1. No PRs are needed in order to push changes to development branch, but they are highly recommended.
 2. A change can be merged to staging branch only through the PR. The PR can be made from development or any other branch.
 3. A change can be merged to main branch only through the PR. The PR can be made only from staging branch.
