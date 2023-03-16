@@ -8,6 +8,10 @@
   }
 }
 
+.dropdown-menu {
+  background-clip: inherit !important;
+}
+
 .dfm-navigation-item-dropdown-menu {
   &.dropdown-menu {
     padding: 0;
