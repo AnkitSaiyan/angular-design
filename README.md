@@ -2,7 +2,7 @@
 
 Includes components used in developing Angular Apps for Diflexmo.
 
-[Contribution guidefor this project](CONTRIBUTING.md)
+[Contribution guide for this project](CONTRIBUTING.md)
 
 ## Getting Started
 
