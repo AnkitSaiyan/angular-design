@@ -29,6 +29,10 @@ export class DataTableComponent<T> implements OnInit {
 
   @Input() stickyFirstColumn: boolean = true;
 
+  @Input() actionsHeader?: string;
+
+  @Input() actionsHeaderIcon?: string;
+
   private stickyActionsValue: boolean = true;
 
   public get stickyActions(): boolean {
@@ -65,8 +69,6 @@ export class DataTableComponent<T> implements OnInit {
   @ViewChild('tableWrapper', { static: false }) tableWrapper!: ElementRef;
 
   public tableSizeChanged$ = new Subject<ResizedEvent>();
-
-  public actionsHeader: DfmTableHeader = { id: 'dfm-actions', title: '' };
 
   public selectedItems: Map<T, boolean> = new Map<T, boolean>();
 
