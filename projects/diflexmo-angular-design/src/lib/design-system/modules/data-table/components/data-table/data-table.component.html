@@ -26,7 +26,7 @@
           <dfm-data-table-header-cell (click)="sortClicked(header.title)" [header]="header" [headerSize]="headerSize"></dfm-data-table-header-cell>
         </ng-container>
         <dfm-data-table-header-cell contentAlign="right" *ngIf="dataTableService.hasActions()">
-          <ng-container *ngIf="actionsHeader || actionsHeaderIcon">
+          <ng-container *ngIf="(actionsHeader || actionsHeaderIcon) && !dataTableService.isOverflown()">
             <button [ngbTooltip]="actionsHeaderTooltip" dfm-button color="secondary-gray" [leadingIcon]="actionsHeaderIcon ?? ''" size="sm">
               <ng-container *ngIf="actionsHeader">
                 {{ actionsHeader }}
