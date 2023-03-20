@@ -68,6 +68,8 @@ export class DataTableComponent<T> implements OnInit {
 
   @Output() scrolled = new EventEmitter();
 
+  @Output() actionsHeaderClicked = new EventEmitter();
+
   @ViewChild('tableWrapper', { static: false }) tableWrapper!: ElementRef;
 
   public tableSizeChanged$ = new Subject<ResizedEvent>();
