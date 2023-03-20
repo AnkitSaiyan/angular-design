@@ -33,6 +33,8 @@ export class DataTableComponent<T> implements OnInit {
 
   @Input() actionsHeaderIcon?: string;
 
+  @Input() actionsHeaderTooltip?: string;
+
   private stickyActionsValue: boolean = true;
 
   public get stickyActions(): boolean {

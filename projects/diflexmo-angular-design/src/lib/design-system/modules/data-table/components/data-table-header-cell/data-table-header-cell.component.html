@@ -1,5 +1,6 @@
 <th
   class="dfm-px-24 cell"
+  [class.float-end]="contentAlign === 'right'"
   [ngClass]="{
     pointer: header?.isSortable,
     'dfm-py-27': headerSize === 'lg',
