@@ -27,7 +27,14 @@
         </ng-container>
         <dfm-data-table-header-cell [contentAlign]="dataTableService.isOverflown() ? 'left' : 'right'" *ngIf="dataTableService.hasActions()">
           <ng-container *ngIf="(actionsHeader || actionsHeaderIcon) && !dataTableService.isOverflown()">
-            <button [ngbTooltip]="actionsHeaderTooltip" dfm-button color="secondary-gray" [leadingIcon]="actionsHeaderIcon ?? ''" size="sm">
+            <button
+              (click)="actionsHeaderClicked.emit()"
+              [ngbTooltip]="actionsHeaderTooltip"
+              dfm-button
+              color="secondary-gray"
+              [leadingIcon]="actionsHeaderIcon ?? ''"
+              size="sm"
+            >
               <ng-container *ngIf="actionsHeader">
                 {{ actionsHeader }}
               </ng-container>
