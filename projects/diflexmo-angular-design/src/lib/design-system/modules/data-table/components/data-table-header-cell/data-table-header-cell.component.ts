@@ -11,4 +11,6 @@ export class DataTableHeaderCellComponent {
   @Input() header?: DfmTableHeader;
 
   @Input() headerSize: TableHeaderSize = 'lg';
+
+  @Input() contentAlign: 'right' | 'left' = 'left';
 }
