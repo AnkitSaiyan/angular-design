@@ -55,6 +55,7 @@
 
   --dfm-checkbox-hover-bg: #{$orange-100};
   --dfm-checkbox-checked-bg: #{$orange-50};
+  --dfm-checkbox-checked-border: var(--dfm-primary);
   --dfm-checkbox-disabled-bg: #{$gray-modern-100};
   --dfm-checkbox-disabled-border: #{$gray-modern-300};
   --dfm-checkbox-focus-shadow: #{$orange-100};
@@ -306,6 +307,9 @@
   --dfm-badge-warning-color: #{$warning-700};
   --dfm-badge-warning-bg: #{$warning-50};
   --dfm-badge-warning-icon-color: #{$warning-500};
+  --dfm-badge-warning-dark-color: var(--dfm-primary);
+  --dfm-badge-warning-dark-bg: #{$warning-300};
+  --dfm-badge-warning-dark-icon-color: var(--dfm-primary);
   --dfm-badge-success-color: #{$success-700};
   --dfm-badge-success-bg: #{$success-50};
   --dfm-badge-success-icon-color: #{success-500};

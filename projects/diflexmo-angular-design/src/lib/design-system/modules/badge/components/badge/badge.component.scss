@@ -212,6 +212,18 @@
     }
   }
 
+  &-warning-dark {
+    color: var(--dfm-badge-warning-dark-color);
+    background-color: var(--dfm-badge-warning-dark-bg);
+
+    .dfm-bullet-warning {
+      background-color: var(--dfm-badge-warning-dark-color);
+    }
+
+    .dfm-badge-icon {
+      color: var(--dfm-badge-warning-dark-icon-color);
+    }
+  }
   &-success {
     color: var(--dfm-badge-success-color);
     background-color: var(--dfm-badge-success-bg);
