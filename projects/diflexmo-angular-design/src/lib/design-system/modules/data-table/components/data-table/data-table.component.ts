@@ -142,9 +142,13 @@ export class DataTableComponent<T> implements OnInit {
     }
     this.selectedItems.set(id, selected);
 
-    const ids = Object.entries(this.selectedItems)
-      .filter(([, value]) => value)
-      .map(([key]) => key);
+    const ids: T[] = [];
+
+    this.selectedItems.forEach((value, key) => {
+      if (value) {
+        ids.push(key);
+      }
+    });
 
     this.selected.emit(ids);
   }
