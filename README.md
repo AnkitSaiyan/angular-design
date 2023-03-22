@@ -294,3 +294,13 @@ The following code will create a medium sized button with the secondary gray sty
 ```
 
 </details>
+
+<details>
+<summary>Profile configuration (22.03.2023)</summary>
+
+This version of diflexmo-angular-design library adds possibility to customize the following points:
+
+- pass `[isSettingsButtonShown]` to navigation bar in order to control showing of settings button (default value is `true`)
+- pass `link` to `NavigationUser` constructor to add link to user name in profile menu (default value is `undefined`)
+- pass `isLinkExternal` to `NavigationUser` constructor to add external link icon to user name (default value is `false`)
+</details>
