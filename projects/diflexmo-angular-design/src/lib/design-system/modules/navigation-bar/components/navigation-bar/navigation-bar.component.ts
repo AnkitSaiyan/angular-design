@@ -36,6 +36,8 @@ export class NavigationBarComponent implements OnInit, AfterViewInit, OnDestroy 
 
   @Input() profileData?: NavigationProfileData;
 
+  @Input() isSettingsButtonShown: boolean = true;
+
   @Output() tenantChanged = new EventEmitter<string>();
 
   @Output() notificationsDismissed = new EventEmitter<string[]>();
