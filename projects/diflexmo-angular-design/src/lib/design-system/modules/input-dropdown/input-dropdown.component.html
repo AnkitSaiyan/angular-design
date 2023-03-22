@@ -1,37 +1,35 @@
-<div class="dropdown input-dropdown input-dropdown-{{ size }}">
-  <div #dropdown>
-    <div class="input-container" (resized)="inputResized()">
-      <label *ngIf="label" class="dfm-input-label">{{ label }}</label>
-      <div class="input-container input-container-{{ size }}">
-        <dfm-icon *ngIf="icon" [name]="icon" class="leading-icon"></dfm-icon>
-        <input
-          class="dfm-input dfm-input-{{ size }}"
-          [ngClass]="{ 'dfm-invalid': control && control.touched && !control.valid, 'leading-icon-control': icon }"
-          [ngModel]="search"
-          (ngModelChange)="updateSearch($event)"
-          [placeholder]="placeholder"
-          [disabled]="disabled"
-          [readonly]="!typeToSearch || readonly"
-          (focusout)="focusout($event)"
-          #searchInputRef
-          (click)="toggleDropdownMenu()"
-        />
-        <div
-          *ngIf="selectedItemTags.length"
-          class="selected-items"
-          [class.selected-items-with-dropdown-icon]="showDropdownIcon"
-          #selectedItemsContainerRef
+<div class="dfm-input-dropdown dfm-input-dropdown-{{ size }}">
+  <div #dropdown (resized)="inputResized()">
+    <label *ngIf="label" class="dfm-input-label">{{ label }}</label>
+    <div class="input-dropdown-container input-container input-container-{{ size }}">
+      <dfm-icon *ngIf="icon" [name]="icon" class="leading-icon"></dfm-icon>
+      <input
+        class="dfm-input dfm-input-{{ size }}"
+        [ngClass]="{ 'dfm-invalid': control && control.touched && !control.valid, 'leading-icon-control': icon }"
+        [ngModel]="search"
+        (ngModelChange)="updateSearch($event)"
+        [placeholder]="placeholder"
+        [disabled]="disabled"
+        [readonly]="!typeToSearch || readonly"
+        (focusout)="focusout($event)"
+        #searchInputRef
+        (click)="toggleDropdownMenu()"
+      />
+      <div
+        *ngIf="selectedItemTags.length"
+        class="selected-items"
+        [class.selected-items-with-dropdown-icon]="showDropdownIcon"
+        #selectedItemsContainerRef
+      >
+        <dfm-tag
+          *ngFor="let selectedItem of selectedItemTags; let i = index"
+          color="brown"
+          [action]="selectedItemTagsUnionIndex === i ? null : 'close'"
+          [size]="size === 'md' ? 'lg' : 'md'"
+          (closeAction)="removeItem(selectedItem)"
+          #selectedItemRef
+          >{{ selectedItem.name }}</dfm-tag
         >
-          <dfm-tag
-            *ngFor="let selectedItem of selectedItemTags; let i = index"
-            color="brown"
-            [action]="selectedItemTagsUnionIndex === i ? null : 'close'"
-            size="lg"
-            (closeAction)="removeItem(selectedItem)"
-            #selectedItemRef
-            >{{ selectedItem.name }}</dfm-tag
-          >
-        </div>
       </div>
       <dfm-icon name="chevron-down" *ngIf="showDropdownIcon" class="dropdown-icon" (click)="dropdownInstance?.toggle()"></dfm-icon>
     </div>
