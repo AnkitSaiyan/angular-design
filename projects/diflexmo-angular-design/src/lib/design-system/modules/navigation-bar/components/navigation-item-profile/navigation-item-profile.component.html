@@ -15,7 +15,10 @@
         <img *ngIf="profileData.user.avatar" class="avatar" [src]="'data:image/png;base64,' + profileData.user.avatar" />
       </div>
       <div class="d-flex flex-column">
-        <span class="name text-md-medium">{{ profileData.user.name }}</span>
+        <a *ngIf="profileData.user.link" class="name text-md-medium d-flex align-items-center dfm-gap-8" [href]="profileData.user.link"
+          >{{ profileData.user.name }} <dfm-icon *ngIf="profileData.user.isLinkExternal" class="icon-12" name="link-external-01"></dfm-icon
+        ></a>
+        <span *ngIf="!profileData.user.link" class="name text-md-medium">{{ profileData.user.name }}</span>
         <span class="email text-sm">{{ profileData.user.email }} </span>
       </div>
     </div>
@@ -35,7 +38,7 @@
     <hr class="dfm-mx-16 dfm-my-0" />
     <div class="d-flex flex-column dfm-p-16 dfm-gap-8 align-items-end">
       <div class="d-flex dfm-gap-8 w-100">
-        <dfm-button leadingIcon="settings-01" color="secondary-gray" size="md" class="w-100">Settings</dfm-button>
+        <dfm-button *ngIf="isSettingsButtonShown" leadingIcon="settings-01" color="secondary-gray" size="md" class="w-100">Settings</dfm-button>
         <dfm-button leadingIcon="log-out-04" color="secondary-gray" size="md" class="w-100" (click)="logout.emit()">Log out</dfm-button>
       </div>
       <span class="text-xs">Powered by Diflexmo</span>

@@ -21,7 +21,12 @@
         [currentTenantValue]="currentTenant"
         (tenantChanged)="tenantChanged.emit($event)"
       ></dfm-navigation-item-tenant>
-      <dfm-navigation-item-profile *ngIf="isProfileShown" [profileData]="profileData" (logout)="logout.emit()"></dfm-navigation-item-profile>
+      <dfm-navigation-item-profile
+        *ngIf="isProfileShown"
+        [isSettingsButtonShown]="isSettingsButtonShown"
+        [profileData]="profileData"
+        (logout)="logout.emit()"
+      ></dfm-navigation-item-profile>
       <ng-container *ngIf="isNotificationsCounterShown">
         <dfm-navigation-item-events
           icon="bell-03"

@@ -9,6 +9,8 @@ import { NavigationProfileData } from '../../models/navigation-profile-data';
 export class NavigationItemProfileComponent implements AfterViewInit, OnDestroy {
   @Input() public profileData?: NavigationProfileData;
 
+  @Input() public isSettingsButtonShown: boolean = true;
+
   @Output() public logout = new EventEmitter();
 
   @ViewChild('dropdown', { read: ElementRef }) dropdown?: ElementRef;
