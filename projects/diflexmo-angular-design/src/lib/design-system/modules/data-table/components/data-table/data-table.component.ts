@@ -1,6 +1,19 @@
-import { Component, ContentChild, ElementRef, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  ContentChild,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import { ResizedEvent } from 'angular-resize-event';
-import { debounceTime, Subject } from 'rxjs';
+import { debounceTime, Subject, tap } from 'rxjs';
 import { DfmDatasource } from '../../models/datasource.model';
 import { DfmTableAction } from '../../models/table-action.model';
 import { DfmTableHeader } from '../../models/table-header.model';
@@ -14,7 +27,7 @@ import { TableHeaderSize } from '../../types/table-header-size.type';
   styleUrls: ['./data-table.component.scss'],
   providers: [DataTableService],
 })
-export class DataTableComponent<T> implements OnInit {
+export class DataTableComponent<T> implements OnInit, OnChanges {
   @Input() data?: DfmDatasource<T>;
 
   @Input() rowSelectable: boolean = false;
@@ -35,16 +48,7 @@ export class DataTableComponent<T> implements OnInit {
 
   @Input() actionsHeaderTooltip?: string;
 
-  private stickyActionsValue: boolean = true;
-
-  public get stickyActions(): boolean {
-    return this.stickyActionsValue;
-  }
-
-  @Input() public set stickyActions(value: boolean) {
-    this.stickyActionsValue = value;
-    this.dataTableService.setStickyActions(value);
-  }
+  @Input() stickyActions: boolean = true;
 
   @Input() headerSize: TableHeaderSize = 'lg';
 
@@ -76,6 +80,8 @@ export class DataTableComponent<T> implements OnInit {
 
   public selectedItems: Map<T, boolean> = new Map<T, boolean>();
 
+  private isTableSizeProcessing = false;
+
   public get areAllSelected() {
     return Array.from(this.selectedItems.values()).filter((i) => i).length === this.data?.items.length;
   }
@@ -87,17 +93,23 @@ export class DataTableComponent<T> implements OnInit {
     return false;
   }
 
-  constructor(public dataTableService: DataTableService) {}
+  constructor(public dataTableService: DataTableService, private changeDetectionRef: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     if (this.stickyActions !== false) {
-      this.stickyActions = true;
+      Promise.resolve(null).then(() => this.dataTableService.setStickyActions(true));
     }
-    this.tableSizeChanged$.pipe(debounceTime(100)).subscribe((event: ResizedEvent) => {
-      const tableWrapperWidth = this.tableWrapper.nativeElement.offsetWidth;
-      const tableWidth = event.newRect.width;
-      this.dataTableService.setOverflow(tableWrapperWidth < tableWidth);
-    });
+
+    this.tableSizeChanged$
+      .pipe(
+        debounceTime(100),
+        tap(() => (this.isTableSizeProcessing = true)),
+      )
+      .subscribe(() => {
+        this.dataTableService.setOverflow(false);
+        this.changeDetectionRef.detectChanges();
+        this.isTableSizeProcessing = false;
+      });
 
     if (this.selectable) {
       this.data?.items.forEach((i) => {
@@ -113,8 +125,16 @@ export class DataTableComponent<T> implements OnInit {
     }
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['stickyActions'] && changes['stickyActions'].currentValue !== changes['stickyActions'].previousValue) {
+      this.dataTableService.setStickyActions(changes['stickyActions'].currentValue);
+    }
+  }
+
   public checkTableSize(event: ResizedEvent): void {
-    this.tableSizeChanged$.next(event);
+    if (!this.isTableSizeProcessing) {
+      this.tableSizeChanged$.next(event);
+    }
   }
 
   public sortClicked(headerTitle: string): void {

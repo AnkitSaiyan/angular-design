@@ -7,8 +7,9 @@
   [scrollWindow]="false"
 >
   <table
-    [class.last-frozen]="stickyActions && dataTableService.isOverflown() && dataTableService.hasActions()"
-    [class.first-frozen]="stickyFirstColumn && dataTableService.isOverflown()"
+    [class.last-frozen]="stickyActions && (dataTableService.isCurrentOverflown$ | async) && (dataTableService.hasActions$ | async)"
+    [class.first-frozen]="stickyFirstColumn && (dataTableService.isCurrentOverflown$ | async)"
+    [class.scrollable]="dataTableService.isCurrentOverflown$ | async"
     (resized)="checkTableSize($event)"
   >
     <thead *ngIf="headers && headers.length > 0" [ngClass]="{ 'dfm-sticky-header': stickyHeader }">
@@ -16,8 +17,8 @@
         <ng-container *ngIf="selectable">
           <dfm-data-table-header-cell
             class="checkbox-cell"
-            [class.checkbox-frozen]="stickyCheckbox && dataTableService.isOverflown()"
-            [class.checkbox-first-frozen]="stickyFirstColumn && dataTableService.isOverflown()"
+            [class.checkbox-frozen]="stickyCheckbox && (dataTableService.isCurrentOverflown$ | async)"
+            [class.checkbox-first-frozen]="stickyFirstColumn && (dataTableService.isCurrentOverflown$ | async)"
           >
             <dfm-checkbox class="d-flex dfm-me-2" [ngModel]="areAllSelected" (click)="selectAllItems()"></dfm-checkbox>
           </dfm-data-table-header-cell>
@@ -25,8 +26,8 @@
         <ng-container *ngFor="let header of headers">
           <dfm-data-table-header-cell (click)="sortClicked(header.title)" [header]="header" [headerSize]="headerSize"></dfm-data-table-header-cell>
         </ng-container>
-        <dfm-data-table-header-cell *ngIf="dataTableService.hasActions() || actionsHeader || actionsHeaderIcon">
-          <ng-container *ngIf="(actionsHeader || actionsHeaderIcon) && !dataTableService.isOverflown()">
+        <dfm-data-table-header-cell *ngIf="(dataTableService.hasActions$ | async) || actionsHeader || actionsHeaderIcon">
+          <ng-container *ngIf="(actionsHeader || actionsHeaderIcon) && (dataTableService.isCurrentOverflown$ | async) === false">
             <button
               (click)="actionsHeaderClicked.emit()"
               [ngbTooltip]="actionsHeaderTooltip"
@@ -52,8 +53,8 @@
             <dfm-table-row-cell
               [propagateClick]="false"
               class="checkbox-cell"
-              [class.checkbox-frozen]="stickyCheckbox && dataTableService.isOverflown()"
-              [class.checkbox-first-frozen]="stickyFirstColumn && dataTableService.isOverflown()"
+              [class.checkbox-frozen]="stickyCheckbox && (dataTableService.isCurrentOverflown$ | async)"
+              [class.checkbox-first-frozen]="stickyFirstColumn && (dataTableService.isCurrentOverflown$ | async)"
             >
               <dfm-checkbox class="d-flex dfm-me-2" [ngModel]="getSelectedById(item.id)" (ngModelChange)="selectItem($event, item.id)"></dfm-checkbox>
             </dfm-table-row-cell>
