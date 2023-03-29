@@ -40,6 +40,8 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
 
   @Input() public showDescription: boolean = true;
 
+  @Input() public showDescriptionInTitle: boolean = false;
+
   @Input() public multiple: boolean = false;
 
   @Input() public size: InputSize = 'md';
@@ -274,7 +276,11 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
 
   private setSingleInputDropdown(item: SelectItem): void {
     this.value = item.value;
-    this.search = item.name;
+    if (this.showDescriptionInTitle) {
+      this.search = `${item.name} ${item.description}`;
+    } else {
+      this.search = item.name;
+    }
 
     if (this.asyncSearch) {
       this.filteredItems = [item];
