@@ -14,6 +14,6 @@ export class DataTableActionComponent implements OnInit {
   constructor(private dataTableService: DataTableService) {}
 
   ngOnInit(): void {
-    this.dataTableService.setHasActions(true);
+    Promise.resolve(null).then(() => this.dataTableService.setHasActions(true));
   }
 }

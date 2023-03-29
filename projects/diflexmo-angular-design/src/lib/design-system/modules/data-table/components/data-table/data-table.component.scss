@@ -16,6 +16,10 @@
         border-spacing: 0;
         width: 100%;
         background-color: var(--dfm-table-even-cell-bg);
+
+        &.scrollable {
+            min-width: 101%;
+        }
     }
 
     table>thead {
