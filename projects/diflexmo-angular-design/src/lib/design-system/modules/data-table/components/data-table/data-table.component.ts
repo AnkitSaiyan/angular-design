@@ -108,6 +108,7 @@ export class DataTableComponent<T> implements OnInit, OnChanges {
       .subscribe(() => {
         this.dataTableService.setOverflow(false);
         this.changeDetectionRef.detectChanges();
+        this.dataTableService.setOverflow(this.tableWrapper.nativeElement.offsetWidth <= this.tableWrapper.nativeElement.scrollWidth);
         this.isTableSizeProcessing = false;
       });
 
