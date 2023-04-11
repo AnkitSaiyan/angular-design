@@ -11,4 +11,4 @@ import { FeaturedIconComponent } from './components/featured-icon/featured-icon.
   imports: [CommonModule, AngularSvgIconModule, AngularSvgIconPreloaderModule, HttpClientModule],
   exports: [IconComponent, FeaturedIconComponent],
 })
-export class IconModule {}
+export class NgDfmIconModule {}

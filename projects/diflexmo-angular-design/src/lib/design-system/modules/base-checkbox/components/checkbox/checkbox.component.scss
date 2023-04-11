@@ -24,9 +24,11 @@
     &:checked {
       background-color: var(--dfm-checkbox-checked-bg);
       background-image: var(--dfm-checkbox-bg-img-checked);
+      border: 1px solid var(--dfm-checkbox-checked-border);
 
       &:disabled {
         background-image: var(--dfm-checkbox-bg-img-checked-disabled);
+        border: 1px solid var(--dfm-checkbox-disabled-border);
       }
     }
 
@@ -47,10 +49,12 @@
     &:indeterminate {
       background-color: var(--dfm-checkbox-checked-bg);
       background-image: var(--dfm-checkbox-bg-img-indeterminate);
+      border: var(--dfm-checkbox-checked-border);
 
       &:disabled {
         background-color: var(--dfm-checkbox-disabled-bg);
         background-image: var(--dfm-checkbox-bg-img-indeterminate-disabled);
+        border: var(--dfm-checkbox-disabled-border);
       }
     }
   }

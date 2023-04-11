@@ -1,11 +1,16 @@
 # Diflexmo Angular Design System
+
 Includes components used in developing Angular Apps for Diflexmo.
+
+[Contribution guide for this project](CONTRIBUTING.md)
 
 ## Getting Started
 
 ### Install NPM package
 
-`npm install diflexmo-angular-design`
+1. `npm i diflexmo-angular-design-dev` to install development version
+2. `npm i diflexmo-angular-design@prerelease` to install prerelease version
+3. `npm i diflexmo-angular-design` to install released version
 
 ### Add assets to **angular.json**
 
@@ -69,109 +74,17 @@ This works only if the right way of style files import is implemented. As an exa
 @import './themes/theme';
 ```
 
-## Migrations
+## Components documentation
 
 <details>
-<summary>Migration to new mobile navigation-bar (v. 20231.31.11)</summary>
-
-### Remove isHiddenForMobile from NavigationItem model
-
-From this version, navigation items will be hidden on mobile view dynamically, based on the width of device screen. Because of it, isHiddenForMobile parameter is not supported. If it was used, please, remove it from your NavigationItem objects creation.
-
-</details>
-
-<details>
-<summary>Migration to new navigation-bar component (v. 20231.26.23)</summary>
-
-### Navigation items
-
-All navigation items should be passed as an array of objects to **[navigationItems]** input property of navigation-bar component. Please, update previous implementation, such as:
-
-```
-<dfm-navigation-item icon="home-03" title="Dashboard" routerLink="/" [exact]="true"></dfm-navigation-item>
-<dfm-navigation-item icon="speedometer-02" title="OVER-C Edge" routerLink="/overc-edge"></dfm-navigation-item>
-```
-
-To this one:
-
-```
-new NavigationItem('Dashboard', 'home-03', '/', true),
-new NavigationItem('OVER-C Edge', 'speedometer-02', '/overc-edge')
-```
-
-If you need to pass child navigation items, you can specify them in NavigationItem object:
-
-```
-new NavigationItem('Operations', 'dots-grid', undefined, false, true, [
-      new NavigationItem('Problems', 'package-x', '/operations/problems'),
-      new NavigationItem('All events', 'notification-text', '/operations/events'),
-      new NavigationItem('Insights', 'line-chart-up-01', '/operations/insights'),
-      new NavigationItem('Configurations', 'package-x', '/operations/configurations'),
-    ])
-```
-
-### Tenants dropdown and profile items
-
-Tenant dropdown and profile items have been moved directly to navigation bar component. Please, remove them from the code and use **[tenants]**, **[currentTenant]**, **(tenantChanged)** properties of navigation-bar.
-Before:
-
-```
-<dfm-navigation-bar [content]="content">
-  ...
-  <ng-template #profileItems>
-    <dfm-navigation-item-tenant
-      title="Tenants"
-      [tenants]="tenants"
-      [currentTenantValue]="currentTenant"
-      (tenantChanged)="changeTenant($event)"
-    ></dfm-navigation-item-tenant>
-    <dfm-navigation-item icon="user-01" title="Profile"></dfm-navigation-item>
-  </ng-template>
-</dfm-navigation-bar>
-```
-
-After
-
-```
-<dfm-navigation-bar
-    [tenants]="tenants"
-    [currentTenant]="currentTenant"
-    (tenantChanged)="changeTenant($event)"
-  >
-  </dfm-navigation-bar>
-```
-
-### Content
-
-All content of page should go into navigation bar tag. The example of change:
-From
-
-```
-<dfm-navigation-bar [content]="content"> ... <dfm-navigation-bar>
-<div class="content"></div>
-```
-
-To
-
-```
-<dfm-navigation-bar><div class="content"></div><dfm-navigation-bar>
-
-```
-
-### Messages and notifications
-
-New properties such as **[isTenantDropdownShown]**, **[isNotificationsCounterShown]**, **[isMessagesCounterShown]** have been added. Please, use them in order to configure what should be displayed in navigation bar
-To pass notifications and messages use **[notifications]** and **[messages]** properties. In order to dismiss notification or message, subscribe to **(notificationsDismissed)** and **(messagesDismissed)**.
-
-</details>
-<details>
-<summary>Data table documentation (v20231.31.13+)</summary>
+<summary>Data table documentation</summary>
 
 ### Dfm Data table
 
 Selector: dfm-data-table
 
 ### INPUTS
+
 data: Of type dfmDataSource, contains items which will contain the actual table data
 
 selectable: boolean, when true will add a column with a checkbox at the beginning of the table. Default= false
@@ -190,9 +103,20 @@ headerSze: 'lg' | 'md' | 'sm', size of the header. Default= 'lg'
 
 clearSelected$: subject, when passing any value to the subject the table will set all checkboxes to false in the first row when **[rowSelectable]** is set to true
 
+### OUTPUTS
+
+sorted: the datatable will report back which column the user wishes to sort
+
+rowClicked: report of which row was clicked when **[rowClickable]** was set to true
+
+actionClicked: report of which action icon was clicked when **[showActions]** was set to true and at least one item was **[actions]**
+
+selected: report which row had its checkbox value changed
+
 ### EXAMPLE
 
 ts-file must contain the following;
+
 ```
 public tableHeaders: Array<DfmTableHeader> = [
   { title: 'Vessel name', id: 'vesselName' },
@@ -207,9 +131,11 @@ public datasource: DfmDatasource<number> = { items: [
   {id: 4, name: "test", "imo": "test imo", lastUpdate: new Date()}
 ]};
 ```
-tableHeaders will be used to render the header of the table while datasource will contain all the data for the body of the table. 
+
+tableHeaders will be used to render the header of the table while datasource will contain all the data for the body of the table.
 
 The html file will contain the following;
+
 ```
 <dfm-data-table
   [headers]="tableHeaders"
@@ -240,18 +166,34 @@ The html file will contain the following;
 </dfm-data-table>
 ```
 
-### OUTPUTS
-sorted: the datatable will report back which column the user wishes to sort
-
-rowClicked: report of which row was clicked when **[rowClickable]** was set to true
-
-actionClicked: report of which action icon was clicked when **[showActions]** was set to true and at least one item was **[actions]**
-
-selected: report which row had its checkbox value changed
-
-### MIGRATING FROM DFM-TABLE
-To migrate from the old dfm-table, change the selector to dfm-data-table then remove the ng-template containing the **<table-header-cell>** tags and pass an array to the **[header]** parameter to show the header row, the items in the array need at least 'id' and 'label' (label will be shown in the row). After this change all **<table-body-cell>** to **<table-row-cell>**. 
-
 ### TRUNCATING DATA IN CELLS
+
 To have the table truncate data in cells, you have to set the max width of the cell by the using the **[maxWidthStyle]** parameter on **<table-row-cell>**, which takes a css value as input (ie. '120px', or '20vw'). To automatically add a tooltip when a cell is truncated, add the value to appear in the tooltip in the **[fullContent]** parameter. Please be aware that when **[stickyFirstRow]** on the data table is set to true and the table is horizontally scrollable, the maxwidth of that row will always be 33vw, no matter what value is passed in **[maxWidthStyle]**.
+
+</details>
+
+<details>
+<summary>Button documentation</summary>
+
+### Dfm Button
+
+Selector: dfm-button
+Directive: dfm-button
+
+### INPUTS
+
+color: 'primary' | 'secondary' | 'secondary-gray' | 'tertiary' | 'tertiary-gray' | 'link' | 'link-gray', Sets the style of the button. default: primary
+size: 'sm' | 'md' | 'lg' | 'xl' | '2xl', Set the size of the button. Default: lg
+disabled: boolean, when sets the button in disabled state
+leadingIcon: icon name of the icon that will be shown before button contents.
+trailingIcon: icon name of the icon that will be shown after button contents.
+
+### EXAMPLE
+
+The following code will create a medium sized button with the secondary gray style.
+
+```
+<button dfm-button color="secondary-gray" size="md">Click me</button>
+```
+
 </details>

@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TextAreaComponent } from './text-area.component';
-import { ErrorModule } from '../error/error.module';
+import { NgDfmErrorModule } from '../error/error.module';
 
 @NgModule({
   declarations: [TextAreaComponent],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, ErrorModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, NgDfmErrorModule],
   exports: [TextAreaComponent],
 })
-export class TextAreaModule {}
+export class NgDfmTextAreaModule {}

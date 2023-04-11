@@ -11,4 +11,4 @@ import { BaseCheckboxComponent } from './components/base-checkbox.component';
   imports: [CommonModule, FormsModule],
   exports: [RadioButtonComponent, CheckboxComponent, ToggleComponent],
 })
-export class BaseCheckboxModule {}
+export class NgDfmCheckboxModule {}

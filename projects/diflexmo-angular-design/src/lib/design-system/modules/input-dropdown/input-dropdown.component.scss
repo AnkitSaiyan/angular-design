@@ -1,4 +1,6 @@
-.input-dropdown {
+@import 'mixins/text-mixins';
+
+.dfm-input-dropdown {
   position: relative;
 
   .input-dropdown-item {
@@ -46,7 +48,7 @@
 
   .selected-items {
     position: absolute;
-    top: 7px;
+    top: 8px;
     right: 8px;
     display: flex;
     justify-content: flex-end;
@@ -59,8 +61,9 @@
     }
   }
 
-  .input-container {
+  .input-dropdown-container {
     position: relative;
+    overflow: hidden;
 
     .dropdown-icon {
       position: absolute;
@@ -74,10 +77,26 @@
     }
   }
 
-  &.input-dropdown-sm {
-    .input-container .dropdown-icon {
-      bottom: 8px;
-      right: 14px;
+  &.dfm-input-dropdown-sm {
+    .input-dropdown-container {
+      .dfm-input-sm {
+        @include text-sm;
+        @include weight-medium;
+        padding: 8px 14px;
+
+        &.leading-icon-control {
+          padding-left: 40px;
+        }
+      }
+
+      .dropdown-icon {
+        bottom: 8px;
+        right: 14px;
+      }
+    }
+
+    .selected-items {
+      top: 6px;
     }
   }
 

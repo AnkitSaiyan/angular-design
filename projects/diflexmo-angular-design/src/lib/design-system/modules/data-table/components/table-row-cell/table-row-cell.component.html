@@ -7,6 +7,7 @@
   [ngClass]="{ 'dfm-px-24': !collapsePaddingX, 'dfm-px-12': collapsePaddingX }"
   [style.max-width]="maxWidthStyle"
   [style.width]="widthStyle"
+  [class.float-end]="contentAlign === 'right'"
   (click)="propagateEvent($event)"
 >
   <ng-content></ng-content>

@@ -15,6 +15,8 @@ export class TextAreaComponent implements ControlValueAccessor {
 
   @Input() public disabled: boolean = false;
 
+  @Input() public readonly: boolean = false;
+
   value: any = '';
 
   // eslint-disable-next-line class-methods-use-this
