@@ -6,6 +6,10 @@
   height: 100%;
 }
 
+.toolbar-max-height {
+  max-height: fit-content;
+}
+
 .dfm-card > .dfm-card-header {
   display: flex;
   -webkit-box-pack: justify;
