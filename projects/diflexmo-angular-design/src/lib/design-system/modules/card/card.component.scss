@@ -46,7 +46,7 @@
   color: var(--dfm-card-toolbar-color);
 }
 
-.dfm-card-toolbar dfm-icon {
+.dfm-card-toolbar > dfm-icon {
   max-height: 16px;
   max-width: 16px;
 }
