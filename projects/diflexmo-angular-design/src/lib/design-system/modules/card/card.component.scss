@@ -6,10 +6,6 @@
   height: 100%;
 }
 
-.toolbar-max-height {
-  max-height: 16px;
-}
-
 .dfm-card > .dfm-card-header {
   display: flex;
   -webkit-box-pack: justify;
@@ -48,6 +44,11 @@
   align-items: center;
   flex-wrap: wrap;
   color: var(--dfm-card-toolbar-color);
+}
+
+.dfm-card-toolbar dfm-icon {
+  max-height: 16px;
+  max-width: 16px;
 }
 
 .dfm-card > .dfm-card-body {
