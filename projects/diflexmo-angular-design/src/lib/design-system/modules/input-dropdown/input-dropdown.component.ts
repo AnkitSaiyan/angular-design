@@ -76,7 +76,7 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
 
   @ViewChild('dropdown') dropdownRef!: ElementRef;
 
-  public currentHighlighted: number;
+  public currentHighlighted?: number;
 
   public search: string = '';
 

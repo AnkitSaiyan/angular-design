@@ -14,6 +14,7 @@
         (focusout)="focusout($event)"
         #searchInputRef
         (click)="toggleDropdownMenu()"
+        (keydown)="keyPress($event)"
       />
       <div
         *ngIf="selectedItemTags.length"
@@ -59,7 +60,7 @@
       <div
         *ngFor="let item of filteredItems; index as i"
         (click)="selectItem(item)"
-        [ngClass]="{ 'option-highlighted': i === currentHighlighted }"
+        [ngClass]="{ 'option-highlighted': currentHighlighted === i }"
         clickable
         class="input-dropdown-item option"
       >
