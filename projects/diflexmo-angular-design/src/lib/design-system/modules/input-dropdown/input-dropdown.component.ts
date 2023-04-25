@@ -321,6 +321,9 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
         this.currentHighlighted--;
       }
     }
+    if (this.currentHighlighted) {
+      this.value = this.filteredItems.at(this.currentHighlighted);
+    }
   }
 
   public toggleSelectAll(): void {
