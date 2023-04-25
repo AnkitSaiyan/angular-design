@@ -323,6 +323,7 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
     }
     if (this.currentHighlighted) {
       this.value = this.filteredItems[this.currentHighlighted];
+      this.search = this.value;
     }
   }
 
