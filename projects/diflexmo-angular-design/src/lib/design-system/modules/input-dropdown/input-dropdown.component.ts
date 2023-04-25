@@ -307,9 +307,6 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
   }
 
   keyPress(event: KeyboardEvent) {
-    console.log(this.currentHighlighted);
-    console.log(this.filteredItems.length);
-    console.log(this.currentHighlighted === this.filteredItems.length - 1);
     if (event.key === 'ArrowDown') {
       if (!this.currentHighlighted || this.currentHighlighted === this.filteredItems.length - 1) {
         this.currentHighlighted = 0;
