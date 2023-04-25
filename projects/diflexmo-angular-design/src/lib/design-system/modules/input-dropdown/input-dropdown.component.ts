@@ -308,17 +308,17 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
 
   keyPress(event: KeyboardEvent) {
     if (event.key === 'ArrowDown') {
+      if (!this.currentHighlighted || this.currentHighlighted === this.filteredItems.length - 1) {
+        this.currentHighlighted = 0;
+      } else {
+        this.currentHighlighted++;
+      }
+    }
+    if (event.key === 'ArrowUp') {
       if (!this.currentHighlighted || this.currentHighlighted === 0) {
         this.currentHighlighted = this.filteredItems.length - 1;
       } else {
         this.currentHighlighted--;
-      }
-    }
-    if (event.key === 'ArrowUp') {
-      if (!this.currentHighlighted || this.filteredItems.length - 1) {
-        this.currentHighlighted = 0;
-      } else {
-        this.currentHighlighted++;
       }
     }
   }
