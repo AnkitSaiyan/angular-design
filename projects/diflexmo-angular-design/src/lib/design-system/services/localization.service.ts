@@ -38,6 +38,6 @@ export class LocalizationService {
   }
 
   public getStandardDateFormat(): string {
-    return `${this.dateStandard} ${this.getTimeNotationFormat}`;
+    return `${this.dateStandard} ${this.getTimeNotationFormat()}`;
   }
 }
