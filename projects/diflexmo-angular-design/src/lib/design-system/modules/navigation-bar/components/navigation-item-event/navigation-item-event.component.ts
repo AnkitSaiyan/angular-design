@@ -2,6 +2,7 @@ import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, 
 import { BadgeColor } from '../../../badge/types/badge-color.type';
 import { NavigationItemEvent } from '../../models/navigation-item-event';
 import { NavigationItemEventType } from '../../types/navigation-item-event.type';
+import { LocalizationService } from '../../../../services/localization.service';
 
 @Component({
   selector: 'dfm-navigation-item-event',
@@ -23,7 +24,7 @@ export class NavigationItemEventComponent implements OnInit, AfterViewInit {
 
   public isExpanded: boolean = false;
 
-  constructor(private changeDetection: ChangeDetectorRef) {}
+  constructor(private changeDetection: ChangeDetectorRef, public localizationService: LocalizationService) {}
 
   ngOnInit(): void {
     if (!this.event) {

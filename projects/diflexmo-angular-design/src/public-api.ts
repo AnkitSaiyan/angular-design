@@ -111,8 +111,10 @@ export * from './lib/design-system/directives/dom-change.directive';
 export * from './lib/design-system/helpers/items-compact-helper';
 
 export * from './lib/design-system/types/input-size.type';
+export * from './lib/design-system/models/time-notation.enum';
 
 export * from './lib/design-system/modules/dropdown/dropdown.module';
 export * from './lib/design-system/modules/dropdown/components/dropdown-button/dropdown-button.component';
 
+export * from './lib/design-system/services/localization.service';
 export { iconsConfig };
