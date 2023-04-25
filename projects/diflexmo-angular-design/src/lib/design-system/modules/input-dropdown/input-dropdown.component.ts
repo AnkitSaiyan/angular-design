@@ -298,6 +298,7 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
   }
 
   public focusout(value: any) {
+    this.dropdownInstance?.hide();
     setTimeout(() => {
       this.onTouch(value);
     }, 250);
