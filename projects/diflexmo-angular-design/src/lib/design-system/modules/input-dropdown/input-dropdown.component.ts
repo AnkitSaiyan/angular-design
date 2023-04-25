@@ -308,7 +308,7 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
 
   keyPress(event: KeyboardEvent) {
     if (event.key === 'ArrowDown') {
-      if (!this.currentHighlighted || this.currentHighlighted === this.filteredItems.length - 1) {
+      if (this.currentHighlighted === undefined || this.currentHighlighted === this.filteredItems.length - 1) {
         this.currentHighlighted = 0;
       } else {
         this.currentHighlighted++;
@@ -321,8 +321,7 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
         this.currentHighlighted--;
       }
     }
-    console.log('2Nd', this.currentHighlighted);
-    if (this.currentHighlighted) {
+    if (this.currentHighlighted !== undefined) {
       this.value = this.filteredItems[this.currentHighlighted];
       this.search = this.filteredItems[this.currentHighlighted].name;
     }
