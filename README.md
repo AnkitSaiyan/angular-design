@@ -32,6 +32,19 @@ Add DesignSystemCoreModule and DesignSystemModule to the imports of the app modu
 
 ## How Tos
 
+### Test library changes locally
+
+To test changes locally, the library needs to be built and installed in an application. The following steps explain the process in detail:
+1. Run the command `ng build --watch` in the root folder of the library
+2. Navigate to your project and install the library from the folder using the following command:
+ `npm i {you path}\diflexmo.angular-design\dist\diflexmo-angular-design`
+3. In some versions of npm, the peer dependencies of diflexmo-angular-design library may not be installed. To solve this issue, you can use `install-local-dependencies` package by running this commands in the project folder:
+```
+npm i install-local-dependencies -g
+install-local-dependencies
+```
+After making a change to the library code, you can repeat steps 2 and 3 to install the changes into your project.
+
 ### How to override library variables
 
 Design library provides set of scss variables, which could be imported from `abstracts/variables` and used in components styles. These library variables can be overriden and it will change the way of how library components are rendered.
