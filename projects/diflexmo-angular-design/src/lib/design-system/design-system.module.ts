@@ -64,6 +64,7 @@ import { DfmPipesModule } from './pipes/pipes.module';
     NgDfmDataTableModule,
     NgDfmDropdownModule,
     NgDfmDatePickerModule,
+    DfmPipesModule,
   ],
 })
 export class DesignSystemModule {}
