@@ -6,5 +6,6 @@ import { DfmLocalizedDatePipe } from './dfm-localized-date.pipe';
   declarations: [DfmLocalizedDatePipe],
   imports: [CommonModule],
   providers: [DatePipe],
+  exports: [DfmLocalizedDatePipe],
 })
 export class PipesModule {}
