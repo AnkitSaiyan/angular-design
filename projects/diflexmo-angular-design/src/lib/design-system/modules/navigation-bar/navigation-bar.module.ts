@@ -11,7 +11,7 @@ import { NgDfmBadgeModule } from '../badge/badge.module';
 import { NgDfmButtonModule } from '../button/button.module';
 import { NavigationItemEventsComponent } from './components/navigation-item-events/navigation-item-events.component';
 import { NavigationItemProfileComponent } from './components/navigation-item-profile/navigation-item-profile.component';
-import { PipesModule } from '../../pipes/pipes.module';
+import { DfmPipesModule } from '../../pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { PipesModule } from '../../pipes/pipes.module';
     NavigationItemEventsComponent,
     NavigationItemProfileComponent,
   ],
-  imports: [CommonModule, NgDfmIconModule, RouterModule, NgDfmBadgeModule, NgDfmButtonModule, AngularResizeEventModule, PipesModule],
+  imports: [CommonModule, NgDfmIconModule, RouterModule, NgDfmBadgeModule, NgDfmButtonModule, AngularResizeEventModule, DfmPipesModule],
   exports: [NavigationBarComponent, NavigationItemComponent, NavigationItemTenantComponent],
 })
 export class NgDfmNavigationBarModule {}

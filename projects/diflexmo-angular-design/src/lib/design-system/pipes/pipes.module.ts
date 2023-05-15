@@ -8,4 +8,4 @@ import { DfmLocalizedDatePipe } from './dfm-localized-date.pipe';
   providers: [DatePipe],
   exports: [DfmLocalizedDatePipe],
 })
-export class PipesModule {}
+export class DfmPipesModule {}
