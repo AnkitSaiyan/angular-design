@@ -1,7 +1,7 @@
 <div class="dfm-navigation-item-event d-flex flex-column dfm-gap-8" (click)="navigate()" [class.pointer]="event.link">
   <div class="d-flex flex-row justify-content-between dfm-gap-32">
     <div class="d-flex dfm-gap-8 align-items-center">
-      <span class="date text-xs-medium">{{ event.date | date : localizationService.getStandardDateFormat() }}</span>
+      <span class="date text-xs-medium">{{ event.date | date : 'short' }}</span>
       <dfm-badge *ngIf="badgeColor && badgeText" fontWeightStyle="semi-bold" [color]="badgeColor"> {{ badgeText }}</dfm-badge>
     </div>
     <dfm-icon name="x-close" class="close-icon pointer" (click)="eventDismissed.emit(event.id)"></dfm-icon>
