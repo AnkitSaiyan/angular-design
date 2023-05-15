@@ -117,4 +117,7 @@ export * from './lib/design-system/modules/dropdown/dropdown.module';
 export * from './lib/design-system/modules/dropdown/components/dropdown-button/dropdown-button.component';
 
 export * from './lib/design-system/services/localization.service';
+export * from './lib/design-system/pipes/pipes.module';
+export * from './lib/design-system/pipes/dfm-localized-date.pipe';
+export * from './lib/design-system/core/core.module';
 export { iconsConfig };
