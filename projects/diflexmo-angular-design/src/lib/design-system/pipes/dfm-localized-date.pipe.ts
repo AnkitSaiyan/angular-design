@@ -11,7 +11,7 @@ export class DfmLocalizedDatePipe extends DatePipe implements PipeTransform {
     super(locale);
   }
 
-  public transform(value: Date | string | number | null | undefined, format?: string, timezone?: string, locale?: string) {
+  public override transform(value: Date | string | number | null | undefined, format?: string, timezone?: string, locale?: string) {
     const dateLocale = locale ?? this.localizationService.getCurrentLocale();
     return super.transform(value, format, timezone, dateLocale) as any;
   }
