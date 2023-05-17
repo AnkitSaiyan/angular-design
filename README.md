@@ -186,6 +186,24 @@ To have the table truncate data in cells, you have to set the max width of the c
 </details>
 
 <details>
+<summary>Localization</summary>
+
+### How to use
+The library uses a combination of the DfmLocalizationService and custom pipes to dynamically change the locale of the app without having to refresh the entire app.
+
+The DfmLocalizationService is used to set the locale of the app. Use the function setCurrentLocale(locale: string) to change the locale. Any locale can be set but it must be registered first, to register a locale refer to the angular documentation.
+The library will register the following locales automatically:
+- nl
+- nl-BE
+- fr-BE
+DfmLocalizationService will get the locale_id to use as the locale on app launch.
+
+The DfmPipesModule will extend the localization pipes native to angular so that they use the locale saved in DfmLocalizationService instead of angular's locale_id. This way developers can keep using the the same pipes angular provides in html.
+
+!important The DfPipesModule must be imported in every module to extend the default pipes. The core module and DesignSystemModule will also take care of this.
+</details>
+
+<details>
 <summary>Button documentation</summary>
 
 ### Dfm Button
