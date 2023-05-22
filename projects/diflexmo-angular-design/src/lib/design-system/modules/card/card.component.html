@@ -3,7 +3,7 @@
     <div class="dfm-card-title d-flex dfm-gap-8">
       <div class="dfm-card-icon" [ngClass]="{ 'drag-handler pointer': isDraggable }" *ngIf="isDraggable || iconName">
         <ng-container *ngIf="isDraggable">
-          <dfm-icon name="drag"></dfm-icon>
+          <dfm-icon class="icon-24" name="drag"></dfm-icon>
         </ng-container>
         <ng-container *ngIf="iconName && !isDraggable">
           <dfm-icon [name]="iconName"></dfm-icon>

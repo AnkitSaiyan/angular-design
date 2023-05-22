@@ -1,4 +1,16 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  Output,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SelectItem } from '../../../input-dropdown/models/select-item';
@@ -11,7 +23,7 @@ import { NavigationProfileData } from '../../models/navigation-profile-data';
   templateUrl: './navigation-bar.component.html',
   styleUrls: ['./navigation-bar.component.scss'],
 })
-export class NavigationBarComponent implements OnInit, AfterViewInit, OnDestroy {
+export class NavigationBarComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
   @Input() navigationItems: NavigationItem[] = [];
 
   @Input() isTenantDropdownShown: boolean = false;
@@ -80,6 +92,12 @@ export class NavigationBarComponent implements OnInit, AfterViewInit, OnDestroy 
     if (this.content) {
       this.content.nativeElement.onscroll = (e: Event) => (this.isCollapsed = (e.target as HTMLElement).scrollTop > 64);
       this.content.nativeElement.addEventListener('click', this.hideMoreItemsSection.bind(this));
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['navigationItems']?.currentValue) {
+      this.recalculateNavigationItemsDisplaying();
     }
   }
 
