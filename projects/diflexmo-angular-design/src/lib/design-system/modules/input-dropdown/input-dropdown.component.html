@@ -14,6 +14,7 @@
         (focusout)="focusout($event)"
         #searchInputRef
         (click)="toggleDropdownMenu()"
+        (keydown)="keyPress($event)"
       />
       <div
         *ngIf="selectedItemTags.length"
@@ -56,7 +57,13 @@
         <div class="option-content">Select all</div>
         <dfm-icon *ngIf="isAllSelected" name="check" class="option-selected"></dfm-icon>
       </div>
-      <div *ngFor="let item of filteredItems" (click)="selectItem(item)" clickable class="input-dropdown-item option">
+      <div
+        *ngFor="let item of filteredItems; index as i"
+        (click)="selectItem(item)"
+        [ngClass]="{ 'option-highlighted': currentHighlighted === i }"
+        clickable
+        class="input-dropdown-item option"
+      >
         <div class="option-content">
           {{ item.name }}
           <span *ngIf="showDescription" class="option-description">{{ item.description }}</span>

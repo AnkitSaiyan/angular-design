@@ -76,6 +76,8 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
 
   @ViewChild('dropdown') dropdownRef!: ElementRef;
 
+  public currentHighlighted?: number;
+
   public search: string = '';
 
   public selectedItemTags: SelectItem[] = [];
@@ -299,8 +301,31 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
 
   public focusout(value: any) {
     setTimeout(() => {
+      this.dropdownInstance?.hide();
       this.onTouch(value);
     }, 250);
+  }
+
+  keyPress(event: KeyboardEvent) {
+    this.dropdownInstance?.show();
+    if (event.key === 'ArrowDown') {
+      if (this.currentHighlighted === undefined || this.currentHighlighted === this.filteredItems.length - 1) {
+        this.currentHighlighted = 0;
+      } else {
+        this.currentHighlighted++;
+      }
+    }
+    if (event.key === 'ArrowUp') {
+      if (!this.currentHighlighted || this.currentHighlighted === 0) {
+        this.currentHighlighted = this.filteredItems.length - 1;
+      } else {
+        this.currentHighlighted--;
+      }
+    }
+    if (this.currentHighlighted !== undefined) {
+      this.value = this.filteredItems[this.currentHighlighted];
+      this.search = this.filteredItems[this.currentHighlighted].name;
+    }
   }
 
   public toggleSelectAll(): void {
