@@ -119,4 +119,8 @@ export * from './lib/design-system/modules/dropdown/components/dropdown-button/d
 export * from './lib/design-system/services/localization.service';
 export * from './lib/design-system/pipes/pipes.module';
 export * from './lib/design-system/pipes/dfm-localized-date.pipe';
+export * from './lib/design-system/pipes/dfm-localized-currency-pipe.pipe';
+export * from './lib/design-system/pipes/dfm-localized-decimal-pipe.pipe';
+export * from './lib/design-system/pipes/dfm-localized-percent-pipe.pipe';
+
 export { iconsConfig };
