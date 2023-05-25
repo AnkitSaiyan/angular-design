@@ -1,1 +1,3 @@
-<span *ngIf="control && control.touched && control.hasError('required')" class="invalid-feedback">The field is required.</span>
+<span *ngIf="control && control.touched && control.hasError('required')" class="invalid-feedback">
+  {{ 'DESIGN_SYSTEM.ERROR.REQUIRED_FIELD' | localization : 'The field is required.' | async }}
+</span>

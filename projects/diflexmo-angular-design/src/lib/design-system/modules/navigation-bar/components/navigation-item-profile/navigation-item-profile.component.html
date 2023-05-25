@@ -1,7 +1,7 @@
 <ng-container *ngIf="profileData">
   <dfm-navigation-item
     icon="user-01"
-    title="Profile"
+    [title]="('DESIGN_SYSTEM.NAVIGATION_BAR.PROFILE' | localization : 'Profile' | async)!"
     data-bs-toggle="dropdown"
     data-bs-auto-close="outside"
     aria-expanded="false"
@@ -22,8 +22,8 @@
         <span class="email text-sm">{{ profileData.user.email }} </span>
       </div>
     </div>
-    <hr class="dfm-mx-16 dfm-my-0" />
-    <div class="d-flex flex-column dfm-px-16 dfm-py-8">
+    <hr class="dfm-mx-16 dfm-my-0" *ngIf="profileData.links?.length"/>
+    <div class="d-flex flex-column dfm-px-16 dfm-py-8" *ngIf="profileData.links?.length">
       <a
         [href]="link.url"
         [target]="link.openInNewTab ? '_blank' : '_self'"
@@ -38,10 +38,14 @@
     <hr class="dfm-mx-16 dfm-my-0" />
     <div class="d-flex flex-column dfm-p-16 dfm-gap-8 align-items-end">
       <div class="d-flex dfm-gap-8 w-100">
-        <dfm-button *ngIf="isSettingsButtonShown" leadingIcon="settings-01" color="secondary-gray" size="md" class="w-100">Settings</dfm-button>
-        <dfm-button leadingIcon="log-out-04" color="secondary-gray" size="md" class="w-100" (click)="logout.emit()">Log out</dfm-button>
+        <dfm-button *ngIf="isSettingsButtonShown" leadingIcon="settings-01" color="secondary-gray" size="md" class="w-100">
+          {{ 'DESIGN_SYSTEM.NAVIGATION_BAR.SETTINGS' | localization : 'Settings' | async }}
+        </dfm-button>
+        <dfm-button leadingIcon="log-out-04" color="secondary-gray" size="md" class="w-100" (click)="logout.emit()">
+          {{ 'DESIGN_SYSTEM.NAVIGATION_BAR.LOG_OUT' | localization : 'Log out' | async }}
+        </dfm-button>
       </div>
-      <span class="text-xs">Powered by Diflexmo</span>
+      <span class="text-xs">{{ 'DESIGN_SYSTEM.NAVIGATION_BAR.POWERED_BY' | localization : 'Powered by' | async }} Diflexmo</span>
     </div>
   </div>
 </ng-container>
