@@ -4,12 +4,12 @@ import { DfmLocalizedDatePipe } from './dfm-localized-date.pipe';
 import { DfmLocalizedCurrencyPipePipe } from './dfm-localized-currency-pipe.pipe';
 import { DfmLocalizedDecimalPipePipe } from './dfm-localized-decimal-pipe.pipe';
 import { DfmLocalizedPercentPipePipe } from './dfm-localized-percent-pipe.pipe';
-import { DfmLocalizationPipe } from "./dfm-localization.pipe";
+import { DfmLocalizedTextPipe } from "./dfm-localized-text.pipe";
 
 @NgModule({
-  declarations: [DfmLocalizedDatePipe, DfmLocalizedCurrencyPipePipe, DfmLocalizedDecimalPipePipe, DfmLocalizedPercentPipePipe, DfmLocalizationPipe],
+  declarations: [DfmLocalizedDatePipe, DfmLocalizedCurrencyPipePipe, DfmLocalizedDecimalPipePipe, DfmLocalizedPercentPipePipe, DfmLocalizedTextPipe],
   imports: [CommonModule],
   providers: [DatePipe, CurrencyPipe, DecimalPipe],
-  exports: [DfmLocalizedDatePipe, DfmLocalizedCurrencyPipePipe, DfmLocalizedDecimalPipePipe, DfmLocalizedPercentPipePipe, DfmLocalizationPipe],
+  exports: [DfmLocalizedDatePipe, DfmLocalizedCurrencyPipePipe, DfmLocalizedDecimalPipePipe, DfmLocalizedPercentPipePipe, DfmLocalizedTextPipe],
 })
 export class DfmPipesModule {}
