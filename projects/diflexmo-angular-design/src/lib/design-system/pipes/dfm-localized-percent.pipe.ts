@@ -1,11 +1,11 @@
-import { DecimalPipe } from '@angular/common';
+import { PercentPipe } from '@angular/common';
 import { Inject, LOCALE_ID, Pipe, PipeTransform } from '@angular/core';
 import { DfmLocalizationService } from '../services/localization.service';
 
 @Pipe({
-  name: 'decimal',
+  name: 'percent',
 })
-export class DfmLocalizedDecimalPipePipe extends DecimalPipe implements PipeTransform {
+export class DfmLocalizedPercentPipe extends PercentPipe implements PipeTransform {
   constructor(@Inject(LOCALE_ID) locale: string, private localizationService: DfmLocalizationService) {
     super(locale);
   }

@@ -5,7 +5,7 @@ import { DfmLocalizationService } from '../services/localization.service';
 @Pipe({
   name: 'currency',
 })
-export class DfmLocalizedCurrencyPipePipe extends CurrencyPipe implements PipeTransform {
+export class DfmLocalizedCurrencyPipe extends CurrencyPipe implements PipeTransform {
   constructor(@Inject(LOCALE_ID) locale: string, private localizationService: DfmLocalizationService) {
     super(locale);
   }
