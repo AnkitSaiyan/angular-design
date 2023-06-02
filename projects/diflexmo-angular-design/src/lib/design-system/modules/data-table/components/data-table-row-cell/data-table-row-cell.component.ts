@@ -2,10 +2,10 @@ import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular
 
 @Component({
   selector: 'dfm-table-row-cell',
-  templateUrl: './table-row-cell.component.html',
-  styleUrls: ['./table-row-cell.component.scss'],
+  templateUrl: './data-table-row-cell.component.html',
+  styleUrls: ['./data-table-row-cell.component.scss'],
 })
-export class TableRowCellComponent implements AfterViewInit {
+export class DataTableRowCellComponent implements AfterViewInit {
   @Input() propagateClick: boolean = true;
 
   @Input() contentAlign: 'right' | 'left' = 'left';

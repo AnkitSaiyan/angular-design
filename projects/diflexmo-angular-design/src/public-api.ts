@@ -86,7 +86,7 @@ export * from './lib/design-system/modules/table/models/table-item';
 
 export * from './lib/design-system/modules/data-table/data-table.module';
 export * from './lib/design-system/modules/data-table/components/data-table/data-table.component';
-export * from './lib/design-system/modules/data-table/components/table-row-cell/table-row-cell.component';
+export * from './lib/design-system/modules/data-table/components/data-table-row-cell/data-table-row-cell.component';
 export * from './lib/design-system/modules/data-table/components/data-table-action/data-table-action.component';
 export * from './lib/design-system/modules/data-table/components/data-table-action-cell/data-table-action-cell.component';
 export * from './lib/design-system/modules/data-table/models/table-header.model';

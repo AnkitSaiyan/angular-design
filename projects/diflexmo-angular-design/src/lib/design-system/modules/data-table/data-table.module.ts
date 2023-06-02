@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { DataTableComponent } from './components/data-table/data-table.component';
 import { NgDfmIconModule } from '../icon/icon.module';
-import { TableRowCellComponent } from './components/table-row-cell/table-row-cell.component';
+import { DataTableRowCellComponent } from './components/data-table-row-cell/data-table-row-cell.component';
 import { DataTableHeaderCellComponent } from './components/data-table-header-cell/data-table-header-cell.component';
 import { NgDfmButtonModule } from '../button/button.module';
 import { NgDfmDropdownModule } from '../dropdown/dropdown.module';
@@ -15,7 +15,7 @@ import { DataTableActionComponent } from './components/data-table-action/data-ta
 import { DataTableActionCellComponent } from './components/data-table-action-cell/data-table-action-cell.component';
 
 @NgModule({
-  declarations: [DataTableComponent, TableRowCellComponent, DataTableHeaderCellComponent, DataTableActionComponent, DataTableActionCellComponent],
+  declarations: [DataTableComponent, DataTableRowCellComponent, DataTableHeaderCellComponent, DataTableActionComponent, DataTableActionCellComponent],
   imports: [
     CommonModule,
     NgDfmIconModule,
@@ -28,6 +28,6 @@ import { DataTableActionCellComponent } from './components/data-table-action-cel
     InfiniteScrollModule,
     NgbDropdownModule,
   ],
-  exports: [DataTableComponent, TableRowCellComponent, DataTableActionComponent, DataTableActionCellComponent],
+  exports: [DataTableComponent, DataTableRowCellComponent, DataTableActionComponent, DataTableActionCellComponent],
 })
 export class NgDfmDataTableModule {}
