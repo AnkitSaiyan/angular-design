@@ -12,7 +12,7 @@ export class DfmLocalizedTextPipe implements PipeTransform {
   public transform(key: string, defaultText: string): Observable<string> {
     return this.translateService.get(key).pipe(
       map((translation) => {
-        if (!translation) {
+        if (!translation || translation === key) {
           return defaultText;
         }
         return translation;
