@@ -7,4 +7,5 @@ export interface DfmTableHeader {
   sort?: ColumnSort;
   tooltip?: string;
   isDisabled?: boolean;
+  isAction?: boolean;
 }
