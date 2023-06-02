@@ -42,7 +42,7 @@
     <ng-container *ngIf="loading; then loadingTemplate; else searchTemplate"></ng-container>
 
     <ng-template #loadingTemplate>
-      <div class="input-dropdown-item">{{ 'DESIGN_SYSTEM.INPUT_DROPDOWN.LOADING' | localization : 'Loading' | async }}...</div>
+      <div class="input-dropdown-item">{{ 'DESIGN_SYSTEM.INPUT_DROPDOWN.LOADING' | localizedText : 'Loading' | async }}...</div>
     </ng-template>
 
     <ng-template #searchTemplate>
@@ -54,7 +54,7 @@
 
     <ng-template #itemsTemplate>
       <div class="input-dropdown-item option" clickable (click)="toggleSelectAll()" *ngIf="multiple && showSelectAll">
-        <div class="option-content">{{ 'DESIGN_SYSTEM.INPUT_DROPDOWN.SELECT_ALL' | localization : 'Select all' | async }}</div>
+        <div class="option-content">{{ 'DESIGN_SYSTEM.INPUT_DROPDOWN.SELECT_ALL' | localizedText : 'Select all' | async }}</div>
         <dfm-icon *ngIf="isAllSelected" name="check" class="option-selected"></dfm-icon>
       </div>
       <div
@@ -77,7 +77,7 @@
     </ng-template>
 
     <ng-template #noItemsTemplate>
-      <div class="input-dropdown-item">{{ 'DESIGN_SYSTEM.INPUT_DROPDOWN.NO_ITEMS' | localization : 'No items found' | async }}</div>
+      <div class="input-dropdown-item">{{ 'DESIGN_SYSTEM.INPUT_DROPDOWN.NO_ITEMS' | localizedText : 'No items found' | async }}</div>
     </ng-template>
   </div>
 </div>

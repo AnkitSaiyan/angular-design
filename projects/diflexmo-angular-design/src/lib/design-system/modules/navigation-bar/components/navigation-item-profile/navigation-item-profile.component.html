@@ -1,7 +1,7 @@
 <ng-container *ngIf="profileData">
   <dfm-navigation-item
     icon="user-01"
-    [title]="('DESIGN_SYSTEM.NAVIGATION_BAR.PROFILE' | localization : 'Profile' | async)!"
+    [title]="('DESIGN_SYSTEM.NAVIGATION_BAR.PROFILE' | localizedText : 'Profile' | async)!"
     data-bs-toggle="dropdown"
     data-bs-auto-close="outside"
     aria-expanded="false"
@@ -39,13 +39,13 @@
     <div class="d-flex flex-column dfm-p-16 dfm-gap-8 align-items-end">
       <div class="d-flex dfm-gap-8 w-100">
         <dfm-button *ngIf="isSettingsButtonShown" leadingIcon="settings-01" color="secondary-gray" size="md" class="w-100">
-          {{ 'DESIGN_SYSTEM.NAVIGATION_BAR.SETTINGS' | localization : 'Settings' | async }}
+          {{ 'DESIGN_SYSTEM.NAVIGATION_BAR.SETTINGS' | localizedText : 'Settings' | async }}
         </dfm-button>
         <dfm-button leadingIcon="log-out-04" color="secondary-gray" size="md" class="w-100" (click)="logout.emit()">
-          {{ 'DESIGN_SYSTEM.NAVIGATION_BAR.LOG_OUT' | localization : 'Log out' | async }}
+          {{ 'DESIGN_SYSTEM.NAVIGATION_BAR.LOG_OUT' | localizedText : 'Log out' | async }}
         </dfm-button>
       </div>
-      <span class="text-xs">{{ 'DESIGN_SYSTEM.NAVIGATION_BAR.POWERED_BY' | localization : 'Powered by' | async }} Diflexmo</span>
+      <span class="text-xs">{{ 'DESIGN_SYSTEM.NAVIGATION_BAR.POWERED_BY' | localizedText : 'Powered by' | async }} Diflexmo</span>
     </div>
   </div>
 </ng-container>
