@@ -1,6 +1,6 @@
 <dfm-table-row-cell [contentAlign]="'right'" [propagateClick]="false" [collapsePaddingX]="true">
   <ng-container *ngIf="(dataTableService.hasStickyActions$ | async) === false || (dataTableService.isCurrentOverflown$ | async) === false">
-    <div class="d-flex dfm-gap-4 dfm-pe-16 float-right dfm-regular-actions">
+    <div class="d-flex dfm-gap-20 dfm-pe-12 dfm-py-8 float-right dfm-regular-actions">
       <ng-container *ngTemplateOutlet="actionCellTemplate"></ng-container>
     </div>
   </ng-container>
