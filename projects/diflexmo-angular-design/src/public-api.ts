@@ -122,5 +122,6 @@ export * from './lib/design-system/pipes/dfm-localized-date.pipe';
 export * from './lib/design-system/pipes/dfm-localized-currency.pipe';
 export * from './lib/design-system/pipes/dfm-localized-decimal.pipe';
 export * from './lib/design-system/pipes/dfm-localized-percent.pipe';
+export * from './lib/design-system/pipes/dfm-localized-text.pipe';
 
 export { iconsConfig };
