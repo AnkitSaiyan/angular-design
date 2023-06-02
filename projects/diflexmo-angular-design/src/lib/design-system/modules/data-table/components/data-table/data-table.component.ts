@@ -80,6 +80,8 @@ export class DataTableComponent<T> implements OnInit, OnChanges {
 
   public selectedItems: Map<T, boolean> = new Map<T, boolean>();
 
+  public isActionHeaderPassed: boolean = false;
+
   private isTableSizeProcessing = false;
 
   public get areAllSelected() {
@@ -124,6 +126,8 @@ export class DataTableComponent<T> implements OnInit, OnChanges {
         this.selected.emit([]);
       });
     }
+
+    this.isActionHeaderPassed = !!this.headers.find((h) => h.isAction);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
