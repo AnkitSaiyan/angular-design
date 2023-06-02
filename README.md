@@ -196,6 +196,7 @@ The library will register the following locales automatically:
 - nl
 - nl-BE
 - fr-BE
+
 DfmLocalizationService will get the locale_id to use as the locale on app launch.
 
 The DfmPipesModule will extend the localization pipes native to angular so that they use the locale saved in DfmLocalizationService instead of angular's locale_id. This way developers can keep using the the same pipes angular provides in html.

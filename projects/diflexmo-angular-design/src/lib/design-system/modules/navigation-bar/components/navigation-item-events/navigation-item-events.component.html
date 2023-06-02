@@ -17,13 +17,19 @@
           </ng-container>
         </div>
         <div class="event-buttons d-flex justify-content-end dfm-gap-18">
-          <dfm-button *ngIf="events.length !== eventsToShow.length" color="link-gray" size="sm" (click)="showAll()">Show all</dfm-button>
-          <dfm-button color="link-gray" size="sm" (click)="dismissAll()">Dismiss all</dfm-button>
+          <dfm-button *ngIf="events.length !== eventsToShow.length" color="link-gray" size="sm" (click)="showAll()">
+            {{ 'DESIGN_SYSTEM.NAVIGATION_BAR.SHOW_ALL' | localizedText : 'Show all' | async }}
+          </dfm-button>
+          <dfm-button color="link-gray" size="sm" (click)="dismissAll()">
+            {{ 'DESIGN_SYSTEM.NAVIGATION_BAR.DISMISS_ALL' | localizedText : 'Dismiss all' | async }}
+          </dfm-button>
         </div>
       </div>
     </ng-container>
     <ng-template #noEvents>
-      <div class="no-events option">No items to display</div>
+      <div class="no-events option">
+        {{ 'DESIGN_SYSTEM.NAVIGATION_BAR.NO_ITEMS' | localizedText : 'No items to display' | async }}
+      </div>
     </ng-template>
   </ng-container>
 </div>

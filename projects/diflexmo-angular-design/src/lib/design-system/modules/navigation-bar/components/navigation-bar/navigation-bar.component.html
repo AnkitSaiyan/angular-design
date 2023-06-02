@@ -16,7 +16,7 @@
     <div class="profile-items h-100">
       <dfm-navigation-item-tenant
         *ngIf="isTenantDropdownShown && tenants.length && currentTenant"
-        title="Tenants"
+        [title]="('DESIGN_SYSTEM.NAVIGATION_BAR.TENANTS' | localizedText : 'Tenants' | async)!"
         [tenants]="tenants"
         [currentTenantValue]="currentTenant"
         (tenantChanged)="tenantChanged.emit($event)"
@@ -59,7 +59,7 @@
     </dfm-navigation-item>
     <ng-container *ngIf="mobileNavigationItemsToHide.length">
       <dfm-navigation-item
-        title="More"
+        [title]="('DESIGN_SYSTEM.NAVIGATION_BAR.MORE' | localizedText : 'More' | async)!"
         icon="dots-horizontal"
         (click)="isMoreItemsSectionShown = !isMoreItemsSectionShown"
         [selected]="isMoreItemSelected"
