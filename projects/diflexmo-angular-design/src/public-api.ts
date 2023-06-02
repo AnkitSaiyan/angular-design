@@ -86,7 +86,7 @@ export * from './lib/design-system/modules/table/models/table-item';
 
 export * from './lib/design-system/modules/data-table/data-table.module';
 export * from './lib/design-system/modules/data-table/components/data-table/data-table.component';
-export * from './lib/design-system/modules/data-table/components/table-row-cell/table-row-cell.component';
+export * from './lib/design-system/modules/data-table/components/data-table-row-cell/data-table-row-cell.component';
 export * from './lib/design-system/modules/data-table/components/data-table-action/data-table-action.component';
 export * from './lib/design-system/modules/data-table/components/data-table-action-cell/data-table-action-cell.component';
 export * from './lib/design-system/modules/data-table/models/table-header.model';
@@ -111,8 +111,17 @@ export * from './lib/design-system/directives/dom-change.directive';
 export * from './lib/design-system/helpers/items-compact-helper';
 
 export * from './lib/design-system/types/input-size.type';
+export * from './lib/design-system/models/time-notation.enum';
 
 export * from './lib/design-system/modules/dropdown/dropdown.module';
 export * from './lib/design-system/modules/dropdown/components/dropdown-button/dropdown-button.component';
+
+export * from './lib/design-system/services/localization.service';
+export * from './lib/design-system/pipes/pipes.module';
+export * from './lib/design-system/pipes/dfm-localized-date.pipe';
+export * from './lib/design-system/pipes/dfm-localized-currency.pipe';
+export * from './lib/design-system/pipes/dfm-localized-decimal.pipe';
+export * from './lib/design-system/pipes/dfm-localized-percent.pipe';
+export * from './lib/design-system/pipes/dfm-localized-text.pipe';
 
 export { iconsConfig };

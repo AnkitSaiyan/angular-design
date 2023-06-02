@@ -1,8 +1,10 @@
 <div class="dfm-navigation-item-event d-flex flex-column dfm-gap-8" (click)="navigate()" [class.pointer]="event.link">
   <div class="d-flex flex-row justify-content-between dfm-gap-32">
     <div class="d-flex dfm-gap-8 align-items-center">
-      <span class="date text-xs-medium">{{ event.date | date : 'dd/MM/yyyy hh:mm a' }}</span>
-      <dfm-badge *ngIf="badgeColor && badgeText" fontWeightStyle="semi-bold" [color]="badgeColor"> {{ badgeText }}</dfm-badge>
+      <span class="date text-xs-medium">{{ event.date | date : 'short' }}</span>
+      <dfm-badge *ngIf="badgeColor && badgeText" fontWeightStyle="semi-bold" [color]="badgeColor">
+        {{ 'DESIGN_SYSTEM.NAVIGATION_BAR.BADGE_TEXT.' + (badgeText | uppercase) | localizedText : 'Less' | async }}
+      </dfm-badge>
     </div>
     <dfm-icon name="x-close" class="close-icon pointer" (click)="eventDismissed.emit(event.id)"></dfm-icon>
   </div>
@@ -10,13 +12,15 @@
   <div class="details dfm-p-8 dfm-gap-2" [class.is-expanded]="isExpanded" [class.d-none]="!event.details">
     <div class="details-content text-xs-medium" #details>
       {{ event.details }}
-      <span class="details-toggle-button pointer text-xs-medium" *ngIf="isExpanded" (click)="isExpanded = false; $event.stopPropagation()">Less</span>
+      <span class="details-toggle-button pointer text-xs-medium" *ngIf="isExpanded" (click)="isExpanded = false; $event.stopPropagation()">
+        {{ 'DESIGN_SYSTEM.NAVIGATION_BAR.LESS' | localizedText : 'Less' | async }}
+      </span>
     </div>
     <span
       class="details-toggle-button pointer text-xs-medium"
       *ngIf="!isExpanded && isDetailsTextExpandable"
       (click)="isExpanded = true; $event.stopPropagation()"
-      >More</span
+      >{{ 'DESIGN_SYSTEM.NAVIGATION_BAR.MORE' | localizedText : 'More' | async }}</span
     >
   </div>
 </div>

@@ -24,9 +24,14 @@
           </dfm-data-table-header-cell>
         </ng-container>
         <ng-container *ngFor="let header of headers">
-          <dfm-data-table-header-cell (click)="sortClicked(header.title)" [header]="header" [headerSize]="headerSize"></dfm-data-table-header-cell>
+          <dfm-data-table-header-cell
+            (click)="sortClicked(header.title)"
+            [header]="header"
+            [headerSize]="headerSize"
+            [contentAlign]="header.isAction ? 'right' : 'left'"
+          ></dfm-data-table-header-cell>
         </ng-container>
-        <dfm-data-table-header-cell *ngIf="(dataTableService.hasActions$ | async) || actionsHeader || actionsHeaderIcon">
+        <dfm-data-table-header-cell *ngIf="!isActionHeaderPassed && ((dataTableService.hasActions$ | async) || actionsHeader || actionsHeaderIcon)">
           <ng-container *ngIf="(actionsHeader || actionsHeaderIcon) && (dataTableService.isCurrentOverflown$ | async) === false">
             <button
               (click)="actionsHeaderClicked.emit()"

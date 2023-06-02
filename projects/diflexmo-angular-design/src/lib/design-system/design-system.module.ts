@@ -19,6 +19,7 @@ import { NgDfmDataTableModule } from './modules/data-table/data-table.module';
 import { NgDfmDropdownModule } from './modules/dropdown/dropdown.module';
 import { NgDfmDatePickerModule } from './modules/date-range-picker/date-picker.module';
 import { NgDfmBadgeModule } from './modules/badge/badge.module';
+import { DfmPipesModule } from './pipes/pipes.module';
 
 @NgModule({
   imports: [
@@ -41,6 +42,7 @@ import { NgDfmBadgeModule } from './modules/badge/badge.module';
     NgDfmClipboardModule,
     NgDfmDataTableModule,
     NgDfmDatePickerModule,
+    DfmPipesModule,
   ],
   exports: [
     NgDfmButtonModule,
@@ -62,6 +64,7 @@ import { NgDfmBadgeModule } from './modules/badge/badge.module';
     NgDfmDataTableModule,
     NgDfmDropdownModule,
     NgDfmDatePickerModule,
+    DfmPipesModule,
   ],
 })
 export class DesignSystemModule {}

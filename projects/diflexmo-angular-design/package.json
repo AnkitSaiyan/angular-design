@@ -18,20 +18,10 @@
     "angular-svg-icon-preloader": "^4.0.1",
     "bootstrap": "^5.2.3",
     "moment": "^2.29.4",
+    "ngx-clipboard": "^15.1.0",
     "ngx-infinite-scroll": "^14.0.1",
-    "rxjs": "^7.6.0",
-    "zone.js": "^0.11.8",
-    "ngx-clipboard": "^15.1.0"
-  },
-  "dependencies": {
-  },
-  "devDependencies": {
-    "@angular-eslint/schematics": "14.2.0",
-    "@angular-eslint/template-parser": "14.2.0",
-    "@angular/cli": "^14.2.0",
-    "@angular/compiler-cli": "^14.2.0",
-    "@angular/core": "^14.2.0",
-    "@types/bootstrap": "^5.2.6"
+    "rxjs": "^7.8.0",
+    "zone.js": "^0.11.8"
   },
   "exports": {
     "./theming": {

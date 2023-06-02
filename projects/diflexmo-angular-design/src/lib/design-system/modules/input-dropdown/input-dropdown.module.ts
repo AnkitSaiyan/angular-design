@@ -8,6 +8,7 @@ import { NgDfmTagModule } from '../tag/tag.module';
 import { InputDropdownComponent } from './input-dropdown.component';
 import { NgDfmErrorModule } from '../error/error.module';
 import { DirectivesModule } from '../../directives/directives.module';
+import { DfmPipesModule } from '../../pipes/pipes.module';
 
 @NgModule({
   declarations: [InputDropdownComponent],
@@ -20,6 +21,7 @@ import { DirectivesModule } from '../../directives/directives.module';
     NgDfmErrorModule,
     DirectivesModule,
     AngularResizeEventModule,
+    DfmPipesModule,
   ],
   exports: [InputDropdownComponent],
 })
