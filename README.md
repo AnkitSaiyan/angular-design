@@ -8,9 +8,8 @@ Includes components used in developing Angular Apps for Diflexmo.
 
 ### Install NPM package
 
-1. `npm i diflexmo-angular-design-dev` to install development version
-2. `npm i diflexmo-angular-design@prerelease` to install prerelease version
-3. `npm i diflexmo-angular-design` to install released version
+1. `npm i diflexmo-angular-design@prerelease` to install prerelease version
+2. `npm i diflexmo-angular-design` to install release version
 
 ### Add assets to **angular.json**
 

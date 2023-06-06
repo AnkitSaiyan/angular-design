@@ -1,0 +1,40 @@
+name: $(Date:yyyyMMdd)$(Rev:.r)
+
+trigger: none
+
+variables:
+  projectName: diflexmo-angular-design
+  version: $(Build.BuildNumber)
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+  - stage: CI
+    jobs:
+      - job: CI
+        displayName: Continuous Integration
+        steps:
+          - template: steps/buildAngular.yml
+            parameters: 
+              projectName: $(projectName)
+              version: $(version)
+  - stage: CD
+    jobs:
+      - job: CD
+        displayName: Continuous Delivery
+        steps:
+          - task: DownloadBuildArtifacts@1
+            displayName: Download Build Artifacts
+            inputs:
+              buildType: current
+              downloadType: single
+              artifactName: $(projectName)
+              downloadPath: $(System.ArtifactsDirectory)/$(projectName)
+          - task: Npm@1
+            displayName: Publish NPM Package
+            inputs:
+              command: publish
+              workingDir: $(Build.ArtifactStagingDirectory)/$(projectName)
+              publishRegistry: useFeed
+              publishFeed: 18e540ed-207f-4a1e-8e3b-014618dd9c9a

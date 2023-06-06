@@ -1,0 +1,28 @@
+trigger: none
+
+variables:
+  projectName: diflexmo-angular-design
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+  - stage: CI
+    jobs:
+      - job: CI
+        displayName: Continuous Integration
+        steps:
+          - task: PowerShell@2
+            displayName: Check Build Reason
+            inputs:
+              targetType: inline
+              script: |
+                $buildReason = "$(Build.Reason)"
+                if($buildReason -ne "PullRequest")
+                {
+                    exit 0
+                }
+          - template: steps/buildAngular.yml
+            parameters: 
+              projectName: $(projectName)
+              version: $(Build.BuildNumber)
