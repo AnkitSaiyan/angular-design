@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { NgDfmCardModule } from '../card/card.module';
+import { DfmCardModule } from '../card/card.module';
 import { NotificationComponent } from './components/notification/notification.component';
-import { NgDfmIconModule } from '../icon/icon.module';
+import { DfmIconModule } from '../icon/icon.module';
 
 @NgModule({
   declarations: [NotificationComponent],
   exports: [NotificationComponent],
-  imports: [CommonModule, NgDfmCardModule, NgDfmIconModule],
+  imports: [CommonModule, DfmCardModule, DfmIconModule],
 })
-export class NgDfmNotificationModule {}
+export class DfmNotificationModule {}

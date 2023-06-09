@@ -9,4 +9,4 @@ import { DfmPipesModule } from '../../pipes/pipes.module';
   imports: [CommonModule, FormsModule, DfmPipesModule],
   exports: [ErrorComponent],
 })
-export class NgDfmErrorModule {}
+export class DfmErrorModule {}

@@ -12,7 +12,6 @@ import {
   TemplateRef,
   ViewChild,
 } from '@angular/core';
-import { ResizedEvent } from 'angular-resize-event';
 import { debounceTime, Subject, tap } from 'rxjs';
 import { DfmDatasource } from '../../models/datasource.model';
 import { DfmTableAction } from '../../models/table-action.model';
@@ -76,7 +75,7 @@ export class DataTableComponent<T> implements OnInit, OnChanges {
 
   @ViewChild('tableWrapper', { static: false }) tableWrapper!: ElementRef;
 
-  public tableSizeChanged$ = new Subject<ResizedEvent>();
+  public tableSizeChanged$ = new Subject<void>();
 
   public selectedItems: Map<T, boolean> = new Map<T, boolean>();
 
@@ -136,9 +135,9 @@ export class DataTableComponent<T> implements OnInit, OnChanges {
     }
   }
 
-  public checkTableSize(event: ResizedEvent): void {
+  public checkTableSize(): void {
     if (!this.isTableSizeProcessing) {
-      this.tableSizeChanged$.next(event);
+      this.tableSizeChanged$.next();
     }
   }
 

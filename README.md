@@ -4,98 +4,74 @@ Includes components used in developing Angular Apps for Diflexmo.
 
 [Contribution guide for this project](CONTRIBUTING.md)
 
-## Getting Started
+## Getting started
 
 ### Install NPM package
 
-1. `npm i diflexmo-angular-design@prerelease` to install prerelease version
-2. `npm i diflexmo-angular-design` to install release version
+- `npm i diflexmo-angular-design@prerelease` to install prerelease version
+- `npm i diflexmo-angular-design` to install release version
 
-### Add assets to **angular.json**
+### Setup your application
 
-Add the assets to angular.json assets section like this:
-
-```
-"assets": [
-            {
-              "glob": "**/*",
-              "input": "./node_modules/diflexmo-angular-design/assets",
-              "output": "./assets"
-            }
-  ],
-```
-
-### Import modules in **app.module.ts**
-
-Add DesignSystemCoreModule and DesignSystemModule to the imports of the app module
+- Add library providers to application config:
+  ```
+  export const appConfig: ApplicationConfig = {
+    providers: [
+      provideRouter(routes),
+      provideDesignSystem({ iconConfig: { assetsPath: '{{ your path to assets }}' }}),
+      provideHttpClient()
+    ]
+  };
+  ```
+- Add assets configuration to `angular.json` assets section:
+  ```
+  "assets": [
+              {
+                "glob": "**/*",
+                "input": "./node_modules/diflexmo-angular-design/assets",
+                "output": "./assets"
+              }
+    ],
+  ```
+- Import any required `diflexmo-angular-design` module into your module/component `imports` section.
 
 ## How Tos
 
 ### Test library changes locally
 
-To test changes locally, the library needs to be built and installed in an application. The following steps explain the process in detail:
-1. Run the command `ng build --watch` in the root folder of the library
-2. Navigate to your project and install the library from the folder using the following command:
+If you are working on library changes and want to test them, follow these steps:
+- Run the command `ng build --watch` in the root folder of the library
+- Navigate to your project and install the library from the folder using the following command:
  `npm i {you path}\diflexmo.angular-design\dist\diflexmo-angular-design`
-3. In some versions of npm, the peer dependencies of diflexmo-angular-design library may not be installed. To solve this issue, you can use `install-local-dependencies` package by running this commands in the project folder:
-```
-npm i install-local-dependencies -g
-install-local-dependencies
-```
+- In some versions of npm, the peer dependencies of `diflexmo-angular-design` library may not be installed. To solve this issue, you can use `install-local-dependencies` package by running this commands in the project folder:
+  ```
+  npm i install-local-dependencies -g
+  install-local-dependencies
+  ```
 After making a change to the library code, you can repeat steps 2 and 3 to install the changes into your project.
 
-### How to override library variables
+### How to override library css variables
 
-Design library provides set of scss variables, which could be imported from `abstracts/variables` and used in components styles. These library variables can be overriden and it will change the way of how library components are rendered.
-In order to use base library theme, but change the primary color of it, please, go to `abstracts/_variables.scss` file and add new variable value:
+If you want to change component background color, text color, etc. you can override the specific **css variable** in body tag:
 
-```
-$diflexmo-primary: {{your value}};
-```
-
-In order to use base library theme, but change some component variables (text color, background color of a component), please, go to `themes/{{your theme}}.scss` and add new value of css variable:
-
-```
-@mixin {{your theme mixing name}} {
-  --dfm-btn-primary-bg: {{your value}};
-
-  ... // your custom component variables go there
+```css
+body {
+  --dfm-primary: {{ your new primary color }};
+  --dfm-btn-primary-bg: {{ your value }};
 }
 ```
 
-This works only if the right way of style files import is implemented. As an example of the right import you can refer to this instruction:
-
-1. `abstracts/_variables.scss` file is created. It contains scss variables which you want to override.
-2. `styles/_vendors.scss` file is created. It includes css/scss files imports from 3d party libraries. The design library import is added there:
-
-```
-@import '../../node_modules/bootstrap/scss/functions';
-
-@import '../../node_modules/diflexmo-angular-design/lib/styles/styles.scss';
-
-@import '../../node_modules/bootstrap/scss/bootstrap.scss';
-```
-
-3. The import of the custom `abstracts/_variables.scss` is added **before** the import of `styles/_vendors.scss` in `styles/styles.scss` file. This way the design library can take overriden scss variables and use them in themes:
-
-```
-@import './abstracts/variables';
-
-@import './vendors';
-
-@import './themes/theme';
-```
+If you override `--dfm-primary` value, it will be replaced everywhere `--dfm-primary` variable is used.
 
 ## Components documentation
 
 <details>
 <summary>Data table documentation</summary>
 
-### Dfm Data table
+### Selector
+`dfm-data-table`
 
-Selector: dfm-data-table
-
-### INPUTS
+### Inputs
 
 data: Of type dfmDataSource, contains items which will contain the actual table data
 
@@ -115,7 +91,7 @@ headerSze: 'lg' | 'md' | 'sm', size of the header. Default= 'lg'
 
 clearSelected$: subject, when passing any value to the subject the table will set all checkboxes to false in the first row when **[rowSelectable]** is set to true
 
-### OUTPUTS
+### Outputs
 
 sorted: the datatable will report back which column the user wishes to sort
 
@@ -125,7 +101,7 @@ actionClicked: report of which action icon was clicked when **[showActions]** wa
 
 selected: report which row had its checkbox value changed
 
-### EXAMPLE
+### Example
 
 ts-file must contain the following;
 
@@ -178,7 +154,7 @@ The html file will contain the following;
 </dfm-data-table>
 ```
 
-### TRUNCATING DATA IN CELLS
+### Truncating data in cells
 
 To have the table truncate data in cells, you have to set the max width of the cell by the using the **[maxWidthStyle]** parameter on **<table-row-cell>**, which takes a css value as input (ie. '120px', or '20vw'). To automatically add a tooltip when a cell is truncated, add the value to appear in the tooltip in the **[fullContent]** parameter. Please be aware that when **[stickyFirstRow]** on the data table is set to true and the table is horizontally scrollable, the maxwidth of that row will always be 33vw, no matter what value is passed in **[maxWidthStyle]**.
 
@@ -191,10 +167,6 @@ To have the table truncate data in cells, you have to set the max width of the c
 The library uses a combination of the DfmLocalizationService and custom pipes to dynamically change the locale of the app without having to refresh the entire app.
 
 The DfmLocalizationService is used to set the locale of the app. Use the function setCurrentLocale(locale: string) to change the locale. Any locale can be set but it must be registered first, to register a locale refer to the angular documentation.
-The library will register the following locales automatically:
-- nl
-- nl-BE
-- fr-BE
 
 DfmLocalizationService will get the locale_id to use as the locale on app launch.
 
@@ -206,12 +178,11 @@ The DfmPipesModule will extend the localization pipes native to angular so that 
 <details>
 <summary>Button documentation</summary>
 
-### Dfm Button
+### Selectors
+Component: `dfm-button`
+Directive: `dfm-button`
 
-Selector: dfm-button
-Directive: dfm-button
-
-### INPUTS
+### Inputs
 
 color: 'primary' | 'secondary' | 'secondary-gray' | 'tertiary' | 'tertiary-gray' | 'link' | 'link-gray', Sets the style of the button. default: primary
 size: 'sm' | 'md' | 'lg' | 'xl' | '2xl', Set the size of the button. Default: lg
@@ -219,7 +190,7 @@ disabled: boolean, when sets the button in disabled state
 leadingIcon: icon name of the icon that will be shown before button contents.
 trailingIcon: icon name of the icon that will be shown after button contents.
 
-### EXAMPLE
+### Example
 
 The following code will create a medium sized button with the secondary gray style.
 

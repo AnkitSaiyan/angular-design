@@ -1,28 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AngularResizeEventModule } from 'angular-resize-event';
-import { NgDfmIconModule } from '../icon/icon.module';
-import { NgDfmInputModule } from '../input/input.module';
-import { NgDfmTagModule } from '../tag/tag.module';
 import { InputDropdownComponent } from './input-dropdown.component';
-import { NgDfmErrorModule } from '../error/error.module';
-import { DirectivesModule } from '../../directives/directives.module';
+import { DfmErrorModule } from '../error/error.module';
+import { DfmDirectivesModule } from '../../directives/directives.module';
 import { DfmPipesModule } from '../../pipes/pipes.module';
+import { DfmIconModule } from '../icon/icon.module';
+import { DfmInputModule } from '../input/input.module';
+import { DfmTagModule } from '../tag/tag.module';
 
 @NgModule({
   declarations: [InputDropdownComponent],
-  imports: [
-    CommonModule,
-    FormsModule,
-    NgDfmIconModule,
-    NgDfmInputModule,
-    NgDfmTagModule,
-    NgDfmErrorModule,
-    DirectivesModule,
-    AngularResizeEventModule,
-    DfmPipesModule,
-  ],
+  imports: [CommonModule, FormsModule, DfmIconModule, DfmInputModule, DfmTagModule, DfmErrorModule, DfmDirectivesModule, DfmPipesModule],
   exports: [InputDropdownComponent],
 })
-export class NgDfmInputDropdownModule {}
+export class DfmInputDropdownModule {}

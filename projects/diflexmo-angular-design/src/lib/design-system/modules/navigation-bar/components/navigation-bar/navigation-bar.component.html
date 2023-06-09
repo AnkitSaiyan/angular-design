@@ -1,4 +1,4 @@
-<div class="dfm-navigation-bar-container" (resized)="recalculateNavigationItemsDisplaying()">
+<div class="dfm-navigation-bar-container" (dfmResize)="recalculateNavigationItemsDisplaying()">
   <div class="dfm-navigation-bar" [class.dfm-navigation-bar-collapsed]="isCollapsed">
     <img [src]="logoPath ?? 'assets/images/logo.svg'" class="logo pointer" routerLink="/" />
     <img [src]="miniLogoPath ?? 'assets/images/logo-sm.svg'" class="logo-mobile pointer" routerLink="/" />

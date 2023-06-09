@@ -10,7 +10,7 @@
     [class.last-frozen]="stickyActions && (dataTableService.isCurrentOverflown$ | async) && (dataTableService.hasActions$ | async)"
     [class.first-frozen]="stickyFirstColumn && (dataTableService.isCurrentOverflown$ | async)"
     [class.scrollable]="dataTableService.isCurrentOverflown$ | async"
-    (resized)="checkTableSize($event)"
+    (dfmResize)="checkTableSize()"
   >
     <thead *ngIf="headers && headers.length > 0" [ngClass]="{ 'dfm-sticky-header': stickyHeader }">
       <tr>

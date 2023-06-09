@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TagComponent } from './tag.component';
-import { NgDfmIconModule } from '../icon/icon.module';
+import { DfmIconModule } from '../icon/icon.module';
 
 @NgModule({
   declarations: [TagComponent],
-  imports: [CommonModule, NgDfmIconModule],
+  imports: [CommonModule, DfmIconModule],
   exports: [TagComponent],
 })
-export class NgDfmTagModule {}
+export class DfmTagModule {}

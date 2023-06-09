@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbDropdownModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { DropdownButtonComponent } from './components/dropdown-button/dropdown-button.component';
-import { NgDfmIconModule } from '../icon/icon.module';
+import { DfmIconModule } from '../icon/icon.module';
 
 @NgModule({
   declarations: [DropdownButtonComponent],
-  imports: [CommonModule, NgbDropdownModule, NgDfmIconModule, NgbTooltipModule],
+  imports: [CommonModule, NgbDropdownModule, DfmIconModule, NgbTooltipModule],
   exports: [DropdownButtonComponent],
 })
-export class NgDfmDropdownModule {}
+export class DfmDropdownModule {}

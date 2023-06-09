@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardComponent } from './card.component';
-import { NgDfmIconModule } from '../icon/icon.module';
+import { DfmIconModule } from '../icon/icon.module';
 
 @NgModule({
   declarations: [CardComponent],
-  imports: [CommonModule, NgDfmIconModule],
+  imports: [CommonModule, DfmIconModule],
   exports: [CardComponent],
 })
-export class NgDfmCardModule {}
+export class DfmCardModule {}

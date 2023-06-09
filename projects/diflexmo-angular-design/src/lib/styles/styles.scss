@@ -1,28 +1,27 @@
 @import './abstracts/variables';
 @import './themes/theme';
 
-// import mixins
-@import './mixins/text-mixins';
 @import './mixins/base';
+@import './mixins/text-mixins';
 
-// import base
-@import './base/shadows';
-@import './base/typography';
 @import './base/color';
-@import './base/text';
-@import './base/spacing';
-@import './base/reset';
 @import './base/opacity';
+@import './base/reset';
+@import './base/shadows';
+@import './base/spacing';
+@import './base/text';
+@import './base/typography';
 
-@import './vendors/bootstrap-extended.scss';
+@import './vendors/bootstrap';
 
 @import './components/button';
-@import './components/scrollbar.scss';
-@import './components/divider.scss';
-@import './components/tooltip';
+@import './components/divider';
+@import './components/forms';
 @import './components/navigation';
+@import './components/scrollbar';
+@import './components/tooltip';
 
-.dfm-body {
+body {
   background-color: var(--dfm-body-bg);
   overflow-y: hidden;
 }

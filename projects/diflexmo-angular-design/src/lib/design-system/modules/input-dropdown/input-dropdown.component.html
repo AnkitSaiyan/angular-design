@@ -1,5 +1,5 @@
 <div class="dfm-input-dropdown dfm-input-dropdown-{{ size }}">
-  <div #dropdown (resized)="inputResized()">
+  <div #dropdown (dfmResize)="inputResized()">
     <label *ngIf="label" class="dfm-input-label">{{ label }}</label>
     <div class="input-dropdown-container input-container input-container-{{ size }}">
       <dfm-icon *ngIf="icon" [name]="icon" class="leading-icon"></dfm-icon>

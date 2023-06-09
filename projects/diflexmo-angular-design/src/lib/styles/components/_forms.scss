@@ -1,13 +1,17 @@
 @import '../mixins/base';
 
-$form-label-margin-bottom: 6px;
-$form-label-font-size: 14px;
-$form-label-font-weight: 500;
-
 .dfm-input-hint {
   @include text-sm;
   @include weight-normal;
 
   color: var(--dfm-input-hint-color);
   padding-top: 7px;
+}
+
+.dfm-input-label {
+  @include text-sm;
+  @include weight-medium;
+
+  color: var(--dfm-input-label-color);
+  padding-bottom: 6px;
 }

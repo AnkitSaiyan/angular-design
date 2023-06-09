@@ -1,5 +1,0 @@
-<th class="cell" (click)="sortClicked()" [class.sortable]="sortable">
-  <ng-content></ng-content>
-  <dfm-icon *ngIf="sortable && sortOrder === SortOrder.Asc" name="arrow-up" class="sort-icon"></dfm-icon>
-  <dfm-icon *ngIf="sortable && sortOrder !== SortOrder.Asc" name="arrow-down" class="sort-icon"></dfm-icon>
-</th>

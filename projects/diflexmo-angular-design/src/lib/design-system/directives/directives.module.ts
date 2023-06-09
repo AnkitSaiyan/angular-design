@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
-import { DomChangeDirective } from './dom-change.directive';
+import { DfmDomChangeDirective } from './dfm-dom-change.directive';
+import { DfmResizeDirective } from './dfm-resize.directive';
 
 @NgModule({
-  declarations: [DomChangeDirective],
-  exports: [DomChangeDirective],
+  declarations: [DfmDomChangeDirective, DfmResizeDirective],
+  exports: [DfmDomChangeDirective, DfmResizeDirective],
 })
-export class DirectivesModule {}
+export class DfmDirectivesModule {}

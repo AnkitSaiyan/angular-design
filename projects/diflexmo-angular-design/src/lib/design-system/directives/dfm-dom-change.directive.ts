@@ -3,7 +3,7 @@ import { Directive, ElementRef, EventEmitter, OnDestroy, Output } from '@angular
 @Directive({
   selector: '[dfmDomChange]',
 })
-export class DomChangeDirective implements OnDestroy {
+export class DfmDomChangeDirective implements OnDestroy {
   private changes: MutationObserver;
 
   @Output()

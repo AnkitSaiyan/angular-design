@@ -1,14 +1,6 @@
 @import 'mixins/base';
 @import 'mixins/text-mixins';
 
-.dfm-input-label {
-  @include text-sm;
-  @include weight-medium;
-
-  color: var(--dfm-input-label-color);
-  padding-bottom: 6px;
-}
-
 %dfm-input {
   @include border-radius;
   @include text-md;
