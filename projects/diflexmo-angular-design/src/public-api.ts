@@ -1,5 +1,3 @@
-import iconsConfig from './assets/jsons/icons-config.json';
-
 export * from './lib/design-system/design-system.module';
 
 export * from './lib/design-system/modules/badge/badge.module';
@@ -112,5 +110,3 @@ export * from './lib/design-system/pipes/dfm-localized-currency.pipe';
 export * from './lib/design-system/pipes/dfm-localized-decimal.pipe';
 export * from './lib/design-system/pipes/dfm-localized-percent.pipe';
 export * from './lib/design-system/pipes/dfm-localized-text.pipe';
-
-export { iconsConfig };
