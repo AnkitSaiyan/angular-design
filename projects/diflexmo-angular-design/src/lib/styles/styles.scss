@@ -1,3 +1,5 @@
+@import './vendors/bootstrap';
+
 @import './abstracts/variables';
 @import './themes/theme';
 
@@ -11,8 +13,6 @@
 @import './base/spacing';
 @import './base/text';
 @import './base/typography';
-
-@import './vendors/bootstrap';
 
 @import './components/button';
 @import './components/divider';
