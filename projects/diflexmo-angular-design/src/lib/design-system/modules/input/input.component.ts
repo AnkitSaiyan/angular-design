@@ -1,8 +1,8 @@
-import { Component, Input, Optional } from '@angular/core';
+import { Component, Inject, Input, LOCALE_ID, Optional } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
-import moment from 'moment';
-import { InputSize } from '../../types/input-size.type';
+import { formatDate } from '@angular/common';
 import { InputType } from './types/input-type.type';
+import { InputSize } from '../../types/input-size.type';
 
 @Component({
   selector: 'dfm-input',
@@ -36,16 +36,14 @@ export class InputComponent implements ControlValueAccessor {
 
   value: any = '';
 
-  private static DateFormat: string = 'DD.MM.YYYY';
-
-  constructor(@Optional() public control: NgControl) {
+  constructor(@Optional() public control: NgControl, @Inject(LOCALE_ID) private locale: string) {
     if (this.control != null) {
       this.control.valueAccessor = this;
     }
   }
 
   writeValue(obj: any): void {
-    this.value = this.isDate(obj) ? moment(obj).format(InputComponent.DateFormat) : obj;
+    this.value = this.isDate(obj) ? formatDate(obj, 'shortDate', this.locale) : obj;
   }
 
   registerOnChange(fn: any): void {
@@ -65,7 +63,7 @@ export class InputComponent implements ControlValueAccessor {
   }
 
   onValueChanged(value: any): void {
-    const changedValue = this.type === 'datepicker' ? moment(value, InputComponent.DateFormat).toDate() : value;
+    const changedValue = this.type === 'datepicker' ? new Date(value) : value;
     this.onChange(changedValue);
   }
 

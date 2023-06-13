@@ -31,7 +31,6 @@
     "@popperjs/core": "^2.11.6",
     "angular-svg-icon": "^16.0.0",
     "bootstrap": "^5.2.3",
-    "moment": "^2.29.4",
     "ngx-clipboard": "^16.0.0",
     "ngx-infinite-scroll": "^16.0.0",
     "rxjs": "^7.8.0",
