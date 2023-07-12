@@ -1,15 +1,19 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Optional, Pipe, PipeTransform } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Pipe({
   name: 'localizedText',
 })
 export class DfmLocalizedTextPipe implements PipeTransform {
-  constructor(private translateService: TranslateService) {}
+  constructor(@Optional() private translateService: TranslateService) {}
 
   public transform(key: string, defaultText: string): Observable<string> {
+    if (!this.translateService) {
+      return of(defaultText);
+    }
+
     return this.translateService.get(key).pipe(
       map((translation) => {
         if (!translation || translation === key) {
