@@ -96,6 +96,10 @@
     "iconPath": "/assets/icons/chevron-up-double.svg"
   },
   {
+    "iconName": "container",
+    "iconPath": "/assets/icons/container.svg"
+  },
+  {
     "iconName": "clock",
     "iconPath": "/assets/icons/clock.svg"
   },
