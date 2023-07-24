@@ -195,7 +195,7 @@
     "iconName": "filter-funnel-01",
     "iconPath": "/assets/icons/filter-funnel-01.svg"
   },
-      {
+  {
     "iconName": "filter-funnel-01-fill",
     "iconPath": "/assets/icons/filter-funnel-01-fill.svg"
   },
@@ -206,6 +206,10 @@
   {
     "iconName": "help-circle",
     "iconPath": "/assets/icons/help-circle.svg"
+  },
+  {
+    "iconName": "help-hexagon",
+    "iconPath": "/assets/icons/help-hexagon.svg"
   },
   {
     "iconName": "home-03",
