@@ -1,50 +1,54 @@
 @mixin font-weight-base($weight) {
-    font-weight: $weight;
+  font-weight: $weight;
 }
 
 @mixin font-style-base($size, $height) {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-size: $size;
-    line-height: $height;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-size: $size;
+  line-height: $height;
 }
 
 @mixin weight-normal {
-    @include font-weight-base(400);
+  @include font-weight-base(400);
 }
 
 @mixin weight-medium {
-    @include font-weight-base(500);
+  @include font-weight-base(500);
 }
 
 @mixin weight-semi-bold {
-    @include font-weight-base(600);
+  @include font-weight-base(600);
 }
 
 @mixin weight-bold {
-    @include font-weight-base(700);
+  @include font-weight-base(700);
 }
 
 @mixin text-xxs {
-    @include font-style-base(10px, 14px)
+  @include font-style-base(10px, 14px);
 }
 
 @mixin text-xs {
-    @include font-style-base(12px, 18px);
+  @include font-style-base(12px, 18px);
 }
 
 @mixin text-sm {
-    @include font-style-base(14px, 20px);
+  @include font-style-base(14px, 20px);
 }
 
 @mixin text-md {
-    @include font-style-base(16px, 24px);
+  @include font-style-base(16px, 24px);
 }
 
 @mixin text-lg {
-    @include font-style-base(18px, 28px);
+  @include font-style-base(18px, 28px);
+}
+
+@mixin text-xl {
+  @include font-style-base(20px, 30px);
 }
 
 @mixin display-sm {
-    @include font-style-base(30px, 38px);
+  @include font-style-base(30px, 38px);
 }

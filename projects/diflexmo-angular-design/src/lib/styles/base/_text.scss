@@ -94,6 +94,20 @@
   }
 }
 
+.text-xl {
+  @include text-xl;
+
+  &-meduim {
+    @extend .text-xl;
+    @include weight-medium;
+  }
+
+  &-semi-bold {
+    @extend .text-xl;
+    @include weight-semi-bold;
+  }
+}
+
 .display-sm {
   @include display-sm;
 
