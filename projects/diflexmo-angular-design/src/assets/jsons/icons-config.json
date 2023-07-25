@@ -48,6 +48,10 @@
     "iconPath": "/assets/icons/building-01.svg"
   },
   {
+    "iconName": "building-07",
+    "iconPath": "/assets/icons/building-07.svg"
+  },
+  {
     "iconName": "calendar",
     "iconPath": "/assets/icons/calendar.svg"
   },
