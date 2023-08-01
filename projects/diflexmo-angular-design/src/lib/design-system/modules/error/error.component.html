@@ -1,6 +1,6 @@
 <span *ngIf="control && control.touched" class="invalid-feedback">
   <ng-container *ngIf="control.hasError('required')">
-    {{ 'DESIGN_SYSTEM.ERROR.REQUIRED_FIELD' | localizedText : 'The field is required.' | async }}
+    {{ 'DESIGN_SYSTEM.ERROR.REQUIRED_FIELD' | localizedText : 'This field is required' | async }}
   </ng-container>
   <ng-container *ngIf="control.hasError('max')">
     {{ 'DESIGN_SYSTEM.ERROR.MAX' | localizedText : 'Max value is' | async }} {{ control.getError('max').max }}
