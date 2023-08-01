@@ -59,7 +59,7 @@
       padding-right: 40px;
     }
 
-    &:focus {
+    &:focus:not(.dfm-invalid) {
       color: var(--dfm-input-color-focus);
       background-color: var(--dfm-input-bg-focus);
       border: 1px solid var(--dfm-input-border-focus);
@@ -99,7 +99,7 @@
       right: 14px;
     }
 
-    &:focus {
+    &:focus:not(.dfm-invalid) {
       color: var(--dfm-input-color-focus);
       background-color: var(--dfm-input-bg-focus);
       border: 1px solid var(--dfm-input-border-focus);
