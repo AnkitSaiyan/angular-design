@@ -12,6 +12,10 @@
   outline: none;
   border: 1px solid var(--dfm-input-border);
   width: 100%;
+
+  &.dfm-invalid {
+    border: 1px solid var(--dfm-input-invalid-color);
+  }
 }
 
 .input-container {
@@ -132,8 +136,4 @@ input::-webkit-inner-spin-button {
 
 input[type='number'] {
   -moz-appearance: textfield;
-}
-
-.dfm-invalid {
-  border-color: var(--dfm-danger-300) !important;
 }

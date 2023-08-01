@@ -86,6 +86,7 @@
   --dfm-input-border-disabled: #{$gray-modern-300};
   --dfm-input-hint-color: #{$gray-modern-500};
   --dfm-input-leading-icon-color: #{$gray-modern-500};
+  --dfm-input-invalid-color: #{$danger-300};
 
   --dfm-input-dropdown-hint-color: #{$gray-modern-500};
   --dfm-input-dropdown-option-bg-hover: #{$gray-modern-50};
@@ -213,7 +214,6 @@
   --dfm-table-list-actions-icon-color: #{$gray-modern-500};
   --dfm-table-list-actions-icon-hover-color: #{$gray-modern-600};
 
-
   --dfm-tag-close-color: #{$gray-modern-400};
   --dfm-tag-count-bg: #{$gray-modern-100};
   --dfm-tag-color: #{$gray-modern-700};
@@ -338,7 +338,7 @@
   --dfm-featured-icon-error-bg: #{$danger-100};
   --dfm-featured-icon-error-color: #{$danger-600};
   --dfm-featured-icon-error-light-circle-outline-border-color: #{$danger-50};
-  --dfm-featured-icon-error-dark-circle-bg: #F04438;
+  --dfm-featured-icon-error-dark-circle-bg: #f04438;
   --dfm-featured-icon-error-dark-circle-color: #{$diflexmo-white};
   --dfm-featured-icon-error-dark-circle-border-color: #{$danger-600};
   --dfm-featured-icon-warning-bg: #{$warning-100};
