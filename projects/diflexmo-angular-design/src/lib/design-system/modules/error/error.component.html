@@ -1,3 +1,11 @@
-<span *ngIf="control && control.touched && control.hasError('required')" class="invalid-feedback">
-  {{ 'DESIGN_SYSTEM.ERROR.REQUIRED_FIELD' | localizedText : 'The field is required.' | async }}
+<span *ngIf="control && control.touched" class="invalid-feedback">
+  <ng-container *ngIf="control.hasError('required')">
+    {{ 'DESIGN_SYSTEM.ERROR.REQUIRED_FIELD' | localizedText : 'The field is required.' | async }}
+  </ng-container>
+  <ng-container *ngIf="control.hasError('max')">
+    {{ 'DESIGN_SYSTEM.ERROR.MAX' | localizedText : 'Max value is' | async }} {{ control.getError('max').max }}
+  </ng-container>
+  <ng-container *ngIf="control.hasError('min')">
+    {{ 'DESIGN_SYSTEM.ERROR.MIN' | localizedText : 'Min value is' | async }} {{ control.getError('min').min }}
+  </ng-container>
 </span>
