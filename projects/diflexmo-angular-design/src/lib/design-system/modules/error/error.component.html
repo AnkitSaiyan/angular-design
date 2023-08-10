@@ -8,4 +8,10 @@
   <ng-container *ngIf="control.hasError('min')">
     {{ 'DESIGN_SYSTEM.ERROR.MIN' | localizedText : 'Min value is' | async }} {{ control.getError('min').min }}
   </ng-container>
+  <ng-container *ngIf="control.hasError('minlength')">
+    {{ 'DESIGN_SYSTEM.ERROR.MIN_LENGTH' | localizedText : 'Min length is' | async }} {{ control.getError('minlength').requiredLength }}
+  </ng-container>
+  <ng-container *ngIf="control.hasError('maxlength')">
+    {{ 'DESIGN_SYSTEM.ERROR.MAX_LENGTH' | localizedText : 'Max length is' | async }} {{ control.getError('maxlength').requiredLength }}
+  </ng-container>
 </span>
