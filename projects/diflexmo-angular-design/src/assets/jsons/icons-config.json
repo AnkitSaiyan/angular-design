@@ -204,6 +204,10 @@
     "iconPath": "/assets/icons/filter-funnel-01-fill.svg"
   },
   {
+    "iconName": "globe-03",
+    "iconPath": "/assets/icons/globe-03.svg"
+  },
+  {
     "iconName": "grid-01",
     "iconPath": "/assets/icons/grid-01.svg"
   },
@@ -328,6 +332,10 @@
     "iconPath": "/assets/icons/placeholder.svg"
   },
   {
+    "iconName": "plain",
+    "iconPath": "/assets/icons/plain.svg"
+  },
+  {
     "iconName": "plus",
     "iconPath": "/assets/icons/plus.svg"
   },
@@ -392,8 +400,16 @@
     "iconPath": "/assets/icons/tool-02.svg"
   },
   {
+    "iconName": "train",
+    "iconPath": "/assets/icons/train.svg"
+  },
+  {
     "iconName": "trash-01",
     "iconPath": "/assets/icons/trash-01.svg"
+  },
+  {
+    "iconName": "truck-01",
+    "iconPath": "/assets/icons/truck-01.svg"
   },
   {
     "iconName": "user-01",
@@ -410,6 +426,10 @@
   {
     "iconName": "user-x-01",
     "iconPath": "/assets/icons/user-x-01.svg"
+  },
+  {
+    "iconName": "waves",
+    "iconPath": "/assets/icons/waves.svg"
   },
   {
     "iconName": "x-close",
