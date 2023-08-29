@@ -92,6 +92,10 @@
     "iconPath": "/assets/icons/chevron-right.svg"
   },
   {
+    "iconName": "chevron-right-double",
+    "iconPath": "/assets/icons/chevron-right-double.svg"
+  },
+  {
     "iconName": "chevron-up",
     "iconPath": "/assets/icons/chevron-up.svg"
   },
