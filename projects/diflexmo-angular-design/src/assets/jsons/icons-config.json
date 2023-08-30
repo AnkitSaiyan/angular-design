@@ -448,6 +448,10 @@
     "iconPath": "/assets/icons/x-circle.svg"
   },
   {
+    "iconName": "zap-fast",
+    "iconPath": "/assets/icons/zap-fast.svg"
+  },
+  {
     "iconName": "zoom-in",
     "iconPath": "/assets/icons/zoom-in.svg"
   },
