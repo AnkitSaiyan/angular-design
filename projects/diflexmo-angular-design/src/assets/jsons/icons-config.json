@@ -228,6 +228,10 @@
     "iconPath": "/assets/icons/home-03.svg"
   },
   {
+    "iconName": "home-05",
+    "iconPath": "/assets/icons/home-05.svg"
+  },
+  {
     "iconName": "info-circle",
     "iconPath": "/assets/icons/info-circle.svg"
   },
