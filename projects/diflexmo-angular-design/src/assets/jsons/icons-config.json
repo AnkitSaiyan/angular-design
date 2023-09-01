@@ -200,6 +200,10 @@
     "iconPath": "/assets/icons/file-search-02.svg"
   },
   {
+    "iconName": "file-x-02",
+    "iconPath": "/assets/icons/file-x-02.svg"
+  },
+  {
     "iconName": "filter-funnel-01",
     "iconPath": "/assets/icons/filter-funnel-01.svg"
   },
