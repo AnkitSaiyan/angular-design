@@ -12,7 +12,8 @@
   <div class="dropdown-menu dfm-profile-dropdown-menu">
     <div class="profile-header dfm-p-16 d-flex flex-row dfm-gap-12">
       <div class="avatar-container">
-        <img *ngIf="profileData.user.avatar" class="avatar" [src]="'data:image/png;base64,' + profileData.user.avatar" />
+        <dfm-icon name="user-circle" class="avatar"></dfm-icon>
+        <!-- <img *ngIf="profileData.user.avatar" class="avatar" [src]="'data:image/png;base64,' + profileData.user.avatar" /> -->
       </div>
       <div class="d-flex flex-column">
         <a *ngIf="profileData.user.link" class="name text-md-medium d-flex align-items-center dfm-gap-8" [href]="profileData.user.link"
@@ -37,13 +38,24 @@
     </div>
     <hr class="dfm-mx-16 dfm-my-0" />
     <div class="d-flex flex-column dfm-p-16 dfm-gap-8 align-items-end">
-      <div class="d-flex dfm-gap-8 w-100">
-        <dfm-button *ngIf="isSettingsButtonShown" leadingIcon="settings-01" color="secondary-gray" size="md" class="w-100">
-          {{ 'DESIGN_SYSTEM.NAVIGATION_BAR.SETTINGS' | localizedText : 'Settings' | async }}
-        </dfm-button>
-        <dfm-button leadingIcon="log-out-04" color="secondary-gray" size="md" class="w-100" (click)="logout.emit()">
-          {{ 'DESIGN_SYSTEM.NAVIGATION_BAR.LOG_OUT' | localizedText : 'Log out' | async }}
-        </dfm-button>
+      <div class="d-flex dfm-gap-8 w-100 flex-column">
+        <dfm-button-group>
+          <dfm-button-group-item
+            *ngFor="let themeOption of themeOptions"
+            [current]="(themeService.theme$ | async) === themeOption.key"
+            [icon]="themeOption.icon"
+            (click)="changeTheme(themeOption.key)"
+            >{{ themeOption.key | titlecase }}</dfm-button-group-item
+          >
+        </dfm-button-group>
+        <div class="d-flex dfm-gap-8 w-100 flex-column">
+          <dfm-button *ngIf="isSettingsButtonShown" leadingIcon="settings-01" color="secondary-gray" size="md" class="w-100">
+            {{ 'DESIGN_SYSTEM.NAVIGATION_BAR.SETTINGS' | localizedText : 'Settings' | async }}
+          </dfm-button>
+          <dfm-button leadingIcon="log-out-04" color="secondary-gray" size="md" class="w-100" (click)="logout.emit()">
+            {{ 'DESIGN_SYSTEM.NAVIGATION_BAR.LOG_OUT' | localizedText : 'Log out' | async }}
+          </dfm-button>
+        </div>
       </div>
       <span class="text-xs">{{ 'DESIGN_SYSTEM.NAVIGATION_BAR.POWERED_BY' | localizedText : 'Powered by' | async }} Diflexmo</span>
     </div>

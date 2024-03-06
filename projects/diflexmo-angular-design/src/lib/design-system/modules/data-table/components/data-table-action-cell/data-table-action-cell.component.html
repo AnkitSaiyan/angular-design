@@ -1,15 +1,21 @@
-<dfm-table-row-cell [propagateClick]="false" [collapsePaddingX]="true">
+<dfm-table-row-cell [propagateClick]="false" [contentAlign]="'right'" [collapsePaddingX]="true">
   <ng-container *ngIf="(dataTableService.hasStickyActions$ | async) === false || (dataTableService.isCurrentOverflown$ | async) === false">
     <div class="d-flex dfm-gap-20 dfm-pe-12 dfm-py-8 justify-content-end dfm-regular-actions">
       <ng-container *ngTemplateOutlet="actionCellTemplate"></ng-container>
     </div>
   </ng-container>
   <ng-container *ngIf="(dataTableService.hasStickyActions$ | async) && (dataTableService.isCurrentOverflown$ | async)">
-    <div ngbDropdown container="body" placement="left">
-      <div class="icon-20 pointer dropdown-ellipsis-icon" id="dropdownBasic1" ngbDropdownToggle>
+    <div
+      ngbDropdown
+      container="body"
+      placement="left"
+      class="d-flex align-items-center h-100"
+      (click)="$event.stopPropagation(); $event.preventDefault()"
+    >
+      <div class="icon-20 pointer dropdown-ellipsis-icon" ngbDropdownToggle>
         <dfm-icon name="dots-vertical"></dfm-icon>
       </div>
-      <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dfm-dropdown-menu">
+      <div ngbDropdownMenu class="dfm-dropdown-menu">
         <div class="d-flex flex-column dfm-dropdown-ellipsis">
           <ng-container *ngTemplateOutlet="actionCellTemplate"></ng-container>
         </div>

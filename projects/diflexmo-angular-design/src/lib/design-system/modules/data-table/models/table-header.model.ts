@@ -1,7 +1,7 @@
 import { ColumnSort } from '../types/column-sort.type';
 
 export interface DfmTableHeader {
-  id: string;
+  id?: string;
   title: string;
   isSortable?: boolean;
   sort?: ColumnSort;

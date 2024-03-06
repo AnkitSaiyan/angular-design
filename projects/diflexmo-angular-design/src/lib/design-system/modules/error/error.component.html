@@ -1,4 +1,4 @@
-<span *ngIf="control && control.touched" class="invalid-feedback">
+<span *ngIf="control && control.touched && control.errors" class="invalid-feedback">
   <ng-container *ngIf="control.hasError('required')">
     {{ 'DESIGN_SYSTEM.ERROR.REQUIRED_FIELD' | localizedText : 'This field is required' | async }}
   </ng-container>

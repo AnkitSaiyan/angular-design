@@ -15,12 +15,20 @@ $table-border-radius: 8px;
 :host-context(.checkbox-cell.checkbox-first-frozen) ~ :host:nth-child(2) .cell {
   box-shadow: 12px 0px 8px rgba(0, 0, 0, 0.05);
   position: sticky;
-  left: 80px;
+  left: 56px;
   max-width: 33vw !important;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   background-color: var(--dfm-table-even-cell-bg);
+
+  @media (max-width: 960px) {
+    left: 48px;
+  }
+
+  @media (max-width: 680px) {
+    left: 40px;
+  }
 }
 
 :host-context(.first-frozen) :host:first-child .cell {
@@ -38,12 +46,29 @@ $table-border-radius: 8px;
 
 :host-context(.checkbox-cell) {
   .cell {
-    width: 80px;
+    width: 56px;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
     background-color: var(--dfm-table-even-cell-bg);
+
+    @media (max-width: 960px) {
+      width: 48px;
+    }
+
+    @media (max-width: 680px) {
+      width: 40px;
+    }
   }
-  
+
   & ~ :host:nth-child(2) .cell {
     padding-left: 0px;
+  }
+}
+
+:host-context(.actions-button-cell) {
+  .cell {
+    padding-top: 0;
   }
 }
 
@@ -57,18 +82,52 @@ $table-border-radius: 8px;
 
 :host {
   display: contents;
-}
 
-.dfm-header-cell-disabled {
-  color: var(--dfm-table-header-color-disabled);
-}
+  .cell {
+    @include text-xs;
+    @include weight-bold;
 
-.dfm-header-cell {
-  border-bottom: 1px solid var(--dfm-table-border);
-  color: var(--dfm-table-header-color);
-  vertical-align: middle;
-}
+    border-bottom: 1px solid var(--dfm-table-border);
+    color: var(--dfm-table-header-color);
+    vertical-align: middle;
 
-.dfm-header-cell:hover {
-  color: var(--dfm-table-header-color-hover);
+    padding-left: 24px;
+    padding-right: 24px;
+
+    @media (max-width: 960px) {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+    @media (max-width: 680px) {
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+
+    &:hover {
+      color: var(--dfm-table-header-color-hover);
+    }
+
+    &.cell-sm {
+      @include weight-medium;
+
+      padding-top: 13px;
+      padding-bottom: 13px;
+      color: var(--dfm-main-700);
+    }
+
+    &.cell-md {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+    &.cell-lg {
+      padding-top: 27px;
+      padding-bottom: 27px;
+    }
+
+    &.cell-disabled {
+      color: var(--dfm-table-header-color-disabled);
+    }
+  }
 }

@@ -4,11 +4,19 @@
 :host-context(.checkbox-cell.checkbox-first-frozen) ~ :host:nth-child(2) .cell {
   box-shadow: 12px 0px 8px rgba(0, 0, 0, 0.05);
   position: sticky;
-  left: 80px;
+  left: 56px;
   max-width: 33vw !important;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  @media (max-width: 960px) {
+    left: 48px;
+  }
+
+  @media (max-width: 680px) {
+    left: 40px;
+  }
 }
 
 :host-context(.first-frozen) :host:first-child .cell {
@@ -30,9 +38,18 @@
 
 :host-context(.checkbox-cell) {
   .cell {
-    width: 80px;
+    width: 56px;
+    padding-right: 0;
+
+    @media (max-width: 960px) {
+      width: 48px;
+    }
+
+    @media (max-width: 680px) {
+      width: 40px;
+    }
   }
-  
+
   & ~ :host:nth-child(2) .cell {
     padding-left: 0px !important;
   }
@@ -59,5 +76,31 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    padding: 10px 24px;
+    height: 66px;
+
+    &.collapse-padding-x {
+      padding: 10px 12px;
+    }
+  }
+
+  @media (max-width: 960px) {
+    .cell {
+      padding: 10px 16px;
+
+      &.collapse-padding-x {
+        padding: 10px 8px;
+      }
+    }
+  }
+
+  @media (max-width: 680px) {
+    .cell {
+      padding: 10px 8px;
+
+      &.collapse-padding-x {
+        padding: 10px 8px;
+      }
+    }
   }
 }

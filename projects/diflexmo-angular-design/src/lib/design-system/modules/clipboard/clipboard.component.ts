@@ -1,11 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'dfm-clipboard',
   template: `
-    <div class="d-flex dfm-gap-8 show-hidden" #container>
-      <div><ng-content></ng-content></div>
+    <div class="dfm-clipboard d-flex dfm-gap-8 show-hidden" #container>
+      <div #content class="content" [ngbTooltip]="clip" [disableTooltip]="!isEllipsisActive()" container="body">
+        <ng-content></ng-content>
+      </div>
       <ng-container *ngIf="!disabled">
         <ng-container *ngIf="!isCopied; else copiedNgTemp">
           <div
@@ -13,16 +15,21 @@ import { TranslateService } from '@ngx-translate/core';
             ngxClipboard
             [cbContent]="clip"
             [container]="container"
-            class="pointer icon-15 align-self-center"
+            class="d-flex pointer icon-15 align-self-center"
             [ngClass]="{ hide: !alwaysVisible }"
-            (click)="$event.stopPropagation()"
+            (click)="$event.stopPropagation(); $event.preventDefault()"
           >
-            <dfm-icon name="copy-06" class="dfm-clipboard" [ngbTooltip]="copyToClipboardText" container="body"></dfm-icon>
+            <dfm-icon name="copy-06" class="copy-icon" [ngbTooltip]="copyToClipboardText" container="body"></dfm-icon>
           </div>
         </ng-container>
         <ng-template #copiedNgTemp>
-          <div class="pointer icon-15 align-self-center" (click)="$event.stopPropagation()" [ngbTooltip]="copiedToClipboardText" container="body">
-            <dfm-icon name="check" class="dfm-clipboard-copied" [ngClass]="{ hide: !alwaysVisible }"></dfm-icon>
+          <div
+            class="pointer icon-15 align-self-center"
+            (click)="$event.stopPropagation(); $event.preventDefault()"
+            [ngbTooltip]="copiedToClipboardText"
+            container="body"
+          >
+            <dfm-icon name="check" class="copied-icon" [ngClass]="{ hide: !alwaysVisible }"></dfm-icon>
           </div>
         </ng-template>
       </ng-container>
@@ -36,6 +43,8 @@ export class ClipboardComponent implements OnInit {
   @Input() alwaysVisible: boolean = false;
 
   @Input() disabled: boolean = false;
+
+  @ViewChild('content') contentElementRef?: ElementRef;
 
   public isCopied: boolean = false;
 
@@ -69,5 +78,17 @@ export class ClipboardComponent implements OnInit {
     setTimeout(() => {
       this.isCopied = false;
     }, 1000);
+  }
+
+  public isEllipsisActive(): boolean {
+    if (this.contentElementRef) {
+      return this.getWidthDifference(this.contentElementRef);
+    }
+
+    return false;
+  }
+
+  private getWidthDifference(element: ElementRef) {
+    return element.nativeElement.offsetWidth < element.nativeElement.scrollWidth;
   }
 }

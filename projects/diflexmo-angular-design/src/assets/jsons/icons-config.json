@@ -64,6 +64,10 @@
     "iconPath": "/assets/icons/calendar-date.svg"
   },
   {
+    "iconName": "cellar",
+    "iconPath": "/assets/icons/cellar.svg"
+  },
+  {
     "iconName": "check",
     "iconPath": "/assets/icons/check.svg"
   },
@@ -116,12 +120,20 @@
     "iconPath": "/assets/icons/clock-rewind.svg"
   },
   {
+    "iconName": "container",
+    "iconPath": "/assets/icons/container.svg"
+  },
+  {
     "iconName": "copy-03",
     "iconPath": "/assets/icons/copy-03.svg"
   },
   {
     "iconName": "copy-06",
     "iconPath": "/assets/icons/copy-06.svg"
+  },
+  {
+    "iconName": "corner-down-right",
+    "iconPath": "/assets/icons/corner-down-right.svg"
   },
   {
     "iconName": "dots-grid",
@@ -194,6 +206,14 @@
   {
     "iconName": "file-06",
     "iconPath": "/assets/icons/file-06.svg"
+  },
+  {
+    "iconName": "file-download-02",
+    "iconPath": "/assets/icons/file-download-02.svg"
+  },
+  {
+    "iconName": "file-download-03",
+    "iconPath": "/assets/icons/file-download-03.svg"
   },
   {
     "iconName": "file-search-02",
@@ -316,6 +336,14 @@
     "iconPath": "/assets/icons/minus.svg"
   },
   {
+    "iconName": "monitor-01",
+    "iconPath": "/assets/icons/monitor-01.svg"
+  },
+  {
+    "iconName": "moon-02",
+    "iconPath": "/assets/icons/moon-02.svg"
+  },
+  {
     "iconName": "notification-text",
     "iconPath": "/assets/icons/notification-text.svg"
   },
@@ -404,6 +432,10 @@
     "iconPath": "/assets/icons/speedometer-02.svg"
   },
   {
+    "iconName": "sun",
+    "iconPath": "/assets/icons/sun.svg"
+  },
+  {
     "iconName": "tool-01",
     "iconPath": "/assets/icons/tool-01.svg"
   },
@@ -424,6 +456,10 @@
     "iconPath": "/assets/icons/truck-01.svg"
   },
   {
+    "iconName": "upload-cloud-01",
+    "iconPath": "/assets/icons/upload-cloud-01.svg"
+  },
+  {
     "iconName": "user-01",
     "iconPath": "/assets/icons/user-01.svg"
   },
@@ -442,6 +478,14 @@
   {
     "iconName": "waves",
     "iconPath": "/assets/icons/waves.svg"
+  },
+  {
+    "iconName": "wifi-off",
+    "iconPath": "/assets/icons/wifi-off.svg"
+  },
+  {
+    "iconName": "wifi",
+    "iconPath": "/assets/icons/wifi.svg"
   },
   {
     "iconName": "x-close",

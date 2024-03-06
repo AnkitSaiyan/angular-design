@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DataTableService } from '../../services/data-table.service';
 
 @Component({
@@ -11,9 +11,17 @@ export class DataTableActionComponent implements OnInit {
 
   @Input() tooltip: string = '';
 
+  @Output() click = new EventEmitter<Event>();
+
   constructor(private dataTableService: DataTableService) {}
 
   ngOnInit(): void {
     Promise.resolve(null).then(() => this.dataTableService.setHasActions(true));
+  }
+
+  handleClick(event: Event) {
+    this.click.emit(event);
+    event.preventDefault();
+    event.stopPropagation();
   }
 }

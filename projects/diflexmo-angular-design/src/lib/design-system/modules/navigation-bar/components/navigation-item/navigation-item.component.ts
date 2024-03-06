@@ -13,7 +13,7 @@ export class NavigationItemComponent implements AfterViewInit, OnDestroy {
 
   @Input() icon: string = '';
 
-  @Input() routerLink?: string;
+  @Input() redirectLink?: string;
 
   @Input() exact: boolean = false;
 

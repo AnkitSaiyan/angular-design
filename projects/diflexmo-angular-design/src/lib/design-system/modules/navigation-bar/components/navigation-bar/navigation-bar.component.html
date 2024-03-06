@@ -7,13 +7,16 @@
         *ngFor="let item of navigationItems"
         [title]="item.title"
         [icon]="item.icon"
-        [routerLink]="item.routerLink"
+        [redirectLink]="item.routerLink"
         [exact]="item.exact"
         [children]="item.children"
       >
       </dfm-navigation-item>
     </div>
     <div class="profile-items h-100">
+      <ng-container *ngIf="additionalNavigationItems">
+        <ng-container *ngTemplateOutlet="additionalNavigationItems"></ng-container>
+      </ng-container>
       <dfm-navigation-item-tenant
         *ngIf="isTenantDropdownShown && tenants.length && currentTenant"
         [title]="('DESIGN_SYSTEM.NAVIGATION_BAR.TENANTS' | localizedText : 'Tenants' | async)!"

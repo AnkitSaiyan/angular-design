@@ -13,7 +13,7 @@
   -webkit-box-align: start;
   align-items: flex-start;
   flex-wrap: wrap;
-  padding: 16px;
+  padding: 8px 16px;
   margin-bottom: 0;
   background-color: transparent;
   position: relative;
@@ -55,7 +55,7 @@
 
 .dfm-card > .dfm-card-body-no-gutter {
   word-wrap: break-word;
-  height: calc(100% - 56px);
+  height: calc(100% - 40px);
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 }

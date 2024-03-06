@@ -1,19 +1,26 @@
 .dfm-clipboard {
-  color: var(--dfm-clipboard-color);
-
-  &:hover {
-    color: var(--dfm-clipboard-color-hover);
+  .content {
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
-  &.hidden {
-    display: none;
+  .copy-icon {
+    color: var(--dfm-clipboard-color);
+
+    &:hover {
+      color: var(--dfm-clipboard-color-hover);
+    }
+
+    &.hidden {
+      display: none;
+    }
   }
-}
 
-.dfm-clipboard-copied {
-  color: var(--dfm-clipboard-color-copied);
+  .copied-icon {
+    color: var(--dfm-clipboard-color-copied);
 
-  &.hidden {
-    display: none;
+    &.hidden {
+      display: none;
+    }
   }
 }

@@ -8,5 +8,6 @@ export class NavigationItemEvent {
     public type?: NavigationItemEventType,
     public details?: string,
     public link?: string,
+    public dateFormat?: string,
   ) {}
 }

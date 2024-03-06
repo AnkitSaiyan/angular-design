@@ -1,11 +1,16 @@
 @import './vendors/bootstrap';
 
 @import './abstracts/variables';
-@import './themes/theme';
 
 @import './mixins/base';
 @import './mixins/text-mixins';
 
+@import './themes/light-theme';
+@import './themes/dark-theme';
+
+// import base
+@import './base/shadows';
+@import './base/typography';
 @import './base/color';
 @import './base/opacity';
 @import './base/reset';
@@ -17,6 +22,7 @@
 @import './components/button';
 @import './components/divider';
 @import './components/forms';
+@import './components/tooltip';
 @import './components/navigation';
 @import './components/scrollbar';
 @import './components/tooltip';
@@ -26,10 +32,10 @@ body {
   overflow-y: hidden;
 }
 
-@media (max-width: 490px) {
+@media (max-width: 680px) {
   .dfm-table-wrapper-collapse {
-      margin-left: -16px;
-      margin-right: -16px;
+    margin-left: -16px;
+    margin-right: -16px;
   }
 }
 
@@ -78,4 +84,8 @@ body {
 .dfm-card-toolbar > div > dfm-icon > svg-icon > svg {
   height: 16px !important;
   width: 16px !important;
+}
+
+.cdk-virtual-scrollable {
+  contain: layout !important;
 }

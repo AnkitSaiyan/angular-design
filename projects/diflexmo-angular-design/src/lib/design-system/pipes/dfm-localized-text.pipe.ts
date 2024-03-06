@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 
 @Pipe({
   name: 'localizedText',
+  pure: false,
 })
 export class DfmLocalizedTextPipe implements PipeTransform {
   constructor(@Optional() private translateService: TranslateService) {}

@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { NgbDropdownModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { RouterModule } from '@angular/router';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { DataTableComponent } from './components/data-table/data-table.component';
 import { DfmIconModule } from '../icon/icon.module';
 import { DataTableRowCellComponent } from './components/data-table-row-cell/data-table-row-cell.component';
@@ -13,9 +15,11 @@ import { DfmCheckboxModule } from '../base-checkbox/base-checkbox.module';
 import { DataTableActionComponent } from './components/data-table-action/data-table-action.component';
 import { DataTableActionCellComponent } from './components/data-table-action-cell/data-table-action-cell.component';
 import { DfmDirectivesModule } from '../../directives/directives.module';
+import { DfmPipesModule } from '../../pipes/pipes.module';
 
 @NgModule({
   declarations: [DataTableComponent, DataTableRowCellComponent, DataTableHeaderCellComponent, DataTableActionComponent, DataTableActionCellComponent],
+  exports: [DataTableComponent, DataTableRowCellComponent, DataTableActionComponent, DataTableActionCellComponent],
   imports: [
     CommonModule,
     DfmIconModule,
@@ -27,7 +31,9 @@ import { DfmDirectivesModule } from '../../directives/directives.module';
     InfiniteScrollModule,
     NgbDropdownModule,
     DfmDirectivesModule,
+    RouterModule,
+    ScrollingModule,
+    DfmPipesModule,
   ],
-  exports: [DataTableComponent, DataTableRowCellComponent, DataTableActionComponent, DataTableActionCellComponent],
 })
 export class DfmDataTableModule {}

@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   ChangeDetectorRef,
   Component,
   ContentChild,
@@ -6,13 +7,16 @@ import {
   EventEmitter,
   Input,
   OnChanges,
+  OnDestroy,
   OnInit,
   Output,
+  Renderer2,
   SimpleChanges,
   TemplateRef,
   ViewChild,
 } from '@angular/core';
-import { debounceTime, Subject, tap } from 'rxjs';
+import { debounceTime, Subject, takeUntil, tap } from 'rxjs';
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import { DfmDatasource } from '../../models/datasource.model';
 import { DfmTableAction } from '../../models/table-action.model';
 import { DfmTableHeader } from '../../models/table-header.model';
@@ -26,7 +30,7 @@ import { TableHeaderSize } from '../../types/table-header-size.type';
   styleUrls: ['./data-table.component.scss'],
   providers: [DataTableService],
 })
-export class DataTableComponent<T> implements OnInit, OnChanges {
+export class DataTableComponent<T> implements OnInit, AfterViewInit, OnChanges, OnDestroy {
   @Input() data?: DfmDatasource<T>;
 
   @Input() rowSelectable: boolean = false;
@@ -41,11 +45,7 @@ export class DataTableComponent<T> implements OnInit, OnChanges {
 
   @Input() stickyFirstColumn: boolean = true;
 
-  @Input() actionsHeader?: string;
-
-  @Input() actionsHeaderIcon?: string;
-
-  @Input() actionsHeaderTooltip?: string;
+  @Input() actionTemplateRef?: TemplateRef<any>;
 
   @Input() stickyActions: boolean = true;
 
@@ -61,6 +61,12 @@ export class DataTableComponent<T> implements OnInit, OnChanges {
 
   @Input() collapseOnMobile: boolean = false;
 
+  @Input() loading: boolean = false;
+
+  @Input() redirectLink?: string;
+
+  @Input() virtualScrolling: boolean = false;
+
   @ContentChild('bodyRowTemplate') bodyRowTemplate!: TemplateRef<any>;
 
   @Output() sorted = new EventEmitter<DfmTableHeader>();
@@ -73,7 +79,11 @@ export class DataTableComponent<T> implements OnInit, OnChanges {
 
   @Output() actionsHeaderClicked = new EventEmitter();
 
-  @ViewChild('tableWrapper', { static: false }) tableWrapper!: ElementRef;
+  @ViewChild('tableWrapper', { read: ElementRef }) tableWrapper?: ElementRef;
+
+  @ViewChild('tableHeader') tableHeader?: ElementRef;
+
+  @ViewChild('tableWrapper', { read: CdkVirtualScrollViewport }) cdkViewPort?: CdkVirtualScrollViewport;
 
   public tableSizeChanged$ = new Subject<void>();
 
@@ -81,7 +91,13 @@ export class DataTableComponent<T> implements OnInit, OnChanges {
 
   public isActionHeaderPassed: boolean = false;
 
+  public rowHeight: number = 66;
+
+  public noItemsHeight: number = 42;
+
   private isTableSizeProcessing = false;
+
+  private unsubscribe: Subject<any> = new Subject();
 
   public get areAllSelected() {
     return Array.from(this.selectedItems.values()).filter((i) => i).length === this.data?.items.length;
@@ -94,7 +110,7 @@ export class DataTableComponent<T> implements OnInit, OnChanges {
     return false;
   }
 
-  constructor(public dataTableService: DataTableService, private changeDetectionRef: ChangeDetectorRef) {}
+  constructor(public dataTableService: DataTableService, private changeDetectionRef: ChangeDetectorRef, private render: Renderer2) {}
 
   ngOnInit(): void {
     if (this.stickyActions !== false) {
@@ -103,13 +119,14 @@ export class DataTableComponent<T> implements OnInit, OnChanges {
 
     this.tableSizeChanged$
       .pipe(
+        takeUntil(this.unsubscribe),
         debounceTime(100),
         tap(() => (this.isTableSizeProcessing = true)),
       )
       .subscribe(() => {
         this.dataTableService.setOverflow(false);
         this.changeDetectionRef.detectChanges();
-        this.dataTableService.setOverflow(this.tableWrapper.nativeElement.offsetWidth <= this.tableWrapper.nativeElement.scrollWidth);
+        this.dataTableService.setOverflow(this.tableWrapper?.nativeElement.offsetWidth <= this.tableWrapper?.nativeElement.scrollWidth);
         this.isTableSizeProcessing = false;
       });
 
@@ -120,7 +137,7 @@ export class DataTableComponent<T> implements OnInit, OnChanges {
     }
 
     if (this.clearSelected$) {
-      this.clearSelected$.subscribe(() => {
+      this.clearSelected$.pipe(takeUntil(this.unsubscribe)).subscribe(() => {
         this.selectedItems.clear();
         this.selected.emit([]);
       });
@@ -133,6 +150,47 @@ export class DataTableComponent<T> implements OnInit, OnChanges {
     if (changes['stickyActions'] && changes['stickyActions'].currentValue !== changes['stickyActions'].previousValue) {
       this.dataTableService.setStickyActions(changes['stickyActions'].currentValue);
     }
+
+    if (changes['data'] && this.virtualScrolling) {
+      if (changes['data'].previousValue?.items.length === 0 || this.data?.items.length === 0) {
+        this.changeDetectionRef.detectChanges();
+      }
+
+      const itemsLength = this.data?.items.length ?? 0;
+      const headerHeight = this.tableHeader?.nativeElement.getBoundingClientRect().height ?? this.rowHeight;
+      const borderWidth = getComputedStyle(this.tableWrapper?.nativeElement).getPropertyValue('border-bottom-width');
+
+      let height = Math.ceil((itemsLength ? itemsLength * this.rowHeight : this.noItemsHeight) + headerHeight);
+
+      if (this.tableWrapper && this.tableWrapper.nativeElement.clientWidth < this.tableWrapper.nativeElement.scrollWidth) {
+        height += 15;
+      }
+
+      if (this.tableWrapper) {
+        this.render.setStyle(this.tableWrapper.nativeElement, 'height', `min(calc(${height}px + 2 *${borderWidth}), 100%)`);
+      }
+
+      this.cdkViewPort?.checkViewportSize();
+    }
+  }
+
+  ngAfterViewInit(): void {
+    if (this.cdkViewPort) {
+      this.cdkViewPort.renderedRangeStream
+        .pipe(
+          takeUntil(this.unsubscribe),
+          tap((range) => {
+            if (this.tableHeader) {
+              this.render.setStyle(this.tableHeader.nativeElement, 'top', `-${this.rowHeight * range.start}px`);
+            }
+          }),
+        )
+        .subscribe();
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe.complete();
   }
 
   public checkTableSize(): void {
@@ -189,6 +247,23 @@ export class DataTableComponent<T> implements OnInit, OnChanges {
     } else {
       this.selectedItems.clear();
       this.selected.emit([]);
+    }
+  }
+
+  handleScroll() {
+    if (!this.cdkViewPort) {
+      return;
+    }
+
+    const { end } = this.cdkViewPort.getRenderedRange();
+    const total = this.cdkViewPort.getDataLength();
+
+    if (total === 0) {
+      return;
+    }
+
+    if (end >= total) {
+      this.scrolled.emit();
     }
   }
 }

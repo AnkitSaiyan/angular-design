@@ -7,11 +7,10 @@
         class="dfm-input dfm-input-{{ size }}"
         [ngClass]="{ 'dfm-invalid': control && control.touched && !control.valid, 'leading-icon-control': icon }"
         [ngModel]="search"
-        (ngModelChange)="updateSearch($event)"
+        (ngModelChange)="onSearchChange($event)"
         [placeholder]="placeholder"
         [disabled]="disabled"
         [readonly]="!typeToSearch || readonly"
-        (focusout)="focusout($event)"
         #searchInputRef
         (click)="toggleDropdownMenu()"
         (keydown)="keyPress($event)"
@@ -38,7 +37,14 @@
 
   <span *ngIf="hint" class="dfm-input-hint">{{ hint }}</span>
   <dfm-error [control]="control"></dfm-error>
-  <div class="input-dropdown-menu dropdown-menu dropdown-menu-end w-100 p-0" (dfmDomChange)="checkIfDropdownIsClosed($event)">
+  <div
+    class="input-dropdown-menu dropdown-menu dropdown-menu-end w-100 p-0"
+    [style.max-height]="maxMenuHeight"
+    (dfmDomChange)="checkIfDropdownIsClosed($event)"
+    infiniteScroll
+    (scrolled)="scrolled.emit()"
+    [scrollWindow]="false"
+  >
     <ng-container *ngIf="loading; then loadingTemplate; else searchTemplate"></ng-container>
 
     <ng-template #loadingTemplate>
@@ -50,6 +56,10 @@
       <ng-container *ngIf="search.length >= minQueryLength">
         <ng-container *ngIf="filteredItems && filteredItems.length; then itemsTemplate; else noItemsTemplate"> </ng-container>
       </ng-container>
+
+      <ng-container *ngIf="customOptionTemplate">
+        <ng-container *ngTemplateOutlet="customOptionTemplate"></ng-container>
+      </ng-container>
     </ng-template>
 
     <ng-template #itemsTemplate>
@@ -58,6 +68,7 @@
         <dfm-icon *ngIf="isAllSelected" name="check" class="option-selected"></dfm-icon>
       </div>
       <div
+        #dropdownItems
         *ngFor="let item of filteredItems; index as i"
         (click)="selectItem(item)"
         [ngClass]="{ 'option-highlighted': currentHighlighted === i }"

@@ -1,24 +1,23 @@
 <th
-  class="dfm-px-24 cell"
+  class="cell cell-{{ headerSize }}"
   [ngClass]="{
     pointer: header?.isSortable,
-    'dfm-py-27': headerSize === 'lg',
-    'dfm-py-16': headerSize === 'md',
-    'dfm-py-13 dfm-text-main-700': headerSize === 'sm',
-    'dfm-header-cell-disabled': header?.isDisabled,
-    'dfm-header-cell': !header?.isDisabled
+    'cell-disabled': header?.isDisabled
   }"
 >
   <ng-container *ngIf="header">
-    <div class="d-flex dfm-gap-4" [class.float-end]="contentAlign === 'right'">
-      <div [class.text-xs-bold]="headerSize !== 'sm'" [class.text-xs-medium]="headerSize === 'sm'">{{ header.title }}</div>
-      <div *ngIf="header?.tooltip" class="icon-16 dfm-text-main-400">
-        <dfm-icon name="help-circle" container="body" [ngbTooltip]="header.tooltip"></dfm-icon>
+    <div class="d-flex dfm-gap-4 justify-content-between" [class.justify-content-end]="header.isAction">
+      <div class="d-flex dfm-gap-4" *ngIf="!header.isAction">
+        <div>{{ header.title }}</div>
+        <div *ngIf="header.tooltip" class="icon-16 dfm-text-main-400">
+          <dfm-icon name="help-circle" container="body" [ngbTooltip]="header.tooltip"></dfm-icon>
+        </div>
+        <div *ngIf="header.isSortable" class="icon-16">
+          <dfm-icon *ngIf="header.sort" [name]="header.sort === 'Asc' ? 'arrow-up' : 'arrow-down'"></dfm-icon>
+        </div>
       </div>
-      <div *ngIf="header.isSortable" class="icon-16">
-        <dfm-icon *ngIf="header.sort && header.sort === 'Asc'" name="arrow-up"></dfm-icon>
-        <dfm-icon *ngIf="header.sort && header.sort === 'Desc'" name="arrow-down"></dfm-icon>
-      </div>
+      <div *ngIf="totalNumber">{{ 'DESIGN_SYSTEM.DATA_TABLE.TOTAL' | localizedText : 'Total' | async }}: {{ totalNumber }}</div>
+      <div *ngIf="header.isAction">{{ header.title }}</div>
     </div>
   </ng-container>
   <ng-container *ngIf="!header">

@@ -230,7 +230,7 @@ $diflexmo-button-sizes: (
       box-shadow: map.get($val, box-shadow-hover);
       border-width: map.get($val, border-width);
       border-style: map.get($val, border-style);
-      border-color: var(map.get($val, border-color));
+      border-color: var(map.get($val, border-hover));
 
       transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     }
@@ -239,12 +239,15 @@ $diflexmo-button-sizes: (
       background-color: var(map.get($val, background-focus));
       color: var(map.get($val, color-focus));
 
-      box-shadow: map.get($val, box-shadow-focus) !important;
       border-width: map.get($val, border-width);
       border-style: map.get($val, border-style);
-      border-color: var(map.get($val, border-color));
+      border-color: var(map.get($val, border-focus));
 
       transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    .dfm-btn-#{$key}-#{$size}:focus-visible {
+      box-shadow: map.get($val, box-shadow-focus) !important;
     }
 
     .dfm-btn-#{$key}-#{$size}:disabled {

@@ -9,6 +9,7 @@ import {
   OnInit,
   Output,
   SimpleChanges,
+  TemplateRef,
   ViewChild,
 } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
@@ -47,6 +48,8 @@ export class NavigationBarComponent implements OnInit, OnChanges, AfterViewInit,
   @Input() miniLogoPath?: string;
 
   @Input() profileData?: NavigationProfileData;
+
+  @Input() additionalNavigationItems?: TemplateRef<any>;
 
   @Input() isSettingsButtonShown: boolean = true;
 
@@ -90,7 +93,7 @@ export class NavigationBarComponent implements OnInit, OnChanges, AfterViewInit,
 
   ngAfterViewInit(): void {
     if (this.content) {
-      this.content.nativeElement.onscroll = (e: Event) => (this.isCollapsed = (e.target as HTMLElement).scrollTop > 64);
+      this.content.nativeElement.onscroll = (e: Event) => (this.isCollapsed = (e.target as HTMLElement).scrollTop > (this.isCollapsed ? 46 : 64));
       this.content.nativeElement.addEventListener('click', this.hideMoreItemsSection.bind(this));
     }
   }

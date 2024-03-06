@@ -13,6 +13,7 @@ import {
   Output,
   QueryList,
   SimpleChanges,
+  TemplateRef,
   ViewChild,
   ViewChildren,
 } from '@angular/core';
@@ -64,9 +65,15 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
 
   @Input() public readonly: boolean = false;
 
+  @Input() public maxMenuHeight = '300px';
+
+  @Input() public customOptionTemplate?: TemplateRef<any>;
+
   @Output() public searchInput = new EventEmitter<string>();
 
   @Output() public menuClosed = new EventEmitter();
+
+  @Output() public scrolled = new EventEmitter();
 
   @ViewChild('selectedItemsContainerRef') selectedItemsContainerRef!: ElementRef;
 
@@ -75,6 +82,8 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
   @ViewChild('searchInputRef') searchInputRef!: ElementRef;
 
   @ViewChild('dropdown') dropdownRef!: ElementRef;
+
+  @ViewChildren('dropdownItems') dropdownItems!: QueryList<ElementRef>;
 
   public currentHighlighted?: number;
 
@@ -109,7 +118,7 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
   constructor(private changeDetectionRef: ChangeDetectorRef, @Optional() public control: NgControl, private eRef: ElementRef) {
     super();
 
-    this.value = null;
+    this.value = '';
 
     if (this.control) {
       this.control.valueAccessor = this;
@@ -135,10 +144,6 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
       this.typeToSearchText = `Please enter ${this.minQueryLength} or more characters`;
     }
 
-    this.filteredItems = [...this.items];
-
-    this.updateSearch('');
-
     const subscription = this.resizeSelectedItems$.pipe(debounceTime(50)).subscribe(() => this.updateSelectedItems());
     this.subscriptions.add(subscription);
   }
@@ -150,8 +155,17 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['items']?.previousValue !== changes['items']?.currentValue) {
-      this.filteredItems = [...changes['items'].currentValue];
+    if (changes['items']) {
+      this.filteredItems = [...this.items];
+
+      if (!this.asyncSearch && this.value) {
+        const currentSearch = this.search;
+        this.writeValue(this.multiple ? [...this.value] : this.value);
+
+        if (!this.search) {
+          this.search = currentSearch;
+        }
+      }
     }
   }
 
@@ -160,7 +174,9 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
   }
 
   override writeValue(value: string | string[]) {
-    this.resetInputDropdown();
+    if (JSON.stringify(this.value) === JSON.stringify(value)) {
+      return;
+    }
 
     if (!this.multiple) {
       const item = this.items.find((i) => i.value === value);
@@ -168,26 +184,51 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
       if (item) {
         this.updateInputDropdown(item, true);
       }
-    } else if (value && value.length) {
-      const items = this.items.filter((i) => value.includes(i.value));
-      items.forEach((i) => this.updateInputDropdown(i, false));
+
+      return;
     }
+
+    const newItems = this.items.filter((i) => value.includes(i.value));
+    const existingItems = this.selectedItems.filter((i) => value.includes(i.value));
+
+    newItems.forEach((newItem) => {
+      const exists = existingItems.find((existingItem) => newItem.value === existingItem.value);
+
+      if (!exists) {
+        existingItems.push(newItem);
+      }
+    });
+
+    this.selectedItems = existingItems;
+    this.value = this.selectedItems.map((i) => i.value);
+
+    this.updateSelectedItems();
   }
 
-  updateSearch(query: string): void {
+  onSearchChange(query: string): void {
     this.dropdownInstance?.show();
-
     this.search = query;
 
     if (!this.multiple && this.value) {
-      this.value = null;
+      this.value = '';
     }
 
-    const queryLength = query ? query.length : 0;
+    this.emitSearchEvent();
+  }
+
+  private emitSearchEvent() {
+    if (!this.typeToSearch) {
+      return;
+    }
+    const queryLength = this.search ? this.search.length : 0;
+
     if (queryLength >= this.minQueryLength) {
-      this.searchInput.emit(query);
-    } else {
-      this.filteredItems = this.asyncSearch ? [] : [...this.items];
+      if (!this.asyncSearch) {
+        this.searchItems(this.search);
+      }
+      this.searchInput.emit(this.search);
+    } else if (this.asyncSearch) {
+      this.filteredItems = [];
     }
   }
 
@@ -239,7 +280,10 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
       this.isDropdownClosed = !this.isDropdownClosed;
 
       if (this.isDropdownClosed) {
+        this.currentHighlighted = undefined;
         this.menuClosed.emit();
+      } else {
+        this.emitSearchEvent();
       }
     }
   }
@@ -252,28 +296,19 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
     if (this.multiple) {
       this.updateMultiInputDropdown(item, isSelected);
     } else {
-      this.updateSingleInputDropdown(item);
+      this.setSingleInputDropdown(item);
     }
   }
 
   private updateMultiInputDropdown(item: SelectItem, isSelected: boolean): void {
-    if (isSelected) {
-      this.value = this.value.filter((i: string) => i !== item.value);
-      this.selectedItems = this.selectedItems.filter((i) => i.value !== item.value);
-    } else {
-      this.value = this.value && this.value.length ? [...this.value, item.value] : [item.value];
-      this.selectedItems.push(item);
-    }
+    this.selectedItems = isSelected
+      ? (this.selectedItems = this.selectedItems.filter((i) => i.value !== item.value))
+      : (this.selectedItems = [...new Set([...this.selectedItems, item])]);
+
+    this.value = this.selectedItems.map((i) => i.value);
 
     this.updateSelectedItems();
-
-    this.filteredItems = this.asyncSearch ? [] : [...this.items];
-    this.search = '';
     this.searchInputRef.nativeElement.select();
-  }
-
-  private updateSingleInputDropdown(item: SelectItem): void {
-    this.setSingleInputDropdown(item);
   }
 
   private setSingleInputDropdown(item: SelectItem): void {
@@ -284,47 +319,81 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
       this.search = item.name;
     }
 
-    if (this.asyncSearch) {
+    if (this.asyncSearch && this.currentHighlighted === undefined) {
       this.filteredItems = [item];
     }
 
-    this.dropdownInstance?.hide();
+    if (this.currentHighlighted === undefined) {
+      this.dropdownInstance?.hide();
+    }
   }
 
   private resetInputDropdown(): void {
-    this.value = null;
+    this.value = '';
     this.search = '';
     this.selectedItems = [];
     this.filteredItems = this.asyncSearch ? [] : [...this.items];
     this.updateSelectedItems();
+    this.dropdownInstance?.hide();
   }
 
-  public focusout(value: any) {
-    setTimeout(() => {
-      this.dropdownInstance?.hide();
-      this.onTouch(value);
-    }, 250);
+  private scrollToHighlightedOption() {
+    if (this.currentHighlighted !== undefined) {
+      const currentOption = this.dropdownItems.toArray()[this.currentHighlighted];
+      currentOption.nativeElement.scrollIntoView({ behavior: 'auto', block: 'center' });
+    }
   }
 
   keyPress(event: KeyboardEvent) {
-    this.dropdownInstance?.show();
     if (event.key === 'ArrowDown') {
       if (this.currentHighlighted === undefined || this.currentHighlighted === this.filteredItems.length - 1) {
         this.currentHighlighted = 0;
       } else {
         this.currentHighlighted++;
       }
+      this.scrollToHighlightedOption();
+      event.preventDefault();
     }
+
     if (event.key === 'ArrowUp') {
       if (!this.currentHighlighted || this.currentHighlighted === 0) {
         this.currentHighlighted = this.filteredItems.length - 1;
       } else {
         this.currentHighlighted--;
       }
+      this.scrollToHighlightedOption();
+      event.preventDefault();
     }
-    if (this.currentHighlighted !== undefined) {
-      this.value = this.filteredItems[this.currentHighlighted];
-      this.search = this.filteredItems[this.currentHighlighted].name;
+
+    if (event.key === 'Delete') {
+      this.currentHighlighted = undefined;
+      if (!this.multiple) {
+        this.resetInputDropdown();
+      } else {
+        this.search = '';
+        this.emitSearchEvent();
+      }
+    }
+
+    if (this.currentHighlighted !== undefined && event.key === 'Enter') {
+      this.selectItem(this.filteredItems[this.currentHighlighted]);
+      if (!this.multiple) this.dropdownInstance?.hide();
+    }
+
+    if (event.key !== 'Tab' && !event.shiftKey && !event.altKey && !event.ctrlKey) {
+      this.dropdownInstance?.show();
+    } else {
+      this.dropdownInstance?.hide();
+
+      if (this.asyncSearch && !this.multiple && this.currentHighlighted !== undefined) {
+        this.filteredItems = [this.filteredItems[this.currentHighlighted]];
+      }
+
+      this.currentHighlighted = undefined;
+    }
+
+    if (event.key === 'Enter') {
+      event.preventDefault();
     }
   }
 
@@ -344,6 +413,7 @@ export class InputDropdownComponent extends BaseControlValueAccessor implements 
       this.value = [];
       this.selectedItems = [];
     }
+
     this.updateSelectedItems();
   }
 

@@ -1,107 +1,112 @@
 @import 'mixins/base';
 
 :host {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .dfm-table-wrapper {
-    overflow: overlay;
-    border: 1px solid var(--dfm-table-border);
-    @include border-radius;
+  overflow: overlay;
+  border: 1px solid var(--dfm-table-border);
+  @include border-radius;
+  white-space: nowrap;
+  max-height: 100%;
+
+  table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    background-color: var(--dfm-table-even-cell-bg);
+
+    &.scrollable {
+      min-width: 101%;
+    }
+
+    .status-row {
+      color: var(--dfm-table-header-color);
+    }
+  }
+
+  table > thead {
+    border-bottom: 1px solid var(--dfm-table-border);
+    background-color: var(--dfm-table-even-cell-bg);
     white-space: nowrap;
-    max-height: 100%;
-
-    table {
-        border-collapse: separate;
-        border-spacing: 0;
-        width: 100%;
-        background-color: var(--dfm-table-even-cell-bg);
-
-        &.scrollable {
-            min-width: 101%;
-        }
-    }
-
-    table>thead {
-        border-bottom: 1px solid var(--dfm-table-border);
-        background-color: var(--dfm-table-even-cell-bg);
-        white-space: nowrap;
-    }
+  }
 }
 
 .dfm-sticky-header {
-    position: sticky;
-    top: 0;
-    z-index: 1;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .dfm-header {
-    border-bottom: 1px solid var(--dfm-table-border);
+  border-bottom: 1px solid var(--dfm-table-border);
 }
 
 .body-row {
+  display: table-row;
 
-    &:nth-child(even) {
-        background-color: var(--dfm-table-even-cell-bg);
-    }
+  &:nth-child(even) {
+    background-color: var(--dfm-table-even-cell-bg);
+  }
 
-    &:nth-child(odd) {
-        background-color: var(--dfm-table-odd-cell-bg);
-    }
+  &:nth-child(odd) {
+    background-color: var(--dfm-table-odd-cell-bg);
+  }
 }
 
 .body-row td {
-    padding: 16px 24px;
+  padding: 16px 24px;
 }
 
 .body-row:hover {
-    background-color: var(--dfm-table-cell-bg-hover);
+  background-color: var(--dfm-table-cell-bg-hover);
 }
 
 .table-actions {
-    color: var(--dfm-table-list-actions-icon-color);
+  color: var(--dfm-table-list-actions-icon-color);
 }
 
 .table-actions:hover {
-    color: var(--dfm-table-list-actions-icon-hover-color);
+  color: var(--dfm-table-list-actions-icon-hover-color);
 }
 
 .option-selected {
-    width: 20px;
-    height: 20px;
-    // color: var(--dfm-input-dropdown-option-selected-color);
+  width: 20px;
+  height: 20px;
+  // color: var(--dfm-input-dropdown-option-selected-color);
 }
 
 .dfm-option:hover {
-    background-color: var(--dfm-main-200);
+  background-color: var(--dfm-main-200);
 }
 
 .dfm-dropdown {
-    position: relative;
+  position: relative;
 }
 
 .dfm-dropdown-menu {
-    position: absolute;
-    inset: 0px auto auto 0px;
+  position: absolute;
+  inset: 0px auto auto 0px;
 }
 
 .no-data-cell {
-    text-align: center;
+  text-align: center;
 }
 
 .dropdown-ellipsis-icon {
-    color: var(--dfm-table-list-actions-icon-color);
+  color: var(--dfm-table-list-actions-icon-color);
 }
 
 .dropdown-ellipsis-icon:hover {
-    color: var(--dfm-table-list-actions-icon-hover-color);
+  color: var(--dfm-table-list-actions-icon-hover-color);
 }
 
 .dropdown-toggle::after {
-    display: none;
+  display: none;
 }
 
 .dfm-dropdown-menu {
-    min-width: 0px !important;
-    padding: 0px !important;
+  min-width: 0px !important;
+  padding: 0px !important;
 }

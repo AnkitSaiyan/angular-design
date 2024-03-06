@@ -10,7 +10,7 @@ import { TableHeaderSize } from '../../types/table-header-size.type';
 export class DataTableHeaderCellComponent {
   @Input() header?: DfmTableHeader;
 
-  @Input() headerSize: TableHeaderSize = 'lg';
+  @Input() headerSize?: TableHeaderSize;
 
-  @Input() contentAlign: 'right' | 'left' = 'left';
+  @Input() totalNumber?: number;
 }
