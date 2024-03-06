@@ -33,6 +33,22 @@ Includes components used in developing Angular Apps for Diflexmo.
               }
     ],
   ```
+- Add initialization of theme service to you `app.component.ts` file:
+
+  ```
+  export class AppComponent implements OnInit, OnDestroy {
+    constructor(private themeService: ThemeService) {}
+
+    ngOnInit(): void {
+      this.themeService.init();
+    }
+
+    ngOnDestroy(): void {
+      this.themeService.destroy();
+    }
+  }
+  ```
+
 - Import any required `diflexmo-angular-design` module into your module/component `imports` section.
 
 ## How Tos
@@ -40,15 +56,16 @@ Includes components used in developing Angular Apps for Diflexmo.
 ### Test library changes locally
 
 If you are working on library changes and want to test them, follow these steps:
+
 - Run the command `ng build --watch` in the root folder of the library
 - Navigate to your project and install the library from the folder using the following command:
- `npm i {you path}\diflexmo.angular-design\dist\diflexmo-angular-design`
+  `npm i {you path}\diflexmo.angular-design\dist\diflexmo-angular-design`
 - In some versions of npm, the peer dependencies of `diflexmo-angular-design` library may not be installed. To solve this issue, you can use `install-local-dependencies` package by running this commands in the project folder:
   ```
   npm i install-local-dependencies -g
   install-local-dependencies
   ```
-After making a change to the library code, you can repeat steps 2 and 3 to install the changes into your project.
+  After making a change to the library code, you can repeat steps 2 and 3 to install the changes into your project.
 
 ### How to override library css variables
 
@@ -69,6 +86,7 @@ If you override `--dfm-primary` value, it will be replaced everywhere `--dfm-pri
 <summary>Data table documentation</summary>
 
 ### Selector
+
 `dfm-data-table`
 
 ### Inputs
@@ -164,6 +182,7 @@ To have the table truncate data in cells, you have to set the max width of the c
 <summary>Localization</summary>
 
 ### How to use
+
 The library uses a combination of the DfmLocalizationService and custom pipes to dynamically change the locale of the app without having to refresh the entire app.
 
 The DfmLocalizationService is used to set the locale of the app. Use the function setCurrentLocale(locale: string) to change the locale. Any locale can be set but it must be registered first, to register a locale refer to the angular documentation.
@@ -173,12 +192,14 @@ DfmLocalizationService will get the locale_id to use as the locale on app launch
 The DfmPipesModule will extend the localization pipes native to angular so that they use the locale saved in DfmLocalizationService instead of angular's locale_id. This way developers can keep using the the same pipes angular provides in html.
 
 !important The DfPipesModule must be imported in every module to extend the default pipes. The core module and DesignSystemModule will also take care of this.
+
 </details>
 
 <details>
 <summary>Button documentation</summary>
 
 ### Selectors
+
 Component: `dfm-button`
 Directive: `dfm-button`
 
