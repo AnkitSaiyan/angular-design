@@ -9,8 +9,6 @@
 @import './themes/dark-theme';
 
 // import base
-@import './base/shadows';
-@import './base/typography';
 @import './base/color';
 @import './base/opacity';
 @import './base/reset';
@@ -22,9 +20,7 @@
 @import './components/button';
 @import './components/divider';
 @import './components/forms';
-@import './components/tooltip';
 @import './components/navigation';
-@import './components/scrollbar';
 @import './components/tooltip';
 
 body {
