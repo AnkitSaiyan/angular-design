@@ -13,6 +13,8 @@ export class NavigationItemProfileComponent implements AfterViewInit, OnDestroy 
 
   @Input() public isSettingsButtonShown: boolean = true;
 
+  @Input() public isThemeOptionsShown: boolean = true;
+
   @Output() public logout = new EventEmitter();
 
   @ViewChild('dropdown', { read: ElementRef }) dropdown?: ElementRef;

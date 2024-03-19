@@ -53,6 +53,8 @@ export class NavigationBarComponent implements OnInit, OnChanges, AfterViewInit,
 
   @Input() isSettingsButtonShown: boolean = true;
 
+  @Input() isThemeOptionsShown: boolean = true;
+
   @Output() tenantChanged = new EventEmitter<string>();
 
   @Output() notificationsDismissed = new EventEmitter<string[]>();

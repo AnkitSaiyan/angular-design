@@ -27,6 +27,7 @@
       <dfm-navigation-item-profile
         *ngIf="isProfileShown"
         [isSettingsButtonShown]="isSettingsButtonShown"
+        [isThemeOptionsShown]="isThemeOptionsShown"
         [profileData]="profileData"
         (logout)="logout.emit()"
       ></dfm-navigation-item-profile>

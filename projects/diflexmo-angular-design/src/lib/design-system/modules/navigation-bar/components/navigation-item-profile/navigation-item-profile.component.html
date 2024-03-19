@@ -12,8 +12,11 @@
   <div class="dropdown-menu dfm-profile-dropdown-menu">
     <div class="profile-header dfm-p-16 d-flex flex-row dfm-gap-12">
       <div class="avatar-container">
+        @if(profileData.user.avatar){
+        <img class="avatar" [src]="profileData.user.avatar" alt="avatar" />
+        } @else{
         <dfm-icon name="user-circle" class="avatar"></dfm-icon>
-        <!-- <img *ngIf="profileData.user.avatar" class="avatar" [src]="'data:image/png;base64,' + profileData.user.avatar" /> -->
+        }
       </div>
       <div class="d-flex flex-column">
         <a *ngIf="profileData.user.link" class="name text-md-medium d-flex align-items-center dfm-gap-8" [href]="profileData.user.link"
@@ -39,6 +42,7 @@
     <hr class="dfm-mx-16 dfm-my-0" />
     <div class="d-flex flex-column dfm-p-16 dfm-gap-8 align-items-end">
       <div class="d-flex dfm-gap-8 w-100 flex-column">
+        @if(isThemeOptionsShown){
         <dfm-button-group>
           <dfm-button-group-item
             *ngFor="let themeOption of themeOptions"
@@ -48,6 +52,7 @@
             >{{ themeOption.key | titlecase }}</dfm-button-group-item
           >
         </dfm-button-group>
+        }
         <div class="d-flex dfm-gap-8 w-100 flex-column">
           <dfm-button *ngIf="isSettingsButtonShown" leadingIcon="settings-01" color="secondary-gray" size="md" class="w-100">
             {{ 'DESIGN_SYSTEM.NAVIGATION_BAR.SETTINGS' | localizedText : 'Settings' | async }}
